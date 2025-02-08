@@ -7,5 +7,6 @@ npm-debug.log
 .env
 
 # Ignore the .glove.6B.200d.txt file
-.glove.6B.200d.txt
+glove.6B.200d.txt
+embeddings.json
 

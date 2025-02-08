@@ -49,6 +49,16 @@ class Game {
 
   // Process a guess and return a result object.
   handleGuess(guess) {
+    // Check if embeddings have finished loading.
+    if (!this.embeddings || !this.targetWord || !this.targetEmbedding) {
+      return {
+        guess,
+        error:
+          "Embeddings are still loading. Please wait before making guesses.",
+        similarity: null,
+      };
+    }
+
     const guessEmbedding = this.getEmbedding(guess);
     let result;
     if (!guessEmbedding) {
@@ -75,7 +85,7 @@ class Game {
   // Return the current game state for sending to clients.
   getGameState() {
     return {
-      // If the target word isn’t set yet (embeddings still loading), return 0.
+      // If the target word isn’t set yet (embeddings still loading), targetLength is 0.
       targetLength: this.targetWord ? this.targetWord.length : 0,
       guessHistory: this.guessHistory,
     };

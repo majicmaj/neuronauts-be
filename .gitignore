@@ -1,0 +1,11 @@
+# Standard ignore files for express node js server
+node_modules/
+npm-debug.log
+.DS_Store
+
+# Ignore the .env file
+.env
+
+# Ignore the .glove.6B.200d.txt file
+.glove.6B.200d.txt
+

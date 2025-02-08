@@ -57,13 +57,19 @@ io.on("connection", (socket) => {
     socket.join(lobbyId);
 
     // Create a new Game instance for this lobby.
-    lobbies[lobbyId] = new Game();
+    const game = new Game();
+    lobbies[lobbyId] = game;
     console.log("Lobby created:", lobbyId);
+
+    // Listen for when the game is ready (embeddings loaded) and notify the lobby.
+    game.on("ready", (gameState) => {
+      io.to(lobbyId).emit("gameReady", gameState);
+    });
 
     // Send the lobby ID and initial game state to the creator.
     socket.emit("lobbyCreated", {
       lobbyId,
-      gameState: lobbies[lobbyId].getGameState(),
+      gameState: game.getGameState(),
     });
   });
 

@@ -1,31 +1,40 @@
-const path = require("path");
-const loadEmbeddings = require("./utils/loadEmbeddings");
+// game.js
+const embeddingsManager = require("./utils/embeddingsManager");
+const EventEmitter = require("events");
+const commonWords = require("./words.json");
 
-class Game {
+class Game extends EventEmitter {
   constructor() {
+    super();
     // These properties will be set once the embeddings load.
     this.targetWord = null;
     this.targetEmbedding = null;
     this.guessHistory = [];
     this.embeddings = null;
 
-    // Load embeddings asynchronously.
-    loadEmbeddings(path.join(__dirname, "embeddings.json"))
+    // Initialize game using shared embeddings
+    embeddingsManager
+      .getEmbeddings()
       .then((embeddings) => {
         this.embeddings = embeddings;
         // Get all the words from the embeddings.
         const words = Object.keys(embeddings);
         // Pick a random word from the list.
-        const randomIndex = Math.floor(Math.random() * words.length);
-        this.targetWord = words[randomIndex];
+        let randomIndex = Math.floor(Math.random() * commonWords.length);
+        let commonWord = commonWords[randomIndex];
+        // Ensure that the common word is in the embeddings.
+        while (!words.includes(commonWord.toLowerCase())) {
+          randomIndex = Math.floor(Math.random() * commonWords.length);
+          commonWord = commonWords[randomIndex];
+        }
+        this.targetWord = commonWord;
         this.targetEmbedding = this.getEmbedding(this.targetWord);
-        console.log(
-          "Embeddings loaded successfully. Target word is:",
-          this.targetWord
-        );
+        console.log("Game initialized with target word:", this.targetWord);
+        // Emit a "ready" event with the current game state so the frontend can update.
+        this.emit("ready", this.getGameState());
       })
       .catch((err) => {
-        console.error("Error loading embeddings:", err);
+        console.error("Error initializing game:", err);
       });
   }
 

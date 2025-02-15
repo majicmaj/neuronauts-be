@@ -12,3 +12,6 @@ embeddings.json
 
 google-10000-english-usa-no-swears-medium.txt
 google-10000-english-usa-no-swears-long.txt
+
+words_long.json 
+words_medium.json

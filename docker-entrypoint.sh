@@ -22,9 +22,10 @@ if [ ! -f "$EMBEDDINGS_JSON" ]; then
   fi
 
   echo "[entrypoint] converting glove.6B.200d.txt -> embeddings.json (one-time)"
-  python3 clove_to_json.py <<'EOF'
-EOF
-  mv -f embeddings.json "$EMBEDDINGS_JSON"
+  (
+    cd "$DATA_DIR"
+    python3 /app/clove_to_json.py
+  )
 fi
 
 exec "$@"

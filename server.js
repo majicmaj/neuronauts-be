@@ -4,18 +4,23 @@ const path = require("path");
 const socketIo = require("socket.io");
 const Game = require("./game");
 const cors = require("cors");
+const embeddingsManager = require("./utils/embeddingsManager");
 
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = (
+  process.env.CORS_ORIGINS ||
+  "http://localhost:5173,http://semantle.netlify.app,https://semantle.netlify.app,https://semantle.hobbyhood.app"
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 // Enable CORS for all HTTP requests
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://semantle.netlify.app",
-      "https://semantle.netlify.app",
-    ],
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   })
 );
@@ -23,11 +28,7 @@ app.use(
 // Enable CORS for WebSockets
 const io = socketIo(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "http://semantle.netlify.app",
-      "https://semantle.netlify.app",
-    ],
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   },
 });

@@ -35,6 +35,24 @@ const io = socketIo(server, {
 // Serve static files (HTML, client.js, etc.)
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/health", (_req, res) => {
+  const status = embeddingsManager.getStatus();
+  res.status(status.ready ? 200 : 503).json({
+    ok: status.ready,
+    ...status,
+  });
+});
+
+// Warm embeddings on startup so the first player doesn't pay the load penalty.
+embeddingsManager
+  .getEmbeddings()
+  .then(() => {
+    console.log("Embeddings ready");
+  })
+  .catch((err) => {
+    console.error("Embeddings failed to load:", err.message);
+  });
+
 // Maintain a mapping of lobby IDs to Game instances
 const lobbies = {};
 

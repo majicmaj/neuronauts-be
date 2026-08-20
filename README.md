@@ -1,99 +1,54 @@
-# neuronauts-be
+# Neuronauts backend
 
-[![GitHub stars](https://img.shields.io/github/stars/majicmaj/neuronauts-be?style=social)](https://github.com/majicmaj/neuronauts-be/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/majicmaj/neuronauts-be?style=social)](https://github.com/majicmaj/neuronauts-be/network)
+The authoritative multiplayer game server for [Neuronauts](https://github.com/majicmaj/neuronauts). It uses GloVe embeddings for semantic similarity, midpoint hints, and a stable two-dimensional projection of guesses around each hidden target.
 
-Backend server for **Neuronauts** – a real-time multiplayer word guessing game powered by semantic word embeddings.
+## Capabilities
 
-## Table of Contents
+- Socket.IO lobbies with unique random call signs and editable player names
+- Server-authoritative guesses, attribution, wins, and shared state
+- Nearest-vocabulary midpoint hints with a 60-second per-lobby cooldown
+- Stable vector positions whose radius preserves cosine distance to the target
+- Lobby/player capacity limits, guess rate limiting, input validation, bounded histories, stale-room cleanup, and graceful shutdown
+- `/health` and `/stats` operational endpoints
 
-- [Overview](#overview)
-- [Installation](#installation)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+## Local development
 
-## Overview
-
-The **neuronauts-be** project provides the backend functionalities required to process semantic word embeddings and facilitate real-time multiplayer gameplay. It leverages pre-trained word embeddings from [GloVe](https://nlp.stanford.edu/data/glove.6B.zip) to perform fast and accurate semantic similarity checks.
-
-## Installation
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/neuronauts-be.git
-   cd neuronauts-be
-   ```
-
-## Setup
-
-### Download and Prepare GloVe Embeddings
-
-The backend relies on the `glove.6B.200d.txt` file for semantic processing. Follow these steps to set up the embeddings:
-
-1. **Download and Extract GloVe:**
-
-   Download the GloVe package and unzip it:
-
-   ```bash
-   curl -O https://nlp.stanford.edu/data/glove.6B.zip
-   unzip glove.6B.zip
-   ```
-
-2. **Place the Embeddings File:**
-
-   Move the `glove.6B.200d.txt` file to the root directory of the project.
-
-3. **Convert GloVe to JSON:**
-
-   Run the provided script to convert the GloVe text file to a JSON format that the backend can more easily process:
-
-   ```bash
-   python clove_to_json.py
-   ```
-
-   This will generate a JSON file containing the word embeddings for use by the server.
-
-## Usage
-
-Once the setup is complete, you can start the backend server.
+Requirements: Node.js 22 or newer and an `embeddings.json` generated from `glove.6B.200d.txt`.
 
 ```bash
+npm ci
 node server.js
 ```
 
-## Contributing
+Useful environment variables:
 
-Contributions are welcome! To contribute:
+| Variable | Default |
+| --- | --- |
+| `PORT` | `3000` |
+| `EMBEDDINGS_FILE` | `./embeddings.json` |
+| `CORS_ORIGINS` | local and production Neuronauts origins |
+| `MAX_LOBBIES` | `100` |
+| `MAX_PLAYERS_PER_LOBBY` | `12` |
+| `STALE_LOBBY_MS` | `1800000` |
+| `CLEANUP_INTERVAL_MS` | `300000` |
+| `GUESS_RATE_LIMIT_MS` | `250` |
 
-1. **Fork the Repository**
+Quality checks:
 
-2. **Create a Feature Branch:**
+```bash
+npm test
+npm audit --omit=dev
+```
 
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+The tests use small in-memory embeddings and include a two-client Socket.IO integration scenario covering unique identities, renaming, attributed guesses, shared hints/cooldowns, and synchronized wins.
 
-3. **Commit Your Changes:**
+## Docker
 
-   ```bash
-   git commit -m "Add: description of your feature"
-   ```
+The image installs production dependencies, prepares the GloVe data on first boot, exposes port `3000`, includes a health check, and handles `SIGTERM` gracefully.
 
-4. **Push to Your Branch:**
+```bash
+docker build -t neuronauts-be .
+docker run --rm -p 3000:3000 -v neuronauts-data:/app/data neuronauts-be
+```
 
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-5. **Open a Pull Request:**
-
-   Please include a clear description of your changes and reference any related issues.
-
-For additional details, refer to our [CONTRIBUTING.md](CONTRIBUTING.md) if available.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+The production compose layout and deployment procedure are documented in the parent workspace's `DEPLOYMENT.md`.

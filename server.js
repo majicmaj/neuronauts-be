@@ -2,315 +2,552 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const socketIo = require("socket.io");
-const Game = require("./game");
 const cors = require("cors");
+const Game = require("./game");
 const embeddingsManager = require("./utils/embeddingsManager");
 
-const app = express();
-const server = http.createServer(app);
-
-const PORT = Number(process.env.PORT || 3000);
+const DEFAULT_PORT = Number(process.env.PORT || 3000);
 const MAX_LOBBIES = Number(process.env.MAX_LOBBIES || 100);
 const MAX_PLAYERS_PER_LOBBY = Number(process.env.MAX_PLAYERS_PER_LOBBY || 12);
 const STALE_LOBBY_MS = Number(process.env.STALE_LOBBY_MS || 30 * 60 * 1000);
-const CLEANUP_INTERVAL_MS = Number(process.env.CLEANUP_INTERVAL_MS || 5 * 60 * 1000);
-const RECENT_EVENTS_LIMIT = Number(process.env.RECENT_EVENTS_LIMIT || 200);
-
-const allowedOrigins = (
-  process.env.CORS_ORIGINS ||
-  "http://localhost:5173,http://semantle.netlify.app,https://semantle.netlify.app,https://semantle.hobbyhood.app"
-)
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
-  })
+const CLEANUP_INTERVAL_MS = Number(
+  process.env.CLEANUP_INTERVAL_MS || 5 * 60 * 1000
 );
+const RECENT_EVENTS_LIMIT = Number(process.env.RECENT_EVENTS_LIMIT || 200);
+const GUESS_RATE_LIMIT_MS = Number(process.env.GUESS_RATE_LIMIT_MS || 250);
 
-const io = socketIo(server, {
-  cors: {
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
-  },
-});
+const DEFAULT_ORIGINS = [
+  "http://localhost:5173",
+  "http://semantle.netlify.app",
+  "https://semantle.netlify.app",
+  "https://semantle.hobbyhood.app",
+];
 
-app.use(express.static(path.join(__dirname, "public")));
+const NAME_ADJECTIVES = [
+  "Astral", "Cosmic", "Electric", "Galactic", "Lunar", "Nebula",
+  "Nova", "Orbiting", "Quantum", "Radiant", "Solar", "Stellar",
+];
 
-const lobbies = {};
-const recentEvents = [];
+const NAME_ROLES = [
+  "Cadet", "Cartographer", "Comet", "Cosmonaut", "Explorer", "Navigator",
+  "Pathfinder", "Pilot", "Pioneer", "Ranger", "Researcher", "Voyager",
+];
 
 function nowIso() {
   return new Date().toISOString();
 }
 
-function recordEvent(type, details = {}) {
-  const event = {
-    at: nowIso(),
-    type,
-    ...details,
-  };
-
-  recentEvents.unshift(event);
-  if (recentEvents.length > RECENT_EVENTS_LIMIT) {
-    recentEvents.length = RECENT_EVENTS_LIMIT;
-  }
-
-  const summary = Object.entries(details)
-    .map(([key, value]) => `${key}=${value}`)
-    .join(" ");
-  console.log(`[event] ${type}${summary ? ` ${summary}` : ""}`);
-
-  return event;
+function normalizeLobbyId(value) {
+  return typeof value === "string" ? value.trim().toUpperCase() : "";
 }
 
-function getActiveLobbyCount() {
-  return Object.keys(lobbies).length;
+function normalizePlayerName(value) {
+  if (typeof value !== "string") return null;
+  const name = value.trim().replace(/\s+/g, " ");
+  if (name.length < 2 || name.length > 24) return null;
+  if (!/^[\p{L}\p{N}][\p{L}\p{N} .'-]*$/u.test(name)) return null;
+  return name;
 }
 
-function getActivePlayerCount() {
-  return Object.values(lobbies).reduce(
-    (sum, lobby) => sum + lobby.players.size,
-    0
+function isNameAvailable(lobby, name, exceptSocketId = null) {
+  const normalized = name.toLocaleLowerCase();
+  return !Array.from(lobby.players.values()).some(
+    (player) =>
+      player.id !== exceptSocketId &&
+      player.name.toLocaleLowerCase() === normalized
   );
 }
 
-function getStats() {
-  const rooms = Object.entries(lobbies).map(([lobbyId, lobby]) => ({
-    lobbyId,
-    players: lobby.players.size,
-    createdAt: lobby.createdAt,
-    lastActivityAt: lobby.lastActivityAt,
-    idleMs: Date.now() - lobby.lastActivityMs,
+function generatePlayerName(lobby, random = Math.random) {
+  const combinations = NAME_ADJECTIVES.length * NAME_ROLES.length;
+  const start = Math.floor(random() * combinations);
+  for (let offset = 0; offset < combinations; offset += 1) {
+    const index = (start + offset) % combinations;
+    const adjective = NAME_ADJECTIVES[Math.floor(index / NAME_ROLES.length)];
+    const role = NAME_ROLES[index % NAME_ROLES.length];
+    const name = `${adjective} ${role}`;
+    if (isNameAvailable(lobby, name)) return name;
+  }
+  return `Neuronaut ${lobby.players.size + 1}`;
+}
+
+function serializePlayers(lobby) {
+  return Array.from(lobby.players.values()).map((player) => ({
+    id: player.id,
+    name: player.name,
+    joinedAt: player.joinedAt,
   }));
-
-  rooms.sort((a, b) => b.lastActivityAt.localeCompare(a.lastActivityAt));
-
-  return {
-    ok: true,
-    serverTime: nowIso(),
-    limits: {
-      maxLobbies: MAX_LOBBIES,
-      maxPlayersPerLobby: MAX_PLAYERS_PER_LOBBY,
-      staleLobbyMs: STALE_LOBBY_MS,
-      cleanupIntervalMs: CLEANUP_INTERVAL_MS,
-      recentEventsLimit: RECENT_EVENTS_LIMIT,
-    },
-    rooms: {
-      active: rooms.length,
-      list: rooms,
-    },
-    players: {
-      active: getActivePlayerCount(),
-    },
-    lastEvent: recentEvents[0] || null,
-    recentEvents,
-    embeddings: embeddingsManager.getStatus(),
-  };
 }
 
-function updateLobbyActivity(lobby) {
-  lobby.lastActivityMs = Date.now();
-  lobby.lastActivityAt = nowIso();
-}
+function createGameServer(options = {}) {
+  const allowedOrigins = (
+    options.allowedOrigins ||
+    (process.env.CORS_ORIGINS
+      ? process.env.CORS_ORIGINS.split(",")
+      : DEFAULT_ORIGINS)
+  )
+    .map((origin) => origin.trim())
+    .filter(Boolean);
 
-function createLobbyRecord(lobbyId) {
-  const game = new Game();
-  const lobby = {
-    lobbyId,
-    game,
-    players: new Set(),
-    createdAt: nowIso(),
-    lastActivityAt: nowIso(),
-    lastActivityMs: Date.now(),
+  const app = express();
+  const server = http.createServer(app);
+  const io = socketIo(server, {
+    cors: { origin: allowedOrigins, methods: ["GET", "POST"] },
+    serveClient: false,
+    transports: ["websocket", "polling"],
+    maxHttpBufferSize: 16_384,
+    pingInterval: 25_000,
+    pingTimeout: 20_000,
+  });
+  const lobbies = new Map();
+  const recentEvents = [];
+  const gameFactory = options.gameFactory || (() => new Game());
+  const random = options.random || Math.random;
+  const limits = {
+    maxLobbies: options.maxLobbies || MAX_LOBBIES,
+    maxPlayersPerLobby:
+      options.maxPlayersPerLobby || MAX_PLAYERS_PER_LOBBY,
+    staleLobbyMs: options.staleLobbyMs || STALE_LOBBY_MS,
+    cleanupIntervalMs: options.cleanupIntervalMs || CLEANUP_INTERVAL_MS,
+    recentEventsLimit: options.recentEventsLimit || RECENT_EVENTS_LIMIT,
+    guessRateLimitMs: options.guessRateLimitMs ?? GUESS_RATE_LIMIT_MS,
   };
 
-  game.on("ready", (gameState) => {
-    updateLobbyActivity(lobby);
-    io.to(lobbyId).emit("gameReady", gameState);
-    recordEvent("lobby_ready", {
-      lobbyId,
-      players: lobby.players.size,
+  app.disable("x-powered-by");
+  app.use(cors({ origin: allowedOrigins, methods: ["GET", "POST"] }));
+  app.use((_req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    next();
+  });
+  app.use(express.static(path.join(__dirname, "public"), { maxAge: "1h" }));
+
+  function recordEvent(type, details = {}) {
+    const event = { at: nowIso(), type, ...details };
+    recentEvents.unshift(event);
+    if (recentEvents.length > limits.recentEventsLimit) {
+      recentEvents.length = limits.recentEventsLimit;
+    }
+    const summary = Object.entries(details)
+      .map(([key, value]) => `${key}=${value}`)
+      .join(" ");
+    console.log(`[event] ${type}${summary ? ` ${summary}` : ""}`);
+    return event;
+  }
+
+  const getActivePlayerCount = () =>
+    Array.from(lobbies.values()).reduce(
+      (sum, lobby) => sum + lobby.players.size,
+      0
+    );
+
+  function updateLobbyActivity(lobby) {
+    lobby.lastActivityMs = Date.now();
+    lobby.lastActivityAt = nowIso();
+  }
+
+  function emitPlayers(lobby) {
+    io.to(lobby.lobbyId).emit("playersUpdated", {
+      players: serializePlayers(lobby),
+      playerCount: lobby.players.size,
     });
-  });
+  }
 
-  lobbies[lobbyId] = lobby;
-  return lobby;
-}
+  function createLobbyRecord(lobbyId) {
+    const game = gameFactory();
+    const lobby = {
+      lobbyId,
+      game,
+      players: new Map(),
+      createdAt: nowIso(),
+      lastActivityAt: nowIso(),
+      lastActivityMs: Date.now(),
+    };
 
-function deleteLobby(lobbyId, reason) {
-  const lobby = lobbies[lobbyId];
-  if (!lobby) return;
+    game.on("ready", (gameState) => {
+      updateLobbyActivity(lobby);
+      io.to(lobbyId).emit("gameReady", gameState);
+      recordEvent("lobby_ready", {
+        lobbyId,
+        players: lobby.players.size,
+      });
+    });
+    game.on("error", (error) => {
+      io.to(lobbyId).emit("actionError", {
+        code: "game_unavailable",
+        message: "The semantic model could not be loaded.",
+      });
+      recordEvent("game_error", { lobbyId, message: error.message });
+    });
 
-  const playerCount = lobby.players.size;
-  delete lobbies[lobbyId];
-  recordEvent("lobby_deleted", {
-    lobbyId,
-    reason,
-    players: playerCount,
-    activeRooms: getActiveLobbyCount(),
-    activePlayers: getActivePlayerCount(),
-  });
-}
+    lobbies.set(lobbyId, lobby);
+    return lobby;
+  }
 
-function cleanupStaleLobbies() {
-  const cutoff = Date.now() - STALE_LOBBY_MS;
-  for (const [lobbyId, lobby] of Object.entries(lobbies)) {
-    if (lobby.players.size === 0 && lobby.lastActivityMs < cutoff) {
-      deleteLobby(lobbyId, "stale_empty");
+  function deleteLobby(lobbyId, reason) {
+    const lobby = lobbies.get(lobbyId);
+    if (!lobby) return;
+    const playerCount = lobby.players.size;
+    lobbies.delete(lobbyId);
+    recordEvent("lobby_deleted", {
+      lobbyId,
+      reason,
+      players: playerCount,
+      activeRooms: lobbies.size,
+      activePlayers: getActivePlayerCount(),
+    });
+  }
+
+  function cleanupStaleLobbies() {
+    const cutoff = Date.now() - limits.staleLobbyMs;
+    for (const [lobbyId, lobby] of lobbies) {
+      if (lobby.players.size === 0 && lobby.lastActivityMs < cutoff) {
+        deleteLobby(lobbyId, "stale_empty");
+      }
     }
   }
-}
 
-function generateLobbyId(length = 6) {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let result = "";
-  do {
-    result = "";
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-  } while (lobbies[result]);
-  return result;
-}
+  function generateLobbyId(length = 6) {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    do {
+      result = Array.from(
+        { length },
+        () => characters[Math.floor(random() * characters.length)]
+      ).join("");
+    } while (lobbies.has(result));
+    return result;
+  }
 
-function emitCapacityError(socket, message, code) {
-  socket.emit("error", message);
-  recordEvent("capacity_rejected", {
-    socketId: socket.id,
-    code,
-    message,
-    activeRooms: getActiveLobbyCount(),
-    activePlayers: getActivePlayerCount(),
-  });
-}
-
-app.get("/health", (_req, res) => {
-  const status = embeddingsManager.getStatus();
-  res.status(status.ready ? 200 : 503).json({
-    ok: status.ready,
-    ...status,
-  });
-});
-
-app.get("/stats", (_req, res) => {
-  res.json(getStats());
-});
-
-embeddingsManager
-  .getEmbeddings()
-  .then(() => {
-    recordEvent("embeddings_ready", { file: embeddingsManager.getStatus().file });
-  })
-  .catch((err) => {
-    console.error("Embeddings failed to load:", err.message);
-    recordEvent("embeddings_error", { message: err.message });
-  });
-
-setInterval(cleanupStaleLobbies, CLEANUP_INTERVAL_MS).unref();
-
-io.on("connection", (socket) => {
-  socket.data.lobbyId = null;
-
-  socket.on("createLobby", () => {
-    if (getActiveLobbyCount() >= MAX_LOBBIES) {
-      return emitCapacityError(
-        socket,
-        `Server room capacity reached (${MAX_LOBBIES} active lobbies). Please try again later.`,
-        "max_lobbies"
-      );
-    }
-
-    const lobbyId = generateLobbyId();
-    const lobby = createLobbyRecord(lobbyId);
-
-    socket.join(lobbyId);
-    socket.data.lobbyId = lobbyId;
-    lobby.players.add(socket.id);
+  function addPlayer(lobby, socket, preferredName) {
+    const requested = normalizePlayerName(preferredName);
+    const name =
+      requested && isNameAvailable(lobby, requested)
+        ? requested
+        : generatePlayerName(lobby, random);
+    const player = { id: socket.id, name, joinedAt: nowIso() };
+    lobby.players.set(socket.id, player);
+    socket.data.lobbyId = lobby.lobbyId;
+    socket.join(lobby.lobbyId);
     updateLobbyActivity(lobby);
+    return player;
+  }
 
-    recordEvent("lobby_created", {
-      lobbyId,
-      players: lobby.players.size,
-      activeRooms: getActiveLobbyCount(),
-      activePlayers: getActivePlayerCount(),
-    });
-
-    socket.emit("lobbyCreated", {
-      lobbyId,
-      gameState: lobby.game.getGameState(),
-    });
-  });
-
-  socket.on("joinLobby", (lobbyId) => {
-    const lobby = lobbies[lobbyId];
-    if (!lobby) {
-      socket.emit("error", "Lobby does not exist.");
-      return;
-    }
-
-    if (!lobby.players.has(socket.id) && lobby.players.size >= MAX_PLAYERS_PER_LOBBY) {
-      return emitCapacityError(
-        socket,
-        `Lobby ${lobbyId} is full (${MAX_PLAYERS_PER_LOBBY} players max).`,
-        "max_players_per_lobby"
-      );
-    }
-
-    socket.join(lobbyId);
-    socket.data.lobbyId = lobbyId;
-    lobby.players.add(socket.id);
+  function removePlayerFromCurrentLobby(socket) {
+    const currentLobbyId = socket.data.lobbyId;
+    if (!currentLobbyId) return;
+    const lobby = lobbies.get(currentLobbyId);
+    socket.data.lobbyId = null;
+    socket.leave(currentLobbyId);
+    if (!lobby || !lobby.players.delete(socket.id)) return;
     updateLobbyActivity(lobby);
-
-    socket.emit("lobbyJoined", {
-      lobbyId,
-      gameState: lobby.game.getGameState(),
-    });
-    socket.to(lobbyId).emit("playerJoined", { socketId: socket.id });
-
-    recordEvent("lobby_joined", {
-      lobbyId,
-      players: lobby.players.size,
-      activeRooms: getActiveLobbyCount(),
-      activePlayers: getActivePlayerCount(),
-    });
-  });
-
-  socket.on("guess", (data) => {
-    const { lobbyId, guess } = data;
-    const lobby = lobbies[lobbyId];
-    if (!lobby) {
-      socket.emit("error", "Lobby not found.");
-      return;
-    }
-
-    updateLobbyActivity(lobby);
-    const result = lobby.game.handleGuess(guess);
-    io.to(lobbyId).emit("guessResult", result);
-  });
-
-  socket.on("disconnect", () => {
-    const { lobbyId } = socket.data;
-    if (!lobbyId) return;
-
-    const lobby = lobbies[lobbyId];
-    if (!lobby) return;
-
-    lobby.players.delete(socket.id);
-    updateLobbyActivity(lobby);
-
+    emitPlayers(lobby);
     recordEvent("lobby_left", {
-      lobbyId,
+      lobbyId: currentLobbyId,
       players: lobby.players.size,
-      activeRooms: getActiveLobbyCount(),
+      activeRooms: lobbies.size,
       activePlayers: getActivePlayerCount(),
     });
-  });
-});
+  }
 
-server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+  function lobbyPayload(lobby) {
+    return {
+      lobbyId: lobby.lobbyId,
+      gameState: lobby.game.getGameState(),
+      players: serializePlayers(lobby),
+      playerCount: lobby.players.size,
+    };
+  }
+
+  function getSocketLobby(socket, requestedLobbyId) {
+    const lobbyId = normalizeLobbyId(
+      requestedLobbyId || socket.data.lobbyId
+    );
+    if (!lobbyId || socket.data.lobbyId !== lobbyId) return null;
+    const lobby = lobbies.get(lobbyId);
+    return lobby && lobby.players.has(socket.id) ? lobby : null;
+  }
+
+  function emitActionError(socket, response) {
+    socket.emit("actionError", {
+      message: response.error,
+      code: response.code,
+      hintAvailableAt: response.hintAvailableAt || null,
+    });
+  }
+
+  app.get("/health", (_req, res) => {
+    const status = options.skipEmbeddingsBootstrap
+      ? { ready: true, loading: false, error: null, file: "in-memory" }
+      : embeddingsManager.getStatus();
+    res
+      .status(status.ready ? 200 : 503)
+      .set("Cache-Control", "no-store")
+      .json({ ok: status.ready, service: "neuronauts-be", ...status });
+  });
+
+  app.get("/stats", (_req, res) => {
+    const rooms = Array.from(lobbies.values())
+      .map((lobby) => ({
+        lobbyId: lobby.lobbyId,
+        players: lobby.players.size,
+        status: lobby.game.getGameState().status,
+        createdAt: lobby.createdAt,
+        lastActivityAt: lobby.lastActivityAt,
+        idleMs: Date.now() - lobby.lastActivityMs,
+      }))
+      .sort((a, b) => b.lastActivityAt.localeCompare(a.lastActivityAt));
+    res.set("Cache-Control", "no-store").json({
+      ok: true,
+      serverTime: nowIso(),
+      uptimeSeconds: Math.round(process.uptime()),
+      limits,
+      rooms: { active: rooms.length, list: rooms },
+      players: { active: getActivePlayerCount() },
+      lastEvent: recentEvents[0] || null,
+      recentEvents,
+      embeddings: options.skipEmbeddingsBootstrap
+        ? { ready: true, loading: false, error: null, file: "in-memory" }
+        : embeddingsManager.getStatus(),
+    });
+  });
+
+  if (!options.skipEmbeddingsBootstrap) {
+    embeddingsManager
+      .getEmbeddings()
+      .then(() =>
+        recordEvent("embeddings_ready", {
+          file: embeddingsManager.getStatus().file,
+        })
+      )
+      .catch((error) => {
+        console.error("Embeddings failed to load:", error.message);
+        recordEvent("embeddings_error", { message: error.message });
+      });
+  }
+
+  const cleanupTimer = setInterval(
+    cleanupStaleLobbies,
+    limits.cleanupIntervalMs
+  );
+  cleanupTimer.unref();
+
+  io.on("connection", (socket) => {
+    socket.data.lobbyId = null;
+    socket.data.lastGuessAt = 0;
+
+    socket.on("createLobby", (payload = {}) => {
+      if (lobbies.size >= limits.maxLobbies) {
+        socket.emit("error", "Server room capacity reached. Try again later.");
+        return;
+      }
+      removePlayerFromCurrentLobby(socket);
+      const lobbyId = generateLobbyId();
+      const lobby = createLobbyRecord(lobbyId);
+      addPlayer(lobby, socket, payload?.preferredName);
+      const response = lobbyPayload(lobby);
+      socket.emit("lobbyCreated", response);
+      emitPlayers(lobby);
+      recordEvent("lobby_created", {
+        lobbyId,
+        players: lobby.players.size,
+        activeRooms: lobbies.size,
+        activePlayers: getActivePlayerCount(),
+      });
+    });
+
+    socket.on("joinLobby", (payload) => {
+      const lobbyId = normalizeLobbyId(
+        typeof payload === "string" ? payload : payload?.lobbyId
+      );
+      const preferredName =
+        typeof payload === "object" ? payload?.preferredName : null;
+      const lobby = lobbies.get(lobbyId);
+      if (!lobby) {
+        socket.emit("error", "Lobby does not exist.");
+        return;
+      }
+      if (
+        !lobby.players.has(socket.id) &&
+        lobby.players.size >= limits.maxPlayersPerLobby
+      ) {
+        socket.emit("error", `Lobby ${lobbyId} is full.`);
+        return;
+      }
+
+      if (socket.data.lobbyId !== lobbyId) {
+        removePlayerFromCurrentLobby(socket);
+        addPlayer(lobby, socket, preferredName);
+      }
+      socket.emit("lobbyJoined", lobbyPayload(lobby));
+      emitPlayers(lobby);
+      recordEvent("lobby_joined", {
+        lobbyId,
+        players: lobby.players.size,
+        activeRooms: lobbies.size,
+        activePlayers: getActivePlayerCount(),
+      });
+    });
+
+    socket.on("setPlayerName", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby) {
+        emitActionError(socket, {
+          error: "Join the lobby before changing your name.",
+          code: "not_in_lobby",
+        });
+        return;
+      }
+      const name = normalizePlayerName(payload.name);
+      if (!name) {
+        emitActionError(socket, {
+          error: "Names must be 2–24 letters, numbers, spaces, apostrophes, periods, or hyphens.",
+          code: "invalid_name",
+        });
+        return;
+      }
+      if (!isNameAvailable(lobby, name, socket.id)) {
+        emitActionError(socket, {
+          error: "That name is already taken in this lobby.",
+          code: "duplicate_name",
+        });
+        return;
+      }
+      const player = lobby.players.get(socket.id);
+      const previousName = player.name;
+      player.name = name;
+      updateLobbyActivity(lobby);
+      emitPlayers(lobby);
+      socket.emit("playerNameChanged", { name });
+      recordEvent("player_renamed", {
+        lobbyId: lobby.lobbyId,
+        previousName,
+        name,
+      });
+    });
+
+    socket.on("guess", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby) {
+        emitActionError(socket, {
+          error: "Join the lobby before guessing.",
+          code: "not_in_lobby",
+        });
+        return;
+      }
+      const now = Date.now();
+      if (now - socket.data.lastGuessAt < limits.guessRateLimitMs) {
+        emitActionError(socket, {
+          error: "Easy, explorer—wait a moment before guessing again.",
+          code: "guess_rate_limited",
+        });
+        return;
+      }
+      socket.data.lastGuessAt = now;
+      const player = lobby.players.get(socket.id);
+      const response = lobby.game.handleGuess(payload.guess, player);
+      if (!response.ok) {
+        emitActionError(socket, response);
+        return;
+      }
+      updateLobbyActivity(lobby);
+      io.to(lobby.lobbyId).emit("guessResult", response.result);
+      if (response.result.correct) {
+        io.to(lobby.lobbyId).emit("gameWon", lobby.game.getGameState());
+      }
+      recordEvent(response.result.correct ? "word_solved" : "guess_made", {
+        lobbyId: lobby.lobbyId,
+        playerName: player.name,
+        guesses: lobby.game.getGameState().guessHistory.length,
+      });
+    });
+
+    socket.on("requestHint", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby) {
+        emitActionError(socket, {
+          error: "Join the lobby before requesting a hint.",
+          code: "not_in_lobby",
+        });
+        return;
+      }
+      const player = lobby.players.get(socket.id);
+      const response = lobby.game.requestHint(player);
+      if (!response.ok) {
+        emitActionError(socket, response);
+        return;
+      }
+      updateLobbyActivity(lobby);
+      io.to(lobby.lobbyId).emit("guessResult", {
+        ...response.result,
+        hintAvailableAt: response.hintAvailableAt,
+      });
+      io.to(lobby.lobbyId).emit("hintCooldown", {
+        hintAvailableAt: response.hintAvailableAt,
+      });
+      recordEvent("hint_used", {
+        lobbyId: lobby.lobbyId,
+        playerName: player.name,
+        hintFrom: response.result.hintFrom,
+      });
+    });
+
+    socket.on("disconnect", () => removePlayerFromCurrentLobby(socket));
+  });
+
+  async function start(port = DEFAULT_PORT, host) {
+    if (server.listening) return server.address();
+    await new Promise((resolve) =>
+      host ? server.listen(port, host, resolve) : server.listen(port, resolve)
+    );
+    const address = server.address();
+    console.log(
+      `Neuronauts server listening on port ${
+        typeof address === "object" ? address.port : port
+      }`
+    );
+    return address;
+  }
+
+  async function stop() {
+    clearInterval(cleanupTimer);
+    await new Promise((resolve) => io.close(resolve));
+    if (server.listening) {
+      await new Promise((resolve, reject) =>
+        server.close((error) => (error ? reject(error) : resolve()))
+      );
+    }
+  }
+
+  return { app, server, io, lobbies, start, stop, cleanupStaleLobbies };
+}
+
+if (require.main === module) {
+  const runtime = createGameServer();
+  let shuttingDown = false;
+  const shutdown = async (signal) => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+    console.log(`Received ${signal}; closing connections gracefully.`);
+    const forcedExit = setTimeout(() => {
+      console.error("Graceful shutdown timed out.");
+      process.exit(1);
+    }, 10_000);
+    forcedExit.unref();
+    try {
+      await runtime.stop();
+      clearTimeout(forcedExit);
+      process.exit(0);
+    } catch (error) {
+      console.error("Graceful shutdown failed:", error);
+      process.exit(1);
+    }
+  };
+  process.once("SIGTERM", () => shutdown("SIGTERM"));
+  process.once("SIGINT", () => shutdown("SIGINT"));
+  runtime.start().catch((error) => {
+    console.error("Failed to start Neuronauts:", error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = { createGameServer, normalizePlayerName };

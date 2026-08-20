@@ -4,9 +4,8 @@ const embeddingsManager = require("./utils/embeddingsManager");
 const defaultCommonWords = require("./words.json");
 
 const DEFAULT_HINT_COOLDOWN_MS = 60_000;
-const DEFAULT_HISTORY_LIMIT = 300;
+const DEFAULT_HISTORY_LIMIT = 1_000;
 const MAX_GUESS_LENGTH = 40;
-const HINT_SCORE_TOLERANCE = 0.005;
 
 function normalizeVector(vector) {
   let magnitudeSquared = 0;
@@ -72,6 +71,9 @@ class Game extends EventEmitter {
     this.hintAvailableAt = null;
     this.sequence = 0;
     this.axes = null;
+    this.referenceRanking = [];
+    this.referenceRankByWord = new Map();
+    this.rankedWordCount = 0;
 
     this.commonWords = options.commonWords || defaultCommonWords;
     this.forcedTargetWord = options.targetWord || null;
@@ -105,6 +107,7 @@ class Game extends EventEmitter {
     }
 
     this.normalizedTargetEmbedding = normalizeVector(this.targetEmbedding);
+    this.buildReferenceRanking();
     this.axes = makeProjectionAxes(
       `neuronauts:${this.targetWord}`,
       this.targetEmbedding.length
@@ -150,6 +153,61 @@ class Game extends EventEmitter {
     return denominator ? dot / denominator : 0;
   }
 
+  buildReferenceRanking() {
+    const seen = new Set();
+    this.referenceRanking = [];
+
+    for (const rawWord of this.commonWords) {
+      const word = normalizeGuess(rawWord);
+      if (!word || seen.has(word)) continue;
+      seen.add(word);
+      const embedding = this.getEmbedding(word);
+      if (!embedding) continue;
+      this.referenceRanking.push({
+        word,
+        cosineSimilarity: this.cosineSimilarity(
+          this.targetEmbedding,
+          embedding
+        ),
+      });
+    }
+
+    this.referenceRanking.sort((a, b) => {
+      const difference = b.cosineSimilarity - a.cosineSimilarity;
+      if (difference) return difference;
+      if (a.word === this.targetWord) return -1;
+      if (b.word === this.targetWord) return 1;
+      return a.word.localeCompare(b.word);
+    });
+    this.referenceRankByWord = new Map(
+      this.referenceRanking.map((entry, index) => [entry.word, index + 1])
+    );
+    this.rankedWordCount = this.referenceRanking.length;
+  }
+
+  getRank(word, cosineSimilarity) {
+    const knownRank = this.referenceRankByWord.get(word);
+    if (knownRank) return knownRank;
+
+    let low = 0;
+    let high = this.referenceRanking.length;
+    while (low < high) {
+      const middle = Math.floor((low + high) / 2);
+      if (this.referenceRanking[middle].cosineSimilarity > cosineSimilarity) {
+        low = middle + 1;
+      } else {
+        high = middle;
+      }
+    }
+    return Math.max(1, Math.min(this.rankedWordCount, low + 1));
+  }
+
+  getScoreForRank(rank) {
+    if (this.rankedWordCount <= 1) return rank === 1 ? 1 : 0;
+    const boundedRank = Math.max(1, Math.min(this.rankedWordCount, rank));
+    return 1 - (boundedRank - 1) / (this.rankedWordCount - 1);
+  }
+
   getPosition(embedding, similarity, word) {
     const normalized = normalizeVector(embedding);
     let projectedX = 0;
@@ -169,12 +227,11 @@ class Game extends EventEmitter {
       projectedMagnitude = 1;
     }
 
-    // Radius preserves exact cosine distance to the target; the seeded random
-    // projection supplies a stable semantic direction in the square.
-    const cosineDistance = Math.sqrt(
-      Math.max(0, Math.min(1, (1 - similarity) / 2))
-    );
-    const radius = Math.min(0.44, cosineDistance * 0.52);
+    // The radial scale matches the displayed rank percentile: a 50% word sits
+    // halfway between the outer boundary and the 100% target. The seeded
+    // projection still supplies a stable semantic direction in the square.
+    const rankDistance = Math.max(0, Math.min(1, 1 - similarity));
+    const radius = rankDistance * 0.44;
 
     return {
       x: Number((0.5 + (projectedX / projectedMagnitude) * radius).toFixed(4)),
@@ -187,18 +244,29 @@ class Game extends EventEmitter {
   }
 
   makeResult({ word, embedding, player, isHint = false, hintFrom = null }) {
-    const similarity = this.cosineSimilarity(this.targetEmbedding, embedding);
+    const cosineSimilarity = this.cosineSimilarity(
+      this.targetEmbedding,
+      embedding
+    );
+    const rank = word === this.targetWord
+      ? 1
+      : this.getRank(word, cosineSimilarity);
+    const similarity = this.getScoreForRank(rank);
     const createdAt = new Date(this.now()).toISOString();
     const correct = word === this.targetWord;
     const result = {
       id: `${createdAt}-${this.sequence += 1}`,
       guess: word,
       similarity,
+      cosineSimilarity,
+      rank,
+      rankedWordCount: this.rankedWordCount,
       correct,
       isHint,
       hintFrom,
       playerId: player.id,
       playerName: player.name,
+      colorIndex: Number.isInteger(player.colorIndex) ? player.colorIndex : 0,
       createdAt,
       position: this.getPosition(embedding, similarity, word),
     };
@@ -255,91 +323,48 @@ class Game extends EventEmitter {
 
   findHalfwayWord(bestGuess) {
     const bestEmbedding = normalizeVector(this.getEmbedding(bestGuess.guess));
-    const bestSimilarity = Math.max(
-      -1,
-      Math.min(
-        1,
-        this.cosineSimilarity(
-          this.normalizedTargetEmbedding,
-          bestEmbedding
-        )
+    const desiredRank = (bestGuess.rank + 1) / 2;
+    const ideal = normalizeVector(
+      bestEmbedding.map(
+        (value, index) => value + this.normalizedTargetEmbedding[index]
       )
     );
-    const desiredSimilarity = (bestSimilarity + 1) / 2;
-
-    // The UI percentage is cosine similarity, so "halfway" means halfway
-    // between the current score and 100%, not the normalized vector average.
-    // Build an ideal unit vector with exactly that target similarity while
-    // retaining the best guess's direction around the target.
-    const tangent = bestEmbedding.map(
-      (value, index) =>
-        value - bestSimilarity * this.normalizedTargetEmbedding[index]
-    );
-    const tangentMagnitude = Math.sqrt(
-      tangent.reduce((sum, value) => sum + value * value, 0)
-    );
-    const ideal =
-      tangentMagnitude > 1e-8
-        ? this.normalizedTargetEmbedding.map(
-            (value, index) =>
-              desiredSimilarity * value +
-              Math.sqrt(Math.max(0, 1 - desiredSimilarity ** 2)) *
-                (tangent[index] / tangentMagnitude)
-          )
-        : this.normalizedTargetEmbedding;
 
     const candidates = [];
-    let bestScoreError = Infinity;
-    const seen = new Set();
+    let bestRankError = Infinity;
 
-    for (const rawWord of this.commonWords) {
-      const word = normalizeGuess(rawWord);
+    for (let index = 0; index < this.referenceRanking.length; index += 1) {
+      const { word } = this.referenceRanking[index];
+      const rank = index + 1;
       if (
-        !word ||
-        seen.has(word) ||
         word === this.targetWord ||
-        this.guessedWords.has(word)
+        this.guessedWords.has(word) ||
+        rank >= bestGuess.rank
       ) {
         continue;
       }
-      seen.add(word);
       const embedding = this.getEmbedding(word);
-      if (!embedding) continue;
-      const normalizedEmbedding = normalizeVector(embedding);
-      const targetSimilarity = this.cosineSimilarity(
-        this.normalizedTargetEmbedding,
-        normalizedEmbedding
-      );
-      if (targetSimilarity <= bestSimilarity + Number.EPSILON) continue;
-
-      const scoreError = Math.abs(targetSimilarity - desiredSimilarity);
-      bestScoreError = Math.min(bestScoreError, scoreError);
+      const rankError = Math.abs(rank - desiredRank);
+      bestRankError = Math.min(bestRankError, rankError);
       candidates.push({
         word,
         embedding,
-        scoreError,
-        pathAlignment: this.cosineSimilarity(ideal, normalizedEmbedding),
+        rankError,
+        pathAlignment: this.cosineSimilarity(
+          ideal,
+          normalizeVector(embedding)
+        ),
       });
     }
 
     if (!candidates.length) return null;
 
-    // Keep percentage accuracy primary. Within half a percentage point of the
-    // best available score match, prefer the word closest to the semantic path
-    // from the current best guess toward the target.
+    // Rank distance is the displayed linear scale, so it stays primary. Only
+    // equally close ranks use semantic path alignment as the tie-breaker.
     return candidates
-      .filter(
-        (candidate) =>
-          candidate.scoreError <= bestScoreError + HINT_SCORE_TOLERANCE
-      )
+      .filter((candidate) => candidate.rankError === bestRankError)
       .reduce((selected, candidate) => {
         if (!selected || candidate.pathAlignment > selected.pathAlignment) {
-          return candidate;
-        }
-        if (
-          candidate.pathAlignment === selected.pathAlignment &&
-          candidate.scoreError < selected.scoreError
-        ) {
           return candidate;
         }
         return selected;

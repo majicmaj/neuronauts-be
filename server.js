@@ -15,6 +15,7 @@ const CLEANUP_INTERVAL_MS = Number(
 );
 const RECENT_EVENTS_LIMIT = Number(process.env.RECENT_EVENTS_LIMIT || 200);
 const GUESS_RATE_LIMIT_MS = Number(process.env.GUESS_RATE_LIMIT_MS || 250);
+const PLAYER_COLOR_COUNT = 12;
 
 const DEFAULT_ORIGINS = [
   "http://localhost:5173",
@@ -76,6 +77,7 @@ function serializePlayers(lobby) {
     id: player.id,
     name: player.name,
     joinedAt: player.joinedAt,
+    colorIndex: player.colorIndex,
   }));
 }
 
@@ -158,6 +160,8 @@ function createGameServer(options = {}) {
       lobbyId,
       game,
       players: new Map(),
+      colorAssignments: new Map(),
+      nextColorIndex: 0,
       createdAt: nowIso(),
       lastActivityAt: nowIso(),
       lastActivityMs: Date.now(),
@@ -224,7 +228,26 @@ function createGameServer(options = {}) {
       requested && isNameAvailable(lobby, requested)
         ? requested
         : generatePlayerName(lobby, random);
-    const player = { id: socket.id, name, joinedAt: nowIso() };
+    const activeColors = new Set(
+      Array.from(lobby.players.values()).map((player) => player.colorIndex)
+    );
+    const colorKey = name.toLocaleLowerCase();
+    const rememberedColor = lobby.colorAssignments.get(colorKey);
+    let colorIndex = rememberedColor;
+    if (!Number.isInteger(colorIndex) || activeColors.has(colorIndex)) {
+      colorIndex = lobby.nextColorIndex;
+      for (let offset = 0; offset < PLAYER_COLOR_COUNT; offset += 1) {
+        const candidate = (lobby.nextColorIndex + offset) % PLAYER_COLOR_COUNT;
+        if (!activeColors.has(candidate)) {
+          colorIndex = candidate;
+          break;
+        }
+      }
+    }
+    lobby.nextColorIndex = (colorIndex + 1) % PLAYER_COLOR_COUNT;
+    lobby.colorAssignments.set(colorKey, colorIndex);
+
+    const player = { id: socket.id, name, joinedAt: nowIso(), colorIndex };
     lobby.players.set(socket.id, player);
     socket.data.lobbyId = lobby.lobbyId;
     socket.join(lobby.lobbyId);
@@ -415,6 +438,8 @@ function createGameServer(options = {}) {
       const player = lobby.players.get(socket.id);
       const previousName = player.name;
       player.name = name;
+      lobby.colorAssignments.delete(previousName.toLocaleLowerCase());
+      lobby.colorAssignments.set(name.toLocaleLowerCase(), player.colorIndex);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
       socket.emit("playerNameChanged", { name });

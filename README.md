@@ -6,8 +6,10 @@ The authoritative multiplayer game server for [Neuronauts](https://github.com/ma
 
 - Socket.IO lobbies with unique random call signs and editable player names
 - Server-authoritative guesses, attribution, wins, and shared state
-- Nearest-vocabulary midpoint hints with a 60-second per-lobby cooldown
-- Stable vector positions whose radius preserves cosine distance to the target
+- Linear rank-percentile scores over the curated reference vocabulary, with raw cosine retained for semantic direction
+- Rank-midpoint hints with a 60-second per-lobby cooldown
+- Stable vector positions whose radius matches the displayed rank percentile
+- Server-assigned player colors persisted on attributed guesses
 - Lobby/player capacity limits, guess rate limiting, input validation, bounded histories, stale-room cleanup, and graceful shutdown
 - `/health` and `/stats` operational endpoints
 

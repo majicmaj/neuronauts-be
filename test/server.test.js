@@ -53,10 +53,12 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   const url = `http://127.0.0.1:${address.port}`;
   const first = await connect(url);
   const second = await connect(url);
+  let reconnected;
 
   t.after(async () => {
     first.disconnect();
     second.disconnect();
+    reconnected?.disconnect();
     await runtime.stop();
   });
 
@@ -82,6 +84,11 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   ]);
   assert.equal(joined.playerCount, 2);
   assert.equal(new Set(playersPayload.players.map((player) => player.name)).size, 2);
+  assert.equal(
+    new Set(playersPayload.players.map((player) => player.colorIndex)).size,
+    2
+  );
+  const secondIdentity = joined.players.find((player) => player.id === second.id);
 
   const renamedFirst = waitFor(
     first,
@@ -106,6 +113,10 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   assert.equal(firstGuess.id, secondGuess.id);
   assert.equal(firstGuess.playerId, second.id);
   assert.equal(firstGuess.playerName, joined.players.find((p) => p.id === second.id).name);
+  assert.equal(
+    firstGuess.colorIndex,
+    joined.players.find((p) => p.id === second.id).colorIndex
+  );
 
   const hintFirst = waitFor(first, "guessResult", (guess) => guess.isHint);
   const hintSecond = waitFor(second, "guessResult", (guess) => guess.isHint);
@@ -114,6 +125,7 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   assert.equal(firstHint.id, secondHint.id);
   assert.equal(firstHint.guess, "bridge");
   assert.equal(firstHint.playerName, "Captain Kepler");
+  assert.equal(firstHint.colorIndex, created.players[0].colorIndex);
   assert.ok(firstHint.hintAvailableAt);
 
   const cooldownError = waitFor(
@@ -139,4 +151,17 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   );
   second.disconnect();
   assert.equal((await onePlayer).playerCount, 1);
+
+  reconnected = await connect(url);
+  const rejoinedPromise = waitFor(reconnected, "lobbyJoined");
+  reconnected.emit("joinLobby", {
+    lobbyId: created.lobbyId,
+    preferredName: secondIdentity.name,
+  });
+  const rejoined = await rejoinedPromise;
+  const reconnectedIdentity = rejoined.players.find(
+    (player) => player.id === reconnected.id
+  );
+  assert.equal(reconnectedIdentity.name, secondIdentity.name);
+  assert.equal(reconnectedIdentity.colorIndex, secondIdentity.colorIndex);
 });

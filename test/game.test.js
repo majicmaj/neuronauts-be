@@ -6,18 +6,21 @@ const Game = require("../game");
 const EMBEDDINGS = {
   star: [1, 0, 0],
   moon: [0, 1, 0],
-  bridge: [0.5, Math.sqrt(0.75), 0],
-  beacon: [0.75, Math.sqrt(0.4375), 0],
+  bridge: [0.6, 0.8, 0],
+  beacon: [0.8, 0.6, 0],
+  comet: [0.4, Math.sqrt(0.84), 0],
   planet: [-1, 0, 0],
+  ohio: [0.7, Math.sqrt(0.51), 0],
 };
+const REFERENCE_WORDS = ["star", "beacon", "bridge", "comet", "moon", "planet"];
 
-const PLAYER = { id: "player-1", name: "Nova Navigator" };
+const PLAYER = { id: "player-1", name: "Nova Navigator", colorIndex: 3 };
 
 async function createReadyGame(options = {}) {
   const game = new Game({
     embeddings: EMBEDDINGS,
     targetWord: "star",
-    commonWords: Object.keys(EMBEDDINGS),
+    commonWords: REFERENCE_WORDS,
     ...options,
   });
   await once(game, "ready");
@@ -32,6 +35,11 @@ test("records attributed guesses with stable vector-space positions", async () =
   assert.equal(response.result.guess, "moon");
   assert.equal(response.result.playerId, PLAYER.id);
   assert.equal(response.result.playerName, PLAYER.name);
+  assert.equal(response.result.colorIndex, PLAYER.colorIndex);
+  assert.equal(response.result.cosineSimilarity, 0);
+  assert.equal(response.result.rank, 5);
+  assert.equal(response.result.rankedWordCount, 6);
+  assert.ok(Math.abs(response.result.similarity - 0.2) < 1e-10);
   assert.equal(response.result.correct, false);
   assert.equal(typeof response.result.position.x, "number");
   assert.equal(typeof response.result.position.y, "number");
@@ -51,7 +59,8 @@ test("returns the closest unused word to the score midpoint and enforces a share
   const hint = game.requestHint(PLAYER);
   assert.equal(hint.ok, true);
   assert.equal(hint.result.guess, "bridge");
-  assert.ok(Math.abs(hint.result.similarity - 0.5) < 1e-10);
+  assert.ok(Math.abs(hint.result.similarity - 0.6) < 1e-10);
+  assert.equal(hint.result.rank, 3);
   assert.equal(hint.result.isHint, true);
   assert.equal(hint.result.hintFrom, "moon");
   assert.equal(
@@ -67,64 +76,99 @@ test("returns the closest unused word to the score midpoint and enforces a share
   const nextHint = game.requestHint(PLAYER);
   assert.equal(nextHint.ok, true);
   assert.equal(nextHint.result.guess, "beacon");
-  assert.ok(Math.abs(nextHint.result.similarity - 0.75) < 1e-10);
+  assert.ok(Math.abs(nextHint.result.similarity - 0.8) < 1e-10);
 });
 
-test("targets the arithmetic midpoint between the displayed best score and 100%", async () => {
-  const cases = [0, 0.2, 0.9];
+test("ranks valid guesses outside the reference vocabulary on the same linear scale", async () => {
+  const game = await createReadyGame();
+  const response = game.handleGuess("ohio", PLAYER);
 
-  for (const bestSimilarity of cases) {
-    const desiredSimilarity = (bestSimilarity + 1) / 2;
-    const embeddings = {
-      target: [1, 0, 0],
-      guess: [bestSimilarity, Math.sqrt(1 - bestSimilarity ** 2), 0],
-      hint: [desiredSimilarity, Math.sqrt(1 - desiredSimilarity ** 2), 0],
-    };
+  assert.equal(response.ok, true);
+  assert.equal(response.result.rank, 3);
+  assert.equal(response.result.rankedWordCount, 6);
+  assert.ok(Math.abs(response.result.similarity - 0.6) < 1e-10);
+  assert.ok(Math.abs(response.result.cosineSimilarity - 0.7) < 1e-10);
+});
+
+function makeRankedEmbeddings(count) {
+  return Object.fromEntries(
+    Array.from({ length: count }, (_, index) => {
+      const rank = index + 1;
+      const cosine = 1 - (2 * index) / (count - 1);
+      return [
+        `word${rank}`,
+        [cosine, Math.sqrt(Math.max(0, 1 - cosine ** 2)), 0],
+      ];
+    })
+  );
+}
+
+test("targets the arithmetic midpoint on the displayed rank-percentile scale", async () => {
+  const cases = [
+    { bestRank: 21, bestScore: 0, hintRank: 11, hintScore: 0.5 },
+    { bestRank: 17, bestScore: 0.2, hintRank: 9, hintScore: 0.6 },
+    { bestRank: 3, bestScore: 0.9, hintRank: 2, hintScore: 0.95 },
+  ];
+
+  for (const testCase of cases) {
+    const embeddings = makeRankedEmbeddings(21);
     const game = new Game({
       embeddings,
-      targetWord: "target",
+      targetWord: "word1",
       commonWords: Object.keys(embeddings),
     });
     await once(game, "ready");
 
-    assert.equal(game.handleGuess("guess", PLAYER).ok, true);
+    const guess = game.handleGuess(`word${testCase.bestRank}`, PLAYER);
+    assert.equal(guess.ok, true);
+    assert.ok(Math.abs(guess.result.similarity - testCase.bestScore) < 1e-10);
     const hint = game.requestHint(PLAYER);
 
     assert.equal(hint.ok, true);
-    assert.equal(hint.result.guess, "hint");
+    assert.equal(hint.result.rank, testCase.hintRank);
     assert.ok(
-      Math.abs(hint.result.similarity - desiredSimilarity) < 1e-10,
-      `${bestSimilarity} should produce ${desiredSimilarity}`
+      Math.abs(hint.result.similarity - testCase.hintScore) < 1e-10,
+      `${testCase.bestScore} should produce ${testCase.hintScore}`
     );
   }
 });
 
-test("prefers the requested score midpoint over a word beside the current best", async () => {
-  const bestSimilarity = 0.412;
-  const desiredSimilarity = (bestSimilarity + 1) / 2;
-  const embeddings = {
-    target: [1, 0, 0],
-    guess: [bestSimilarity, Math.sqrt(1 - bestSimilarity ** 2), 0],
-    think: [0.493, Math.sqrt(1 - 0.493 ** 2), 0],
-    halfway: [
-      desiredSimilarity,
-      0,
-      Math.sqrt(1 - desiredSimilarity ** 2),
-    ],
-  };
+test("moves 41.2% to 70.6% by rank instead of choosing a nearby 49.4% word", async () => {
+  const embeddings = makeRankedEmbeddings(501);
   const game = new Game({
     embeddings,
-    targetWord: "target",
+    targetWord: "word1",
     commonWords: Object.keys(embeddings),
   });
   await once(game, "ready");
 
-  game.handleGuess("guess", PLAYER);
+  const guess = game.handleGuess("word295", PLAYER);
+  assert.ok(Math.abs(guess.result.similarity - 0.412) < 1e-10);
+  assert.ok(
+    Math.abs(game.getScoreForRank(254) - 0.494) < 1e-10,
+    "rank 254 represents the nearby 49.4% candidate"
+  );
   const hint = game.requestHint(PLAYER);
 
   assert.equal(hint.ok, true);
-  assert.equal(hint.result.guess, "halfway");
+  assert.equal(hint.result.rank, 148);
   assert.ok(Math.abs(hint.result.similarity - 0.706) < 1e-10);
+});
+
+test("retains a 500-guess flight log by default", async () => {
+  const embeddings = makeRankedEmbeddings(601);
+  const game = new Game({
+    embeddings,
+    targetWord: "word1",
+    commonWords: Object.keys(embeddings),
+  });
+  await once(game, "ready");
+
+  for (let rank = 2; rank <= 501; rank += 1) {
+    assert.equal(game.handleGuess(`word${rank}`, PLAYER).ok, true);
+  }
+
+  assert.equal(game.getGameState().guessHistory.length, 500);
 });
 
 test("reveals and persists the target only after a player wins", async () => {

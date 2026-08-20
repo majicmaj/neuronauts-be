@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const path = require("path");
+const crypto = require("crypto");
 const socketIo = require("socket.io");
 const cors = require("cors");
 const Game = require("./game");
@@ -75,6 +76,7 @@ function generatePlayerName(lobby, random = Math.random) {
 function serializePlayers(lobby) {
   return Array.from(lobby.players.values()).map((player) => ({
     id: player.id,
+    participantId: player.participantId,
     name: player.name,
     joinedAt: player.joinedAt,
     colorIndex: player.colorIndex,
@@ -160,7 +162,7 @@ function createGameServer(options = {}) {
       lobbyId,
       game,
       players: new Map(),
-      colorAssignments: new Map(),
+      identityAssignments: new Map(),
       nextColorIndex: 0,
       createdAt: nowIso(),
       lastActivityAt: nowIso(),
@@ -232,8 +234,8 @@ function createGameServer(options = {}) {
       Array.from(lobby.players.values()).map((player) => player.colorIndex)
     );
     const colorKey = name.toLocaleLowerCase();
-    const rememberedColor = lobby.colorAssignments.get(colorKey);
-    let colorIndex = rememberedColor;
+    const rememberedIdentity = lobby.identityAssignments.get(colorKey);
+    let colorIndex = rememberedIdentity?.colorIndex;
     if (!Number.isInteger(colorIndex) || activeColors.has(colorIndex)) {
       colorIndex = lobby.nextColorIndex;
       for (let offset = 0; offset < PLAYER_COLOR_COUNT; offset += 1) {
@@ -245,10 +247,18 @@ function createGameServer(options = {}) {
       }
     }
     lobby.nextColorIndex = (colorIndex + 1) % PLAYER_COLOR_COUNT;
-    lobby.colorAssignments.set(colorKey, colorIndex);
+    const participantId = rememberedIdentity?.participantId || crypto.randomUUID();
+    lobby.identityAssignments.set(colorKey, { colorIndex, participantId });
 
-    const player = { id: socket.id, name, joinedAt: nowIso(), colorIndex };
+    const player = {
+      id: socket.id,
+      participantId,
+      name,
+      joinedAt: nowIso(),
+      colorIndex,
+    };
     lobby.players.set(socket.id, player);
+    lobby.game.registerPlayer(player);
     socket.data.lobbyId = lobby.lobbyId;
     socket.join(lobby.lobbyId);
     updateLobbyActivity(lobby);
@@ -438,8 +448,12 @@ function createGameServer(options = {}) {
       const player = lobby.players.get(socket.id);
       const previousName = player.name;
       player.name = name;
-      lobby.colorAssignments.delete(previousName.toLocaleLowerCase());
-      lobby.colorAssignments.set(name.toLocaleLowerCase(), player.colorIndex);
+      lobby.identityAssignments.delete(previousName.toLocaleLowerCase());
+      lobby.identityAssignments.set(name.toLocaleLowerCase(), {
+        colorIndex: player.colorIndex,
+        participantId: player.participantId,
+      });
+      lobby.game.registerPlayer(player);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
       socket.emit("playerNameChanged", { name });

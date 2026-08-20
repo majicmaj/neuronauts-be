@@ -111,7 +111,7 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   second.emit("guess", { lobbyId: created.lobbyId, guess: "moon" });
   const [firstGuess, secondGuess] = await Promise.all([guessFirst, guessSecond]);
   assert.equal(firstGuess.id, secondGuess.id);
-  assert.equal(firstGuess.playerId, second.id);
+  assert.equal(firstGuess.playerId, secondIdentity.participantId);
   assert.equal(firstGuess.playerName, joined.players.find((p) => p.id === second.id).name);
   assert.equal(
     firstGuess.colorIndex,
@@ -141,8 +141,13 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   second.emit("guess", { lobbyId: created.lobbyId, guess: "star" });
   const [firstWin, secondWin] = await Promise.all([wonFirst, wonSecond]);
   assert.equal(firstWin.targetWord, "star");
-  assert.equal(secondWin.winner.playerId, second.id);
+  assert.equal(secondWin.winner.playerId, secondIdentity.participantId);
   assert.equal(firstWin.guessHistory.length, 3);
+  assert.equal(firstWin.recap.playerCount, 2);
+  assert.equal(firstWin.recap.totalGuesses, 2);
+  assert.equal(firstWin.recap.totalHints, 1);
+  assert.equal(firstWin.recap.players.length, 2);
+  assert.ok(firstWin.recap.awards.some((award) => award.id === "signal-finder"));
 
   const onePlayer = waitFor(
     first,
@@ -164,4 +169,6 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   );
   assert.equal(reconnectedIdentity.name, secondIdentity.name);
   assert.equal(reconnectedIdentity.colorIndex, secondIdentity.colorIndex);
+  assert.equal(reconnectedIdentity.participantId, secondIdentity.participantId);
+  assert.equal(rejoined.gameState.recap.playerCount, 2);
 });

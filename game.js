@@ -74,6 +74,7 @@ class Game extends EventEmitter {
     this.referenceRanking = [];
     this.referenceRankByWord = new Map();
     this.rankedWordCount = 0;
+    this.participants = new Map();
 
     this.commonWords = options.commonWords || defaultCommonWords;
     this.forcedTargetWord = options.targetWord || null;
@@ -243,7 +244,25 @@ class Game extends EventEmitter {
     return { ok: false, error: message, code };
   }
 
+  registerPlayer(player) {
+    if (!player) return null;
+    const playerId = player.participantId || player.id;
+    if (!playerId) return null;
+    const previous = this.participants.get(playerId);
+    const participant = {
+      playerId,
+      playerName: player.name || previous?.playerName || "Unknown Neuronaut",
+      colorIndex: Number.isInteger(player.colorIndex)
+        ? player.colorIndex
+        : previous?.colorIndex || 0,
+      joinedAt: player.joinedAt || previous?.joinedAt || new Date(this.now()).toISOString(),
+    };
+    this.participants.set(playerId, participant);
+    return participant;
+  }
+
   makeResult({ word, embedding, player, isHint = false, hintFrom = null }) {
+    const participant = this.registerPlayer(player);
     const cosineSimilarity = this.cosineSimilarity(
       this.targetEmbedding,
       embedding
@@ -264,9 +283,9 @@ class Game extends EventEmitter {
       correct,
       isHint,
       hintFrom,
-      playerId: player.id,
-      playerName: player.name,
-      colorIndex: Number.isInteger(player.colorIndex) ? player.colorIndex : 0,
+      playerId: participant?.playerId || player.id,
+      playerName: participant?.playerName || player.name,
+      colorIndex: participant?.colorIndex || 0,
       createdAt,
       position: this.getPosition(embedding, similarity, word),
     };
@@ -274,7 +293,10 @@ class Game extends EventEmitter {
     if (correct) {
       this.status = "won";
       this.solvedAt = createdAt;
-      this.winner = { playerId: player.id, playerName: player.name };
+      this.winner = {
+        playerId: participant?.playerId || player.id,
+        playerName: participant?.playerName || player.name,
+      };
       result.targetWord = this.targetWord;
     }
 
@@ -417,6 +439,284 @@ class Game extends EventEmitter {
     return response;
   }
 
+  pickAwardCopy(awardId, playerId, options) {
+    const index = hashSeed(`${this.targetWord}:${awardId}:${playerId}`) % options.length;
+    return options[index];
+  }
+
+  buildRecap() {
+    if (this.status !== "won") return null;
+
+    const statsByPlayer = new Map();
+    const ensureStats = (participant) => {
+      const playerId = participant.playerId;
+      if (!statsByPlayer.has(playerId)) {
+        statsByPlayer.set(playerId, {
+          playerId,
+          playerName: participant.playerName,
+          colorIndex: participant.colorIndex,
+          joinedAt: participant.joinedAt,
+          guessCount: 0,
+          wrongGuessCount: 0,
+          hintCount: 0,
+          averageSimilarity: null,
+          bestGuess: null,
+          furthestGuess: null,
+          breakthroughs: 0,
+          biggestLeap: 0,
+          foundTarget: playerId === this.winner?.playerId,
+          _similarityTotal: 0,
+          _personalBest: 0,
+        });
+      }
+      return statsByPlayer.get(playerId);
+    };
+
+    for (const participant of this.participants.values()) ensureStats(participant);
+
+    let globalBest = -Infinity;
+    let firstGuess = null;
+    for (const guess of this.guessHistory) {
+      const participant = this.participants.get(guess.playerId) || {
+        playerId: guess.playerId,
+        playerName: guess.playerName,
+        colorIndex: guess.colorIndex || 0,
+        joinedAt: guess.createdAt,
+      };
+      const stats = ensureStats(participant);
+      if (guess.isHint) {
+        stats.hintCount += 1;
+        continue;
+      }
+
+      if (!firstGuess) firstGuess = guess;
+      stats.guessCount += 1;
+      if (!guess.correct) stats.wrongGuessCount += 1;
+      stats._similarityTotal += guess.similarity;
+
+      if (!stats.bestGuess || guess.similarity > stats.bestGuess.similarity) {
+        stats.bestGuess = {
+          word: guess.guess,
+          similarity: guess.similarity,
+          rank: guess.rank || null,
+        };
+      }
+      if (!stats.furthestGuess || guess.similarity < stats.furthestGuess.similarity) {
+        stats.furthestGuess = {
+          word: guess.guess,
+          similarity: guess.similarity,
+          rank: guess.rank || null,
+        };
+      }
+
+      const leap = Math.max(0, guess.similarity - stats._personalBest);
+      stats.biggestLeap = Math.max(stats.biggestLeap, leap);
+      stats._personalBest = Math.max(stats._personalBest, guess.similarity);
+      if (guess.similarity > globalBest) {
+        stats.breakthroughs += 1;
+        globalBest = guess.similarity;
+      }
+    }
+
+    const players = Array.from(statsByPlayer.values())
+      .map((stats) => ({
+        ...stats,
+        averageSimilarity: stats.guessCount
+          ? stats._similarityTotal / stats.guessCount
+          : null,
+      }))
+      .sort((a, b) => {
+        if (a.foundTarget !== b.foundTarget) return a.foundTarget ? -1 : 1;
+        if (b.guessCount !== a.guessCount) return b.guessCount - a.guessCount;
+        return a.joinedAt.localeCompare(b.joinedAt);
+      });
+
+    const byMetric = (metric, direction = "max", eligible = () => true) => {
+      const candidates = players.filter(eligible);
+      if (!candidates.length) return null;
+      return candidates.reduce((selected, candidate) => {
+        const candidateValue = metric(candidate);
+        const selectedValue = metric(selected);
+        const isBetter = direction === "min"
+          ? candidateValue < selectedValue
+          : candidateValue > selectedValue;
+        return isBetter ? candidate : selected;
+      });
+    };
+
+    const makeAward = (id, player, titles, description, metricLabel) => {
+      if (!player) return null;
+      return {
+        id,
+        title: this.pickAwardCopy(id, player.playerId, titles),
+        description,
+        metricLabel,
+        playerId: player.playerId,
+        playerName: player.playerName,
+        colorIndex: player.colorIndex,
+      };
+    };
+
+    const winner = players.find((player) => player.foundTarget) || null;
+    const mostGuesses = byMetric((player) => player.guessCount, "max", (player) => player.guessCount > 0);
+    const mostWrong = byMetric((player) => player.wrongGuessCount, "max", (player) => player.wrongGuessCount > 0);
+    const furthest = byMetric(
+      (player) => player.furthestGuess?.similarity ?? Infinity,
+      "min",
+      (player) => Boolean(player.furthestGuess)
+    );
+    const fewest = players.length > 1
+      ? byMetric((player) => player.guessCount, "min")
+      : null;
+    const bestAverage = byMetric(
+      (player) => player.averageSimilarity ?? -Infinity,
+      "max",
+      (player) => player.averageSimilarity !== null
+    );
+    const mostHints = byMetric((player) => player.hintCount, "max", (player) => player.hintCount > 0);
+    const mostBreakthroughs = byMetric((player) => player.breakthroughs, "max", (player) => player.breakthroughs > 0);
+    const biggestLeap = byMetric((player) => player.biggestLeap, "max", (player) => player.biggestLeap > 0);
+    const closestMissGuess = this.guessHistory.reduce((closest, guess) => {
+      if (guess.correct || guess.isHint) return closest;
+      return !closest || guess.similarity > closest.similarity ? guess : closest;
+    }, null);
+    const closestMiss = closestMissGuess
+      ? players.find((player) => player.playerId === closestMissGuess.playerId)
+      : null;
+
+    const percent = (value) => `${(value * 100).toFixed(1)}%`;
+    const plural = (count, singular, pluralForm = `${singular}s`) =>
+      `${count} ${count === 1 ? singular : pluralForm}`;
+    const awards = [
+      makeAward(
+        "signal-finder",
+        winner,
+        ["Signal Snatcher", "Bullseye Bandit", "Synapse Savior", "Word Wrangler"],
+        `Said “${this.targetWord}” and made everyone else pretend they were about to.`,
+        "Target acquired"
+      ),
+      makeAward(
+        "most-guesses",
+        mostGuesses,
+        ["Keyboard Comet", "Transmission Machine", "Guess Thruster", "Mission Motor"],
+        "Kept the comms channel busier than mission control.",
+        mostGuesses ? plural(mostGuesses.guessCount, "guess") : ""
+      ),
+      makeAward(
+        "most-wrong",
+        mostWrong,
+        ["Scenic Route Specialist", "Wrong-Turn Collector", "Orbit Enjoyer", "Detour Commander"],
+        "Matched the crew’s largest collection of wrong turns—and somehow made them useful.",
+        mostWrong ? plural(mostWrong.wrongGuessCount, "wrong turn") : ""
+      ),
+      makeAward(
+        "furthest-guess",
+        furthest,
+        ["Outer Rim Tourist", "Deep-Void Cartographer", "Lost Moon Ambassador", "Semantic Space Cadet"],
+        furthest?.furthestGuess
+          ? `Sent “${furthest.furthestGuess.word}” from ${percent(furthest.furthestGuess.similarity)}. Deep-void tourism.`
+          : "",
+        furthest?.furthestGuess ? `${furthest.furthestGuess.word} · ${percent(furthest.furthestGuess.similarity)}` : ""
+      ),
+      makeAward(
+        "fewest-guesses",
+        fewest,
+        ["Fuel-Efficient Flyer", "Silent Running", "Minimal-Mileage Mind", "Low-Orbit Thinker"],
+        fewest?.guessCount
+          ? "Found a way to contribute without wearing out the transmit button."
+          : "Observed the mission with immaculate radio discipline.",
+        fewest ? plural(fewest.guessCount, "guess") : ""
+      ),
+      makeAward(
+        "best-average",
+        bestAverage,
+        ["Precision Pilot", "Vector Whisperer", "Closeness Connoisseur", "Semantic Sharpshooter"],
+        "Maintained the crew’s highest average signal strength.",
+        bestAverage ? `${percent(bestAverage.averageSimilarity)} average` : ""
+      ),
+      makeAward(
+        "most-hints",
+        mostHints,
+        ["Navigator’s Best Customer", "Cosmic Lifeline", "Directions Enthusiast", "Mission Control Regular"],
+        "Called the navigator enough times to get on a first-name basis.",
+        mostHints ? plural(mostHints.hintCount, "hint") : ""
+      ),
+      makeAward(
+        "most-breakthroughs",
+        mostBreakthroughs,
+        ["Trailblazer", "Hotter-Warmer", "Course Plotter", "Signal Booster"],
+        "Matched the mission’s top count for moving the whole crew closer.",
+        mostBreakthroughs ? plural(mostBreakthroughs.breakthroughs, "new crew best", "new crew bests") : ""
+      ),
+      makeAward(
+        "biggest-leap",
+        biggestLeap,
+        ["Hyperspace Hopper", "Slingshot Specialist", "Quantum Leaper", "Warp-Drive Operator"],
+        "Made the mission’s biggest personal jump toward the target.",
+        biggestLeap ? `+${(biggestLeap.biggestLeap * 100).toFixed(1)} points` : ""
+      ),
+      firstGuess && makeAward(
+        "first-contact",
+        players.find((player) => player.playerId === firstGuess.playerId),
+        ["First Contact", "Opening Transmission", "Launch Button Presser", "Early Bird in Space"],
+        `Broke the silence with “${firstGuess.guess}.”`,
+        firstGuess.guess
+      ),
+      closestMissGuess && makeAward(
+        "closest-miss",
+        closestMiss,
+        ["Docked Without Landing", "Near-Miss Nebula", "Target Tease", "Almost Astronaut"],
+        `Put “${closestMissGuess.guess}” within touching distance before the final lock.`,
+        `${closestMissGuess.guess} · ${percent(closestMissGuess.similarity)}`
+      ),
+    ].filter(Boolean);
+
+    const primaryAwardByPlayer = new Map();
+    for (const award of awards) {
+      if (!primaryAwardByPlayer.has(award.playerId)) {
+        primaryAwardByPlayer.set(award.playerId, award);
+      }
+    }
+    const fallbackTitles = [
+      ["Cosmic Wildcard", "No single metric could explain the trajectory."],
+      ["Backup Brain", "Kept the crew’s semantic options open."],
+      ["Dark Matter Department", "Unclassifiable, but definitely mission-critical."],
+      ["Moon-Shot Mechanic", "Kept launching ideas until one found an orbit."],
+    ];
+
+    const publicPlayers = players.map((player) => {
+      const award = primaryAwardByPlayer.get(player.playerId);
+      const fallback = this.pickAwardCopy("fallback", player.playerId, fallbackTitles);
+      const {
+        _similarityTotal,
+        _personalBest,
+        joinedAt,
+        ...publicStats
+      } = player;
+      return {
+        ...publicStats,
+        title: award?.title || fallback[0],
+        titleDetail: award?.description || fallback[1],
+        awardIds: awards
+          .filter((candidate) => candidate.playerId === player.playerId)
+          .map((candidate) => candidate.id),
+      };
+    });
+
+    const elapsedSeconds = this.startedAt && this.solvedAt
+      ? Math.max(0, Math.round((Date.parse(this.solvedAt) - Date.parse(this.startedAt)) / 1000))
+      : null;
+
+    return {
+      totalGuesses: publicPlayers.reduce((total, player) => total + player.guessCount, 0),
+      totalHints: publicPlayers.reduce((total, player) => total + player.hintCount, 0),
+      elapsedSeconds,
+      playerCount: publicPlayers.length,
+      awards,
+      players: publicPlayers,
+    };
+  }
+
   getGameState() {
     const state = {
       status: this.status,
@@ -429,6 +729,7 @@ class Game extends EventEmitter {
         ? new Date(this.hintAvailableAt).toISOString()
         : null,
       error: this.error,
+      recap: this.buildRecap(),
     };
 
     if (this.status === "won") state.targetWord = this.targetWord;

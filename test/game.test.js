@@ -191,6 +191,58 @@ test("reveals and persists the target only after a player wins", async () => {
   assert.equal(game.handleGuess("moon", PLAYER).code, "game_won");
 });
 
+test("builds a stable mission recap with playful awards and per-player stats", async () => {
+  const game = await createReadyGame();
+  const players = [
+    { id: "socket-1", participantId: "crew-1", name: "Nova Navigator", colorIndex: 0, joinedAt: "2026-08-20T00:00:00Z" },
+    { id: "socket-2", participantId: "crew-2", name: "Orbit Pilot", colorIndex: 1, joinedAt: "2026-08-20T00:00:01Z" },
+    { id: "socket-3", participantId: "crew-3", name: "Signal Scout", colorIndex: 2, joinedAt: "2026-08-20T00:00:02Z" },
+    { id: "socket-4", participantId: "crew-4", name: "Quiet Comet", colorIndex: 3, joinedAt: "2026-08-20T00:00:03Z" },
+  ];
+  players.forEach((player) => game.registerPlayer(player));
+
+  assert.equal(game.handleGuess("moon", players[0]).ok, true);
+  assert.equal(game.requestHint(players[0]).ok, true);
+  assert.equal(game.handleGuess("planet", players[1]).ok, true);
+  assert.equal(game.handleGuess("comet", players[1]).ok, true);
+  assert.equal(game.handleGuess("beacon", players[2]).ok, true);
+  assert.equal(game.handleGuess("star", players[2]).ok, true);
+
+  const recap = game.getGameState().recap;
+  assert.equal(recap.playerCount, 4);
+  assert.equal(recap.totalGuesses, 5);
+  assert.equal(recap.totalHints, 1);
+  assert.equal(recap.players.length, 4);
+  assert.ok(recap.awards.length >= 9);
+
+  const navigator = recap.players.find((player) => player.playerId === "crew-1");
+  assert.equal(navigator.guessCount, 1);
+  assert.equal(navigator.hintCount, 1);
+  assert.equal(navigator.bestGuess.word, "moon");
+  assert.ok(navigator.awardIds.includes("most-hints"));
+
+  const pilot = recap.players.find((player) => player.playerId === "crew-2");
+  assert.equal(pilot.wrongGuessCount, 2);
+  assert.equal(pilot.furthestGuess.word, "planet");
+  assert.ok(pilot.awardIds.includes("most-wrong"));
+  assert.ok(pilot.awardIds.includes("furthest-guess"));
+
+  const scout = recap.players.find((player) => player.playerId === "crew-3");
+  assert.equal(scout.foundTarget, true);
+  assert.equal(scout.averageSimilarity, 0.9);
+  assert.ok(scout.awardIds.includes("signal-finder"));
+  assert.ok(scout.awardIds.includes("best-average"));
+
+  const quiet = recap.players.find((player) => player.playerId === "crew-4");
+  assert.equal(quiet.guessCount, 0);
+  assert.equal(quiet.averageSimilarity, null);
+  assert.equal(quiet.bestGuess, null);
+  assert.ok(quiet.awardIds.includes("fewest-guesses"));
+
+  const secondRead = game.getGameState().recap;
+  assert.deepEqual(secondRead, recap);
+});
+
 test("rejects invalid, unknown, and duplicate guesses without growing history", async () => {
   const game = await createReadyGame();
   assert.equal(game.handleGuess("two words", PLAYER).code, "invalid_guess");

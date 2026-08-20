@@ -6,6 +6,7 @@ const defaultCommonWords = require("./words.json");
 const DEFAULT_HINT_COOLDOWN_MS = 60_000;
 const DEFAULT_HISTORY_LIMIT = 300;
 const MAX_GUESS_LENGTH = 40;
+const HINT_SCORE_TOLERANCE = 0.005;
 
 function normalizeVector(vector) {
   let magnitudeSquared = 0;
@@ -254,14 +255,41 @@ class Game extends EventEmitter {
 
   findHalfwayWord(bestGuess) {
     const bestEmbedding = normalizeVector(this.getEmbedding(bestGuess.guess));
-    const midpoint = normalizeVector(
-      bestEmbedding.map(
-        (value, index) => value + this.normalizedTargetEmbedding[index]
+    const bestSimilarity = Math.max(
+      -1,
+      Math.min(
+        1,
+        this.cosineSimilarity(
+          this.normalizedTargetEmbedding,
+          bestEmbedding
+        )
       )
     );
+    const desiredSimilarity = (bestSimilarity + 1) / 2;
 
-    let selected = null;
-    let selectedScore = -Infinity;
+    // The UI percentage is cosine similarity, so "halfway" means halfway
+    // between the current score and 100%, not the normalized vector average.
+    // Build an ideal unit vector with exactly that target similarity while
+    // retaining the best guess's direction around the target.
+    const tangent = bestEmbedding.map(
+      (value, index) =>
+        value - bestSimilarity * this.normalizedTargetEmbedding[index]
+    );
+    const tangentMagnitude = Math.sqrt(
+      tangent.reduce((sum, value) => sum + value * value, 0)
+    );
+    const ideal =
+      tangentMagnitude > 1e-8
+        ? this.normalizedTargetEmbedding.map(
+            (value, index) =>
+              desiredSimilarity * value +
+              Math.sqrt(Math.max(0, 1 - desiredSimilarity ** 2)) *
+                (tangent[index] / tangentMagnitude)
+          )
+        : this.normalizedTargetEmbedding;
+
+    const candidates = [];
+    let bestScoreError = Infinity;
     const seen = new Set();
 
     for (const rawWord of this.commonWords) {
@@ -277,14 +305,45 @@ class Game extends EventEmitter {
       seen.add(word);
       const embedding = this.getEmbedding(word);
       if (!embedding) continue;
-      const score = this.cosineSimilarity(midpoint, embedding);
-      if (score > selectedScore) {
-        selected = { word, embedding };
-        selectedScore = score;
-      }
+      const normalizedEmbedding = normalizeVector(embedding);
+      const targetSimilarity = this.cosineSimilarity(
+        this.normalizedTargetEmbedding,
+        normalizedEmbedding
+      );
+      if (targetSimilarity <= bestSimilarity + Number.EPSILON) continue;
+
+      const scoreError = Math.abs(targetSimilarity - desiredSimilarity);
+      bestScoreError = Math.min(bestScoreError, scoreError);
+      candidates.push({
+        word,
+        embedding,
+        scoreError,
+        pathAlignment: this.cosineSimilarity(ideal, normalizedEmbedding),
+      });
     }
 
-    return selected;
+    if (!candidates.length) return null;
+
+    // Keep percentage accuracy primary. Within half a percentage point of the
+    // best available score match, prefer the word closest to the semantic path
+    // from the current best guess toward the target.
+    return candidates
+      .filter(
+        (candidate) =>
+          candidate.scoreError <= bestScoreError + HINT_SCORE_TOLERANCE
+      )
+      .reduce((selected, candidate) => {
+        if (!selected || candidate.pathAlignment > selected.pathAlignment) {
+          return candidate;
+        }
+        if (
+          candidate.pathAlignment === selected.pathAlignment &&
+          candidate.scoreError < selected.scoreError
+        ) {
+          return candidate;
+        }
+        return selected;
+      }, null);
   }
 
   requestHint(player) {

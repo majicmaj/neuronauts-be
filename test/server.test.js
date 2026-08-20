@@ -7,7 +7,7 @@ const { createGameServer } = require("../server");
 const EMBEDDINGS = {
   star: [1, 0, 0],
   moon: [0, 1, 0],
-  bridge: [0.923, 0.382, 0],
+  bridge: [0.5, Math.sqrt(0.75), 0],
   planet: [-1, 0, 0],
 };
 

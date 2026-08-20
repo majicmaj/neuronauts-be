@@ -6,7 +6,8 @@ const Game = require("../game");
 const EMBEDDINGS = {
   star: [1, 0, 0],
   moon: [0, 1, 0],
-  bridge: [0.923, 0.382, 0],
+  bridge: [0.5, Math.sqrt(0.75), 0],
+  beacon: [0.75, Math.sqrt(0.4375), 0],
   planet: [-1, 0, 0],
 };
 
@@ -38,7 +39,7 @@ test("records attributed guesses with stable vector-space positions", async () =
   assert.ok(response.result.position.y >= 0.06 && response.result.position.y <= 0.94);
 });
 
-test("returns the closest unused word to the semantic midpoint and enforces a shared cooldown", async () => {
+test("returns the closest unused word to the score midpoint and enforces a shared cooldown", async () => {
   let now = Date.parse("2026-08-20T00:00:00Z");
   const game = await createReadyGame({ now: () => now, hintCooldownMs: 60_000 });
 
@@ -50,6 +51,7 @@ test("returns the closest unused word to the semantic midpoint and enforces a sh
   const hint = game.requestHint(PLAYER);
   assert.equal(hint.ok, true);
   assert.equal(hint.result.guess, "bridge");
+  assert.ok(Math.abs(hint.result.similarity - 0.5) < 1e-10);
   assert.equal(hint.result.isHint, true);
   assert.equal(hint.result.hintFrom, "moon");
   assert.equal(
@@ -62,9 +64,67 @@ test("returns the closest unused word to the semantic midpoint and enforces a sh
   assert.equal(cooldown.code, "hint_cooldown");
 
   now += 60_000;
-  const noUnusedWord = game.requestHint(PLAYER);
-  assert.equal(noUnusedWord.ok, true);
-  assert.equal(noUnusedWord.result.guess, "planet");
+  const nextHint = game.requestHint(PLAYER);
+  assert.equal(nextHint.ok, true);
+  assert.equal(nextHint.result.guess, "beacon");
+  assert.ok(Math.abs(nextHint.result.similarity - 0.75) < 1e-10);
+});
+
+test("targets the arithmetic midpoint between the displayed best score and 100%", async () => {
+  const cases = [0, 0.2, 0.9];
+
+  for (const bestSimilarity of cases) {
+    const desiredSimilarity = (bestSimilarity + 1) / 2;
+    const embeddings = {
+      target: [1, 0, 0],
+      guess: [bestSimilarity, Math.sqrt(1 - bestSimilarity ** 2), 0],
+      hint: [desiredSimilarity, Math.sqrt(1 - desiredSimilarity ** 2), 0],
+    };
+    const game = new Game({
+      embeddings,
+      targetWord: "target",
+      commonWords: Object.keys(embeddings),
+    });
+    await once(game, "ready");
+
+    assert.equal(game.handleGuess("guess", PLAYER).ok, true);
+    const hint = game.requestHint(PLAYER);
+
+    assert.equal(hint.ok, true);
+    assert.equal(hint.result.guess, "hint");
+    assert.ok(
+      Math.abs(hint.result.similarity - desiredSimilarity) < 1e-10,
+      `${bestSimilarity} should produce ${desiredSimilarity}`
+    );
+  }
+});
+
+test("prefers the requested score midpoint over a word beside the current best", async () => {
+  const bestSimilarity = 0.412;
+  const desiredSimilarity = (bestSimilarity + 1) / 2;
+  const embeddings = {
+    target: [1, 0, 0],
+    guess: [bestSimilarity, Math.sqrt(1 - bestSimilarity ** 2), 0],
+    think: [0.493, Math.sqrt(1 - 0.493 ** 2), 0],
+    halfway: [
+      desiredSimilarity,
+      0,
+      Math.sqrt(1 - desiredSimilarity ** 2),
+    ],
+  };
+  const game = new Game({
+    embeddings,
+    targetWord: "target",
+    commonWords: Object.keys(embeddings),
+  });
+  await once(game, "ready");
+
+  game.handleGuess("guess", PLAYER);
+  const hint = game.requestHint(PLAYER);
+
+  assert.equal(hint.ok, true);
+  assert.equal(hint.result.guess, "halfway");
+  assert.ok(Math.abs(hint.result.similarity - 0.706) < 1e-10);
 });
 
 test("reveals and persists the target only after a player wins", async () => {

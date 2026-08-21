@@ -376,3 +376,123 @@ test("concurrent spelling variants create one guess and recall it for the other 
   assert.equal(duplicate.existingResult.id, accepted.result.id);
   assert.equal(runtime.lobbies.get(created.lobbyId).game.guessHistory.length, 1);
 });
+
+test("VS lobbies ready both teams and never send opponent words", async (t) => {
+  const runtime = createGameServer({
+    skipEmbeddingsBootstrap: true,
+    guessRateLimitMs: 0,
+    gameFactory: (options = {}) => new Game({
+      embeddings: EMBEDDINGS,
+      targetWord: options.targetWord || "star",
+      commonWords: Object.keys(EMBEDDINGS),
+      semanticFloor: 0,
+      semanticCeiling: 1,
+    }),
+  });
+  const address = await runtime.start(0, "127.0.0.1");
+  const url = `http://127.0.0.1:${address.port}`;
+  const first = await connect(url);
+  const second = await connect(url);
+
+  t.after(async () => {
+    first.disconnect();
+    second.disconnect();
+    await runtime.stop();
+  });
+
+  const createdPromise = waitFor(first, "lobbyCreated");
+  first.emit("createLobby", { preferredName: "Red Ranger", mode: "versus" });
+  const created = await createdPromise;
+  assert.equal(created.mode, "versus");
+
+  const joinedPromise = waitFor(second, "lobbyJoined");
+  second.emit("joinLobby", {
+    lobbyId: created.lobbyId,
+    preferredName: "Blue Scout",
+  });
+  await joinedPromise;
+
+  const redAssigned = waitFor(
+    first,
+    "versusUpdated",
+    (payload) => payload.players.find((player) => player.id === first.id)?.teamId === "red"
+  );
+  first.emit("setTeam", { lobbyId: created.lobbyId, teamId: "red" });
+  await redAssigned;
+  const blueAssigned = waitFor(
+    second,
+    "versusUpdated",
+    (payload) => payload.players.find((player) => player.id === second.id)?.teamId === "blue"
+  );
+  second.emit("setTeam", { lobbyId: created.lobbyId, teamId: "blue" });
+  await blueAssigned;
+
+  const oneReady = waitFor(
+    first,
+    "versusUpdated",
+    (payload) => payload.versus.readyCount === 1
+  );
+  first.emit("toggleReady", { lobbyId: created.lobbyId });
+  await oneReady;
+  const launched = waitFor(
+    second,
+    "versusUpdated",
+    (payload) => payload.versus.phase === "playing"
+  );
+  second.emit("toggleReady", { lobbyId: created.lobbyId });
+  await launched;
+
+  const typingVisible = waitFor(
+    second,
+    "typingUpdated",
+    (payload) => payload.playerIds.includes(first.id)
+  );
+  first.emit("typing", { lobbyId: created.lobbyId, isTyping: true });
+  assert.deepEqual((await typingVisible).playerIds, [first.id]);
+
+  const redUpdate = waitFor(
+    first,
+    "versusUpdated",
+    (payload) => payload.gameState.guessHistory.some((guess) => guess.guess === "moon")
+  );
+  const blueUpdate = waitFor(
+    second,
+    "versusUpdated",
+    (payload) => payload.versus.opponentPoints.length === 1
+  );
+  const response = await emitWithAck(first, "guess", {
+    lobbyId: created.lobbyId,
+    guess: "moon",
+  });
+  const [redPayload, bluePayload] = await Promise.all([redUpdate, blueUpdate]);
+  assert.equal(response.ok, true);
+  assert.equal(redPayload.gameState.guessHistory[0].guess, "moon");
+  assert.equal(bluePayload.gameState.guessHistory.length, 0);
+  assert.equal("guess" in bluePayload.versus.opponentPoints[0], false);
+  assert.equal("playerId" in bluePayload.versus.opponentPoints[0], false);
+  assert.equal(
+    bluePayload.versus.teams.find((team) => team.id === "red").guessCount,
+    1
+  );
+  const redTelemetry = bluePayload.versus.teams.find((team) => team.id === "red");
+  assert.equal(redTelemetry.averageSimilarity, response.result.similarity);
+  assert.equal(redTelemetry.bestSimilarity, response.result.similarity);
+  assert.equal(redTelemetry.playerStats[0].guessCount, 1);
+  assert.equal(redTelemetry.playerStats[0].bestSimilarity, response.result.similarity);
+  assert.equal(JSON.stringify(bluePayload.versus).includes("moon"), false);
+
+  await emitWithAck(first, "guess", { lobbyId: created.lobbyId, guess: "star" });
+  await emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "moon" });
+  const completed = waitFor(
+    second,
+    "versusUpdated",
+    (payload) => payload.versus.phase === "complete"
+  );
+  await emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "star" });
+  await completed;
+
+  const rematchReady = waitFor(first, "rematchReady");
+  first.emit("requestRematch", { lobbyId: created.lobbyId });
+  const rematch = await rematchReady;
+  assert.equal(runtime.lobbies.get(rematch.lobbyId).mode, "versus");
+});

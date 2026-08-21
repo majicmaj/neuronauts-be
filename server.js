@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const socketIo = require("socket.io");
 const cors = require("cors");
 const Game = require("./game");
+const VersusGame = require("./versusGame");
 const embeddingsManager = require("./utils/embeddingsManager");
 
 const DEFAULT_PORT = Number(process.env.PORT || 3000);
@@ -105,6 +106,8 @@ function serializePlayers(lobby) {
     joinedAt: player.joinedAt,
     colorIndex: player.colorIndex,
     avatarId: player.avatarId,
+    teamId: player.teamId || null,
+    ready: player.ready === true,
   }));
 }
 
@@ -130,8 +133,15 @@ function createGameServer(options = {}) {
   });
   const lobbies = new Map();
   const recentEvents = [];
-  const gameFactory = options.gameFactory || (() => new Game());
   const random = options.random || Math.random;
+  const gameFactory = options.gameFactory || ((gameOptions = {}) => new Game(gameOptions));
+  const versusFactory = options.versusFactory || ((versusOptions = {}) =>
+    new VersusGame({
+      gameFactory,
+      random,
+      ...versusOptions,
+    })
+  );
   const limits = {
     maxLobbies: options.maxLobbies || MAX_LOBBIES,
     maxPlayersPerLobby: Math.min(
@@ -184,6 +194,13 @@ function createGameServer(options = {}) {
     });
   }
 
+  function emitVersusState(lobby) {
+    if (lobby.mode !== "versus") return;
+    for (const player of lobby.players.values()) {
+      io.to(player.id).emit("versusUpdated", lobbyPayload(lobby, player.id));
+    }
+  }
+
   function emitTyping(lobby) {
     io.to(lobby.lobbyId).emit("typingUpdated", {
       playerIds: Array.from(lobby.typingPlayerIds),
@@ -191,7 +208,7 @@ function createGameServer(options = {}) {
   }
 
   function serializeRematch(lobby) {
-    const recap = lobby.game.getGameState().recap;
+    const recap = lobby.mode === "classic" ? lobby.game.getGameState().recap : null;
     const totalCount = Math.max(
       recap?.playerCount || lobby.players.size,
       lobby.rematchReadyParticipantIds.size
@@ -208,10 +225,12 @@ function createGameServer(options = {}) {
     io.to(lobby.lobbyId).emit("rematchUpdated", serializeRematch(lobby));
   }
 
-  function createLobbyRecord(lobbyId) {
-    const game = gameFactory();
+  function createLobbyRecord(lobbyId, lobbyOptions = {}) {
+    const mode = lobbyOptions.mode === "versus" ? "versus" : "classic";
+    const game = mode === "versus" ? versusFactory() : gameFactory();
     const lobby = {
       lobbyId,
+      mode,
       game,
       players: new Map(),
       identityAssignments: new Map(),
@@ -220,6 +239,7 @@ function createGameServer(options = {}) {
       typingPlayerIds: new Set(),
       rematchLobbyId: null,
       rematchReadyParticipantIds: new Set(),
+      hostParticipantId: null,
       createdAt: nowIso(),
       lastActivityAt: nowIso(),
       lastActivityMs: Date.now(),
@@ -227,12 +247,38 @@ function createGameServer(options = {}) {
 
     game.on("ready", (gameState) => {
       updateLobbyActivity(lobby);
-      io.to(lobbyId).emit("gameReady", gameState);
+      if (mode === "versus") {
+        game.maybeStart(Array.from(lobby.players.values()));
+        emitVersusState(lobby);
+      }
+      else io.to(lobbyId).emit("gameReady", gameState);
       recordEvent("lobby_ready", {
         lobbyId,
+        mode,
         players: lobby.players.size,
       });
     });
+    if (mode === "versus") {
+      game.on("started", () => {
+        lobby.typingPlayerIds.clear();
+        emitTyping(lobby);
+        emitVersusState(lobby);
+        recordEvent("versus_started", { lobbyId, players: lobby.players.size });
+      });
+      game.on("teamFinished", (teamId) => {
+        emitVersusState(lobby);
+        recordEvent("versus_team_finished", { lobbyId, teamId });
+      });
+      game.on("complete", () => {
+        lobby.typingPlayerIds.clear();
+        emitTyping(lobby);
+        emitVersusState(lobby);
+        recordEvent("versus_complete", {
+          lobbyId,
+          winnerTeamId: game.getResult(Array.from(lobby.players.values()))?.winnerTeamId,
+        });
+      });
+    }
     game.on("error", (error) => {
       io.to(lobbyId).emit("actionError", {
         code: "game_unavailable",
@@ -319,7 +365,10 @@ function createGameServer(options = {}) {
       }
     }
     const participantId = rememberedIdentity?.participantId || crypto.randomUUID();
-    lobby.identityAssignments.set(colorKey, { colorIndex, avatarId, participantId });
+    const teamId = lobby.mode === "versus"
+      ? rememberedIdentity?.teamId || lobby.game.assignTeam(Array.from(lobby.players.values()))
+      : null;
+    lobby.identityAssignments.set(colorKey, { colorIndex, avatarId, participantId, teamId });
 
     const player = {
       id: socket.id,
@@ -328,8 +377,11 @@ function createGameServer(options = {}) {
       joinedAt: nowIso(),
       colorIndex,
       avatarId,
+      teamId,
+      ready: false,
     };
     lobby.players.set(socket.id, player);
+    if (!lobby.hostParticipantId) lobby.hostParticipantId = participantId;
     lobby.game.registerPlayer(player);
     socket.data.lobbyId = lobby.lobbyId;
     socket.join(lobby.lobbyId);
@@ -343,11 +395,27 @@ function createGameServer(options = {}) {
     const lobby = lobbies.get(currentLobbyId);
     socket.data.lobbyId = null;
     socket.leave(currentLobbyId);
-    if (!lobby || !lobby.players.delete(socket.id)) return;
+    const departingPlayer = lobby?.players.get(socket.id);
+    if (!lobby || !departingPlayer || !lobby.players.delete(socket.id)) return;
+    if (lobby.mode === "versus" && lobby.game.phase === "setup") {
+      lobby.game.unregisterPlayer(departingPlayer);
+    }
+    if (
+      departingPlayer.participantId === lobby.hostParticipantId &&
+      !Array.from(lobby.players.values()).some(
+        (player) => player.participantId === lobby.hostParticipantId
+      )
+    ) {
+      lobby.hostParticipantId = lobby.players.values().next().value?.participantId || null;
+    }
+    if (lobby.mode === "versus") {
+      lobby.game.maybeStart(Array.from(lobby.players.values()));
+    }
     lobby.typingPlayerIds.delete(socket.id);
     updateLobbyActivity(lobby);
     emitPlayers(lobby);
     emitTyping(lobby);
+    emitVersusState(lobby);
     recordEvent("lobby_left", {
       lobbyId: currentLobbyId,
       players: lobby.players.size,
@@ -356,10 +424,20 @@ function createGameServer(options = {}) {
     });
   }
 
-  function lobbyPayload(lobby) {
+  function lobbyPayload(lobby, socketId = null) {
+    const player = socketId ? lobby.players.get(socketId) : null;
+    const versus = lobby.mode === "versus" && player
+      ? lobby.game.getView(
+          player.teamId,
+          Array.from(lobby.players.values()),
+          lobby.hostParticipantId
+        )
+      : null;
     return {
       lobbyId: lobby.lobbyId,
-      gameState: lobby.game.getGameState(),
+      mode: lobby.mode,
+      gameState: versus?.gameState || lobby.game.getGameState(),
+      versus: versus ? { ...versus, gameState: undefined } : null,
       players: serializePlayers(lobby),
       playerCount: lobby.players.size,
       typingPlayerIds: Array.from(lobby.typingPlayerIds),
@@ -407,7 +485,8 @@ function createGameServer(options = {}) {
       .map((lobby) => ({
         lobbyId: lobby.lobbyId,
         players: lobby.players.size,
-        status: lobby.game.getGameState().status,
+        status: lobby.mode === "versus" ? lobby.game.status : lobby.game.getGameState().status,
+        mode: lobby.mode,
         createdAt: lobby.createdAt,
         lastActivityAt: lobby.lastActivityAt,
         idleMs: Date.now() - lobby.lastActivityMs,
@@ -459,13 +538,15 @@ function createGameServer(options = {}) {
       }
       removePlayerFromCurrentLobby(socket);
       const lobbyId = generateLobbyId();
-      const lobby = createLobbyRecord(lobbyId);
+      const mode = payload?.mode === "versus" ? "versus" : "classic";
+      const lobby = createLobbyRecord(lobbyId, { mode });
       addPlayer(lobby, socket, payload?.preferredName);
-      const response = lobbyPayload(lobby);
+      const response = lobbyPayload(lobby, socket.id);
       socket.emit("lobbyCreated", response);
       emitPlayers(lobby);
       recordEvent("lobby_created", {
         lobbyId,
+        mode,
         players: lobby.players.size,
         activeRooms: lobbies.size,
         activePlayers: getActivePlayerCount(),
@@ -495,8 +576,9 @@ function createGameServer(options = {}) {
         removePlayerFromCurrentLobby(socket);
         addPlayer(lobby, socket, preferredName);
       }
-      socket.emit("lobbyJoined", lobbyPayload(lobby));
+      socket.emit("lobbyJoined", lobbyPayload(lobby, socket.id));
       emitPlayers(lobby);
+      emitVersusState(lobby);
       recordEvent("lobby_joined", {
         lobbyId,
         players: lobby.players.size,
@@ -537,10 +619,12 @@ function createGameServer(options = {}) {
         colorIndex: player.colorIndex,
         avatarId: player.avatarId,
         participantId: player.participantId,
+        teamId: player.teamId,
       });
       lobby.game.registerPlayer(player);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
+      emitVersusState(lobby);
       socket.emit("playerNameChanged", { name });
       recordEvent("player_renamed", {
         lobbyId: lobby.lobbyId,
@@ -580,15 +664,108 @@ function createGameServer(options = {}) {
         colorIndex: player.colorIndex,
         avatarId,
         participantId: player.participantId,
+        teamId: player.teamId,
       });
       lobby.game.registerPlayer(player);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
+      emitVersusState(lobby);
       socket.emit("playerAvatarChanged", { avatarId });
       recordEvent("player_avatar_changed", {
         lobbyId: lobby.lobbyId,
         playerName: player.name,
         avatarId,
+      });
+    });
+
+    socket.on("setTeam", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby || lobby.mode !== "versus") {
+        emitActionError(socket, {
+          error: "Join a VS lobby before choosing a side.",
+          code: "not_in_versus_lobby",
+        });
+        return;
+      }
+      const player = lobby.players.get(socket.id);
+      const response = lobby.game.setTeam(player, payload.teamId);
+      if (!response.ok) {
+        emitActionError(socket, response);
+        return;
+      }
+      lobby.identityAssignments.set(player.name.toLocaleLowerCase(), {
+        colorIndex: player.colorIndex,
+        avatarId: player.avatarId,
+        participantId: player.participantId,
+        teamId: player.teamId,
+      });
+      updateLobbyActivity(lobby);
+      emitPlayers(lobby);
+      emitVersusState(lobby);
+      recordEvent("versus_team_changed", {
+        lobbyId: lobby.lobbyId,
+        playerName: player.name,
+        teamId: player.teamId,
+      });
+    });
+
+    socket.on("randomizeTeams", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby || lobby.mode !== "versus") {
+        emitActionError(socket, {
+          error: "Join a VS lobby before randomizing teams.",
+          code: "not_in_versus_lobby",
+        });
+        return;
+      }
+      const player = lobby.players.get(socket.id);
+      if (player.participantId !== lobby.hostParticipantId) {
+        emitActionError(socket, {
+          error: "Only the lobby host can randomize teams.",
+          code: "host_only",
+        });
+        return;
+      }
+      const response = lobby.game.randomizeTeams(Array.from(lobby.players.values()));
+      if (!response.ok) {
+        emitActionError(socket, response);
+        return;
+      }
+      for (const teammate of lobby.players.values()) {
+        const identity = lobby.identityAssignments.get(teammate.name.toLocaleLowerCase());
+        if (identity) identity.teamId = teammate.teamId;
+      }
+      updateLobbyActivity(lobby);
+      emitPlayers(lobby);
+      emitVersusState(lobby);
+      recordEvent("versus_teams_randomized", { lobbyId: lobby.lobbyId });
+    });
+
+    socket.on("toggleReady", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby || lobby.mode !== "versus") {
+        emitActionError(socket, {
+          error: "Join a VS lobby before readying up.",
+          code: "not_in_versus_lobby",
+        });
+        return;
+      }
+      const player = lobby.players.get(socket.id);
+      const response = lobby.game.toggleReady(
+        player,
+        Array.from(lobby.players.values())
+      );
+      if (!response.ok) {
+        emitActionError(socket, response);
+        return;
+      }
+      updateLobbyActivity(lobby);
+      emitPlayers(lobby);
+      emitVersusState(lobby);
+      recordEvent("versus_ready_changed", {
+        lobbyId: lobby.lobbyId,
+        playerName: player.name,
+        ready: player.ready,
       });
     });
 
@@ -631,17 +808,32 @@ function createGameServer(options = {}) {
         return;
       }
       updateLobbyActivity(lobby);
-      io.to(lobby.lobbyId).emit("guessResult", response.result);
       replyToGuess(socket, acknowledge, response);
-      if (response.result.correct) {
-        lobby.typingPlayerIds.clear();
-        emitTyping(lobby);
-        io.to(lobby.lobbyId).emit("gameWon", lobby.game.getGameState());
+      if (lobby.mode === "versus") {
+        if (response.result.correct) {
+          for (const teammate of lobby.players.values()) {
+            if (teammate.teamId === player.teamId) {
+              lobby.typingPlayerIds.delete(teammate.id);
+            }
+          }
+          emitTyping(lobby);
+        }
+        emitVersusState(lobby);
+      } else {
+        io.to(lobby.lobbyId).emit("guessResult", response.result);
+        if (response.result.correct) {
+          lobby.typingPlayerIds.clear();
+          emitTyping(lobby);
+          io.to(lobby.lobbyId).emit("gameWon", lobby.game.getGameState());
+        }
       }
       recordEvent(response.result.correct ? "word_solved" : "guess_made", {
         lobbyId: lobby.lobbyId,
         playerName: player.name,
-        guesses: lobby.game.getGameState().guessHistory.length,
+        teamId: player.teamId || undefined,
+        guesses: lobby.mode === "versus"
+          ? lobby.game.games.get(player.teamId).guessHistory.length
+          : lobby.game.getGameState().guessHistory.length,
       });
     });
 
@@ -661,16 +853,28 @@ function createGameServer(options = {}) {
         return;
       }
       updateLobbyActivity(lobby);
-      io.to(lobby.lobbyId).emit("guessResult", {
-        ...response.result,
-        hintAvailableAt: response.hintAvailableAt,
-      });
-      io.to(lobby.lobbyId).emit("hintCooldown", {
-        hintAvailableAt: response.hintAvailableAt,
-      });
+      if (lobby.mode === "versus") {
+        emitVersusState(lobby);
+        for (const teammate of lobby.players.values()) {
+          if (teammate.teamId === player.teamId) {
+            io.to(teammate.id).emit("hintCooldown", {
+              hintAvailableAt: response.hintAvailableAt,
+            });
+          }
+        }
+      } else {
+        io.to(lobby.lobbyId).emit("guessResult", {
+          ...response.result,
+          hintAvailableAt: response.hintAvailableAt,
+        });
+        io.to(lobby.lobbyId).emit("hintCooldown", {
+          hintAvailableAt: response.hintAvailableAt,
+        });
+      }
       recordEvent("hint_used", {
         lobbyId: lobby.lobbyId,
         playerName: player.name,
+        teamId: player.teamId || undefined,
         hintFrom: response.result.hintFrom,
       });
     });
@@ -705,7 +909,7 @@ function createGameServer(options = {}) {
         }
         sourceLobby.rematchLobbyId = generateLobbyId();
         sourceLobby.rematchReadyParticipantIds.clear();
-        createLobbyRecord(sourceLobby.rematchLobbyId);
+        createLobbyRecord(sourceLobby.rematchLobbyId, { mode: sourceLobby.mode });
       }
 
       const player = sourceLobby.players.get(socket.id);

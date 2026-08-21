@@ -310,6 +310,25 @@ class Game extends EventEmitter {
     return participant;
   }
 
+  unregisterPlayer(player) {
+    const playerId = player?.participantId || player?.id;
+    if (!playerId || this.guessHistory.some((guess) => guess.playerId === playerId)) {
+      return false;
+    }
+    return this.participants.delete(playerId);
+  }
+
+  beginAt(startedAt = new Date(this.now()).toISOString()) {
+    if (this.status === "error" || !this.targetWord) return false;
+    if (this.guessHistory.length) return false;
+    this.status = "playing";
+    this.startedAt = startedAt;
+    this.solvedAt = null;
+    this.winner = null;
+    this.hintAvailableAt = null;
+    return true;
+  }
+
   makeResult({
     word,
     embedding,

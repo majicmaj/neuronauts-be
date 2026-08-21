@@ -136,7 +136,8 @@ function createGameServer(options = {}) {
     maxLobbies: options.maxLobbies || MAX_LOBBIES,
     maxPlayersPerLobby: Math.min(
       options.maxPlayersPerLobby || MAX_PLAYERS_PER_LOBBY,
-      PLAYER_AVATAR_IDS.length
+      PLAYER_AVATAR_IDS.length,
+      PLAYER_COLOR_COUNT
     ),
     staleLobbyMs: options.staleLobbyMs || STALE_LOBBY_MS,
     cleanupIntervalMs: options.cleanupIntervalMs || CLEANUP_INTERVAL_MS,
@@ -566,7 +567,7 @@ function createGameServer(options = {}) {
       const lobby = getSocketLobby(socket, payload.lobbyId);
       if (!lobby) return;
       const wasTyping = lobby.typingPlayerIds.has(socket.id);
-      const isTyping = payload.isTyping === true && lobby.game.getGameState().status === "playing";
+      const isTyping = payload.isTyping === true && lobby.game.status === "playing";
       if (wasTyping === isTyping) return;
       if (isTyping) lobby.typingPlayerIds.add(socket.id);
       else lobby.typingPlayerIds.delete(socket.id);

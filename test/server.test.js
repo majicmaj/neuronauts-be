@@ -37,6 +37,15 @@ async function connect(url) {
   return socket;
 }
 
+function emitWithAck(socket, event, payload, timeoutMs = 2_000) {
+  return new Promise((resolve, reject) => {
+    socket.timeout(timeoutMs).emit(event, payload, (error, response) => {
+      if (error) reject(error);
+      else resolve(response);
+    });
+  });
+}
+
 test("multiplayer lobby synchronizes identities, hints, attribution, and wins", async (t) => {
   const runtime = createGameServer({
     skipEmbeddingsBootstrap: true,
@@ -314,4 +323,56 @@ test("finished crews share one rematch lobby and a stable ready count", async (t
   assert.equal(secondJoined.lobbyId, firstReady.lobbyId);
   assert.equal(secondJoined.playerCount, 2);
   assert.equal(new Set(secondJoined.players.map((player) => player.name)).size, 2);
+});
+
+test("concurrent spelling variants create one guess and recall it for the other player", async (t) => {
+  const embeddings = {
+    star: [1, 0],
+    jewelry: [0.8, 0.6],
+    moon: [0, 1],
+  };
+  const runtime = createGameServer({
+    skipEmbeddingsBootstrap: true,
+    guessRateLimitMs: 0,
+    gameFactory: () =>
+      new Game({
+        embeddings,
+        targetWord: "star",
+        commonWords: ["star", "jewellery", "jewelry", "moon"],
+      }),
+  });
+  const address = await runtime.start(0, "127.0.0.1");
+  const url = `http://127.0.0.1:${address.port}`;
+  const first = await connect(url);
+  const second = await connect(url);
+
+  t.after(async () => {
+    first.disconnect();
+    second.disconnect();
+    await runtime.stop();
+  });
+
+  const createdPromise = waitFor(first, "lobbyCreated");
+  first.emit("createLobby", { preferredName: "Variant Voyager" });
+  const created = await createdPromise;
+  const joinedPromise = waitFor(second, "lobbyJoined");
+  second.emit("joinLobby", {
+    lobbyId: created.lobbyId,
+    preferredName: "Spelling Scout",
+  });
+  await joinedPromise;
+
+  const responses = await Promise.all([
+    emitWithAck(first, "guess", { lobbyId: created.lobbyId, guess: "jewelry" }),
+    emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "jewellery" }),
+  ]);
+  const accepted = responses.find((response) => response.ok);
+  const duplicate = responses.find((response) => !response.ok);
+
+  assert.ok(accepted);
+  assert.equal(accepted.result.guess, "jewelry");
+  assert.equal(duplicate.code, "duplicate_guess");
+  assert.equal(duplicate.resolvedGuess, "jewelry");
+  assert.equal(duplicate.existingResult.id, accepted.result.id);
+  assert.equal(runtime.lobbies.get(created.lobbyId).game.guessHistory.length, 1);
 });

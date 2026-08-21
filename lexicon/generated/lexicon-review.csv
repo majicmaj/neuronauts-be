@@ -1,0 +1,1266 @@
+surface,candidate_lemmas,wordnet_exact,parts_of_speech,default_action,reason
+following,follow,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside follow.
+accessories,accessory,no,,standalone,No supported inflection rule safely maps this word to accessory.
+downloads,download,no,,standalone,No supported inflection rule safely maps this word to download.
+advertising,advertise,yes,NN|VBG,standalone,WordNet records an independent sense alongside advertise.
+registered,register,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside register.
+published,publish,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside publish.
+according,accord,yes,VBG,standalone,WordNet records an independent sense alongside accord.
+communications,communication,yes,NNS|NN,standalone,WordNet records an independent sense alongside communication.
+associated,associate,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside associate.
+operating,operate,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside operate.
+developed,develop,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside develop.
+operations,operation,yes,NNS,standalone,WordNet records an independent sense alongside operation.
+considered,consider,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside consider.
+processing,process,yes,NN|VBG,standalone,WordNet records an independent sense alongside process.
+relations,relation,yes,NNS,standalone,WordNet records an independent sense alongside relation.
+completed,complete,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside complete.
+recommended,recommend,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside recommend.
+trademarks,trademark,no,,standalone,No supported inflection rule safely maps this word to trademark.
+interested,interest,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside interest.
+established,establish,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside establish.
+programming,program,yes,NN|VBG,standalone,WordNet records an independent sense alongside program.
+instructions,instruction,yes,NNS,standalone,WordNet records an independent sense alongside instruction.
+increased,increase,yes,VBN|JJ|VB|VBD,standalone,WordNet records an independent sense alongside increase.
+understanding,understand,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside understand.
+beginning,begin,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside begin.
+specified,specify,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside specify.
+interesting,interest,yes,JJ,standalone,WordNet records an independent sense alongside interest.
+networking,network,no,NN|VBG,standalone,Participle has an independent lexical role alongside network.
+described,describe,yes,VBN|VBD,standalone,WordNet records an independent sense alongside describe.
+publishing,publish,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside publish.
+developing,develop,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside develop.
+monitoring,monitor,yes,NN|VBG,standalone,WordNet records an independent sense alongside monitor.
+accounting,account,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside account.
+manufacturing,manufacture,yes,NN|VBG,standalone,WordNet records an independent sense alongside manufacture.
+continued,continue,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside continue.
+classifieds,classified,no,,standalone,No supported inflection rule safely maps this word to classified.
+supported,support,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside support.
+reporting,report,yes,VBG|NN,standalone,WordNet records an independent sense alongside report.
+designated,designate,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside designate.
+integrated,integrate,yes,VBN|JJ,standalone,WordNet records an independent sense alongside integrate.
+certified,certify,yes,,standalone,WordNet records an independent sense alongside certify.
+computing,compute,yes,VBG|NN,standalone,WordNet records an independent sense alongside compute.
+determined,determine,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside determine.
+dedicated,dedicate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside dedicate.
+identified,identify,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside identify.
+newsletters,newsletter,no,,standalone,No supported inflection rule safely maps this word to newsletter.
+estimated,estimate,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside estimate.
+installed,install,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside install.
+provisions,provision,yes,NNS,standalone,WordNet records an independent sense alongside provision.
+consulting,consult,no,NN|JJ|VBG,standalone,Participle has an independent lexical role alongside consult.
+protected,protect,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside protect.
+contained,contain,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside contain.
+parameters,parameter,no,,standalone,No supported inflection rule safely maps this word to parameter.
+recording,record,yes,NN|VBG,standalone,WordNet records an independent sense alongside record.
+announced,announce,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside announce.
+maintained,maintain,yes,VBN|VBD,standalone,WordNet records an independent sense alongside maintain.
+increasing,increase,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside increase.
+connected,connect,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside connect.
+guaranteed,guarantee,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside guarantee.
+distributed,distribute,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside distribute.
+americans,american,no,,standalone,No supported inflection rule safely maps this word to american.
+suggested,suggest,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside suggest.
+concerned,concern,yes,VBN|JJ|VB|VBD,standalone,WordNet records an independent sense alongside concern.
+continuing,continue,yes,VBG|JJ,standalone,WordNet records an independent sense alongside continue.
+receiving,receive,no,VBG|NN,standalone,Participle has an independent lexical role alongside receive.
+expressed,express,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside express.
+requested,request,yes,VBD|VBN,standalone,WordNet records an independent sense alongside request.
+personals,personal,no,,standalone,No supported inflection rule safely maps this word to personal.
+supporting,support,yes,VBG|JJ,standalone,WordNet records an independent sense alongside support.
+experienced,experience,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside experience.
+searching,search,yes,VBG|NN,standalone,WordNet records an independent sense alongside search.
+contracts,contract,no,NNS|NN|VBZ,standalone,Plural form has an independent lexical role alongside contract.
+circumstances,circumstance,yes,NNS,standalone,WordNet records an independent sense alongside circumstance.
+controlled,control,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside control.
+authorities,authority,yes,NNS,standalone,WordNet records an independent sense alongside authority.
+transactions,transaction,yes,NNS,standalone,WordNet records an independent sense alongside transaction.
+authorized,authorize,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside authorize.
+financing,finance,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside finance.
+qualified,qualify,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside qualify.
+classified,classify,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside classify.
+indicated,indicate,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside indicate.
+resulting,result,no,VBG|JJ,standalone,Participle has an independent lexical role alongside result.
+committed,commit,yes,VBN|JJ|VB|VBD,standalone,WordNet records an independent sense alongside commit.
+remaining,remain,yes,VBG|JJ,standalone,WordNet records an independent sense alongside remain.
+purchased,purchase,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside purchase.
+performing,perform,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside perform.
+collected,collect,yes,VBN|VBD,standalone,WordNet records an independent sense alongside collect.
+scheduled,schedule,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside schedule.
+packaging,package,yes,NN|VBG,standalone,WordNet records an independent sense alongside package.
+preferred,prefer,yes,JJ|VBD|VBG|VBN,standalone,WordNet records an independent sense alongside prefer.
+listening,listen,yes,VBG|NN,standalone,WordNet records an independent sense alongside listen.
+implemented,implement,yes,VBN|VBD,standalone,WordNet records an independent sense alongside implement.
+directories,directory,no,,standalone,No supported inflection rule safely maps this word to directory.
+recognized,recognize,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside recognize.
+licensing,license,no,NN|VBG|JJ,standalone,Participle has an independent lexical role alongside license.
+templates,template,no,,standalone,No supported inflection rule safely maps this word to template.
+subscriptions,subscription,no,,standalone,No supported inflection rule safely maps this word to subscription.
+converted,convert,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside convert.
+philippines,philippine,yes,,standalone,WordNet records an independent sense alongside philippine.
+organized,organize,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside organize.
+improving,improve,yes,VBG|NN,standalone,WordNet records an independent sense alongside improve.
+tutorials,tutorial,no,,standalone,No supported inflection rule safely maps this word to tutorial.
+collectables,collectable,no,,standalone,No supported inflection rule safely maps this word to collectable.
+purchasing,purchase,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside purchase.
+appointed,appoint,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside appoint.
+corresponding,correspond,yes,JJ|VBG,standalone,WordNet records an independent sense alongside correspond.
+telecommunications,telecommunication,no,NNS|JJ|NN,standalone,Plural form has an independent lexical role alongside telecommunication.
+represented,represent,yes,VBN|VBD,standalone,WordNet records an independent sense alongside represent.
+calculated,calculate,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside calculate.
+incorporated,incorporate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside incorporate.
+investing,invest,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside invest.
+allocated,allocate,no,,standalone,No supported inflection rule safely maps this word to allocate.
+corrections,correction,yes,NNS,standalone,WordNet records an independent sense alongside correction.
+prohibited,prohibit,yes,VBN|VBD,standalone,WordNet records an independent sense alongside prohibit.
+addressed,address,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside address.
+discovered,discover,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside discover.
+participating,participate,yes,VBG|JJ,standalone,WordNet records an independent sense alongside participate.
+limousines,limousine,no,,standalone,No supported inflection rule safely maps this word to limousine.
+surrounding,surround,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside surround.
+permitted,permit,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside permit.
+confirmed,confirm,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside confirm.
+wallpapers,wallpaper,no,,standalone,No supported inflection rule safely maps this word to wallpaper.
+counseling,counsel,yes,NN|VBG,standalone,WordNet records an independent sense alongside counsel.
+satisfied,satisfy,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside satisfy.
+screening,screen,yes,NN|VBG,standalone,WordNet records an independent sense alongside screen.
+forgotten,forget,yes,,standalone,WordNet records an independent sense alongside forget.
+restricted,restrict,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside restrict.
+supplements,supplement,no,,standalone,No supported inflection rule safely maps this word to supplement.
+producing,produce,no,VBG|JJ|NN,standalone,Participle has an independent lexical role alongside produce.
+appearing,appear,yes,VBG,standalone,WordNet records an independent sense alongside appear.
+processed,process,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside process.
+showtimes,showtime,no,,standalone,No supported inflection rule safely maps this word to showtime.
+illustrated,illustrate,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside illustrate.
+automated,automate,yes,,standalone,WordNet records an independent sense alongside automate.
+encouraged,encourage,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside encourage.
+cartridges,cartridge,no,,standalone,No supported inflection rule safely maps this word to cartridge.
+determining,determine,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside determine.
+personalized,personalize,yes,VBN|JJ,standalone,WordNet records an independent sense alongside personalize.
+conditioning,condition,yes,NN|VBG,standalone,WordNet records an independent sense alongside condition.
+camcorders,camcorder,no,,standalone,No supported inflection rule safely maps this word to camcorder.
+interfaces,interface,no,,standalone,No supported inflection rule safely maps this word to interface.
+returning,return,yes,VBG,standalone,WordNet records an independent sense alongside return.
+peripherals,peripheral,no,,standalone,No supported inflection rule safely maps this word to peripheral.
+bestsellers,bestseller,no,,standalone,No supported inflection rule safely maps this word to bestseller.
+customized,customize,no,VBN|JJ,standalone,Past-tense form has an independent lexical role alongside customize.
+understood,understand,yes,VBN|VBD,standalone,WordNet records an independent sense alongside understand.
+happening,happen,yes,VBG|NN,standalone,WordNet records an independent sense alongside happen.
+gardening,garden,yes,NN|VBG,standalone,WordNet records an independent sense alongside garden.
+outsourcing,outsource,no,,standalone,No supported inflection rule safely maps this word to outsource.
+demonstrated,demonstrate,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside demonstrate.
+dispatched,dispatch,no,,standalone,No supported inflection rule safely maps this word to dispatch.
+installing,install,yes,VBG,standalone,WordNet records an independent sense alongside install.
+messaging,message,yes,NN|VBG,standalone,WordNet records an independent sense alongside message.
+measuring,measure,yes,VBG|NN,standalone,WordNet records an independent sense alongside measure.
+headquarters,headquarter,yes,NN|NNS,standalone,WordNet records an independent sense alongside headquarter.
+parenting,parent,no,NN,standalone,No supported inflection rule safely maps this word to parent.
+recycling,recycle,yes,,standalone,WordNet records an independent sense alongside recycle.
+qualifications,qualification,no,,standalone,No supported inflection rule safely maps this word to qualification.
+transferred,transfer,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside transfer.
+underlying,underlie,yes,VBG|JJ,standalone,WordNet records an independent sense alongside underlie.
+wrestling,wrestle,yes,,standalone,WordNet records an independent sense alongside wrestle.
+gathering,gather,yes,NN|VBG,standalone,WordNet records an independent sense alongside gather.
+specialized,specialize,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside specialize.
+downloaded,download,no,,standalone,No supported inflection rule safely maps this word to download.
+sunglasses,sunglass,yes,,standalone,WordNet records an independent sense alongside sunglass.
+submissions,submission,no,,standalone,No supported inflection rule safely maps this word to submission.
+broadcasting,broadcast,yes,NN|VBG,standalone,WordNet records an independent sense alongside broadcast.
+suffering,suffer,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside suffer.
+affiliated,affiliate,yes,,standalone,WordNet records an independent sense alongside affiliate.
+selecting,select,no,VBG|NN,standalone,Participle has an independent lexical role alongside select.
+amenities,amenity,yes,,standalone,WordNet records an independent sense alongside amenity.
+surprised,surprise,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside surprise.
+algorithms,algorithm,no,,standalone,No supported inflection rule safely maps this word to algorithm.
+connecting,connect,no,VBG|JJ,standalone,Participle has an independent lexical role alongside connect.
+protecting,protect,yes,VBG,standalone,WordNet records an independent sense alongside protect.
+transmitted,transmit,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside transmit.
+switching,switch,yes,VBG|NN,standalone,WordNet records an independent sense alongside switch.
+filtering,filter,no,VBG|NN,standalone,Participle has an independent lexical role alongside filter.
+separated,separate,yes,VBN|JJ|VBD|VBP,standalone,WordNet records an independent sense alongside separate.
+governing,govern,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside govern.
+attending,attend,yes,VBG,standalone,WordNet records an independent sense alongside attend.
+recruiting,recruit,no,VBG|NN,standalone,Participle has an independent lexical role alongside recruit.
+traveling,travel,yes,VBG|NN,standalone,WordNet records an independent sense alongside travel.
+permissions,permission,no,,standalone,No supported inflection rule safely maps this word to permission.
+prescribed,prescribe,yes,,standalone,WordNet records an independent sense alongside prescribe.
+reproduced,reproduce,no,,standalone,No supported inflection rule safely maps this word to reproduce.
+consolidated,consolidate,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside consolidate.
+occasions,occasion,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside occasion.
+designing,design,yes,VBG,standalone,WordNet records an independent sense alongside design.
+streaming,stream,yes,VBG,standalone,WordNet records an independent sense alongside stream.
+discounted,discount,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside discount.
+concluded,conclude,yes,VBD|VBN,standalone,WordNet records an independent sense alongside conclude.
+manufactured,manufacture,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside manufacture.
+wondering,wonder,yes,VBG|NN,standalone,WordNet records an independent sense alongside wonder.
+collecting,collect,yes,VBG|NN,standalone,WordNet records an independent sense alongside collect.
+expanding,expand,no,VBG|JJ,standalone,Participle has an independent lexical role alongside expand.
+sophisticated,sophisticate,yes,JJ,standalone,WordNet records an independent sense alongside sophisticate.
+thumbnails,thumbnail,no,,standalone,No supported inflection rule safely maps this word to thumbnail.
+destroyed,destroy,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside destroy.
+accredited,accredit,yes,,standalone,WordNet records an independent sense alongside accredit.
+compressed,compress,yes,,standalone,WordNet records an independent sense alongside compress.
+scheduling,schedule,yes,NN|VBG,standalone,WordNet records an independent sense alongside schedule.
+christians,christian,no,,standalone,No supported inflection rule safely maps this word to christian.
+challenging,challenge,yes,VBG|JJ,standalone,WordNet records an independent sense alongside challenge.
+generating,generate,no,VBG|NN,standalone,Participle has an independent lexical role alongside generate.
+modifications,modification,no,,standalone,No supported inflection rule safely maps this word to modification.
+fisheries,fishery,no,,standalone,No supported inflection rule safely maps this word to fishery.
+copyrights,copyright,no,,standalone,No supported inflection rule safely maps this word to copyright.
+chronicles,chronicle,no,,standalone,No supported inflection rule safely maps this word to chronicle.
+contracting,contract,yes,NN|VBG,standalone,WordNet records an independent sense alongside contract.
+structured,structure,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside structure.
+controlling,control,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside control.
+affecting,affect,yes,VBG,standalone,WordNet records an independent sense alongside affect.
+downloading,download,no,,standalone,No supported inflection rule safely maps this word to download.
+complicated,complicate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside complicate.
+decorating,decorate,no,NN|VBG,standalone,Participle has an independent lexical role alongside decorate.
+connectors,connector,no,,standalone,No supported inflection rule safely maps this word to connector.
+furnishings,furnishing,no,,standalone,No supported inflection rule safely maps this word to furnishing.
+configured,configure,yes,,standalone,WordNet records an independent sense alongside configure.
+contributing,contribute,yes,VBG|JJ,standalone,WordNet records an independent sense alongside contribute.
+enquiries,enquiry,no,,standalone,No supported inflection rule safely maps this word to enquiry.
+predicted,predict,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside predict.
+mechanics,mechanic,yes,NNS,standalone,WordNet records an independent sense alongside mechanic.
+accompanied,accompany,yes,VBN|VBD,standalone,WordNet records an independent sense alongside accompany.
+undertaken,undertake,no,,standalone,No supported inflection rule safely maps this word to undertake.
+conducting,conduct,yes,VBG|NN,standalone,WordNet records an independent sense alongside conduct.
+accomplished,accomplish,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside accomplish.
+projectors,projector,no,,standalone,No supported inflection rule safely maps this word to projector.
+comparing,compare,yes,VBG,standalone,WordNet records an independent sense alongside compare.
+pharmacies,pharmacy,no,,standalone,No supported inflection rule safely maps this word to pharmacy.
+appreciated,appreciate,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside appreciate.
+distinguished,distinguish,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside distinguish.
+projected,project,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside project.
+regulated,regulate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside regulate.
+anticipated,anticipate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside anticipate.
+completing,complete,yes,VBG,standalone,WordNet records an independent sense alongside complete.
+copyrighted,copyright,yes,,standalone,WordNet records an independent sense alongside copyright.
+warranties,warranty,no,,standalone,No supported inflection rule safely maps this word to warranty.
+documented,document,yes,VBN|VBD,standalone,WordNet records an independent sense alongside document.
+paperbacks,paperback,no,,standalone,No supported inflection rule safely maps this word to paperback.
+keyboards,keyboard,no,,standalone,No supported inflection rule safely maps this word to keyboard.
+reflected,reflect,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside reflect.
+notifications,notification,no,,standalone,No supported inflection rule safely maps this word to notification.
+liabilities,liability,yes,NNS,standalone,WordNet records an independent sense alongside liability.
+decreased,decrease,yes,VBD|VBN,standalone,WordNet records an independent sense alongside decrease.
+bookmarks,bookmark,no,,standalone,No supported inflection rule safely maps this word to bookmark.
+suspended,suspend,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside suspend.
+retrieved,retrieve,no,,standalone,No supported inflection rule safely maps this word to retrieve.
+accessing,access,no,,standalone,No supported inflection rule safely maps this word to access.
+attempted,attempt,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside attempt.
+disturbed,disturb,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside disturb.
+obituaries,obituary,no,,standalone,No supported inflection rule safely maps this word to obituary.
+scripting,script,no,,standalone,No supported inflection rule safely maps this word to script.
+remembered,remember,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside remember.
+headphones,headphone,no,,standalone,No supported inflection rule safely maps this word to headphone.
+proceeding,proceed,yes,NN|VBG,standalone,WordNet records an independent sense alongside proceed.
+encouraging,encourage,yes,VBG|JJ,standalone,WordNet records an independent sense alongside encourage.
+furnished,furnish,yes,,standalone,WordNet records an independent sense alongside furnish.
+threatened,threaten,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside threaten.
+republicans,republican,no,,standalone,No supported inflection rule safely maps this word to republican.
+submitting,submit,no,VBG|NN,standalone,Participle has an independent lexical role alongside submit.
+citations,citation,no,,standalone,No supported inflection rule safely maps this word to citation.
+disclaimers,disclaimer,no,,standalone,No supported inflection rule safely maps this word to disclaimer.
+finishing,finish,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside finish.
+refurbished,refurbish,no,,standalone,No supported inflection rule safely maps this word to refurbish.
+activated,activate,yes,VBN|JJ,standalone,WordNet records an independent sense alongside activate.
+accepting,accept,yes,VBG|JJ,standalone,WordNet records an independent sense alongside accept.
+sustained,sustain,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside sustain.
+inherited,inherit,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside inherit.
+formatting,format,yes,,standalone,WordNet records an independent sense alongside format.
+bracelets,bracelet,no,,standalone,No supported inflection rule safely maps this word to bracelet.
+breathing,breathe,yes,NN|VBG,standalone,WordNet records an independent sense alongside breathe.
+shortcuts,shortcut,no,,standalone,No supported inflection rule safely maps this word to shortcut.
+combining,combine,yes,VBG,standalone,WordNet records an independent sense alongside combine.
+organizing,organize,no,VBG|NN,standalone,Participle has an independent lexical role alongside organize.
+moderators,moderator,no,,standalone,No supported inflection rule safely maps this word to moderator.
+standings,standing,no,,standalone,No supported inflection rule safely maps this word to standing.
+kilometers,kilometer,no,,standalone,No supported inflection rule safely maps this word to kilometer.
+congratulations,congratulation,yes,,standalone,WordNet records an independent sense alongside congratulation.
+stakeholders,stakeholder,no,,standalone,No supported inflection rule safely maps this word to stakeholder.
+competing,compete,no,VBG|JJ,standalone,Participle has an independent lexical role alongside compete.
+vacancies,vacancy,no,,standalone,No supported inflection rule safely maps this word to vacancy.
+perceived,perceive,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside perceive.
+troubleshooting,troubleshoot,no,,standalone,No supported inflection rule safely maps this word to troubleshoot.
+fragrances,fragrance,no,,standalone,No supported inflection rule safely maps this word to fragrance.
+fundraising,fundraise,no,,standalone,No supported inflection rule safely maps this word to fundraise.
+webmasters,webmaster,no,,standalone,No supported inflection rule safely maps this word to webmaster.
+answering,answer,yes,VBG|NN,standalone,WordNet records an independent sense alongside answer.
+impressed,impress,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside impress.
+preceding,precede,yes,,standalone,WordNet records an independent sense alongside precede.
+postcards,postcard,no,,standalone,No supported inflection rule safely maps this word to postcard.
+reviewing,review,no,VBG|NN,standalone,Participle has an independent lexical role alongside review.
+abandoned,abandon,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside abandon.
+beverages,beverage,no,,standalone,No supported inflection rule safely maps this word to beverage.
+entertaining,entertain,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside entertain.
+passwords,password,no,,standalone,No supported inflection rule safely maps this word to password.
+spreading,spread,yes,VBG,standalone,WordNet records an independent sense alongside spread.
+referenced,reference,yes,,standalone,WordNet records an independent sense alongside reference.
+corrected,correct,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside correct.
+surrounded,surround,yes,VBN|VBD,standalone,WordNet records an independent sense alongside surround.
+referrals,referral,no,,standalone,No supported inflection rule safely maps this word to referral.
+integrating,integrate,yes,VBG,standalone,WordNet records an independent sense alongside integrate.
+revisions,revision,no,,standalone,No supported inflection rule safely maps this word to revision.
+reasoning,reason,yes,NN|VBG,standalone,WordNet records an independent sense alongside reason.
+annotated,annotate,no,,standalone,No supported inflection rule safely maps this word to annotate.
+convinced,convince,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside convince.
+replacing,replace,yes,VBG,standalone,WordNet records an independent sense alongside replace.
+acknowledged,acknowledge,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside acknowledge.
+characterized,characterize,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside characterize.
+qualifying,qualify,yes,VBG,standalone,WordNet records an independent sense alongside qualify.
+institutes,institute,no,NN,standalone,No supported inflection rule safely maps this word to institute.
+brochures,brochure,no,,standalone,No supported inflection rule safely maps this word to brochure.
+suspected,suspect,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside suspect.
+beginners,beginner,no,,standalone,No supported inflection rule safely maps this word to beginner.
+simplified,simplify,no,,standalone,No supported inflection rule safely maps this word to simplify.
+housewives,housewife,no,,standalone,No supported inflection rule safely maps this word to housewife.
+omissions,omission,no,,standalone,No supported inflection rule safely maps this word to omission.
+motorcycles,motorcycle,no,,standalone,No supported inflection rule safely maps this word to motorcycle.
+fascinating,fascinate,yes,JJ,standalone,WordNet records an independent sense alongside fascinate.
+accompanying,accompany,yes,VBG|JJ,standalone,WordNet records an independent sense alongside accompany.
+configuring,configure,no,,standalone,No supported inflection rule safely maps this word to configure.
+editorials,editorial,no,,standalone,No supported inflection rule safely maps this word to editorial.
+rendering,render,yes,VBG|NN,standalone,WordNet records an independent sense alongside render.
+functioning,function,yes,VBG|NN,standalone,WordNet records an independent sense alongside function.
+paragraphs,paragraph,no,,standalone,No supported inflection rule safely maps this word to paragraph.
+respected,respect,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside respect.
+interpreted,interpret,yes,VBN|VBD,standalone,WordNet records an independent sense alongside interpret.
+commissions,commission,no,NNS|VBZ|NN,standalone,Plural form has an independent lexical role alongside commission.
+graduated,graduate,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside graduate.
+surprising,surprise,yes,JJ|VBG,standalone,WordNet records an independent sense alongside surprise.
+fundamentals,fundamental,yes,NNS,standalone,WordNet records an independent sense alongside fundamental.
+endangered,endanger,yes,,standalone,WordNet records an independent sense alongside endanger.
+nominated,nominate,yes,VBN|VBD,standalone,WordNet records an independent sense alongside nominate.
+recovered,recover,yes,VBD|VBN,standalone,WordNet records an independent sense alongside recover.
+upgrading,upgrade,no,,standalone,No supported inflection rule safely maps this word to upgrade.
+demanding,demand,yes,VBG|JJ,standalone,WordNet records an independent sense alongside demand.
+forbidden,forbid,yes,,standalone,WordNet records an independent sense alongside forbid.
+programmers,programmer,no,,standalone,No supported inflection rule safely maps this word to programmer.
+monitored,monitor,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside monitor.
+motivated,motivate,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside motivate.
+examining,examine,no,VBG|NN,standalone,Participle has an independent lexical role alongside examine.
+dictionaries,dictionary,no,,standalone,No supported inflection rule safely maps this word to dictionary.
+positioning,position,yes,VBG|NN,standalone,WordNet records an independent sense alongside position.
+descending,descend,yes,VBG,standalone,WordNet records an independent sense alongside descend.
+transcripts,transcript,no,,standalone,No supported inflection rule safely maps this word to transcript.
+disappointed,disappoint,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside disappoint.
+promising,promise,yes,JJ|VBG,standalone,WordNet records an independent sense alongside promise.
+forwarding,forward,yes,NN|VBG,standalone,WordNet records an independent sense alongside forward.
+receptors,receptor,no,,standalone,No supported inflection rule safely maps this word to receptor.
+coordinated,coordinate,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside coordinate.
+antibodies,antibody,no,,standalone,No supported inflection rule safely maps this word to antibody.
+roommates,roommate,no,,standalone,No supported inflection rule safely maps this word to roommate.
+threatening,threaten,yes,VBG|JJ,standalone,WordNet records an independent sense alongside threaten.
+assembled,assemble,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside assemble.
+restructuring,restructure,no,NN|VBG|JJ,standalone,Participle has an independent lexical role alongside restructure.
+terminals,terminal,no,,standalone,No supported inflection rule safely maps this word to terminal.
+simulations,simulation,no,,standalone,No supported inflection rule safely maps this word to simulation.
+strengthening,strengthen,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside strengthen.
+configurations,configuration,no,,standalone,No supported inflection rule safely maps this word to configuration.
+would,will,no,MD,standalone,No supported inflection rule safely maps this word to will.
+services,service,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside service.
+links,link,yes,NNS|VBZ|NN,standalone,WordNet records an independent sense alongside link.
+years,year,yes,NNS,standalone,WordNet records an independent sense alongside year.
+could,can,no,MD,standalone,No supported inflection rule safely maps this word to can.
+united,unite,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside unite.
+details,detail,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside detail.
+terms,term,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside term.
+using,use,yes,VBG,standalone,WordNet records an independent sense alongside use.
+posted,post,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside post.
+shipping,ship,yes,VBG|NN,standalone,WordNet records an independent sense alongside ship.
+reserved,reserve,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside reserve.
+based,base,yes,VBN|VBD,standalone,WordNet records an independent sense alongside base.
+found,find,yes,VBD|VBN|VB,standalone,WordNet records an independent sense alongside find.
+related,relate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside relate.
+media,medium,no,NNS|NN,standalone,Plural form has an independent lexical role alongside medium.
+rating,rat,yes,NN|VBG,standalone,WordNet records an independent sense alongside rat.
+shopping,shop,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside shop.
+times,time,yes,NNS|VBZ|CC|RB,standalone,WordNet records an independent sense alongside time.
+hours,hour,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside hour.
+listing,list,yes,NN|VBG,standalone,WordNet records an independent sense alongside list.
+training,train,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside train.
+advanced,advance,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside advance.
+sales,sale,yes,NNS|JJ|VBZ,standalone,WordNet records an independent sense alongside sale.
+windows,window,yes,NNS,standalone,WordNet records an independent sense alongside window.
+required,require,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside require.
+better,good,yes,JJR|JJ|RB|VB|RBR,standalone,WordNet records an independent sense alongside good.
+going,go,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside go.
+looking,look,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside look.
+things,thing,yes,NNS,standalone,WordNet records an independent sense alongside thing.
+working,work,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside work.
+offers,offer,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside offer.
+rates,rate,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside rate.
+latest,late,yes,JJS|JJ,standalone,WordNet records an independent sense alongside late.
+given,give,yes,VBN|JJ,standalone,WordNet records an independent sense alongside give.
+making,make,yes,VBG|NN,standalone,WordNet records an independent sense alongside make.
+needs,need,yes,VBZ|NNS|VBP|VB,standalone,WordNet records an independent sense alongside need.
+might,may,yes,MD|NN,standalone,WordNet records an independent sense alongside may.
+cards,card,yes,NNS,standalone,WordNet records an independent sense alongside card.
+meeting,meet,yes,NN|VBG,standalone,WordNet records an independent sense alongside meet.
+added,add,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside add.
+listed,list,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside list.
+learning,learn,yes,VBG|NN,standalone,WordNet records an independent sense alongside learn.
+updated,update,no,VBN|JJ,standalone,Past-tense form has an independent lexical role alongside update.
+living,live,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside live.
+called,call,no,VBN|VBD|VB,standalone,Past-tense form has an independent lexical role alongside call.
+limited,limit,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside limit.
+powered,power,yes,VBN|JJ,standalone,WordNet records an independent sense alongside power.
+means,mean,yes,VBZ|NNS|NN,standalone,WordNet records an independent sense alongside mean.
+planning,plan,yes,NN|VBG,standalone,WordNet records an independent sense alongside plan.
+costs,cost,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside cost.
+parts,part,yes,NNS,standalone,WordNet records an independent sense alongside part.
+written,write,yes,VBN|JJ,standalone,WordNet records an independent sense alongside write.
+minutes,minute,yes,NNS,standalone,WordNet records an independent sense alongside minute.
+reading,read,yes,NN|VBG,standalone,WordNet records an independent sense alongside read.
+getting,get,yes,VBG,standalone,WordNet records an independent sense alongside get.
+lyrics,lyric,no,,standalone,No supported inflection rule safely maps this word to lyric.
+included,include,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside include.
+words,word,yes,NNS,standalone,WordNet records an independent sense alongside word.
+james,jam,yes,,standalone,WordNet records an independent sense alongside jam.
+received,receive,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside receive.
+archives,archive,yes,,standalone,WordNet records an independent sense alongside archive.
+makes,make,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside make.
+taken,take,yes,VBN|VBG,standalone,WordNet records an independent sense alongside take.
+known,know,yes,VBN|JJ,standalone,WordNet records an independent sense alongside know.
+later,late,yes,RB|JJ|RP|JJR|RBR,standalone,WordNet records an independent sense alongside late.
+designed,design,yes,VBN|VBD,standalone,WordNet records an independent sense alongside design.
+writing,write,yes,VBG|NN,standalone,WordNet records an independent sense alongside write.
+higher,high,yes,JJR|RB|RBR,standalone,WordNet records an independent sense alongside high.
+effects,effect,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside effect.
+created,create,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside create.
+thought,think,yes,VBD|NN|VBN,standalone,WordNet records an independent sense alongside think.
+shoes,shoe,yes,NNS,standalone,WordNet records an independent sense alongside shoe.
+started,start,no,VBD|JJ|VBN|VB,standalone,Past-tense form has an independent lexical role alongside start.
+needed,need,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside need.
+asked,ask,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside ask.
+running,run,yes,VBG|JJ|NN|RB,standalone,WordNet records an independent sense alongside run.
+lower,low,yes,JJR|RBR|VBP|JJ|RB|VB,standalone,WordNet records an independent sense alongside low.
+clothing,clothe,yes,NN,standalone,WordNet records an independent sense alongside clothe.
+names,name,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside name.
+teens,teen,yes,NNS|NN,standalone,WordNet records an independent sense alongside teen.
+sellers,seller,yes,NNS,standalone,WordNet records an independent sense alongside seller.
+taking,take,yes,VBG|NN,standalone,WordNet records an independent sense alongside take.
+values,value,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside value.
+coming,come,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside come.
+starting,start,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside start.
+located,locate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside locate.
+featured,feature,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside feature.
+rooms,room,yes,NNS,standalone,WordNet records an independent sense alongside room.
+numbers,number,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside number.
+wanted,want,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside want.
+built,build,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside build.
+larger,large,yes,JJR|RBR,standalone,WordNet records an independent sense alongside large.
+wedding,wed,yes,NN,standalone,WordNet records an independent sense alongside wed.
+ground,grind,yes,NN|JJ|VB|VBD|VBN,standalone,WordNet records an independent sense alongside grind.
+involved,involve,yes,VBN|VBD|JJ|VB,standalone,WordNet records an independent sense alongside involve.
+rated,rat,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside rat.
+existing,exist,yes,VBG|JJ,standalone,WordNet records an independent sense alongside exist.
+selected,select,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside select.
+warning,warn,yes,NN|VBG,standalone,WordNet records an independent sense alongside warn.
+housing,house,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside house.
+trying,try,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside try.
+joined,join,yes,VBD|VBN,standalone,WordNet records an independent sense alongside join.
+teaching,teach,yes,NN|VBG,standalone,WordNet records an independent sense alongside teach.
+testing,test,yes,NN|VBG,standalone,WordNet records an independent sense alongside test.
+leading,lead,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside lead.
+funds,fund,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside fund.
+greater,great,yes,JJR|RBR,standalone,WordNet records an independent sense alongside great.
+expected,expect,yes,VBN|VBD|JJ|VB,standalone,WordNet records an independent sense alongside expect.
+dating,date,yes,VBG|NN,standalone,WordNet records an independent sense alongside date.
+mailing,mail,yes,NN|VBG,standalone,WordNet records an independent sense alongside mail.
+longer,long,yes,RB|JJR|RBR,standalone,WordNet records an independent sense alongside long.
+buying,buy,yes,VBG|NN|JJ,standalone,WordNet records an independent sense alongside buy.
+proposed,propose,no,VBN|VBD|VBP|JJ,standalone,Past-tense form has an independent lexical role alongside propose.
+reported,report,yes,VBD|JJ|VB|VBN|VBP,standalone,WordNet records an independent sense alongside report.
+boards,board,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside board.
+modified,modify,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside modify.
+detailed,detail,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside detail.
+approved,approve,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside approve.
+moving,move,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside move.
+defined,define,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside define.
+papers,paper,yes,NNS,standalone,WordNet records an independent sense alongside paper.
+playing,play,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside play.
+offered,offer,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside offer.
+fixed,fix,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside fix.
+hands,hand,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside hand.
+showing,show,yes,VBG|NN,standalone,WordNet records an independent sense alongside show.
+funding,fund,yes,NN|VBG,standalone,WordNet records an independent sense alongside fund.
+devices,device,yes,NNS,standalone,WordNet records an independent sense alongside device.
+blogs,blog,no,,standalone,No supported inflection rule safely maps this word to blog.
+accepted,accept,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside accept.
+setting,set,yes,VBG|NN,standalone,WordNet records an independent sense alongside set.
+highest,high,no,JJS|RB|RBS,standalone,Comparison form has an independent lexical role alongside high.
+changed,change,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside change.
+heard,hear,yes,VBN|VBD,standalone,WordNet records an independent sense alongside hear.
+applied,apply,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside apply.
+vegas,vega,no,,standalone,No supported inflection rule safely maps this word to vega.
+allowed,allow,no,VBN|JJ|VB|VBD,standalone,Past-tense form has an independent lexical role alongside allow.
+selling,sell,yes,VBG|NN|JJ,standalone,WordNet records an independent sense alongside sell.
+older,old,yes,JJR|RBR|JJ,standalone,WordNet records an independent sense alongside old.
+elements,element,yes,NNS,standalone,WordNet records an independent sense alongside element.
+species,specie,yes,NN|NNS,standalone,WordNet records an independent sense alongside specie.
+pricing,price,yes,NN|VBG,standalone,WordNet records an independent sense alongside price.
+looks,look,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside look.
+trading,trade,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside trade.
+calls,call,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside call.
+giving,give,yes,VBG|NN,standalone,WordNet records an independent sense alongside give.
+discuss,discus,yes,VB|VBP,standalone,WordNet records an independent sense alongside discus.
+lowest,low,yes,JJS|JJ,standalone,WordNet records an independent sense alongside low.
+lives,life|live,no,NNS|VBZ,target-excluded,"Ambiguous lemmas: life, live."
+closed,close,yes,VBD|VBN|JJ|NN|VB,standalone,WordNet records an independent sense alongside close.
+thinking,think,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside think.
+fishing,fish,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside fish.
+fields,field,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside field.
+letters,letter,yes,NNS,standalone,WordNet records an independent sense alongside letter.
+websites,website,no,,standalone,No supported inflection rule safely maps this word to website.
+driving,drive,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside drive.
+kansas,kansa,yes,,standalone,WordNet records an independent sense alongside kansa.
+servers,server,no,,standalone,No supported inflection rule safely maps this word to server.
+growing,grow,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside grow.
+hearing,hear,yes,NN|VBG,standalone,WordNet records an independent sense alongside hear.
+signed,sign,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside sign.
+steps,step,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside step.
+informed,inform,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside inform.
+sorted,sort,yes,VBN|VBD,standalone,WordNet records an independent sense alongside sort.
+tours,tour,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside tour.
+nursing,nurse,yes,NN|VBG,standalone,WordNet records an independent sense alongside nurse.
+covered,cover,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside cover.
+finding,find,yes,VBG|NN,standalone,WordNet records an independent sense alongside find.
+saying,say,yes,VBG|NN,standalone,WordNet records an independent sense alongside say.
+affairs,affair,yes,NNS,standalone,WordNet records an independent sense alongside affair.
+intended,intend,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside intend.
+talking,talk,yes,VBG|NN,standalone,WordNet records an independent sense alongside talk.
+racing,race,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside race.
+missing,miss,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside miss.
+moved,move,yes,VBD|VBN,standalone,WordNet records an independent sense alongside move.
+extended,extend,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside extend.
+opening,open,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside open.
+placed,place,yes,VBN|VBD,standalone,WordNet records an independent sense alongside place.
+printing,print,yes,NN|VBG,standalone,WordNet records an independent sense alongside print.
+owned,own,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside own.
+played,play,yes,VBD|VBN,standalone,WordNet records an independent sense alongside play.
+matching,match,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside match.
+offering,offer,yes,NN|VBG,standalone,WordNet records an independent sense alongside offer.
+leaders,leader,yes,NNS,standalone,WordNet records an independent sense alongside leader.
+parking,park,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside park.
+lighting,light,yes,NN|VBG,standalone,WordNet records an independent sense alongside light.
+turned,turn,yes,VBD|VBN,standalone,WordNet records an independent sense alongside turn.
+tried,try,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside try.
+named,name,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside name.
+earlier,early,yes,RBR|JJR|JJ|NN|RB,standalone,WordNet records an independent sense alongside early.
+evening,even,yes,NN|VBG,standalone,WordNet records an independent sense alongside even.
+issued,issue,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside issue.
+falls,fall,yes,VBZ|NNS,standalone,WordNet records an independent sense alongside fall.
+stated,state,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside state.
+decided,decide,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside decide.
+binding,bind,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside bind.
+ended,end,yes,VBD|JJ|VB|VBN,standalone,WordNet records an independent sense alongside end.
+winning,win,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside win.
+prepared,prepare,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside prepare.
+dining,din,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside din.
+credits,credit,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside credit.
+changing,change,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside change.
+forgot,forget,no,,standalone,No supported inflection rule safely maps this word to forget.
+handling,handle,yes,NN|VBG,standalone,WordNet records an independent sense alongside handle.
+gaming,game,yes,NN,standalone,WordNet records an independent sense alongside game.
+faster,fast,yes,RBR|JJR|RB,standalone,WordNet records an independent sense alongside fast.
+followed,follow,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside follow.
+broken,break,yes,VBN|JJ,standalone,WordNet records an independent sense alongside break.
+shared,share,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside share.
+bytes,byte,no,,standalone,No supported inflection rule safely maps this word to byte.
+forced,force,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside force.
+managed,manage,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside manage.
+failed,fail,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside fail.
+banks,bank,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside bank.
+assets,asset,yes,NNS,standalone,WordNet records an independent sense alongside asset.
+married,marry,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside marry.
+sharing,share,yes,VBG|NN,standalone,WordNet records an independent sense alongside share.
+waiting,wait,yes,VBG|NN|JJ,standalone,WordNet records an independent sense alongside wait.
+banking,bank,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside bank.
+calling,call,yes,VBG|NN,standalone,WordNet records an independent sense alongside call.
+serving,serve,yes,VBG|NN,standalone,WordNet records an independent sense alongside serve.
+comics,comic,no,,standalone,No supported inflection rule safely maps this word to comic.
+breaking,break,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside break.
+combined,combine,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside combine.
+wales,wale,yes,,standalone,WordNet records an independent sense alongside wale.
+noted,note,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside note.
+reduced,reduce,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside reduce.
+physics,physic,yes,NN|NNS,standalone,WordNet records an independent sense alongside physic.
+spent,spend,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside spend.
+removed,remove,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside remove.
+singles,single,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside single.
+cleaning,clean,yes,NN|VBG,standalone,WordNet records an independent sense alongside clean.
+rings,ring,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside ring.
+meaning,mean,yes,NN|VBG,standalone,WordNet records an independent sense alongside mean.
+agreed,agree,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside agree.
+posting,post,yes,VBG|NN,standalone,WordNet records an independent sense alongside post.
+viewing,view,yes,VBG|NN,standalone,WordNet records an independent sense alongside view.
+seeking,seek,yes,VBG,standalone,WordNet records an independent sense alongside seek.
+inches,inch,no,NNS|NN|VBZ,standalone,Plural form has an independent lexical role alongside inch.
+shares,share,no,NNS|NN|VBZ,standalone,Plural form has an independent lexical role alongside share.
+standing,stand,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside stand.
+colors,color,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside color.
+ordering,order,yes,VBG|NN,standalone,WordNet records an independent sense alongside order.
+smoking,smoke,yes,NN|VBG,standalone,WordNet records an independent sense alongside smoke.
+improved,improve,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside improve.
+gambling,gamble,yes,NN|VBG,standalone,WordNet records an independent sense alongside gamble.
+babes,babe,no,,standalone,No supported inflection rule safely maps this word to babe.
+printed,print,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside print.
+easier,easy,no,JJR|RBR|RB,standalone,Comparison form has an independent lexical role alongside easy.
+printers,printer,no,,standalone,No supported inflection rule safely maps this word to printer.
+adding,add,no,VBG|NN,standalone,Participle has an independent lexical role alongside add.
+revised,revise,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside revise.
+amazing,amaze,yes,JJ,standalone,WordNet records an independent sense alongside amaze.
+suites,suit|suite,no,NNS,target-excluded,"Ambiguous lemmas: suit, suite."
+feeling,feel,yes,NN|VBG,standalone,WordNet records an independent sense alongside feel.
+hidden,hide,yes,VBN|JJ,standalone,WordNet records an independent sense alongside hide.
+seeing,see,yes,VBG,standalone,WordNet records an independent sense alongside see.
+licensed,license,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside license.
+specs,spec,yes,,standalone,WordNet records an independent sense alongside spec.
+recorded,record,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside record.
+finished,finish,yes,VBD|JJ|VB|VBN,standalone,WordNet records an independent sense alongside finish.
+parks,park,yes,NNS,standalone,WordNet records an independent sense alongside park.
+stations,station,yes,NNS,standalone,WordNet records an independent sense alongside station.
+greatest,great,yes,JJS,standalone,WordNet records an independent sense alongside great.
+mixed,mix,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside mix.
+tracking,track,yes,VBG|NN,standalone,WordNet records an independent sense alongside track.
+keeping,keep,yes,VBG|NN,standalone,WordNet records an independent sense alongside keep.
+managing,manage,no,VBG|JJ|NN,standalone,Participle has an independent lexical role alongside manage.
+walking,walk,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside walk.
+smaller,small,yes,JJR|RBR,standalone,WordNet records an independent sense alongside small.
+newest,new,no,,standalone,No supported inflection rule safely maps this word to new.
+lesbians,lesbian,no,,standalone,No supported inflection rule safely maps this word to lesbian.
+modules,module,no,,standalone,No supported inflection rule safely maps this word to module.
+holding,hold,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside hold.
+assigned,assign,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside assign.
+raised,raise,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside raise.
+directed,direct,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside direct.
+sporting,sport,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside sport.
+helping,help,yes,VBG|NN,standalone,WordNet records an independent sense alongside help.
+affected,affect,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside affect.
+hosted,host,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside host.
+leaving,leave,yes,VBG|NN,standalone,WordNet records an independent sense alongside leave.
+cooking,cook,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside cook.
+speaking,speak,yes,VBG|NN,standalone,WordNet records an independent sense alongside speak.
+checking,check,no,VBG|NN,standalone,Participle has an independent lexical role alongside check.
+observed,observe,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside observe.
+booking,book,yes,NN|VBG,standalone,WordNet records an independent sense alongside book.
+filled,fill,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside fill.
+channels,channel,yes,NNS,standalone,WordNet records an independent sense alongside channel.
+blues,blue,yes,NNS|JJ,standalone,WordNet records an independent sense alongside blue.
+learned,learn,yes,VBD|VBN|JJ|NN,standalone,WordNet records an independent sense alongside learn.
+attached,attach,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside attach.
+opened,open,yes,VBD|VBN,standalone,WordNet records an independent sense alongside open.
+disabled,disable,yes,JJ|NN|VBN,standalone,WordNet records an independent sense alongside disable.
+scores,score,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside score.
+adopted,adopt,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside adopt.
+edited,edit,yes,VBN|VBD,standalone,WordNet records an independent sense alongside edit.
+linked,link,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside link.
+alerts,alert,no,,standalone,No supported inflection rule safely maps this word to alert.
+treated,treat,yes,VBN|VBD,standalone,WordNet records an independent sense alongside treat.
+leaves,leaf|leave,no,VBZ|JJ|NNS,target-excluded,"Ambiguous lemmas: leaf, leave."
+becoming,become,yes,VBG|NN,standalone,WordNet records an independent sense alongside become.
+tested,test,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside test.
+bound,bind,yes,VBN|JJ|NN|VBD,standalone,WordNet records an independent sense alongside bind.
+laptops,laptop,no,,standalone,No supported inflection rule safely maps this word to laptop.
+threads,thread,yes,NNS,standalone,WordNet records an independent sense alongside thread.
+painting,paint,yes,NN|VBG,standalone,WordNet records an independent sense alongside paint.
+eating,eat,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside eat.
+planned,plan,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside plan.
+watching,watch,yes,VBG|NN,standalone,WordNet records an independent sense alongside watch.
+sessions,session,yes,NNS,standalone,WordNet records an independent sense alongside session.
+stocks,stock,yes,NNS|VBZ|RB,standalone,WordNet records an independent sense alongside stock.
+charged,charge,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside charge.
+chosen,choose,yes,VBN|JJ,standalone,WordNet records an independent sense alongside choose.
+saving,save,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside save.
+visiting,visit,yes,VBG|JJ,standalone,WordNet records an independent sense alongside visit.
+findings,finding,yes,NNS,standalone,WordNet records an independent sense alongside finding.
+clicking,click,no,VBG|NN,standalone,Participle has an independent lexical role alongside click.
+polls,poll,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside poll.
+sending,send,yes,VBG|NN,standalone,WordNet records an independent sense alongside send.
+swimming,swim,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside swim.
+alumni,alumnus,no,,standalone,No supported inflection rule safely maps this word to alumnus.
+drawing,draw,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside draw.
+ordered,order,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside order.
+fighting,fight,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside fight.
+focused,focus,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside focus.
+asking,ask,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside ask.
+hunting,hunt,yes,NN|VBG,standalone,WordNet records an independent sense alongside hunt.
+cutting,cut,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside cut.
+marks,mark,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside mark.
+loved,love,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside love.
+mapping,map,yes,NN|VBG,standalone,WordNet records an independent sense alongside map.
+indexed,index,no,VBN|JJ,standalone,Past-tense form has an independent lexical role alongside index.
+saved,save,yes,VBN|VBD,standalone,WordNet records an independent sense alongside save.
+paying,pay,yes,VBG|JJ,standalone,WordNet records an independent sense alongside pay.
+granted,grant,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside grant.
+spending,spend,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside spend.
+employed,employ,yes,VBN|VBD,standalone,WordNet records an independent sense alongside employ.
+formed,form,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside form.
+bidding,bid,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside bid.
+stands,stand,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside stand.
+editing,edit,yes,NN|VBG,standalone,WordNet records an independent sense alongside edit.
+voting,vote,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside vote.
+flashing,flash,yes,VBG|NN,standalone,WordNet records an independent sense alongside flash.
+sitting,sit,yes,VBG|NN,standalone,WordNet records an independent sense alongside sit.
+putting,put,yes,VBG,standalone,WordNet records an independent sense alongside put.
+missed,miss,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside miss.
+willing,will,yes,JJ|VBG,standalone,WordNet records an independent sense alongside will.
+acting,act,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside act.
+logos,logo,yes,,standalone,WordNet records an independent sense alongside logo.
+antiques,antique,no,,standalone,No supported inflection rule safely maps this word to antique.
+amended,amend,yes,VBN|VBD,standalone,WordNet records an independent sense alongside amend.
+drinking,drink,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside drink.
+enhanced,enhance,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside enhance.
+entitled,entitle,yes,VBN|VBD,standalone,WordNet records an independent sense alongside entitle.
+lived,live,no,VBD|VBN|VB,standalone,Past-tense form has an independent lexical role alongside live.
+flying,fly,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside fly.
+camping,camp,yes,NN|VBG,standalone,WordNet records an independent sense alongside camp.
+marked,mark,yes,VBN|JJ|VBD|VBP,standalone,WordNet records an independent sense alongside mark.
+driven,drive,yes,VBN|JJ,standalone,WordNet records an independent sense alongside drive.
+measured,measure,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside measure.
+closing,close,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside close.
+adams,adam,yes,,standalone,WordNet records an independent sense alongside adam.
+ethics,ethic,yes,NNS|NN,standalone,WordNet records an independent sense alongside ethic.
+heating,heat,yes,NN|VBG,standalone,WordNet records an independent sense alongside heat.
+dealing,deal,yes,VBG|NN,standalone,WordNet records an independent sense alongside deal.
+hobbies,hobby,no,,standalone,No supported inflection rule safely maps this word to hobby.
+achieved,achieve,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside achieve.
+shipped,ship,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside ship.
+seats,seat,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside seat.
+loading,load,yes,NN|VBG,standalone,WordNet records an independent sense alongside load.
+stamps,stamp,no,,standalone,No supported inflection rule safely maps this word to stamp.
+mining,mine,yes,NN|VBG,standalone,WordNet records an independent sense alongside mine.
+worst,bad,yes,JJS|RBS|JJ,standalone,WordNet records an independent sense alongside bad.
+imaging,image,yes,NN|JJ,standalone,WordNet records an independent sense alongside image.
+betting,bet,yes,VBG|NN,standalone,WordNet records an independent sense alongside bet.
+exciting,excite,yes,JJ|VBG,standalone,WordNet records an independent sense alongside excite.
+thongs,thong,no,,standalone,No supported inflection rule safely maps this word to thong.
+derived,derive,yes,VBN|VBD,standalone,WordNet records an independent sense alongside derive.
+oriented,orient,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside orient.
+desktops,desktop,no,,standalone,No supported inflection rule safely maps this word to desktop.
+pants,pant,yes,,standalone,WordNet records an independent sense alongside pant.
+elected,elect,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside elect.
+carrying,carry,no,VBG|JJ|NN,standalone,Participle has an independent lexical role alongside carry.
+classics,classic,yes,NNS,standalone,WordNet records an independent sense alongside classic.
+wings,wing,yes,NNS,standalone,WordNet records an independent sense alongside wing.
+waters,water,yes,NNS,standalone,WordNet records an independent sense alongside water.
+bringing,bring,yes,VBG|NN,standalone,WordNet records an independent sense alongside bring.
+shaved,shave,yes,,standalone,WordNet records an independent sense alongside shave.
+turning,turn,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside turn.
+buffer,buff,yes,,standalone,WordNet records an independent sense alongside buff.
+checked,check,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside check.
+oldest,old,no,,standalone,No supported inflection rule safely maps this word to old.
+worse,bad,yes,JJR|JJ|RBR,standalone,WordNet records an independent sense alongside bad.
+burning,burn,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside burn.
+coupons,coupon,no,,standalone,No supported inflection rule safely maps this word to coupon.
+covering,cover,yes,VBG|NN,standalone,WordNet records an independent sense alongside cover.
+talks,talk,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside talk.
+filing,file,yes,NN|VBG,standalone,WordNet records an independent sense alongside file.
+modeling,model,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside model.
+passing,pass,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside pass.
+masters,master,yes,NNS,standalone,WordNet records an independent sense alongside master.
+commons,common,yes,NN,standalone,WordNet records an independent sense alongside common.
+priced,price,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside price.
+desired,desire,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside desire.
+heights,height,yes,NNS,standalone,WordNet records an independent sense alongside height.
+riding,rid,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside rid.
+healing,heal,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside heal.
+entering,enter,yes,VBG,standalone,WordNet records an independent sense alongside enter.
+funded,fund,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside fund.
+roads,road,yes,NNS,standalone,WordNet records an independent sense alongside road.
+rolling,roll,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside roll.
+lodging,lodge,yes,,standalone,WordNet records an independent sense alongside lodge.
+losses,loss,yes,NNS,standalone,WordNet records an independent sense alongside loss.
+reducing,reduce,yes,VBG|NN,standalone,WordNet records an independent sense alongside reduce.
+stopped,stop,yes,VBD|VBN,standalone,WordNet records an independent sense alongside stop.
+shooting,shoot,yes,NN|VBG,standalone,WordNet records an independent sense alongside shoot.
+launched,launch,no,VBN|VBD|VB,standalone,Past-tense form has an independent lexical role alongside launch.
+drawn,draw,yes,VBN|JJ,standalone,WordNet records an independent sense alongside draw.
+operated,operate,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside operate.
+queries,query,no,,standalone,No supported inflection rule safely maps this word to query.
+nearest,near,yes,,standalone,WordNet records an independent sense alongside near.
+woods,wood,yes,NNS,standalone,WordNet records an independent sense alongside wood.
+shoppers,shopper,no,,standalone,No supported inflection rule safely maps this word to shopper.
+ranking,rank,yes,JJ|VBG|NN,standalone,WordNet records an independent sense alongside rank.
+trusted,trust,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside trust.
+supposed,suppose,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside suppose.
+knowing,know,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside know.
+dancing,dance,yes,NN|VBG,standalone,WordNet records an independent sense alongside dance.
+acres,acre,yes,NNS,standalone,WordNet records an independent sense alongside acre.
+telling,tell,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside tell.
+rising,rise,yes,VBG|NN|JJ,standalone,WordNet records an independent sense alongside rise.
+wells,well,yes,NNS,standalone,WordNet records an independent sense alongside well.
+philips,philip,no,,standalone,No supported inflection rule safely maps this word to philip.
+chips,chip,yes,NNS,standalone,WordNet records an independent sense alongside chip.
+pupils,pupil,no,,standalone,No supported inflection rule safely maps this word to pupil.
+expanded,expand,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside expand.
+grown,grow,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside grow.
+troops,troop,yes,NNS,standalone,WordNet records an independent sense alongside troop.
+armed,arm,yes,VBN|JJ,standalone,WordNet records an independent sense alongside arm.
+broker,broke,yes,NN,standalone,WordNet records an independent sense alongside broke.
+cooling,cool,yes,NN|VBG,standalone,WordNet records an independent sense alongside cool.
+folks,folk,yes,NNS,standalone,WordNet records an independent sense alongside folk.
+exposed,expose,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside expose.
+sealed,seal,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside seal.
+loaded,load,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside load.
+spanking,spank,yes,,standalone,WordNet records an independent sense alongside spank.
+catering,cater,yes,,standalone,WordNet records an independent sense alongside cater.
+trained,train,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside train.
+roberts,robert,yes,,standalone,WordNet records an independent sense alongside robert.
+emerging,emerge,yes,VBG,standalone,WordNet records an independent sense alongside emerge.
+reserves,reserve,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside reserve.
+facing,face,yes,VBG|JJ,standalone,WordNet records an independent sense alongside face.
+divided,divide,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside divide.
+emails,email,no,,standalone,No supported inflection rule safely maps this word to email.
+hearts,heart,yes,NNS,standalone,WordNet records an independent sense alongside heart.
+pleased,please,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside please.
+raising,raise,yes,VBG|NN|RP,standalone,WordNet records an independent sense alongside raise.
+bigger,big,yes,JJR|RBR,standalone,WordNet records an independent sense alongside big.
+billing,bill,yes,NN|VBG,standalone,WordNet records an independent sense alongside bill.
+revealed,reveal,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside reveal.
+grounds,ground,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside ground.
+proven,prove,yes,,standalone,WordNet records an independent sense alongside prove.
+cached,cache,no,,standalone,No supported inflection rule safely maps this word to cache.
+studied,study,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside study.
+profits,profit,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside profit.
+earrings,earring,no,,standalone,No supported inflection rule safely maps this word to earring.
+sized,size,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside size.
+noticed,notice,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside notice.
+humans,human,yes,NNS,standalone,WordNet records an independent sense alongside human.
+choosing,choose,no,VBG|NN,standalone,Participle has an independent lexical role alongside choose.
+dated,date,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside date.
+believes,belief|believe,no,VBZ,target-excluded,"Ambiguous lemmas: belief, believe."
+equipped,equip,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside equip.
+acquired,acquire,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside acquire.
+roots,root,yes,NNS,standalone,WordNet records an independent sense alongside root.
+losing,lose,no,VBG|JJ|NN,standalone,Participle has an independent lexical role alongside lose.
+gadgets,gadget,no,,standalone,No supported inflection rule safely maps this word to gadget.
+induced,induce,yes,,standalone,WordNet records an independent sense alongside induce.
+linking,link,no,VBG|NN,standalone,Participle has an independent lexical role alongside link.
+earned,earn,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside earn.
+secured,secure,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside secure.
+titans,titan,no,,standalone,No supported inflection rule safely maps this word to titan.
+wearing,wear,yes,VBG,standalone,WordNet records an independent sense alongside wear.
+sought,seek,yes,VBD|VBN,standalone,WordNet records an independent sense alongside seek.
+mounted,mount,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside mount.
+animated,animate,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside animate.
+engaged,engage,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside engage.
+falling,fall,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside fall.
+basics,basic,yes,NNS,standalone,WordNet records an independent sense alongside basic.
+lenses,lense,no,,standalone,No supported inflection rule safely maps this word to lense.
+attended,attend,yes,VBD|VBN,standalone,WordNet records an independent sense alongside attend.
+strings,string,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside string.
+deleted,delete,no,,standalone,No supported inflection rule safely maps this word to delete.
+embedded,embed,yes,,standalone,WordNet records an independent sense alongside embed.
+corps,corp,yes,,standalone,WordNet records an independent sense alongside corp.
+picked,pick,no,VBD|VB|VBN,standalone,Past-tense form has an independent lexical role alongside pick.
+assumed,assume,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside assume.
+killing,kill,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside kill.
+aging,age,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside age.
+diving,dive,yes,,standalone,WordNet records an independent sense alongside dive.
+younger,young,yes,JJR,standalone,WordNet records an independent sense alongside young.
+mills,mill,yes,NNS,standalone,WordNet records an independent sense alongside mill.
+jeans,jean,yes,NNS,standalone,WordNet records an independent sense alongside jean.
+fonts,font,no,,standalone,No supported inflection rule safely maps this word to font.
+sleeping,sleep,yes,VBG|NN,standalone,WordNet records an independent sense alongside sleep.
+tracked,track,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside track.
+framed,frame,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside frame.
+declared,declare,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside declare.
+florists,florist,no,,standalone,No supported inflection rule safely maps this word to florist.
+cycling,cycle,yes,NN|VBG,standalone,WordNet records an independent sense alongside cycle.
+spoke,speak,yes,VBD|NN,standalone,WordNet records an independent sense alongside speak.
+sampling,sample,yes,NN|VBG,standalone,WordNet records an independent sense alongside sample.
+inspired,inspire,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside inspire.
+meters,meter,no,NNS|NN,standalone,Plural form has an independent lexical role alongside meter.
+feeding,feed,yes,VBG|NN,standalone,WordNet records an independent sense alongside feed.
+skiing,ski,yes,NN|VBG,standalone,WordNet records an independent sense alongside ski.
+feelings,feeling,yes,NNS,standalone,WordNet records an independent sense alongside feeling.
+timing,time,yes,NN|VBG,standalone,WordNet records an independent sense alongside time.
+liked,like,yes,VBD|VBN,standalone,WordNet records an independent sense alongside like.
+outer,out,yes,JJ,standalone,WordNet records an independent sense alongside out.
+nodes,nod|node,no,,target-excluded,"Ambiguous lemmas: nod, node."
+targeted,target,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside target.
+realized,realize,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside realize.
+tired,tire,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside tire.
+coding,cod,yes,NN,standalone,WordNet records an independent sense alongside cod.
+hiking,hike,yes,VBG|NN,standalone,WordNet records an independent sense alongside hike.
+archived,archive,no,,standalone,No supported inflection rule safely maps this word to archive.
+judges,judge,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside judge.
+retired,retire,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside retire.
+detected,detect,yes,VBN|VBD,standalone,WordNet records an independent sense alongside detect.
+pointed,point,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside point.
+causing,cause,yes,VBG|NN,standalone,WordNet records an independent sense alongside cause.
+locked,lock,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside lock.
+steering,steer,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside steer.
+beads,bead,yes,,standalone,WordNet records an independent sense alongside bead.
+fewer,few,yes,JJR|RB|RBR,standalone,WordNet records an independent sense alongside few.
+edwards,edward,yes,,standalone,WordNet records an independent sense alongside edward.
+tagged,tag,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside tag.
+gates,gate,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside gate.
+adjusted,adjust,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside adjust.
+shaped,shape,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside shape.
+coaching,coach,yes,NN|VBG,standalone,WordNet records an independent sense alongside coach.
+encoding,encode,yes,,standalone,WordNet records an independent sense alongside encode.
+painted,paint,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside paint.
+spears,spear,no,,standalone,No supported inflection rule safely maps this word to spear.
+bedding,bed,yes,NN,standalone,WordNet records an independent sense alongside bed.
+joining,join,yes,VBG|NN,standalone,WordNet records an independent sense alongside join.
+heading,head,yes,VBG|NN,standalone,WordNet records an independent sense alongside head.
+bearing,bear,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside bear.
+crossing,cross,yes,VBG|NN,standalone,WordNet records an independent sense alongside cross.
+drunk,drink,yes,JJ|NN|VBN,standalone,WordNet records an independent sense alongside drink.
+resolved,resolve,yes,VBN|VBD,standalone,WordNet records an independent sense alongside resolve.
+broke,break,yes,VBD|VBN|JJ|RB|VB,standalone,WordNet records an independent sense alongside break.
+browsing,browse,yes,,standalone,WordNet records an independent sense alongside browse.
+pixels,pixel,no,,standalone,No supported inflection rule safely maps this word to pixel.
+singing,sing,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside sing.
+starring,star,yes,VBG|JJ,standalone,WordNet records an independent sense alongside star.
+sucking,suck,yes,VBG|NN,standalone,WordNet records an independent sense alongside suck.
+spoken,speak,yes,,standalone,WordNet records an independent sense alongside speak.
+stayed,stay,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside stay.
+watched,watch,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside watch.
+ranging,range,yes,VBG,standalone,WordNet records an independent sense alongside range.
+hanging,hang,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside hang.
+colored,color,yes,JJ|VBN,standalone,WordNet records an independent sense alongside color.
+verified,verify,yes,,standalone,WordNet records an independent sense alongside verify.
+situated,situate,yes,VBN,standalone,WordNet records an independent sense alongside situate.
+loving,love,yes,JJ|VBG,standalone,WordNet records an independent sense alongside love.
+routing,rout,no,VBG|NN,standalone,Participle has an independent lexical role alongside rout.
+gains,gain,no,NNS|NN|VBZ,standalone,Plural form has an independent lexical role alongside gain.
+opposed,oppose,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside oppose.
+scoring,score,yes,VBG|NN,standalone,WordNet records an independent sense alongside score.
+spots,spot,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside spot.
+headed,head,yes,VBN|VBD,standalone,WordNet records an independent sense alongside head.
+repeated,repeat,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside repeat.
+bowling,bowl,yes,NN|VBG,standalone,WordNet records an independent sense alongside bowl.
+faced,face,yes,VBN|VBD,standalone,WordNet records an independent sense alongside face.
+solving,solve,yes,VBG,standalone,WordNet records an independent sense alongside solve.
+chains,chain,yes,NNS,standalone,WordNet records an independent sense alongside chain.
+reaching,reach,yes,VBG|NN,standalone,WordNet records an independent sense alongside reach.
+damaged,damage,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside damage.
+proved,prove,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside prove.
+studying,study,yes,VBG|NN,standalone,WordNet records an independent sense alongside study.
+upgrades,upgrade,no,,standalone,No supported inflection rule safely maps this word to upgrade.
+likes,like,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside like.
+finest,fine,no,,standalone,No supported inflection rule safely maps this word to fine.
+ranked,rank,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside rank.
+packed,pack,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside pack.
+excited,excite,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside excite.
+mounting,mount,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside mount.
+balanced,balance,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside balance.
+delayed,delay,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside delay.
+villas,villa,no,,standalone,No supported inflection rule safely maps this word to villa.
+peeing,pee,yes,,standalone,WordNet records an independent sense alongside pee.
+brooks,brook,yes,,standalone,WordNet records an independent sense alongside brook.
+scanners,scanner,no,,standalone,No supported inflection rule safely maps this word to scanner.
+arranged,arrange,yes,VBN|VBD,standalone,WordNet records an independent sense alongside arrange.
+threaded,thread,yes,VBN,standalone,WordNet records an independent sense alongside thread.
+burns,burn,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside burn.
+peoples,people,yes,NNS,standalone,WordNet records an independent sense alongside people.
+advised,advise,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside advise.
+isolated,isolate,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside isolate.
+assisted,assist,yes,VBN|VBD,standalone,WordNet records an independent sense alongside assist.
+venues,venue,no,,standalone,No supported inflection rule safely maps this word to venue.
+indians,indian,no,,standalone,No supported inflection rule safely maps this word to indian.
+previews,preview,no,,standalone,No supported inflection rule safely maps this word to preview.
+sailing,sail,yes,NN|VBG,standalone,WordNet records an independent sense alongside sail.
+greeting,greet,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside greet.
+scored,score,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside score.
+composed,compose,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside compose.
+tears,tear,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside tear.
+seating,seat,yes,NN|VBG,standalone,WordNet records an independent sense alongside seat.
+loads,load,yes,NNS,standalone,WordNet records an independent sense alongside load.
+frozen,freeze,yes,VBN|JJ,standalone,WordNet records an independent sense alongside freeze.
+occupied,occupy,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside occupy.
+gained,gain,no,VBD|VBN|VB,standalone,Past-tense form has an independent lexical role alongside gain.
+dying,die,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside die.
+stuck,stick,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside stick.
+placing,place,no,VBG|NN,standalone,Participle has an independent lexical role alongside place.
+stops,stop,yes,VBZ|NNS,standalone,WordNet records an independent sense alongside stop.
+enabling,enable,yes,VBG,standalone,WordNet records an independent sense alongside enable.
+filling,fill,yes,VBG|NN,standalone,WordNet records an independent sense alongside fill.
+imposed,impose,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside impose.
+implied,imply,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside imply.
+packing,pack,yes,VBG|NN,standalone,WordNet records an independent sense alongside pack.
+rejected,reject,yes,VBD|VBN,standalone,WordNet records an independent sense alongside reject.
+guided,guide,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside guide.
+logging,log,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside log.
+harder,hard,no,JJR|RBR|JJ|RB,standalone,Comparison form has an independent lexical role alongside hard.
+cheapest,cheap,no,,standalone,No supported inflection rule safely maps this word to cheap.
+staying,stay,no,VBG|JJ|NN,standalone,Participle has an independent lexical role alongside stay.
+landing,land,yes,NN|VBG,standalone,WordNet records an independent sense alongside land.
+signing,sign,yes,VBG|NN,standalone,WordNet records an independent sense alongside sign.
+executed,execute,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside execute.
+spirits,spirit,yes,NNS,standalone,WordNet records an independent sense alongside spirit.
+imported,import,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside import.
+focusing,focus,yes,VBG|NN,standalone,WordNet records an independent sense alongside focus.
+admitted,admit,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside admit.
+stickers,sticker,no,,standalone,No supported inflection rule safely maps this word to sticker.
+leasing,lease,no,NN|VBG,standalone,Participle has an independent lexical role alongside lease.
+wages,wage,yes,NNS,standalone,WordNet records an independent sense alongside wage.
+updating,update,yes,VBG|NN,standalone,WordNet records an independent sense alongside update.
+confused,confuse,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside confuse.
+eagles,eagle,no,,standalone,No supported inflection rule safely maps this word to eagle.
+accused,accuse,yes,VBN|VBD|JJ|NN,standalone,WordNet records an independent sense alongside accuse.
+packets,packet,no,,standalone,No supported inflection rule safely maps this word to packet.
+gathered,gather,yes,VBD|VBN,standalone,WordNet records an independent sense alongside gather.
+folders,folder,no,,standalone,No supported inflection rule safely maps this word to folder.
+routers,router,no,,standalone,No supported inflection rule safely maps this word to router.
+hiring,hire,no,VBG|NN,standalone,Participle has an independent lexical role alongside hire.
+clocks,clock,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside clock.
+chicks,chick,no,,standalone,No supported inflection rule safely maps this word to chick.
+assuming,assume,yes,VBG,standalone,WordNet records an independent sense alongside assume.
+floating,float,yes,VBG|JJ,standalone,WordNet records an independent sense alongside float.
+alleged,allege,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside allege.
+struck,strike,yes,VBD|VBN,standalone,WordNet records an independent sense alongside strike.
+stunning,stun,yes,,standalone,WordNet records an independent sense alongside stun.
+fastest,fast,yes,,standalone,WordNet records an independent sense alongside fast.
+injured,injure,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside injure.
+uploaded,upload,no,,standalone,No supported inflection rule safely maps this word to upload.
+americas,america,no,,standalone,No supported inflection rule safely maps this word to america.
+wired,wire,yes,VBN|VBD,standalone,WordNet records an independent sense alongside wire.
+infected,infect,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside infect.
+letting,let,yes,VBG|NN,standalone,WordNet records an independent sense alongside let.
+boxing,box,yes,NN,standalone,WordNet records an independent sense alongside box.
+menus,menu,no,,standalone,No supported inflection rule safely maps this word to menu.
+lying,lie,yes,VBG|NN,standalone,WordNet records an independent sense alongside lie.
+washing,wash,yes,VBG|NN,standalone,WordNet records an independent sense alongside wash.
+staffing,staff,no,,standalone,No supported inflection rule safely maps this word to staff.
+ruling,rule,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside rule.
+enrolled,enrol,no,VBN|VBD|JJ,standalone,Past-tense form has an independent lexical role alongside enrol.
+handed,hand,yes,VBD|VBN,standalone,WordNet records an independent sense alongside hand.
+swingers,swinger,no,,standalone,No supported inflection rule safely maps this word to swinger.
+headers,header,no,,standalone,No supported inflection rule safely maps this word to header.
+defining,define,yes,VBG,standalone,WordNet records an independent sense alongside define.
+counting,count,yes,VBG|NN,standalone,WordNet records an independent sense alongside count.
+devoted,devote,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside devote.
+bridges,bridge,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside bridge.
+casting,cast,yes,VBG|NN,standalone,WordNet records an independent sense alongside cast.
+scanning,scan,yes,NN|VBG,standalone,WordNet records an independent sense alongside scan.
+copying,copy,yes,NN|VBG,standalone,WordNet records an independent sense alongside copy.
+fired,fire,yes,VBN|VBD,standalone,WordNet records an independent sense alongside fire.
+trivia,trivium,yes,,standalone,WordNet records an independent sense alongside trivium.
+kissing,kiss,yes,VBG,standalone,WordNet records an independent sense alongside kiss.
+plumbing,plumb,yes,,standalone,WordNet records an independent sense alongside plumb.
+handled,handle,yes,VBN|VBD,standalone,WordNet records an independent sense alongside handle.
+farming,farm,yes,NN|VBG,standalone,WordNet records an independent sense alongside farm.
+mixing,mix,yes,VBG|NN,standalone,WordNet records an independent sense alongside mix.
+fitted,fit,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside fit.
+twins,twin,yes,NNS,standalone,WordNet records an independent sense alongside twin.
+escorts,escort,no,,standalone,No supported inflection rule safely maps this word to escort.
+knives,knife,no,,standalone,No supported inflection rule safely maps this word to knife.
+honors,honor,no,NNS|VBZ|JJ,standalone,Plural form has an independent lexical role alongside honor.
+unified,unify,yes,,standalone,WordNet records an independent sense alongside unify.
+bones,bone,yes,NNS,standalone,WordNet records an independent sense alongside bone.
+ignored,ignore,yes,VBN|VBD,standalone,WordNet records an independent sense alongside ignore.
+fallen,fall,yes,VBN|JJ,standalone,WordNet records an independent sense alongside fall.
+backed,back,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside back.
+motels,motel,no,,standalone,No supported inflection rule safely maps this word to motel.
+forming,form,no,VBG|NN,standalone,Participle has an independent lexical role alongside form.
+browsers,browser,no,,standalone,No supported inflection rule safely maps this word to browser.
+surfing,surf,yes,,standalone,WordNet records an independent sense alongside surf.
+optics,optic,yes,,standalone,WordNet records an independent sense alongside optic.
+ellis,elli,no,,standalone,No supported inflection rule safely maps this word to elli.
+lending,lend,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside lend.
+mobiles,mobile,no,,standalone,No supported inflection rule safely maps this word to mobile.
+allied,ally,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside ally.
+tablets,tablet,no,,standalone,No supported inflection rule safely maps this word to tablet.
+tuning,tune,yes,VBG|NN,standalone,WordNet records an independent sense alongside tune.
+wanting,want,yes,VBG,standalone,WordNet records an independent sense alongside want.
+trustees,trustee,no,,standalone,No supported inflection rule safely maps this word to trustee.
+watts,watt,yes,,standalone,WordNet records an independent sense alongside watt.
+reprints,reprint,no,,standalone,No supported inflection rule safely maps this word to reprint.
+midlands,midland,no,,standalone,No supported inflection rule safely maps this word to midland.
+mailed,mail,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside mail.
+spelling,spell,yes,NN|VBG,standalone,WordNet records an independent sense alongside spell.
+quarters,quarter,yes,NNS,standalone,WordNet records an independent sense alongside quarter.
+stolen,steal,no,VBN|JJ,standalone,Past-tense form has an independent lexical role alongside steal.
+naturals,natural,no,,standalone,No supported inflection rule safely maps this word to natural.
+fitting,fit,yes,JJ|NN|VBG,standalone,WordNet records an independent sense alongside fit.
+fixtures,fixture,no,,standalone,No supported inflection rule safely maps this word to fixture.
+bloggers,blogger,no,,standalone,No supported inflection rule safely maps this word to blogger.
+zoning,zone,yes,NN|VBG,standalone,WordNet records an independent sense alongside zone.
+flooring,floor,yes,NN,standalone,WordNet records an independent sense alongside floor.
+caring,care,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside care.
+buried,bury,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside bury.
+defects,defect,no,,standalone,No supported inflection rule safely maps this word to defect.
+settled,settle,yes,VBD|VBN|JJ|VB,standalone,WordNet records an independent sense alongside settle.
+folding,fold,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside fold.
+emirates,emirate,no,,standalone,No supported inflection rule safely maps this word to emirate.
+promised,promise,no,VBD|JJ|VBN,standalone,Past-tense form has an independent lexical role alongside promise.
+newer,new,no,,standalone,No supported inflection rule safely maps this word to new.
+cooler,cool,yes,,standalone,WordNet records an independent sense alongside cool.
+breeding,breed,yes,,standalone,WordNet records an independent sense alongside breed.
+breeds,breed,no,,standalone,No supported inflection rule safely maps this word to breed.
+rapids,rapid,no,,standalone,No supported inflection rule safely maps this word to rapid.
+cleaners,cleaner,yes,,standalone,WordNet records an independent sense alongside cleaner.
+cashiers,cashier,no,,standalone,No supported inflection rule safely maps this word to cashier.
+varied,vary,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside vary.
+closest,close,yes,JJS,standalone,WordNet records an independent sense alongside close.
+tigers,tiger,yes,,standalone,WordNet records an independent sense alongside tiger.
+matched,match,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside match.
+chambers,chamber,yes,NNS,standalone,WordNet records an independent sense alongside chamber.
+warming,warm,yes,NN|VBG,standalone,WordNet records an independent sense alongside warm.
+deeper,deep,no,JJR|RBR|RB,standalone,Comparison form has an independent lexical role alongside deep.
+muslims,muslim,no,,standalone,No supported inflection rule safely maps this word to muslim.
+saints,saint,no,,standalone,No supported inflection rule safely maps this word to saint.
+regarded,regard,no,VBN|JJ|VBD,standalone,Past-tense form has an independent lexical role alongside regard.
+outlined,outline,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside outline.
+queens,queen,yes,NNS,standalone,WordNet records an independent sense alongside queen.
+insured,insure,yes,VBN|VBD|JJ|NN,standalone,WordNet records an independent sense alongside insure.
+wrapping,wrap,yes,VBG|NN,standalone,WordNet records an independent sense alongside wrap.
+realtors,realtor,no,,standalone,No supported inflection rule safely maps this word to realtor.
+adapted,adapt,yes,VBN|VBD,standalone,WordNet records an independent sense alongside adapt.
+failing,fail,yes,VBG|NN,standalone,WordNet records an independent sense alongside fail.
+retained,retain,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside retain.
+andrews,andrew,yes,,standalone,WordNet records an independent sense alongside andrew.
+briefing,brief,yes,NN|VBG,standalone,WordNet records an independent sense alongside brief.
+solved,solve,yes,VBN|VBD,standalone,WordNet records an independent sense alongside solve.
+consoles,console,no,,standalone,No supported inflection rule safely maps this word to console.
+posing,pose,yes,VBG,standalone,WordNet records an independent sense alongside pose.
+graphs,graph,no,,standalone,No supported inflection rule safely maps this word to graph.
+finances,finance,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside finance.
+worried,worry,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside worry.
+boring,bore,yes,JJ|VBG|NN,standalone,WordNet records an independent sense alongside bore.
+quizzes,quiz,no,,standalone,No supported inflection rule safely maps this word to quiz.
+typing,type,yes,NN|VBG,standalone,WordNet records an independent sense alongside type.
+pointing,point,no,VBG|NN,standalone,Participle has an independent lexical role alongside point.
+coupled,couple,yes,VBN|VBD,standalone,WordNet records an independent sense alongside couple.
+handbags,handbag,no,,standalone,No supported inflection rule safely maps this word to handbag.
+euros,euro,no,,standalone,No supported inflection rule safely maps this word to euro.
+pirates,pirate,no,,standalone,No supported inflection rule safely maps this word to pirate.
+hired,hire,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside hire.
+licking,lick,yes,,standalone,WordNet records an independent sense alongside lick.
+lasting,last,yes,VBG|JJ,standalone,WordNet records an independent sense alongside last.
+webcams,webcam,no,,standalone,No supported inflection rule safely maps this word to webcam.
+twisted,twist,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside twist.
+blessed,bless,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside bless.
+banners,banner,no,,standalone,No supported inflection rule safely maps this word to banner.
+beats,beat,yes,VBZ|NNS,standalone,WordNet records an independent sense alongside beat.
+valued,value,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside value.
+dried,dry,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside dry.
+stopping,stop,yes,VBG|NN,standalone,WordNet records an independent sense alongside stop.
+knights,knight,no,,standalone,No supported inflection rule safely maps this word to knight.
+altered,alter,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside alter.
+sewing,sew,yes,,standalone,WordNet records an independent sense alongside sew.
+lighter,light,yes,,standalone,WordNet records an independent sense alongside light.
+advisors,advisor,no,,standalone,No supported inflection rule safely maps this word to advisor.
+tactics,tactic,yes,NNS,standalone,WordNet records an independent sense alongside tactic.
+shorter,short,no,,standalone,No supported inflection rule safely maps this word to short.
+refined,refine,yes,,standalone,WordNet records an independent sense alongside refine.
+rolled,roll,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside roll.
+blocked,block,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside block.
+lesser,less,yes,,standalone,WordNet records an independent sense alongside less.
+pressing,press,yes,VBG|JJ,standalone,WordNet records an independent sense alongside press.
+dressed,dress,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside dress.
+dealt,deal,no,,standalone,No supported inflection rule safely maps this word to deal.
+thrown,throw,yes,VBN,standalone,WordNet records an independent sense alongside throw.
+prepaid,prepay,yes,,standalone,WordNet records an independent sense alongside prepay.
+analyzed,analyze,yes,VBN|VBD,standalone,WordNet records an independent sense alongside analyze.
+varying,vary,yes,VBG|JJ,standalone,WordNet records an independent sense alongside vary.
+remedies,remedy,no,,standalone,No supported inflection rule safely maps this word to remedy.
+weighted,weight,yes,JJ|VBD|VBN,standalone,WordNet records an independent sense alongside weight.
+coating,coat,yes,NN|VBG,standalone,WordNet records an independent sense alongside coat.
+cleared,clear,yes,VBN|VBD,standalone,WordNet records an independent sense alongside clear.
+boating,boat,yes,NN|VBG,standalone,WordNet records an independent sense alongside boat.
+clearing,clear,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside clear.
+coated,coat,yes,VBN|JJ,standalone,WordNet records an independent sense alongside coat.
+hitting,hit,yes,VBG|NN,standalone,WordNet records an independent sense alongside hit.
+striking,strike,yes,JJ|VBG,standalone,WordNet records an independent sense alongside strike.
+podcasts,podcast,no,,standalone,No supported inflection rule safely maps this word to podcast.
+assured,assure,yes,VBN|VBD|JJ|NN,standalone,WordNet records an independent sense alongside assure.
+wives,wife|wive,no,,target-excluded,"Ambiguous lemmas: wife, wive."
+framing,frame,yes,NN|VBG,standalone,WordNet records an independent sense alongside frame.
+blocking,block,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside block.
+limiting,limit,yes,VBG,standalone,WordNet records an independent sense alongside limit.
+chargers,charger,no,,standalone,No supported inflection rule safely maps this word to charger.
+dozens,dozen,yes,NNS,standalone,WordNet records an independent sense alongside dozen.
+picking,pick,yes,VBG|NN,standalone,WordNet records an independent sense alongside pick.
+laden,lade,yes,,standalone,WordNet records an independent sense alongside lade.
+pushing,push,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside push.
+dressing,dress,yes,NN|VBG|JJ,standalone,WordNet records an independent sense alongside dress.
+craps,crap,yes,,standalone,WordNet records an independent sense alongside crap.
+drilling,drill,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside drill.
+wiring,wire,yes,NN|VBG,standalone,WordNet records an independent sense alongside wire.
+laughing,laugh,yes,VBG|JJ|NN,standalone,WordNet records an independent sense alongside laugh.
+hostels,hostel,no,,standalone,No supported inflection rule safely maps this word to hostel.
+banned,ban,yes,VBN|VBD,standalone,WordNet records an independent sense alongside ban.
+briefs,brief,yes,NNS,standalone,WordNet records an independent sense alongside brief.
+wrapped,wrap,yes,VBN|VBD,standalone,WordNet records an independent sense alongside wrap.
+centered,center,yes,VBN|VBD,standalone,WordNet records an independent sense alongside center.
+wound,wind,yes,NN|VBD|VBN|VB,standalone,WordNet records an independent sense alongside wind.
+writings,writing,yes,NNS,standalone,WordNet records an independent sense alongside writing.
+charging,charge,no,VBG|NN,standalone,Participle has an independent lexical role alongside charge.
+lined,line,yes,VBN|VBD|JJ,standalone,WordNet records an independent sense alongside line.
+rangers,ranger,no,,standalone,No supported inflection rule safely maps this word to ranger.
+boxed,box,yes,VBN,standalone,WordNet records an independent sense alongside box.
+labeled,label,yes,VBN|VBD,standalone,WordNet records an independent sense alongside label.
+marking,mark,yes,VBG|NN,standalone,WordNet records an independent sense alongside mark.
+highways,highway,no,NNS|JJ,standalone,Plural form has an independent lexical role alongside highway.
+longest,long,yes,,standalone,WordNet records an independent sense alongside long.
+dentists,dentist,no,,standalone,No supported inflection rule safely maps this word to dentist.
+flyer,fly,yes,,standalone,WordNet records an independent sense alongside fly.
+baking,bake,yes,NN|VBG,standalone,WordNet records an independent sense alongside bake.
+computed,compute,no,VBN|JJ,standalone,Past-tense form has an independent lexical role alongside compute.
+brakes,brake,yes,NNS|VBZ,standalone,WordNet records an independent sense alongside brake.
+blowing,blow,yes,VBG|NN,standalone,WordNet records an independent sense alongside blow.
+heated,heat,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside heat.
+learners,learner,no,,standalone,No supported inflection rule safely maps this word to learner.
+seekers,seeker,no,,standalone,No supported inflection rule safely maps this word to seeker.
+suited,suit,yes,VBN|VBD,standalone,WordNet records an independent sense alongside suit.
+skating,skate,yes,,standalone,WordNet records an independent sense alongside skate.
+educated,educate,yes,VBN|JJ,standalone,WordNet records an independent sense alongside educate.
+pulling,pull,yes,VBG,standalone,WordNet records an independent sense alongside pull.
+touring,tour,no,VBG|JJ|NN,standalone,Participle has an independent lexical role alongside tour.
+expired,expire,yes,VBD|VBN|JJ,standalone,WordNet records an independent sense alongside expire.
+hayes,hay,yes,,standalone,WordNet records an independent sense alongside hay.
+johns,john,yes,,standalone,WordNet records an independent sense alongside john.
+valves,valve,no,,standalone,No supported inflection rule safely maps this word to valve.
+impaired,impair,yes,,standalone,WordNet records an independent sense alongside impair.
+dryer,dry,yes,,standalone,WordNet records an independent sense alongside dry.
+ruled,rule,yes,VBD|VBN,standalone,WordNet records an independent sense alongside rule.
+mpegs,mpeg,no,,standalone,No supported inflection rule safely maps this word to mpeg.
+charming,charm,yes,JJ,standalone,WordNet records an independent sense alongside charm.
+annoying,annoy,yes,,standalone,WordNet records an independent sense alongside annoy.
+stays,stay,yes,VBZ|NNS,standalone,WordNet records an independent sense alongside stay.
+drove,drive,yes,VBD|NN,standalone,WordNet records an independent sense alongside drive.
+titled,title,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside title.
+bleeding,bleed,yes,,standalone,WordNet records an independent sense alongside bleed.
+engaging,engage,yes,VBG|JJ,standalone,WordNet records an independent sense alongside engage.
+welding,weld,yes,,standalone,WordNet records an independent sense alongside weld.
+deferred,defer,no,,standalone,No supported inflection rule safely maps this word to defer.
+condos,condo,no,,standalone,No supported inflection rule safely maps this word to condo.
+polished,polish,yes,,standalone,WordNet records an independent sense alongside polish.
+locking,lock,yes,JJ|VBG,standalone,WordNet records an independent sense alongside lock.
+simpsons,simpson,no,,standalone,No supported inflection rule safely maps this word to simpson.
+flashers,flasher,no,,standalone,No supported inflection rule safely maps this word to flasher.
+backing,back,yes,VBG|NN,standalone,WordNet records an independent sense alongside back.
+figured,figure,yes,VBD|JJ|VBN,standalone,WordNet records an independent sense alongside figure.
+enclosed,enclose,yes,,standalone,WordNet records an independent sense alongside enclose.
+cooked,cook,yes,VBN|VBD,standalone,WordNet records an independent sense alongside cook.
+pressed,press,yes,VBN|VBD,standalone,WordNet records an independent sense alongside press.
+textiles,textile,no,,standalone,No supported inflection rule safely maps this word to textile.
+closes,close,no,VBZ|NNS|NN,standalone,Plural form has an independent lexical role alongside close.
+modems,modem,no,,standalone,No supported inflection rule safely maps this word to modem.
+earning,earn,no,VBG|NN,standalone,Participle has an independent lexical role alongside earn.
+movers,mover,no,,standalone,No supported inflection rule safely maps this word to mover.
+switched,switch,no,VBD|VBN|JJ,standalone,Past-tense form has an independent lexical role alongside switch.
+grams,gram,no,,standalone,No supported inflection rule safely maps this word to gram.
+viewers,viewer,yes,NNS,standalone,WordNet records an independent sense alongside viewer.
+throwing,throw,no,VBG|NN,standalone,Participle has an independent lexical role alongside throw.
+stripes,stripe,yes,,standalone,WordNet records an independent sense alongside stripe.
+jumping,jump,yes,VBG|NN,standalone,WordNet records an independent sense alongside jump.
+shades,shade,yes,NNS,standalone,WordNet records an independent sense alongside shade.
+earliest,early,yes,,standalone,WordNet records an independent sense alongside early.
+stuffed,stuff,yes,,standalone,WordNet records an independent sense alongside stuff.
+bored,bore,yes,VBN|JJ|VBD,standalone,WordNet records an independent sense alongside bore.
+knitting,knit,yes,,standalone,WordNet records an independent sense alongside knit.
+mating,mat,yes,NN|JJ|VBG,standalone,WordNet records an independent sense alongside mat.
+fares,fare,no,NNS|NN|VBZ,standalone,Plural form has an independent lexical role alongside fare.
+safer,safe,no,,standalone,No supported inflection rule safely maps this word to safe.
+touched,touch,yes,VBD|VBN,standalone,WordNet records an independent sense alongside touch.
+wishing,wish,yes,VBG|NN,standalone,WordNet records an independent sense alongside wish.
+smallest,small,no,,standalone,No supported inflection rule safely maps this word to small.
+scared,scar,yes,VBN|JJ|RB|VBD,standalone,WordNet records an independent sense alongside scar.

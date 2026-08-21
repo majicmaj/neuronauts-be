@@ -6,6 +6,7 @@ The authoritative multiplayer game server for [Neuronauts](https://github.com/ma
 
 - Socket.IO lobbies with unique random call signs and editable player names
 - Server-authoritative guesses, attribution, wins, and shared state
+- Versioned concept families for safe inflections and spelling variants, with canonical targets, rankings, hints, and duplicate recall
 - Linear semantic scores calibrated from each target's background cosine floor, with ordinal rank retained as separate context
 - Semantic-midpoint hints with a 60-second per-lobby cooldown
 - Stable vector positions whose radius matches the displayed semantic score
@@ -38,11 +39,14 @@ Useful environment variables:
 Quality checks:
 
 ```bash
+npm run lexicon:check
 npm test
 npm audit --omit=dev
 ```
 
-The tests use small in-memory embeddings and include a two-client Socket.IO integration scenario covering unique identities, renaming, attributed guesses, shared hints/cooldowns, and synchronized wins.
+The tests use small in-memory embeddings and include two-client Socket.IO scenarios covering unique identities, concurrent concept aliases, attributed guesses, shared hints/cooldowns, and synchronized wins.
+
+Concept generation, review policy, spelling-source provenance, and override workflow are documented in [`lexicon/README.md`](lexicon/README.md). Runtime containers consume the committed generated JSON files; the linguistic build dependencies remain development-only.
 
 Displayed percentages are not vocabulary percentiles. For each mission, the median cosine similarity of the reference vocabulary establishes the target's 0% background floor, the strongest available non-target word anchors 99.9%, and only the exact target is 100%. Scores are linear through that playable semantic range. The separately displayed `#rank / total` remains useful ordinal context without making every top-decile association look nearly correct.
 

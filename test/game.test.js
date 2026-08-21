@@ -301,3 +301,54 @@ test("rejects invalid, unknown, and duplicate guesses without growing history", 
   assert.equal(game.handleGuess("MOON", PLAYER).code, "duplicate_guess");
   assert.equal(game.getGameState().guessHistory.length, 1);
 });
+
+test("treats spelling variants as one concept and recalls the original result", async () => {
+  const game = new Game({
+    embeddings: { jewelry: [1, 0], moon: [0, 1] },
+    targetWord: "jewellery",
+    commonWords: ["jewellery", "jewelry", "moon"],
+    semanticFloor: 0,
+    semanticCeiling: 1,
+  });
+  await once(game, "ready");
+
+  assert.equal(game.targetWord, "jewelry");
+  const win = game.handleGuess("jewellery", PLAYER);
+  assert.equal(win.ok, true);
+  assert.equal(win.result.guess, "jewelry");
+  assert.equal(win.result.submittedGuess, "jewellery");
+  assert.equal(win.result.transformation, "spelling-variant");
+  assert.equal(win.result.correct, true);
+});
+
+test("returns a structured duplicate when an alias family was already guessed", async () => {
+  const game = new Game({
+    embeddings: { star: [1, 0], jewelry: [0.8, 0.6], moon: [0, 1] },
+    targetWord: "star",
+    commonWords: ["star", "jewellery", "jewelry", "moon"],
+    semanticFloor: 0,
+    semanticCeiling: 1,
+  });
+  await once(game, "ready");
+
+  const original = game.handleGuess("jewelry", PLAYER);
+  const duplicate = game.handleGuess("jewellery", PLAYER);
+  assert.equal(duplicate.ok, false);
+  assert.equal(duplicate.code, "duplicate_guess");
+  assert.equal(duplicate.submittedGuess, "jewellery");
+  assert.equal(duplicate.resolvedGuess, "jewelry");
+  assert.equal(duplicate.transformation, "spelling-variant");
+  assert.equal(duplicate.existingResult.id, original.result.id);
+  assert.equal(game.getGameState().guessHistory.length, 1);
+});
+
+test("selects one canonical target per concept family", async () => {
+  const game = new Game({
+    embeddings: { end: [1, 0], star: [0, 1] },
+    commonWords: ["ending", "end", "star"],
+    random: () => 0,
+  });
+  await once(game, "ready");
+  assert.equal(game.targetWord, "end");
+  assert.equal(game.referenceRanking.filter((entry) => entry.word === "end").length, 1);
+});

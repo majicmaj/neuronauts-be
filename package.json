@@ -4,7 +4,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "lexicon:build": "node scripts/build-concept-lexicon.js",
+    "lexicon:check": "node scripts/build-concept-lexicon.js --check"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +19,10 @@
     "stream-json": "^1.9.1"
   },
   "devDependencies": {
+    "american-british-english-translator": "^0.2.1",
     "nodemon": "^3.1.14",
-    "socket.io-client": "^4.8.3"
+    "socket.io-client": "^4.8.3",
+    "wink-lemmatizer": "^3.0.4",
+    "wink-lexicon": "^2.2.0"
   }
 }

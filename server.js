@@ -384,6 +384,14 @@ function createGameServer(options = {}) {
     });
   }
 
+  function replyToGuess(socket, acknowledge, response) {
+    if (typeof acknowledge === "function") {
+      acknowledge(response);
+      return;
+    }
+    if (!response.ok) emitActionError(socket, response);
+  }
+
   app.get("/health", (_req, res) => {
     const status = options.skipEmbeddingsBootstrap
       ? { ready: true, loading: false, error: null, file: "in-memory" }
@@ -595,10 +603,11 @@ function createGameServer(options = {}) {
       emitTyping(lobby);
     });
 
-    socket.on("guess", (payload = {}) => {
+    socket.on("guess", (payload = {}, acknowledge) => {
       const lobby = getSocketLobby(socket, payload.lobbyId);
       if (!lobby) {
-        emitActionError(socket, {
+        replyToGuess(socket, acknowledge, {
+          ok: false,
           error: "Join the lobby before guessing.",
           code: "not_in_lobby",
         });
@@ -606,7 +615,8 @@ function createGameServer(options = {}) {
       }
       const now = Date.now();
       if (now - socket.data.lastGuessAt < limits.guessRateLimitMs) {
-        emitActionError(socket, {
+        replyToGuess(socket, acknowledge, {
+          ok: false,
           error: "Easy, explorer—wait a moment before guessing again.",
           code: "guess_rate_limited",
         });
@@ -617,11 +627,12 @@ function createGameServer(options = {}) {
       if (lobby.typingPlayerIds.delete(socket.id)) emitTyping(lobby);
       const response = lobby.game.handleGuess(payload.guess, player);
       if (!response.ok) {
-        emitActionError(socket, response);
+        replyToGuess(socket, acknowledge, response);
         return;
       }
       updateLobbyActivity(lobby);
       io.to(lobby.lobbyId).emit("guessResult", response.result);
+      replyToGuess(socket, acknowledge, response);
       if (response.result.correct) {
         lobby.typingPlayerIds.clear();
         emitTyping(lobby);

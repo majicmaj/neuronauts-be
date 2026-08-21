@@ -1,0 +1,77 @@
+{
+  "aliases": {
+    "conditions": {
+      "canonical": "condition",
+      "transformation": "plural",
+      "reason": "Ordinary count plural with no gameplay-relevant concept split."
+    },
+    "climbing": {
+      "canonical": "climb",
+      "transformation": "participle",
+      "reason": "Keep the mission focused on the base concept instead of a near-identical activity form."
+    },
+    "ending": {
+      "canonical": "end",
+      "transformation": "participle",
+      "reason": "Avoid separate near-perfect targets for end and ending."
+    },
+    "feet": {
+      "canonical": "foot",
+      "transformation": "plural",
+      "reason": "Unambiguous irregular plural."
+    },
+    "geese": {
+      "canonical": "goose",
+      "transformation": "plural",
+      "reason": "Unambiguous irregular plural."
+    },
+    "men": {
+      "canonical": "man",
+      "transformation": "plural",
+      "reason": "Unambiguous irregular plural."
+    },
+    "mice": {
+      "canonical": "mouse",
+      "transformation": "plural",
+      "reason": "Unambiguous irregular plural."
+    },
+    "teeth": {
+      "canonical": "tooth",
+      "transformation": "plural",
+      "reason": "Unambiguous irregular plural."
+    }
+  },
+  "standalone": {
+    "building": "A dominant concrete noun distinct from the act of building.",
+    "clothes": "A plural-only concept, not an alias of clothe or cloth.",
+    "cleaner": "A person, device, or product distinct from the comparison form of clean.",
+    "closer": "A person or role that closes something, distinct from the comparison form of close.",
+    "contents": "The items inside something, distinct from the broader singular senses of content.",
+    "customs": "A border and import-control concept distinct from custom.",
+    "damages": "A legal-compensation concept distinct from ordinary damage.",
+    "dynamics": "A systems-behavior concept distinct from the adjective dynamic.",
+    "engineering": "An established discipline distinct from engineer.",
+    "glasses": "A dominant eyewear concept distinct from glass.",
+    "goods": "A merchandise concept distinct from the adjective good.",
+    "graphics": "A visual-media field distinct from one graphic.",
+    "humanities": "A group of academic disciplines distinct from humanity.",
+    "marketing": "An established discipline distinct from market.",
+    "manners": "An etiquette concept distinct from a manner or method.",
+    "premises": "A property concept distinct from a logical premise.",
+    "proceeds": "Revenue received from a transaction, distinct from the verb proceed.",
+    "proceedings": "A published or legal record distinct from one proceeding.",
+    "remains": "Physical remnants or a body, distinct from the verb remain.",
+    "savings": "Accumulated funds distinct from the act of saving.",
+    "shorts": "A garment concept distinct from the adjective short.",
+    "statistics": "An academic field distinct from one statistic.",
+    "stranger": "An unknown person, distinct from the comparison form of strange.",
+    "thanks": "An expression of gratitude distinct from the verb thank.",
+    "works": "A collection or facility concept distinct from work."
+  },
+  "spellingVariantExcluded": {
+    "metre": "Meter also names a measuring device; merging the unsensed embeddings could solve the wrong concept.",
+    "programme": "Program also has a software sense that programme does not reliably share.",
+    "tyre": "Tire also has a fatigue verb sense that tyre does not share."
+  },
+  "targetExcluded": {}
+}

@@ -2,6 +2,7 @@ const EventEmitter = require("events");
 const crypto = require("crypto");
 const embeddingsManager = require("./utils/embeddingsManager");
 const defaultCommonWords = require("./words.json");
+const { defaultConceptLexicon } = require("./conceptLexicon");
 
 const DEFAULT_HINT_COOLDOWN_MS = 60_000;
 const DEFAULT_HISTORY_LIMIT = 1_000;
@@ -63,6 +64,7 @@ class Game extends EventEmitter {
     this.normalizedTargetEmbedding = null;
     this.guessHistory = [];
     this.guessedWords = new Set();
+    this.guessResultByWord = new Map();
     this.embeddings = null;
     this.status = "loading";
     this.error = null;
@@ -80,6 +82,7 @@ class Game extends EventEmitter {
     this.participants = new Map();
 
     this.commonWords = options.commonWords || defaultCommonWords;
+    this.conceptLexicon = options.conceptLexicon || defaultConceptLexicon;
     this.forcedTargetWord = options.targetWord || null;
     this.random = options.random || Math.random;
     this.now = options.now || Date.now;
@@ -130,18 +133,31 @@ class Game extends EventEmitter {
   selectTargetWord() {
     if (this.forcedTargetWord) {
       const forced = normalizeGuess(this.forcedTargetWord);
-      if (forced && this.getEmbedding(forced)) return forced;
+      const resolved = forced ? this.conceptLexicon.resolve(forced) : null;
+      if (resolved && this.getEmbedding(resolved.canonicalWord)) {
+        return resolved.canonicalWord;
+      }
       throw new Error(`Forced target word is unavailable: ${this.forcedTargetWord}`);
     }
 
-    const maxAttempts = Math.max(100, this.commonWords.length * 2);
-    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
-      const index = Math.floor(this.random() * this.commonWords.length);
-      const word = normalizeGuess(this.commonWords[index]);
-      if (word && this.getEmbedding(word)) return word;
+    const candidates = [];
+    const seen = new Set();
+    for (const rawWord of this.commonWords) {
+      const surfaceWord = normalizeGuess(rawWord);
+      if (!surfaceWord) continue;
+      const word = this.conceptLexicon.resolve(surfaceWord).canonicalWord;
+      if (
+        seen.has(word) ||
+        !this.conceptLexicon.isConceptTargetEligible(word) ||
+        !this.getEmbedding(word)
+      ) {
+        continue;
+      }
+      seen.add(word);
+      candidates.push(word);
     }
-
-    return this.commonWords.find((word) => this.getEmbedding(word)) || null;
+    if (!candidates.length) return null;
+    return candidates[Math.floor(this.random() * candidates.length)];
   }
 
   getEmbedding(word) {
@@ -168,7 +184,9 @@ class Game extends EventEmitter {
     this.referenceRanking = [];
 
     for (const rawWord of this.commonWords) {
-      const word = normalizeGuess(rawWord);
+      const surfaceWord = normalizeGuess(rawWord);
+      if (!surfaceWord) continue;
+      const word = this.conceptLexicon.resolve(surfaceWord).canonicalWord;
       if (!word || seen.has(word)) continue;
       seen.add(word);
       const embedding = this.getEmbedding(word);
@@ -292,7 +310,15 @@ class Game extends EventEmitter {
     return participant;
   }
 
-  makeResult({ word, embedding, player, isHint = false, hintFrom = null }) {
+  makeResult({
+    word,
+    embedding,
+    player,
+    isHint = false,
+    hintFrom = null,
+    submittedGuess = word,
+    transformation = null,
+  }) {
     const participant = this.registerPlayer(player);
     const cosineSimilarity = this.cosineSimilarity(
       this.targetEmbedding,
@@ -307,6 +333,9 @@ class Game extends EventEmitter {
     const result = {
       id: `${createdAt}-${this.sequence += 1}`,
       guess: word,
+      conceptKey: word,
+      submittedGuess: submittedGuess !== word ? submittedGuess : undefined,
+      transformation: submittedGuess !== word ? transformation : undefined,
       similarity,
       cosineSimilarity,
       rank,
@@ -333,6 +362,7 @@ class Game extends EventEmitter {
     }
 
     this.guessedWords.add(word);
+    this.guessResultByWord.set(word, result);
     this.guessHistory.push(result);
     if (this.guessHistory.length > this.historyLimit) this.guessHistory.shift();
     return { ok: true, result };
@@ -352,20 +382,50 @@ class Game extends EventEmitter {
       return this.makeError("This word has already been found.", "game_won");
     }
 
-    const word = normalizeGuess(rawGuess);
-    if (!word) {
+    const submittedGuess = normalizeGuess(rawGuess);
+    if (!submittedGuess) {
       return this.makeError("Enter one dictionary word.", "invalid_guess");
     }
-    if (this.guessedWords.has(word)) {
-      return this.makeError(`“${word}” has already been guessed.`, "duplicate_guess");
-    }
 
-    const embedding = this.getEmbedding(word);
+    let resolution = this.conceptLexicon.resolve(submittedGuess);
+    let word = resolution.canonicalWord;
+    let embedding = this.getEmbedding(word);
+    if (!embedding && resolution.transformed) {
+      word = submittedGuess;
+      embedding = this.getEmbedding(word);
+      resolution = {
+        submittedWord: submittedGuess,
+        canonicalWord: submittedGuess,
+        transformed: false,
+        transformation: null,
+      };
+    }
     if (!embedding) {
       return this.makeError("That word is not in the dictionary.", "unknown_word");
     }
+    if (this.guessedWords.has(word)) {
+      return {
+        ...this.makeError(
+          resolution.transformed
+            ? `“${submittedGuess}” resolves to “${word},” which is already in the flight log.`
+            : `“${word}” has already been guessed.`,
+          "duplicate_guess"
+        ),
+        submittedGuess,
+        resolvedGuess: word,
+        transformed: resolution.transformed,
+        transformation: resolution.transformation,
+        existingResult: this.guessResultByWord.get(word) || null,
+      };
+    }
 
-    return this.makeResult({ word, embedding, player });
+    return this.makeResult({
+      word,
+      embedding,
+      player,
+      submittedGuess,
+      transformation: resolution.transformation,
+    });
   }
 
   getBestGuess() {

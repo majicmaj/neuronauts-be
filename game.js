@@ -6,6 +6,7 @@ const defaultCommonWords = require("./words.json");
 const DEFAULT_HINT_COOLDOWN_MS = 60_000;
 const DEFAULT_HISTORY_LIMIT = 1_000;
 const MAX_GUESS_LENGTH = 40;
+const MAX_NON_TARGET_SCORE = 0.999;
 
 function normalizeVector(vector) {
   let magnitudeSquared = 0;
@@ -74,6 +75,8 @@ class Game extends EventEmitter {
     this.referenceRanking = [];
     this.referenceRankByWord = new Map();
     this.rankedWordCount = 0;
+    this.semanticFloor = 0;
+    this.semanticCeiling = 1;
     this.participants = new Map();
 
     this.commonWords = options.commonWords || defaultCommonWords;
@@ -83,6 +86,12 @@ class Game extends EventEmitter {
     this.hintCooldownMs =
       options.hintCooldownMs ?? DEFAULT_HINT_COOLDOWN_MS;
     this.historyLimit = options.historyLimit || DEFAULT_HISTORY_LIMIT;
+    this.configuredSemanticFloor = Number.isFinite(options.semanticFloor)
+      ? options.semanticFloor
+      : null;
+    this.configuredSemanticCeiling = Number.isFinite(options.semanticCeiling)
+      ? options.semanticCeiling
+      : null;
 
     const embeddingsPromise = options.embeddings
       ? Promise.resolve(options.embeddings)
@@ -184,6 +193,25 @@ class Game extends EventEmitter {
       this.referenceRanking.map((entry, index) => [entry.word, index + 1])
     );
     this.rankedWordCount = this.referenceRanking.length;
+    if (this.configuredSemanticFloor !== null) {
+      this.semanticFloor = this.configuredSemanticFloor;
+    } else if (this.rankedWordCount) {
+      const middle = Math.floor(this.rankedWordCount / 2);
+      this.semanticFloor = this.rankedWordCount % 2
+        ? this.referenceRanking[middle].cosineSimilarity
+        : (
+          this.referenceRanking[middle - 1].cosineSimilarity +
+          this.referenceRanking[middle].cosineSimilarity
+        ) / 2;
+    }
+    const strongestAlternative = this.referenceRanking.find(
+      (entry) => entry.word !== this.targetWord
+    );
+    this.semanticCeiling = this.configuredSemanticCeiling ??
+      strongestAlternative?.cosineSimilarity ?? 1;
+    if (this.semanticCeiling <= this.semanticFloor) {
+      this.semanticCeiling = 1;
+    }
   }
 
   getRank(word, cosineSimilarity) {
@@ -203,10 +231,12 @@ class Game extends EventEmitter {
     return Math.max(1, Math.min(this.rankedWordCount, low + 1));
   }
 
-  getScoreForRank(rank) {
-    if (this.rankedWordCount <= 1) return rank === 1 ? 1 : 0;
-    const boundedRank = Math.max(1, Math.min(this.rankedWordCount, rank));
-    return 1 - (boundedRank - 1) / (this.rankedWordCount - 1);
+  getScoreForCosine(cosineSimilarity, correct = false) {
+    if (correct) return 1;
+    const semanticRange = this.semanticCeiling - this.semanticFloor;
+    if (semanticRange <= 0) return 0;
+    const score = (cosineSimilarity - this.semanticFloor) / semanticRange;
+    return Math.max(0, Math.min(MAX_NON_TARGET_SCORE, score));
   }
 
   getPosition(embedding, similarity, word) {
@@ -228,11 +258,11 @@ class Game extends EventEmitter {
       projectedMagnitude = 1;
     }
 
-    // The radial scale matches the displayed rank percentile: a 50% word sits
-    // halfway between the outer boundary and the 100% target. The seeded
+    // The radial scale matches the displayed semantic score: a 50% word sits
+    // halfway between the background floor and the 100% target. The seeded
     // projection still supplies a stable semantic direction in the square.
-    const rankDistance = Math.max(0, Math.min(1, 1 - similarity));
-    const radius = rankDistance * 0.44;
+    const semanticDistance = Math.max(0, Math.min(1, 1 - similarity));
+    const radius = semanticDistance * 0.44;
 
     return {
       x: Number((0.5 + (projectedX / projectedMagnitude) * radius).toFixed(4)),
@@ -271,9 +301,9 @@ class Game extends EventEmitter {
     const rank = word === this.targetWord
       ? 1
       : this.getRank(word, cosineSimilarity);
-    const similarity = this.getScoreForRank(rank);
-    const createdAt = new Date(this.now()).toISOString();
     const correct = word === this.targetWord;
+    const similarity = this.getScoreForCosine(cosineSimilarity, correct);
+    const createdAt = new Date(this.now()).toISOString();
     const result = {
       id: `${createdAt}-${this.sequence += 1}`,
       guess: word,
@@ -341,13 +371,19 @@ class Game extends EventEmitter {
   getBestGuess() {
     return this.guessHistory.reduce((best, guess) => {
       if (guess.similarity === null || guess.correct) return best;
-      return !best || guess.similarity > best.similarity ? guess : best;
+      const isBetter = !best ||
+        guess.similarity > best.similarity ||
+        (
+          guess.similarity === best.similarity &&
+          guess.cosineSimilarity > best.cosineSimilarity
+        );
+      return isBetter ? guess : best;
     }, null);
   }
 
   findHalfwayWord(bestGuess) {
     const bestEmbedding = normalizeVector(this.getEmbedding(bestGuess.guess));
-    const desiredRank = (bestGuess.rank + 1) / 2;
+    const desiredScore = (bestGuess.similarity + 1) / 2;
     const ideal = normalizeVector(
       bestEmbedding.map(
         (value, index) => value + this.normalizedTargetEmbedding[index]
@@ -355,10 +391,10 @@ class Game extends EventEmitter {
     );
 
     const candidates = [];
-    let bestRankError = Infinity;
+    let bestScoreError = Infinity;
 
     for (let index = 0; index < this.referenceRanking.length; index += 1) {
-      const { word } = this.referenceRanking[index];
+      const { word, cosineSimilarity } = this.referenceRanking[index];
       const rank = index + 1;
       if (
         word === this.targetWord ||
@@ -368,12 +404,14 @@ class Game extends EventEmitter {
         continue;
       }
       const embedding = this.getEmbedding(word);
-      const rankError = Math.abs(rank - desiredRank);
-      bestRankError = Math.min(bestRankError, rankError);
+      const similarity = this.getScoreForCosine(cosineSimilarity);
+      if (similarity <= bestGuess.similarity) continue;
+      const scoreError = Math.abs(similarity - desiredScore);
+      bestScoreError = Math.min(bestScoreError, scoreError);
       candidates.push({
         word,
         embedding,
-        rankError,
+        scoreError,
         pathAlignment: this.cosineSimilarity(
           ideal,
           normalizeVector(embedding)
@@ -383,10 +421,10 @@ class Game extends EventEmitter {
 
     if (!candidates.length) return null;
 
-    // Rank distance is the displayed linear scale, so it stays primary. Only
-    // equally close ranks use semantic path alignment as the tie-breaker.
+    // Calibrated semantic distance is the displayed linear scale, so it stays
+    // primary. Equally close scores use path alignment as the tie-breaker.
     return candidates
-      .filter((candidate) => candidate.rankError === bestRankError)
+      .filter((candidate) => candidate.scoreError === bestScoreError)
       .reduce((selected, candidate) => {
         if (!selected || candidate.pathAlignment > selected.pathAlignment) {
           return candidate;
@@ -504,8 +542,26 @@ class Game extends EventEmitter {
           similarity: guess.similarity,
           rank: guess.rank || null,
         };
+      } else if (
+        guess.similarity === stats.bestGuess.similarity &&
+        guess.rank < stats.bestGuess.rank
+      ) {
+        stats.bestGuess = {
+          word: guess.guess,
+          similarity: guess.similarity,
+          rank: guess.rank || null,
+        };
       }
       if (!stats.furthestGuess || guess.similarity < stats.furthestGuess.similarity) {
+        stats.furthestGuess = {
+          word: guess.guess,
+          similarity: guess.similarity,
+          rank: guess.rank || null,
+        };
+      } else if (
+        guess.similarity === stats.furthestGuess.similarity &&
+        guess.rank > stats.furthestGuess.rank
+      ) {
         stats.furthestGuess = {
           word: guess.guess,
           similarity: guess.similarity,
@@ -582,7 +638,13 @@ class Game extends EventEmitter {
     const biggestLeap = byMetric((player) => player.biggestLeap, "max", (player) => player.biggestLeap > 0);
     const closestMissGuess = this.guessHistory.reduce((closest, guess) => {
       if (guess.correct || guess.isHint) return closest;
-      return !closest || guess.similarity > closest.similarity ? guess : closest;
+      const isCloser = !closest ||
+        guess.similarity > closest.similarity ||
+        (
+          guess.similarity === closest.similarity &&
+          guess.cosineSimilarity > closest.cosineSimilarity
+        );
+      return isCloser ? guess : closest;
     }, null);
     const closestMiss = closestMissGuess
       ? players.find((player) => player.playerId === closestMissGuess.playerId)

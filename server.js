@@ -17,6 +17,24 @@ const CLEANUP_INTERVAL_MS = Number(
 const RECENT_EVENTS_LIMIT = Number(process.env.RECENT_EVENTS_LIMIT || 200);
 const GUESS_RATE_LIMIT_MS = Number(process.env.GUESS_RATE_LIMIT_MS || 250);
 const PLAYER_COLOR_COUNT = 12;
+const PLAYER_AVATAR_IDS = [
+  "aqua-cadet",
+  "solar-shades",
+  "cosmic-crown",
+  "heart-hopper",
+  "blue-scout",
+  "tech-ranger",
+  "shark-suit",
+  "space-sheriff",
+  "disco-pilot",
+  "pizza-runner",
+  "star-mage",
+  "mission-coder",
+  "arctic-explorer",
+  "dino-cadet",
+  "shadow-cat",
+  "halo-heart",
+];
 
 const DEFAULT_ORIGINS = [
   "http://localhost:5173",
@@ -60,6 +78,12 @@ function isNameAvailable(lobby, name, exceptSocketId = null) {
   );
 }
 
+function isAvatarAvailable(lobby, avatarId, exceptSocketId = null) {
+  return !Array.from(lobby.players.values()).some(
+    (player) => player.id !== exceptSocketId && player.avatarId === avatarId
+  );
+}
+
 function generatePlayerName(lobby, random = Math.random) {
   const combinations = NAME_ADJECTIVES.length * NAME_ROLES.length;
   const start = Math.floor(random() * combinations);
@@ -80,6 +104,7 @@ function serializePlayers(lobby) {
     name: player.name,
     joinedAt: player.joinedAt,
     colorIndex: player.colorIndex,
+    avatarId: player.avatarId,
   }));
 }
 
@@ -109,8 +134,10 @@ function createGameServer(options = {}) {
   const random = options.random || Math.random;
   const limits = {
     maxLobbies: options.maxLobbies || MAX_LOBBIES,
-    maxPlayersPerLobby:
+    maxPlayersPerLobby: Math.min(
       options.maxPlayersPerLobby || MAX_PLAYERS_PER_LOBBY,
+      PLAYER_AVATAR_IDS.length
+    ),
     staleLobbyMs: options.staleLobbyMs || STALE_LOBBY_MS,
     cleanupIntervalMs: options.cleanupIntervalMs || CLEANUP_INTERVAL_MS,
     recentEventsLimit: options.recentEventsLimit || RECENT_EVENTS_LIMIT,
@@ -156,6 +183,12 @@ function createGameServer(options = {}) {
     });
   }
 
+  function emitTyping(lobby) {
+    io.to(lobby.lobbyId).emit("typingUpdated", {
+      playerIds: Array.from(lobby.typingPlayerIds),
+    });
+  }
+
   function createLobbyRecord(lobbyId) {
     const game = gameFactory();
     const lobby = {
@@ -164,6 +197,8 @@ function createGameServer(options = {}) {
       players: new Map(),
       identityAssignments: new Map(),
       nextColorIndex: 0,
+      nextAvatarIndex: 0,
+      typingPlayerIds: new Set(),
       createdAt: nowIso(),
       lastActivityAt: nowIso(),
       lastActivityMs: Date.now(),
@@ -247,8 +282,23 @@ function createGameServer(options = {}) {
       }
     }
     lobby.nextColorIndex = (colorIndex + 1) % PLAYER_COLOR_COUNT;
+    let avatarId = rememberedIdentity?.avatarId;
+    if (
+      !PLAYER_AVATAR_IDS.includes(avatarId) ||
+      !isAvatarAvailable(lobby, avatarId)
+    ) {
+      for (let offset = 0; offset < PLAYER_AVATAR_IDS.length; offset += 1) {
+        const index = (lobby.nextAvatarIndex + offset) % PLAYER_AVATAR_IDS.length;
+        const candidate = PLAYER_AVATAR_IDS[index];
+        if (isAvatarAvailable(lobby, candidate)) {
+          avatarId = candidate;
+          lobby.nextAvatarIndex = (index + 1) % PLAYER_AVATAR_IDS.length;
+          break;
+        }
+      }
+    }
     const participantId = rememberedIdentity?.participantId || crypto.randomUUID();
-    lobby.identityAssignments.set(colorKey, { colorIndex, participantId });
+    lobby.identityAssignments.set(colorKey, { colorIndex, avatarId, participantId });
 
     const player = {
       id: socket.id,
@@ -256,6 +306,7 @@ function createGameServer(options = {}) {
       name,
       joinedAt: nowIso(),
       colorIndex,
+      avatarId,
     };
     lobby.players.set(socket.id, player);
     lobby.game.registerPlayer(player);
@@ -272,8 +323,10 @@ function createGameServer(options = {}) {
     socket.data.lobbyId = null;
     socket.leave(currentLobbyId);
     if (!lobby || !lobby.players.delete(socket.id)) return;
+    lobby.typingPlayerIds.delete(socket.id);
     updateLobbyActivity(lobby);
     emitPlayers(lobby);
+    emitTyping(lobby);
     recordEvent("lobby_left", {
       lobbyId: currentLobbyId,
       players: lobby.players.size,
@@ -288,6 +341,7 @@ function createGameServer(options = {}) {
       gameState: lobby.game.getGameState(),
       players: serializePlayers(lobby),
       playerCount: lobby.players.size,
+      typingPlayerIds: Array.from(lobby.typingPlayerIds),
     };
   }
 
@@ -451,6 +505,7 @@ function createGameServer(options = {}) {
       lobby.identityAssignments.delete(previousName.toLocaleLowerCase());
       lobby.identityAssignments.set(name.toLocaleLowerCase(), {
         colorIndex: player.colorIndex,
+        avatarId: player.avatarId,
         participantId: player.participantId,
       });
       lobby.game.registerPlayer(player);
@@ -462,6 +517,60 @@ function createGameServer(options = {}) {
         previousName,
         name,
       });
+    });
+
+    socket.on("setPlayerAvatar", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby) {
+        emitActionError(socket, {
+          error: "Join the lobby before changing your avatar.",
+          code: "not_in_lobby",
+        });
+        return;
+      }
+      const avatarId = typeof payload.avatarId === "string" ? payload.avatarId : "";
+      if (!PLAYER_AVATAR_IDS.includes(avatarId)) {
+        emitActionError(socket, {
+          error: "That avatar is not part of this crew roster.",
+          code: "invalid_avatar",
+        });
+        return;
+      }
+      if (!isAvatarAvailable(lobby, avatarId, socket.id)) {
+        emitActionError(socket, {
+          error: "That avatar is already claimed. Pick another one.",
+          code: "avatar_taken",
+        });
+        return;
+      }
+
+      const player = lobby.players.get(socket.id);
+      player.avatarId = avatarId;
+      lobby.identityAssignments.set(player.name.toLocaleLowerCase(), {
+        colorIndex: player.colorIndex,
+        avatarId,
+        participantId: player.participantId,
+      });
+      lobby.game.registerPlayer(player);
+      updateLobbyActivity(lobby);
+      emitPlayers(lobby);
+      socket.emit("playerAvatarChanged", { avatarId });
+      recordEvent("player_avatar_changed", {
+        lobbyId: lobby.lobbyId,
+        playerName: player.name,
+        avatarId,
+      });
+    });
+
+    socket.on("typing", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby) return;
+      const wasTyping = lobby.typingPlayerIds.has(socket.id);
+      const isTyping = payload.isTyping === true && lobby.game.getGameState().status === "playing";
+      if (wasTyping === isTyping) return;
+      if (isTyping) lobby.typingPlayerIds.add(socket.id);
+      else lobby.typingPlayerIds.delete(socket.id);
+      emitTyping(lobby);
     });
 
     socket.on("guess", (payload = {}) => {
@@ -483,6 +592,7 @@ function createGameServer(options = {}) {
       }
       socket.data.lastGuessAt = now;
       const player = lobby.players.get(socket.id);
+      if (lobby.typingPlayerIds.delete(socket.id)) emitTyping(lobby);
       const response = lobby.game.handleGuess(payload.guess, player);
       if (!response.ok) {
         emitActionError(socket, response);
@@ -491,6 +601,8 @@ function createGameServer(options = {}) {
       updateLobbyActivity(lobby);
       io.to(lobby.lobbyId).emit("guessResult", response.result);
       if (response.result.correct) {
+        lobby.typingPlayerIds.clear();
+        emitTyping(lobby);
         io.to(lobby.lobbyId).emit("gameWon", lobby.game.getGameState());
       }
       recordEvent(response.result.correct ? "word_solved" : "guess_made", {

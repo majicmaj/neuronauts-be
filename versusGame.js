@@ -20,6 +20,23 @@ function gradeForScore(score) {
   return "D";
 }
 
+function getTiming(game, nowMs) {
+  const startedMs = game?.startedAt ? Date.parse(game.startedAt) : null;
+  const finishedMs = game?.solvedAt ? Date.parse(game.solvedAt) : null;
+  const elapsedMilliseconds = startedMs === null
+    ? null
+    : Math.max(0, (finishedMs ?? nowMs) - startedMs);
+  const guesses = game?.guessHistory.filter((guess) => !guess.isHint).length || 0;
+  const hints = game?.guessHistory.filter((guess) => guess.isHint).length || 0;
+  const scoreMilliseconds = finishedMs === null || elapsedMilliseconds === null
+    ? null
+    : elapsedMilliseconds
+      + guesses * GUESS_PENALTY_SECONDS * 1_000
+      + hints * HINT_PENALTY_SECONDS * 1_000;
+
+  return { elapsedMilliseconds, scoreMilliseconds };
+}
+
 function summarizeHistory(game, players, nowMs) {
   if (!game) {
     return {
@@ -100,14 +117,9 @@ function summarizeHistory(game, players, nowMs) {
     };
   });
 
-  const startedMs = game.startedAt ? Date.parse(game.startedAt) : null;
-  const finishedMs = game.solvedAt ? Date.parse(game.solvedAt) : null;
-  const elapsedSeconds = startedMs === null
-    ? null
-    : Math.max(0, Math.round(((finishedMs ?? nowMs) - startedMs) / 1_000));
-  const score = finishedMs === null
-    ? null
-    : elapsedSeconds + guesses.length * GUESS_PENALTY_SECONDS + hints.length * HINT_PENALTY_SECONDS;
+  const { elapsedMilliseconds, scoreMilliseconds } = getTiming(game, nowMs);
+  const elapsedSeconds = elapsedMilliseconds === null ? null : Math.round(elapsedMilliseconds / 1_000);
+  const score = scoreMilliseconds === null ? null : Math.round(scoreMilliseconds / 1_000);
 
   return {
     guessCount: guesses.length,
@@ -135,6 +147,7 @@ class VersusGame extends EventEmitter {
     this.startedAt = null;
     this.completedAt = null;
     this.firstFinishTeamId = null;
+    this.error = null;
     this.readyTeams = new Set();
     this.createTeamGame("red");
   }
@@ -143,6 +156,7 @@ class VersusGame extends EventEmitter {
     const game = this.gameFactory(targetWord ? { targetWord } : {});
     this.games.set(teamId, game);
     game.on("ready", () => {
+      if (this.status === "error") return;
       this.readyTeams.add(teamId);
       if (teamId === "red" && !this.games.has("blue")) {
         this.createTeamGame("blue", game.targetWord);
@@ -155,6 +169,7 @@ class VersusGame extends EventEmitter {
     });
     game.on("error", (error) => {
       this.status = "error";
+      this.error = error?.message || String(error);
       this.emit("error", error);
     });
     return game;
@@ -275,11 +290,15 @@ class VersusGame extends EventEmitter {
   getResult(players) {
     if (this.phase !== "complete") return null;
     const standings = TEAM_IDS.map((teamId) => this.getTeamSummary(teamId, players));
+    const preciseTiming = new Map(TEAM_IDS.map((teamId) => [
+      teamId,
+      getTiming(this.games.get(teamId), this.now()),
+    ]));
     standings.sort((a, b) =>
-      a.score - b.score ||
+      preciseTiming.get(a.id).scoreMilliseconds - preciseTiming.get(b.id).scoreMilliseconds ||
       a.hintCount - b.hintCount ||
       a.guessCount - b.guessCount ||
-      a.elapsedSeconds - b.elapsedSeconds ||
+      preciseTiming.get(a.id).elapsedMilliseconds - preciseTiming.get(b.id).elapsedMilliseconds ||
       TEAM_IDS.indexOf(a.id) - TEAM_IDS.indexOf(b.id)
     );
     return {
@@ -309,9 +328,14 @@ class VersusGame extends EventEmitter {
       error: null,
       recap: null,
     };
-    if (this.phase === "setup") gameState.status = this.status === "loading" ? "loading" : "setup";
-    if (this.phase === "playing" && ownGame?.status === "won") gameState.status = "team-finished";
-    if (this.phase === "complete") gameState.status = "won";
+    if (this.status === "error") {
+      gameState.status = "error";
+      gameState.error = this.error || gameState.error || "The semantic model could not be loaded.";
+    } else {
+      if (this.phase === "setup") gameState.status = this.status === "loading" ? "loading" : "setup";
+      if (this.phase === "playing" && ownGame?.status === "won") gameState.status = "team-finished";
+      if (this.phase === "complete") gameState.status = "won";
+    }
 
     return {
       phase: this.phase,
@@ -327,7 +351,6 @@ class VersusGame extends EventEmitter {
       opponentPoints: (opponentGame?.guessHistory || []).map((guess) => ({
         id: guess.id,
         teamId: opponentId,
-        playerId: guess.playerId,
         similarity: guess.similarity,
         position: guess.position,
         isHint: guess.isHint,

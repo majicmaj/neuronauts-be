@@ -96,6 +96,7 @@ test("opponent views expose telemetry and points without transmitting words", as
   assert.equal(blueView.gameState.guessHistory.length, 0);
   assert.equal(blueView.opponentPoints.length, 1);
   assert.equal("guess" in blueView.opponentPoints[0], false);
+  assert.equal("playerId" in blueView.opponentPoints[0], false);
   assert.equal("submittedGuess" in blueView.opponentPoints[0], false);
   assert.equal("hintFrom" in blueView.opponentPoints[0], false);
   assert.equal(blueView.teams.find((team) => team.id === "red").guessCount, 1);
@@ -103,6 +104,59 @@ test("opponent views expose telemetry and points without transmitting words", as
     blueView.teams.find((team) => team.id === "red").playerStats[0].bestSimilarity,
     0
   );
+});
+
+test("ranks sub-second finishes with exact timing instead of rounded display seconds", async () => {
+  let now = Date.parse("2026-08-21T12:00:00Z");
+  const match = new VersusGame({
+    now: () => now,
+    random: () => 0,
+    gameFactory: (options = {}) => new Game({
+      embeddings: EMBEDDINGS,
+      targetWord: options.targetWord || "star",
+      commonWords: Object.keys(EMBEDDINGS),
+      semanticFloor: 0,
+      semanticCeiling: 1,
+      now: () => now,
+    }),
+  });
+  await once(match, "ready");
+  const red = makePlayer(1, "red");
+  const blue = makePlayer(2, "blue");
+  const players = [red, blue];
+  players.forEach((player) => match.registerPlayer(player));
+  match.toggleReady(red, players);
+  match.toggleReady(blue, players);
+
+  now += 100;
+  match.handleGuess("star", blue);
+  now += 300;
+  match.handleGuess("star", red);
+
+  const result = match.getResult(players);
+  assert.equal(result.standings[0].elapsedSeconds, 0, "rounded seconds remain presentation-friendly");
+  assert.equal(result.standings[1].elapsedSeconds, 0);
+  assert.equal(result.winnerTeamId, "blue", "the actual faster finish wins the rounded tie");
+});
+
+test("keeps initialization failures visible instead of relabeling them as setup", async () => {
+  const match = new VersusGame({
+    random: () => 0,
+    gameFactory: (options = {}) => new Game({
+      embeddings: EMBEDDINGS,
+      targetWord: options.targetWord || "star",
+      commonWords: Object.keys(EMBEDDINGS),
+      semanticFloor: 0,
+      semanticCeiling: 1,
+    }),
+  });
+  await once(match, "ready");
+  match.on("error", () => {});
+  match.games.get("red").emit("error", new Error("Navigator failed"));
+
+  const view = match.getView("red", []);
+  assert.equal(view.gameState.status, "error");
+  assert.equal(view.gameState.error, "Navigator failed");
 });
 
 test("keeps disconnected contributors in the final per-player breakdown", async () => {

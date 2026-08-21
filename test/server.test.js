@@ -469,6 +469,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(redPayload.gameState.guessHistory[0].guess, "moon");
   assert.equal(bluePayload.gameState.guessHistory.length, 0);
   assert.equal("guess" in bluePayload.versus.opponentPoints[0], false);
+  assert.equal("playerId" in bluePayload.versus.opponentPoints[0], false);
   assert.equal(
     bluePayload.versus.teams.find((team) => team.id === "red").guessCount,
     1

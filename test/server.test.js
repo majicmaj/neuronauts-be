@@ -228,3 +228,90 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   assert.equal(reconnectedIdentity.participantId, secondIdentity.participantId);
   assert.equal(rejoined.gameState.recap.playerCount, 2);
 });
+
+test("finished crews share one rematch lobby and a stable ready count", async (t) => {
+  const runtime = createGameServer({
+    skipEmbeddingsBootstrap: true,
+    guessRateLimitMs: 0,
+    gameFactory: () =>
+      new Game({
+        embeddings: EMBEDDINGS,
+        targetWord: "star",
+        commonWords: Object.keys(EMBEDDINGS),
+      }),
+  });
+  const address = await runtime.start(0, "127.0.0.1");
+  const url = `http://127.0.0.1:${address.port}`;
+  const first = await connect(url);
+  const second = await connect(url);
+
+  t.after(async () => {
+    first.disconnect();
+    second.disconnect();
+    await runtime.stop();
+  });
+
+  const createdPromise = waitFor(first, "lobbyCreated");
+  first.emit("createLobby", { preferredName: "Rematch Ranger" });
+  const created = await createdPromise;
+
+  const joinedPromise = waitFor(second, "lobbyJoined");
+  second.emit("joinLobby", {
+    lobbyId: created.lobbyId,
+    preferredName: "Replay Pilot",
+  });
+  await joinedPromise;
+
+  const wonFirst = waitFor(first, "gameWon");
+  const wonSecond = waitFor(second, "gameWon");
+  first.emit("guess", { lobbyId: created.lobbyId, guess: "star" });
+  await Promise.all([wonFirst, wonSecond]);
+
+  const firstReadyPromise = waitFor(first, "rematchReady");
+  const oneReadyPromise = waitFor(
+    second,
+    "rematchUpdated",
+    (rematch) => rematch.readyCount === 1
+  );
+  first.emit("requestRematch", { lobbyId: created.lobbyId });
+  const [firstReady, oneReady] = await Promise.all([
+    firstReadyPromise,
+    oneReadyPromise,
+  ]);
+  assert.equal(oneReady.totalCount, 2);
+  assert.equal(oneReady.readyParticipantIds.length, 1);
+  assert.ok(runtime.lobbies.has(firstReady.lobbyId));
+
+  const secondReadyPromise = waitFor(second, "rematchReady");
+  const bothReadyPromise = waitFor(
+    first,
+    "rematchUpdated",
+    (rematch) => rematch.readyCount === 2
+  );
+  second.emit("requestRematch", { lobbyId: created.lobbyId });
+  const [secondReady, bothReady] = await Promise.all([
+    secondReadyPromise,
+    bothReadyPromise,
+  ]);
+  assert.equal(secondReady.lobbyId, firstReady.lobbyId);
+  assert.equal(bothReady.totalCount, 2);
+  assert.equal(bothReady.readyCount, 2);
+
+  const firstJoinedPromise = waitFor(first, "lobbyJoined");
+  first.emit("joinLobby", {
+    lobbyId: firstReady.lobbyId,
+    preferredName: "Rematch Ranger",
+  });
+  const firstJoined = await firstJoinedPromise;
+  assert.equal(firstJoined.lobbyId, firstReady.lobbyId);
+
+  const secondJoinedPromise = waitFor(second, "lobbyJoined");
+  second.emit("joinLobby", {
+    lobbyId: secondReady.lobbyId,
+    preferredName: "Replay Pilot",
+  });
+  const secondJoined = await secondJoinedPromise;
+  assert.equal(secondJoined.lobbyId, firstReady.lobbyId);
+  assert.equal(secondJoined.playerCount, 2);
+  assert.equal(new Set(secondJoined.players.map((player) => player.name)).size, 2);
+});

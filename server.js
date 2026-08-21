@@ -190,6 +190,24 @@ function createGameServer(options = {}) {
     });
   }
 
+  function serializeRematch(lobby) {
+    const recap = lobby.game.getGameState().recap;
+    const totalCount = Math.max(
+      recap?.playerCount || lobby.players.size,
+      lobby.rematchReadyParticipantIds.size
+    );
+    return {
+      lobbyId: lobby.rematchLobbyId,
+      readyCount: lobby.rematchReadyParticipantIds.size,
+      totalCount,
+      readyParticipantIds: Array.from(lobby.rematchReadyParticipantIds),
+    };
+  }
+
+  function emitRematch(lobby) {
+    io.to(lobby.lobbyId).emit("rematchUpdated", serializeRematch(lobby));
+  }
+
   function createLobbyRecord(lobbyId) {
     const game = gameFactory();
     const lobby = {
@@ -200,6 +218,8 @@ function createGameServer(options = {}) {
       nextColorIndex: 0,
       nextAvatarIndex: 0,
       typingPlayerIds: new Set(),
+      rematchLobbyId: null,
+      rematchReadyParticipantIds: new Set(),
       createdAt: nowIso(),
       lastActivityAt: nowIso(),
       lastActivityMs: Date.now(),
@@ -343,6 +363,7 @@ function createGameServer(options = {}) {
       players: serializePlayers(lobby),
       playerCount: lobby.players.size,
       typingPlayerIds: Array.from(lobby.typingPlayerIds),
+      rematch: lobby.game.status === "won" ? serializeRematch(lobby) : null,
     };
   }
 
@@ -641,6 +662,62 @@ function createGameServer(options = {}) {
         playerName: player.name,
         hintFrom: response.result.hintFrom,
       });
+    });
+
+    socket.on("requestRematch", (payload = {}) => {
+      const sourceLobby = getSocketLobby(socket, payload.lobbyId);
+      if (!sourceLobby) {
+        emitActionError(socket, {
+          error: "Join the finished mission before playing again.",
+          code: "not_in_lobby",
+        });
+        return;
+      }
+      if (sourceLobby.game.status !== "won") {
+        emitActionError(socket, {
+          error: "Finish this mission before starting the next one.",
+          code: "game_not_won",
+        });
+        return;
+      }
+
+      if (
+        !sourceLobby.rematchLobbyId ||
+        !lobbies.has(sourceLobby.rematchLobbyId)
+      ) {
+        if (lobbies.size >= limits.maxLobbies) {
+          emitActionError(socket, {
+            error: "Server room capacity reached. Try again later.",
+            code: "lobby_capacity",
+          });
+          return;
+        }
+        sourceLobby.rematchLobbyId = generateLobbyId();
+        sourceLobby.rematchReadyParticipantIds.clear();
+        createLobbyRecord(sourceLobby.rematchLobbyId);
+      }
+
+      const player = sourceLobby.players.get(socket.id);
+      const wasReady = sourceLobby.rematchReadyParticipantIds.has(
+        player.participantId
+      );
+      sourceLobby.rematchReadyParticipantIds.add(player.participantId);
+      updateLobbyActivity(sourceLobby);
+      const rematch = serializeRematch(sourceLobby);
+      emitRematch(sourceLobby);
+      socket.emit("rematchReady", {
+        lobbyId: sourceLobby.rematchLobbyId,
+        rematch,
+      });
+      if (!wasReady) {
+        recordEvent("rematch_requested", {
+          lobbyId: sourceLobby.lobbyId,
+          rematchLobbyId: sourceLobby.rematchLobbyId,
+          playerName: player.name,
+          ready: rematch.readyCount,
+          total: rematch.totalCount,
+        });
+      }
     });
 
     socket.on("disconnect", () => removePlayerFromCurrentLobby(socket));

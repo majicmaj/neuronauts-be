@@ -255,6 +255,7 @@ class Game extends EventEmitter {
       colorIndex: Number.isInteger(player.colorIndex)
         ? player.colorIndex
         : previous?.colorIndex || 0,
+      avatarId: player.avatarId || previous?.avatarId || null,
       joinedAt: player.joinedAt || previous?.joinedAt || new Date(this.now()).toISOString(),
     };
     this.participants.set(playerId, participant);
@@ -286,6 +287,7 @@ class Game extends EventEmitter {
       playerId: participant?.playerId || player.id,
       playerName: participant?.playerName || player.name,
       colorIndex: participant?.colorIndex || 0,
+      avatarId: participant?.avatarId || null,
       createdAt,
       position: this.getPosition(embedding, similarity, word),
     };
@@ -455,6 +457,7 @@ class Game extends EventEmitter {
           playerId,
           playerName: participant.playerName,
           colorIndex: participant.colorIndex,
+          avatarId: participant.avatarId,
           joinedAt: participant.joinedAt,
           guessCount: 0,
           wrongGuessCount: 0,
@@ -481,6 +484,7 @@ class Game extends EventEmitter {
         playerId: guess.playerId,
         playerName: guess.playerName,
         colorIndex: guess.colorIndex || 0,
+        avatarId: guess.avatarId || null,
         joinedAt: guess.createdAt,
       };
       const stats = ensureStats(participant);

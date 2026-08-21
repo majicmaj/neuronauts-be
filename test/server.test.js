@@ -67,6 +67,8 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   const created = await createdPromise;
   assert.equal(created.playerCount, 1);
   assert.equal(created.players[0].name, "Nova Navigator");
+  assert.equal(created.players[0].avatarId, "aqua-cadet");
+  assert.deepEqual(created.typingPlayerIds, []);
 
   const twoPlayersFirst = waitFor(
     first,
@@ -88,7 +90,39 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
     new Set(playersPayload.players.map((player) => player.colorIndex)).size,
     2
   );
+  assert.equal(
+    new Set(playersPayload.players.map((player) => player.avatarId)).size,
+    2
+  );
   const secondIdentity = joined.players.find((player) => player.id === second.id);
+  assert.equal(secondIdentity.avatarId, "solar-shades");
+
+  const avatarChangedFirst = waitFor(
+    first,
+    "playersUpdated",
+    (payload) => payload.players.find((player) => player.id === first.id)?.avatarId === "star-mage"
+  );
+  const avatarChangedSecond = waitFor(
+    second,
+    "playersUpdated",
+    (payload) => payload.players.find((player) => player.id === first.id)?.avatarId === "star-mage"
+  );
+  first.emit("setPlayerAvatar", {
+    lobbyId: created.lobbyId,
+    avatarId: "star-mage",
+  });
+  await Promise.all([avatarChangedFirst, avatarChangedSecond]);
+
+  const avatarTaken = waitFor(
+    second,
+    "actionError",
+    (error) => error.code === "avatar_taken"
+  );
+  second.emit("setPlayerAvatar", {
+    lobbyId: created.lobbyId,
+    avatarId: "star-mage",
+  });
+  assert.match((await avatarTaken).message, /already claimed/i);
 
   const renamedFirst = waitFor(
     first,
@@ -106,10 +140,27 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   });
   await Promise.all([renamedFirst, renamedSecond]);
 
+  const typingStarted = waitFor(
+    first,
+    "typingUpdated",
+    (payload) => payload.playerIds.includes(second.id)
+  );
+  second.emit("typing", { lobbyId: created.lobbyId, isTyping: true });
+  assert.deepEqual((await typingStarted).playerIds, [second.id]);
+
   const guessFirst = waitFor(first, "guessResult", (guess) => !guess.isHint);
   const guessSecond = waitFor(second, "guessResult", (guess) => !guess.isHint);
+  const typingCleared = waitFor(
+    first,
+    "typingUpdated",
+    (payload) => payload.playerIds.length === 0
+  );
   second.emit("guess", { lobbyId: created.lobbyId, guess: "moon" });
-  const [firstGuess, secondGuess] = await Promise.all([guessFirst, guessSecond]);
+  const [firstGuess, secondGuess] = await Promise.all([
+    guessFirst,
+    guessSecond,
+    typingCleared,
+  ]);
   assert.equal(firstGuess.id, secondGuess.id);
   assert.equal(firstGuess.playerId, secondIdentity.participantId);
   assert.equal(firstGuess.playerName, joined.players.find((p) => p.id === second.id).name);
@@ -148,6 +199,10 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   assert.equal(firstWin.recap.totalHints, 1);
   assert.equal(firstWin.recap.players.length, 2);
   assert.ok(firstWin.recap.awards.some((award) => award.id === "signal-finder"));
+  assert.equal(
+    firstWin.recap.players.find((player) => player.playerId === created.players[0].participantId).avatarId,
+    "star-mage"
+  );
 
   const onePlayer = waitFor(
     first,
@@ -169,6 +224,7 @@ test("multiplayer lobby synchronizes identities, hints, attribution, and wins", 
   );
   assert.equal(reconnectedIdentity.name, secondIdentity.name);
   assert.equal(reconnectedIdentity.colorIndex, secondIdentity.colorIndex);
+  assert.equal(reconnectedIdentity.avatarId, secondIdentity.avatarId);
   assert.equal(reconnectedIdentity.participantId, secondIdentity.participantId);
   assert.equal(rejoined.gameState.recap.playerCount, 2);
 });

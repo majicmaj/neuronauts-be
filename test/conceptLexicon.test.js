@@ -121,7 +121,7 @@ test("attested comparative spellings join their adjective and never become answe
     funny: ["funnier", "funniest"], hot: ["hotter", "hottest"],
     thin: ["thinner", "thinnest"], fast: ["faster", "fastest"],
   })) for (const form of forms) {
-    assert.equal(defaultConceptLexicon.resolve(form).canonicalWord, base, form);
+    assert.equal(defaultConceptLexicon.resolve(form, { targetWord: base }).canonicalWord, base, form);
     assert.equal(defaultConceptLexicon.isTargetEligible(form), false, form);
   }
 });
@@ -146,5 +146,36 @@ test("noun and verb evidence keep ambiguous meanings and labels accurate", () =>
   for (const [plural, noun] of [["settings", "setting"], ["holdings", "holding"],
     ["findings", "finding"], ["belongings", "belonging"]]) {
     assert.equal(defaultConceptLexicon.resolve(plural).canonicalWord, noun);
+  }
+});
+
+test("irregular homograph bases stop chains without blocking legitimate past guesses", () => {
+  for (const [word, verb] of [["ground", "grind"], ["bore", "bear"], ["bit", "bite"],
+    ["shot", "shoot"], ["felt", "feel"], ["spoke", "speak"], ["stole", "steal"]]) {
+    assert.equal(defaultConceptLexicon.resolve(word).canonicalWord, word, word);
+    assert.equal(defaultConceptLexicon.resolve(word, { targetWord: verb }).canonicalWord, verb, word);
+    assert.equal(defaultConceptLexicon.isTargetEligible(word), false, word);
+  }
+  for (const form of ["boring", "bored", "bores"]) {
+    assert.equal(defaultConceptLexicon.resolve(form, { targetWord: "bear" }).canonicalWord, "bore", form);
+  }
+  assert.equal(defaultConceptLexicon.resolve("grounded").canonicalWord, "ground");
+  assert.equal(defaultConceptLexicon.resolve("singed", { targetWord: "sing" }).canonicalWord, "singe");
+});
+
+test("protected lexicalized nouns and comparisons retain their own meaning", () => {
+  for (const [word, base] of [["lighter", "light"], ["cooler", "cool"],
+    ["slicker", "slick"], ["thinner", "thin"]]) {
+    assert.equal(defaultConceptLexicon.resolve(word).canonicalWord, word);
+    assert.equal(defaultConceptLexicon.resolve(word, { targetWord: base }).canonicalWord, base);
+    assert.equal(defaultConceptLexicon.isTargetEligible(word), false);
+  }
+  for (const [word, unrelated] of [["savings", "save"], ["winnings", "win"],
+    ["leavings", "leave"], ["ethics", "ethic"], ["mechanics", "mechanic"],
+    ["statistics", "statistic"]]) {
+    assert.equal(defaultConceptLexicon.resolve(word, { targetWord: unrelated }).canonicalWord, word);
+  }
+  for (const word of ["constructor", "toString", "__proto__"]) {
+    assert.equal(defaultConceptLexicon.resolve(word, { targetWord: "moon" }).canonicalWord, word);
   }
 });

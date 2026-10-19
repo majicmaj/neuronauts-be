@@ -13,6 +13,9 @@ const outputDirectory = path.join(root, "lexicon", "generated");
 const checkOnly = process.argv.includes("--check");
 const wordSet = new Set(words);
 const invariantSingular = new Set(overrides.invariantSingular || []);
+const irregularPastBases = new Set(Object.entries(winkLexicon.wnVerbExceptions)
+  .filter(([surface, base]) => surface !== base && !surface.endsWith("ing") && !surface.endsWith("ed"))
+  .map(([, base]) => base));
 
 function isVerb(word) {
   const index = winkLexicon.wnWords[word];
@@ -52,27 +55,35 @@ function verbLemmas(word) {
   ]);
   // Reconstruct the actual spelling rather than trusting Morphy's first valid
   // stem (which incorrectly returns hoping/hop, riding/rid, staring/star).
-  return [...candidates].filter((base) => isVerb(base) && inflectVerb(base, ending) === word);
+  const matches = [...candidates].filter((base) => isVerb(base) && inflectVerb(base, ending) === word);
+  // singed is singe + d, not the regular past of irregular sing. Keep regular
+  // variants such as hanged when no competing verb explains the spelling.
+  return ending === "ed" && matches.length > 1
+    ? matches.filter((base) => !irregularPastBases.has(base))
+    : matches;
+}
+
+function hasIndependentBaseSense(word) {
+  const index = winkLexicon.wnWords[word];
+  return index !== undefined &&
+    winkLexicon.wnWordSenses[index].some((sense) => sense > 2 && sense < 44);
+}
+
+function attestedLemmas(word, { protectedConcept = false } = {}) {
+  const tags = winkLexicon.lexicon[word] || [];
+  const candidates = [];
+  if (looksPlural(word, tags)) candidates.push(nounLemma(word));
+  if (!protectedConcept && (tags.some((tag) => ["VBG", "VBD", "VBN", "VBZ"].includes(tag)) ||
+      word.endsWith("ing") || word.endsWith("ed") || winkLexicon.wnVerbExceptions[word])) {
+    candidates.push(...verbLemmas(word));
+  }
+  if (!protectedConcept && isComparison(word, tags)) candidates.push(lemmatize.adjective(word));
+  return [...new Set(candidates)].filter((candidate) =>
+    candidate !== word && /^[a-z][a-z'-]*$/.test(candidate) && isKnownWord(candidate));
 }
 
 function distinctLemmas(word) {
-  return [...new Set([
-    ...((looksPlural(word, winkLexicon.lexicon[word] || []) ||
-      !(winkLexicon.lexicon[word] || []).length) ? [nounLemma(word)] : []),
-    ...verbLemmas(word),
-    lemmatize.adjective(word),
-  ])]
-    .filter(
-      (candidate) =>
-        candidate !== word &&
-        /^[a-z][a-z'-]*$/.test(candidate) &&
-        (
-          wordSet.has(candidate) ||
-          winkLexicon.wnWords[candidate] !== undefined ||
-          winkLexicon.lexicon[candidate]
-        )
-    )
-    .sort();
+  return attestedLemmas(word).sort();
 }
 
 function transformationFor(word, canonical) {
@@ -156,6 +167,20 @@ function classifyInflection(word) {
     };
   }
 
+  // An irregular past can also be an independent noun or infinitive:
+  // ground/grind, bore/bear, shot/shoot. Keep that base intact so boring does
+  // not chain through bore into bear. The past form can still solve its verb
+  // when the hidden answer supplies the context.
+  const exceptionalBase = winkLexicon.wnVerbExceptions[word];
+  if (exceptionalBase && exceptionalBase !== word &&
+      !word.endsWith("ing") && !word.endsWith("ed") && hasIndependentBaseSense(word)) {
+    return {
+      action: "standalone", canonical: word, targetEligible: false,
+      reason: `Independent noun or verb also serves as the past of ${exceptionalBase}.`,
+      source: "ambiguous", review: true, candidates: [exceptionalBase],
+    };
+  }
+
   const candidates = distinctLemmas(word);
   if (!candidates.length) {
     return {
@@ -195,10 +220,10 @@ function classifyInflection(word) {
   }
 
   if (isComparison(word, tags)) {
-    if (overrides.targetExcluded[word]) {
+    if (overrides.targetExcluded[word] || hasIndependentBaseSense(word)) {
       return {
         action: "standalone", canonical: word, targetEligible: false,
-        reason: overrides.targetExcluded[word], source: "override",
+        reason: overrides.targetExcluded[word] || `Comparison has an independent noun or verb sense alongside ${canonical}.`, source: "ambiguous",
       };
     }
     return {
@@ -393,19 +418,13 @@ function buildArtifacts() {
     ...Object.keys(ambiguousOverrides)])].sort()) {
     if (aliases[surface] || !/^[a-z][a-z'-]*$/.test(surface)) continue;
     const explicit = ambiguousOverrides[surface];
-    const tags = winkLexicon.lexicon[surface] || [];
-    const protectedConcept = overrides.standalone[surface] && !explicit;
-    const attestedCandidates = [];
-    if (looksPlural(surface, tags)) {
-      attestedCandidates.push(nounLemma(surface));
-    }
-    if (!protectedConcept && (tags.some((tag) => ["VBG", "VBD", "VBN", "VBZ"].includes(tag)) ||
-        surface.endsWith("ing") || surface.endsWith("ed"))) {
-      attestedCandidates.push(...verbLemmas(surface));
-    }
-    if (!protectedConcept && isComparison(surface, tags)) {
-      attestedCandidates.push(lemmatize.adjective(surface));
-    }
+    if (invariantSingular.has(surface) && !explicit) continue;
+    const protectedConcept = Boolean(overrides.standalone[surface] && !explicit);
+    const attestedCandidates = attestedLemmas(surface, { protectedConcept })
+      // A protected plural noun may refer to its genuine singular noun, but
+      // not chain through a gerund into a verb (savings/saving/save).
+      .filter((candidate) => !protectedConcept || !aliases[candidate] ||
+        aliases[candidate].transformation === "spelling-variant");
     const candidates = [...new Set((explicit || attestedCandidates)
       .map((candidate) => aliases[candidate]?.canonical || candidate))]
       .filter((candidate) => candidate !== surface);

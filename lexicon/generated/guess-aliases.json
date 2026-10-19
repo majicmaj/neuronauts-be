@@ -3653,10 +3653,6 @@
       "canonical": "girl",
       "transformation": "plural"
     },
-    "latest": {
-      "canonical": "late",
-      "transformation": "comparison"
-    },
     "changes": {
       "canonical": "change",
       "transformation": "plural"
@@ -3664,10 +3660,6 @@
     "groups": {
       "canonical": "group",
       "transformation": "plural"
-    },
-    "given": {
-      "canonical": "give",
-      "transformation": "past"
     },
     "files": {
       "canonical": "file",
@@ -3921,10 +3913,6 @@
       "canonical": "create",
       "transformation": "past"
     },
-    "thought": {
-      "canonical": "think",
-      "transformation": "past"
-    },
     "doing": {
       "canonical": "do",
       "transformation": "participle"
@@ -3992,10 +3980,6 @@
     "running": {
       "canonical": "run",
       "transformation": "participle"
-    },
-    "lower": {
-      "canonical": "low",
-      "transformation": "comparison"
     },
     "names": {
       "canonical": "name",
@@ -4125,10 +4109,6 @@
       "canonical": "parent",
       "transformation": "plural"
     },
-    "ground": {
-      "canonical": "grind",
-      "transformation": "past"
-    },
     "owners": {
       "canonical": "owner",
       "transformation": "plural"
@@ -4256,10 +4236,6 @@
     "mailing": {
       "canonical": "mail",
       "transformation": "participle"
-    },
-    "longer": {
-      "canonical": "long",
-      "transformation": "comparison"
     },
     "buying": {
       "canonical": "buy",
@@ -4678,7 +4654,7 @@
       "transformation": "past"
     },
     "thoughts": {
-      "canonical": "think",
+      "canonical": "thought",
       "transformation": "plural"
     },
     "worked": {
@@ -5357,6 +5333,10 @@
       "canonical": "amaze",
       "transformation": "participle"
     },
+    "suites": {
+      "canonical": "suite",
+      "transformation": "plural"
+    },
     "hidden": {
       "canonical": "hide",
       "transformation": "past"
@@ -5781,10 +5761,6 @@
       "canonical": "charge",
       "transformation": "past"
     },
-    "chosen": {
-      "canonical": "choose",
-      "transformation": "past"
-    },
     "nights": {
       "canonical": "night",
       "transformation": "plural"
@@ -5946,7 +5922,7 @@
       "transformation": "participle"
     },
     "shots": {
-      "canonical": "shoot",
+      "canonical": "shot",
       "transformation": "plural"
     },
     "granted": {
@@ -6392,10 +6368,6 @@
     "turning": {
       "canonical": "turn",
       "transformation": "participle"
-    },
-    "buffer": {
-      "canonical": "buff",
-      "transformation": "comparison"
     },
     "chairs": {
       "canonical": "chair",
@@ -6958,7 +6930,7 @@
       "transformation": "plural"
     },
     "grounds": {
-      "canonical": "grind",
+      "canonical": "ground",
       "transformation": "plural"
     },
     "regards": {
@@ -7305,10 +7277,6 @@
       "canonical": "cycle",
       "transformation": "participle"
     },
-    "spoke": {
-      "canonical": "speak",
-      "transformation": "past"
-    },
     "sampling": {
       "canonical": "sample",
       "transformation": "participle"
@@ -7395,6 +7363,10 @@
     },
     "tales": {
       "canonical": "tale",
+      "transformation": "plural"
+    },
+    "nodes": {
+      "canonical": "node",
       "transformation": "plural"
     },
     "thumbs": {
@@ -7640,10 +7612,6 @@
     "crossing": {
       "canonical": "cross",
       "transformation": "participle"
-    },
-    "drunk": {
-      "canonical": "drink",
-      "transformation": "past"
     },
     "crimes": {
       "canonical": "crime",
@@ -9081,10 +9049,6 @@
       "canonical": "imply",
       "transformation": "agreement"
     },
-    "cooler": {
-      "canonical": "cool",
-      "transformation": "comparison"
-    },
     "breeding": {
       "canonical": "breed",
       "transformation": "participle"
@@ -9346,7 +9310,7 @@
       "transformation": "plural"
     },
     "boring": {
-      "canonical": "bear",
+      "canonical": "bore",
       "transformation": "participle"
     },
     "speeches": {
@@ -9545,10 +9509,6 @@
       "canonical": "sew",
       "transformation": "participle"
     },
-    "lighter": {
-      "canonical": "light",
-      "transformation": "comparison"
-    },
     "advisors": {
       "canonical": "advisor",
       "transformation": "plural"
@@ -9716,6 +9676,10 @@
     "assured": {
       "canonical": "assure",
       "transformation": "past"
+    },
+    "wives": {
+      "canonical": "wife",
+      "transformation": "plural"
     },
     "relates": {
       "canonical": "relate",
@@ -9929,10 +9893,6 @@
       "canonical": "dentist",
       "transformation": "plural"
     },
-    "flyer": {
-      "canonical": "fly",
-      "transformation": "comparison"
-    },
     "baking": {
       "canonical": "bake",
       "transformation": "participle"
@@ -10045,10 +10005,6 @@
       "canonical": "venture",
       "transformation": "plural"
     },
-    "dryer": {
-      "canonical": "dry",
-      "transformation": "comparison"
-    },
     "ruled": {
       "canonical": "rule",
       "transformation": "past"
@@ -10084,10 +10040,6 @@
     "stays": {
       "canonical": "stay",
       "transformation": "plural"
-    },
-    "drove": {
-      "canonical": "drive",
-      "transformation": "past"
     },
     "mines": {
       "canonical": "mine",
@@ -10378,7 +10330,7 @@
       "transformation": "agreement"
     },
     "bored": {
-      "canonical": "bear",
+      "canonical": "bore",
       "transformation": "past"
     },
     "knitting": {
@@ -10781,6 +10733,10 @@
       "canonical": "humor",
       "transformation": "spelling-variant"
     },
+    "hypothesises": {
+      "canonical": "hypothesis",
+      "transformation": "spelling-variant"
+    },
     "initialled": {
       "canonical": "initial",
       "transformation": "spelling-variant"
@@ -11093,6 +11049,10 @@
       "canonical": "specialize",
       "transformation": "spelling-variant"
     },
+    "synthesises": {
+      "canonical": "synthesis",
+      "transformation": "spelling-variant"
+    },
     "theatres": {
       "canonical": "theater",
       "transformation": "spelling-variant"
@@ -11268,10 +11228,6 @@
     "abstracted": {
       "canonical": "abstract",
       "transformation": "past"
-    },
-    "abstracter": {
-      "canonical": "abstract",
-      "transformation": "comparison"
     },
     "abstracting": {
       "canonical": "abstract",
@@ -11893,6 +11849,10 @@
       "canonical": "aid",
       "transformation": "past"
     },
+    "aides": {
+      "canonical": "aide",
+      "transformation": "plural"
+    },
     "aiding": {
       "canonical": "aid",
       "transformation": "participle"
@@ -12269,6 +12229,10 @@
       "canonical": "ana",
       "transformation": "plural"
     },
+    "anastomoses": {
+      "canonical": "anastomosis",
+      "transformation": "plural"
+    },
     "ancestors": {
       "canonical": "ancestor",
       "transformation": "plural"
@@ -12471,6 +12435,10 @@
     },
     "aposiopeses": {
       "canonical": "aposiopesis",
+      "transformation": "plural"
+    },
+    "apotheoses": {
+      "canonical": "apotheosis",
       "transformation": "plural"
     },
     "appal": {
@@ -12989,10 +12957,6 @@
       "canonical": "astound",
       "transformation": "participle"
     },
-    "ate": {
-      "canonical": "eat",
-      "transformation": "past"
-    },
     "atheroscleroses": {
       "canonical": "atherosclerosis",
       "transformation": "plural"
@@ -13257,10 +13221,6 @@
       "canonical": "backhand",
       "transformation": "past"
     },
-    "backhander": {
-      "canonical": "backhand",
-      "transformation": "comparison"
-    },
     "backpacking": {
       "canonical": "backpack",
       "transformation": "participle"
@@ -13336,10 +13296,6 @@
     "balancing": {
       "canonical": "balance",
       "transformation": "participle"
-    },
-    "balder": {
-      "canonical": "bald",
-      "transformation": "comparison"
     },
     "balding": {
       "canonical": "bald",
@@ -14041,6 +13997,10 @@
       "canonical": "bell",
       "transformation": "past"
     },
+    "belles": {
+      "canonical": "belle",
+      "transformation": "plural"
+    },
     "bellied": {
       "canonical": "belly",
       "transformation": "past"
@@ -14164,10 +14124,6 @@
     "berried": {
       "canonical": "berry",
       "transformation": "past"
-    },
-    "berserker": {
-      "canonical": "berserk",
-      "transformation": "comparison"
     },
     "beseeching": {
       "canonical": "beseech",
@@ -14369,10 +14325,6 @@
       "canonical": "bishop",
       "transformation": "plural"
     },
-    "bit": {
-      "canonical": "bite",
-      "transformation": "past"
-    },
     "bitchier": {
       "canonical": "bitchy",
       "transformation": "comparison"
@@ -14390,11 +14342,11 @@
       "transformation": "participle"
     },
     "bits": {
-      "canonical": "bite",
+      "canonical": "bit",
       "transformation": "plural"
     },
     "bitted": {
-      "canonical": "bite",
+      "canonical": "bit",
       "transformation": "past"
     },
     "bitters": {
@@ -14410,7 +14362,7 @@
       "transformation": "comparison"
     },
     "bitting": {
-      "canonical": "bite",
+      "canonical": "bit",
       "transformation": "participle"
     },
     "bivouacked": {
@@ -14573,10 +14525,6 @@
       "canonical": "blind",
       "transformation": "past"
     },
-    "blinder": {
-      "canonical": "blind",
-      "transformation": "comparison"
-    },
     "blindfolded": {
       "canonical": "blindfold",
       "transformation": "past"
@@ -14612,10 +14560,6 @@
     "blistering": {
       "canonical": "blister",
       "transformation": "participle"
-    },
-    "blither": {
-      "canonical": "blithe",
-      "transformation": "comparison"
     },
     "blobbed": {
       "canonical": "blob",
@@ -14739,10 +14683,6 @@
     },
     "bluest": {
       "canonical": "blue",
-      "transformation": "comparison"
-    },
-    "bluffer": {
-      "canonical": "bluff",
       "transformation": "comparison"
     },
     "bluing": {
@@ -15009,17 +14949,9 @@
       "canonical": "border",
       "transformation": "participle"
     },
-    "bore": {
-      "canonical": "bear",
-      "transformation": "past"
-    },
     "bores": {
-      "canonical": "bear",
+      "canonical": "bore",
       "transformation": "plural"
-    },
-    "born": {
-      "canonical": "bear",
-      "transformation": "past"
     },
     "borne": {
       "canonical": "bear",
@@ -15717,6 +15649,10 @@
       "canonical": "bunch",
       "transformation": "past"
     },
+    "bunches": {
+      "canonical": "bunche",
+      "transformation": "plural"
+    },
     "bunchier": {
       "canonical": "bunchy",
       "transformation": "comparison"
@@ -15881,10 +15817,6 @@
       "canonical": "bust",
       "transformation": "past"
     },
-    "bustier": {
-      "canonical": "busty",
-      "transformation": "comparison"
-    },
     "bustiest": {
       "canonical": "busty",
       "transformation": "comparison"
@@ -15893,12 +15825,8 @@
       "canonical": "bustle",
       "transformation": "participle"
     },
-    "butcher": {
-      "canonical": "butch",
-      "transformation": "comparison"
-    },
     "butchering": {
-      "canonical": "butch",
+      "canonical": "butcher",
       "transformation": "participle"
     },
     "butted": {
@@ -16052,6 +15980,10 @@
     "calming": {
       "canonical": "calm",
       "transformation": "participle"
+    },
+    "calves": {
+      "canonical": "calf",
+      "transformation": "plural"
     },
     "calving": {
       "canonical": "calve",
@@ -17913,10 +17845,6 @@
       "canonical": "colly",
       "transformation": "past"
     },
-    "collier": {
-      "canonical": "colly",
-      "transformation": "comparison"
-    },
     "colliest": {
       "canonical": "colly",
       "transformation": "comparison"
@@ -18113,12 +18041,8 @@
       "canonical": "commit",
       "transformation": "participle"
     },
-    "commoner": {
-      "canonical": "common",
-      "transformation": "comparison"
-    },
     "commoners": {
-      "canonical": "common",
+      "canonical": "commoner",
       "transformation": "plural"
     },
     "communicated": {
@@ -19973,6 +19897,10 @@
       "canonical": "cute",
       "transformation": "comparison"
     },
+    "cutes": {
+      "canonical": "cutis",
+      "transformation": "plural"
+    },
     "cuts": {
       "canonical": "cut",
       "transformation": "plural"
@@ -20072,10 +20000,6 @@
     "dampening": {
       "canonical": "dampen",
       "transformation": "participle"
-    },
-    "damper": {
-      "canonical": "damp",
-      "transformation": "comparison"
     },
     "dams": {
       "canonical": "dam",
@@ -20252,10 +20176,6 @@
     "dealings": {
       "canonical": "deal",
       "transformation": "plural"
-    },
-    "dearest": {
-      "canonical": "dear",
-      "transformation": "comparison"
     },
     "debarred": {
       "canonical": "debar",
@@ -21329,6 +21249,10 @@
       "canonical": "dial",
       "transformation": "spelling-variant"
     },
+    "dialyses": {
+      "canonical": "dialysis",
+      "transformation": "plural"
+    },
     "diaphyses": {
       "canonical": "diaphysis",
       "transformation": "plural"
@@ -21437,10 +21361,6 @@
       "canonical": "diffuse",
       "transformation": "past"
     },
-    "diffuser": {
-      "canonical": "diffuse",
-      "transformation": "comparison"
-    },
     "diffusing": {
       "canonical": "diffuse",
       "transformation": "participle"
@@ -21512,10 +21432,6 @@
     "dimmed": {
       "canonical": "dim",
       "transformation": "past"
-    },
-    "dimmer": {
-      "canonical": "dim",
-      "transformation": "comparison"
     },
     "dimmest": {
       "canonical": "dim",
@@ -22285,10 +22201,6 @@
       "canonical": "divide",
       "transformation": "participle"
     },
-    "diviner": {
-      "canonical": "divine",
-      "transformation": "comparison"
-    },
     "divining": {
       "canonical": "divine",
       "transformation": "participle"
@@ -22520,10 +22432,6 @@
     "doubled": {
       "canonical": "double",
       "transformation": "past"
-    },
-    "doubler": {
-      "canonical": "double",
-      "transformation": "comparison"
     },
     "doubles": {
       "canonical": "double",
@@ -22781,17 +22689,9 @@
       "canonical": "dress",
       "transformation": "plural"
     },
-    "drew": {
-      "canonical": "draw",
-      "transformation": "past"
-    },
     "dribbling": {
       "canonical": "dribble",
       "transformation": "participle"
-    },
-    "drier": {
-      "canonical": "dry",
-      "transformation": "comparison"
     },
     "dries": {
       "canonical": "dry",
@@ -22926,7 +22826,7 @@
       "transformation": "participle"
     },
     "drunks": {
-      "canonical": "drink",
+      "canonical": "drunk",
       "transformation": "plural"
     },
     "dryades": {
@@ -23153,10 +23053,6 @@
       "canonical": "ease",
       "transformation": "participle"
     },
-    "easterner": {
-      "canonical": "eastern",
-      "transformation": "comparison"
-    },
     "eastwards": {
       "canonical": "eastward",
       "transformation": "plural"
@@ -23296,10 +23192,6 @@
     "egos": {
       "canonical": "ego",
       "transformation": "plural"
-    },
-    "eighter": {
-      "canonical": "eight",
-      "transformation": "comparison"
     },
     "eighties": {
       "canonical": "eighty",
@@ -24016,6 +23908,10 @@
     "enveloped": {
       "canonical": "envelop",
       "transformation": "past"
+    },
+    "envelopes": {
+      "canonical": "envelope",
+      "transformation": "plural"
     },
     "enveloping": {
       "canonical": "envelop",
@@ -24913,10 +24809,6 @@
       "canonical": "faith",
       "transformation": "plural"
     },
-    "fakeer": {
-      "canonical": "fake",
-      "transformation": "comparison"
-    },
     "falsified": {
       "canonical": "falsify",
       "transformation": "past"
@@ -24964,10 +24856,6 @@
     "fancied": {
       "canonical": "fancy",
       "transformation": "past"
-    },
-    "fancier": {
-      "canonical": "fancy",
-      "transformation": "comparison"
     },
     "fanciest": {
       "canonical": "fancy",
@@ -25241,12 +25129,8 @@
       "canonical": "fellow",
       "transformation": "plural"
     },
-    "felt": {
-      "canonical": "feel",
-      "transformation": "past"
-    },
     "felted": {
-      "canonical": "feel",
+      "canonical": "felt",
       "transformation": "past"
     },
     "feminise": {
@@ -25573,10 +25457,6 @@
       "canonical": "fit",
       "transformation": "plural"
     },
-    "fitter": {
-      "canonical": "fit",
-      "transformation": "comparison"
-    },
     "fittest": {
       "canonical": "fit",
       "transformation": "comparison"
@@ -25584,10 +25464,6 @@
     "fittings": {
       "canonical": "fit",
       "transformation": "plural"
-    },
-    "fiver": {
-      "canonical": "five",
-      "transformation": "comparison"
     },
     "fives": {
       "canonical": "five",
@@ -25721,12 +25597,8 @@
       "canonical": "flatten",
       "transformation": "past"
     },
-    "flatter": {
-      "canonical": "flat",
-      "transformation": "comparison"
-    },
     "flattering": {
-      "canonical": "flat",
+      "canonical": "flatter",
       "transformation": "participle"
     },
     "flattest": {
@@ -26541,10 +26413,6 @@
       "canonical": "free",
       "transformation": "participle"
     },
-    "freelancer": {
-      "canonical": "freelance",
-      "transformation": "comparison"
-    },
     "freer": {
       "canonical": "free",
       "transformation": "comparison"
@@ -26581,10 +26449,6 @@
       "canonical": "frequent",
       "transformation": "past"
     },
-    "frequenter": {
-      "canonical": "frequent",
-      "transformation": "comparison"
-    },
     "frequents": {
       "canonical": "frequent",
       "transformation": "agreement"
@@ -26592,10 +26456,6 @@
     "frescoes": {
       "canonical": "fresco",
       "transformation": "plural"
-    },
-    "fresher": {
-      "canonical": "fresh",
-      "transformation": "comparison"
     },
     "fretted": {
       "canonical": "fret",
@@ -26845,10 +26705,6 @@
       "canonical": "fulfillment",
       "transformation": "spelling-variant"
     },
-    "fuller": {
-      "canonical": "full",
-      "transformation": "comparison"
-    },
     "fumbling": {
       "canonical": "fumble",
       "transformation": "participle"
@@ -26916,10 +26772,6 @@
     "furred": {
       "canonical": "fur",
       "transformation": "past"
-    },
-    "furrier": {
-      "canonical": "furry",
-      "transformation": "comparison"
     },
     "furriest": {
       "canonical": "furry",
@@ -27941,10 +27793,6 @@
       "canonical": "gravel",
       "transformation": "participle"
     },
-    "graver": {
-      "canonical": "grave",
-      "transformation": "comparison"
-    },
     "graves": {
       "canonical": "grave",
       "transformation": "plural"
@@ -28198,11 +28046,11 @@
       "transformation": "plural"
     },
     "grounded": {
-      "canonical": "grind",
+      "canonical": "ground",
       "transformation": "past"
     },
     "grounding": {
-      "canonical": "grind",
+      "canonical": "ground",
       "transformation": "participle"
     },
     "grouped": {
@@ -28541,10 +28389,6 @@
       "canonical": "hajj",
       "transformation": "plural"
     },
-    "haler": {
-      "canonical": "hale",
-      "transformation": "comparison"
-    },
     "halfways": {
       "canonical": "halfway",
       "transformation": "comparison"
@@ -28584,6 +28428,10 @@
     "halting": {
       "canonical": "halt",
       "transformation": "participle"
+    },
+    "halves": {
+      "canonical": "half",
+      "transformation": "plural"
     },
     "hammed": {
       "canonical": "ham",
@@ -28695,10 +28543,6 @@
     },
     "hardiest": {
       "canonical": "hardy",
-      "transformation": "comparison"
-    },
-    "hardliner": {
-      "canonical": "hardline",
       "transformation": "comparison"
     },
     "harmed": {
@@ -29105,10 +28949,6 @@
       "canonical": "highjack",
       "transformation": "participle"
     },
-    "highlander": {
-      "canonical": "highland",
-      "transformation": "comparison"
-    },
     "highlands": {
       "canonical": "highland",
       "transformation": "plural"
@@ -29133,12 +28973,8 @@
       "canonical": "himalaya",
       "transformation": "plural"
     },
-    "hinder": {
-      "canonical": "hind",
-      "transformation": "comparison"
-    },
     "hindering": {
-      "canonical": "hind",
+      "canonical": "hinder",
       "transformation": "participle"
     },
     "hindquarters": {
@@ -29832,10 +29668,6 @@
     "ideologies": {
       "canonical": "ideology",
       "transformation": "plural"
-    },
-    "idler": {
-      "canonical": "idle",
-      "transformation": "comparison"
     },
     "idling": {
       "canonical": "idle",
@@ -30664,6 +30496,10 @@
     "interlacing": {
       "canonical": "interlace",
       "transformation": "participle"
+    },
+    "interleaves": {
+      "canonical": "interleaf",
+      "transformation": "plural"
     },
     "interlinking": {
       "canonical": "interlink",
@@ -32145,10 +31981,6 @@
       "canonical": "lean",
       "transformation": "past"
     },
-    "leaner": {
-      "canonical": "lean",
-      "transformation": "comparison"
-    },
     "leaning": {
       "canonical": "lean",
       "transformation": "participle"
@@ -32545,10 +32377,6 @@
       "canonical": "limn",
       "transformation": "participle"
     },
-    "limper": {
-      "canonical": "limp",
-      "transformation": "comparison"
-    },
     "limping": {
       "canonical": "limp",
       "transformation": "participle"
@@ -32885,10 +32713,6 @@
       "canonical": "lose",
       "transformation": "agreement"
     },
-    "lost": {
-      "canonical": "lose",
-      "transformation": "past"
-    },
     "lots": {
       "canonical": "lot",
       "transformation": "plural"
@@ -32926,15 +32750,15 @@
       "transformation": "comparison"
     },
     "lowered": {
-      "canonical": "low",
+      "canonical": "lower",
       "transformation": "past"
     },
     "lowering": {
-      "canonical": "low",
+      "canonical": "lower",
       "transformation": "participle"
     },
     "lowers": {
-      "canonical": "low",
+      "canonical": "lower",
       "transformation": "plural"
     },
     "lowlands": {
@@ -33109,10 +32933,6 @@
       "canonical": "madden",
       "transformation": "participle"
     },
-    "madder": {
-      "canonical": "mad",
-      "transformation": "comparison"
-    },
     "maddest": {
       "canonical": "mad",
       "transformation": "comparison"
@@ -33244,6 +33064,10 @@
     "mandating": {
       "canonical": "mandate",
       "transformation": "participle"
+    },
+    "manes": {
+      "canonical": "mane",
+      "transformation": "plural"
     },
     "mangier": {
       "canonical": "mangy",
@@ -33537,6 +33361,10 @@
       "canonical": "mass",
       "transformation": "past"
     },
+    "masses": {
+      "canonical": "masse",
+      "transformation": "plural"
+    },
     "massing": {
       "canonical": "mass",
       "transformation": "participle"
@@ -33552,10 +33380,6 @@
     "mated": {
       "canonical": "mate",
       "transformation": "past"
-    },
-    "mater": {
-      "canonical": "mat",
-      "transformation": "comparison"
     },
     "materialisation": {
       "canonical": "materialization",
@@ -33931,6 +33755,10 @@
     },
     "metalworks": {
       "canonical": "metalwork",
+      "transformation": "plural"
+    },
+    "metamorphoses": {
+      "canonical": "metamorphosis",
       "transformation": "plural"
     },
     "metaphors": {
@@ -35421,10 +35249,6 @@
       "canonical": "ninepin",
       "transformation": "plural"
     },
-    "niner": {
-      "canonical": "nine",
-      "transformation": "comparison"
-    },
     "nineties": {
       "canonical": "ninety",
       "transformation": "plural"
@@ -35525,10 +35349,6 @@
       "canonical": "norm",
       "transformation": "plural"
     },
-    "northeaster": {
-      "canonical": "northeast",
-      "transformation": "comparison"
-    },
     "northerners": {
       "canonical": "northerner",
       "transformation": "plural"
@@ -35536,10 +35356,6 @@
     "northwards": {
       "canonical": "northward",
       "transformation": "plural"
-    },
-    "northwester": {
-      "canonical": "northwest",
-      "transformation": "comparison"
     },
     "nosed": {
       "canonical": "nose",
@@ -37145,6 +36961,10 @@
       "canonical": "pencil",
       "transformation": "plural"
     },
+    "penes": {
+      "canonical": "penis",
+      "transformation": "plural"
+    },
     "penetrating": {
       "canonical": "penetrate",
       "transformation": "participle"
@@ -37224,10 +37044,6 @@
     "perfected": {
       "canonical": "perfect",
       "transformation": "past"
-    },
-    "perfecter": {
-      "canonical": "perfect",
-      "transformation": "comparison"
     },
     "perfecting": {
       "canonical": "perfect",
@@ -39985,10 +39801,6 @@
       "canonical": "rain",
       "transformation": "past"
     },
-    "rainier": {
-      "canonical": "rainy",
-      "transformation": "comparison"
-    },
     "rainiest": {
       "canonical": "rainy",
       "transformation": "comparison"
@@ -40132,10 +39944,6 @@
     "rarified": {
       "canonical": "rarify",
       "transformation": "past"
-    },
-    "rasher": {
-      "canonical": "rash",
-      "transformation": "comparison"
     },
     "rasping": {
       "canonical": "rasp",
@@ -40989,20 +40797,16 @@
       "canonical": "renew",
       "transformation": "participle"
     },
-    "rent": {
-      "canonical": "rend",
-      "transformation": "past"
-    },
     "rented": {
-      "canonical": "rend",
+      "canonical": "rent",
       "transformation": "past"
     },
     "renting": {
-      "canonical": "rend",
+      "canonical": "rent",
       "transformation": "participle"
     },
     "rents": {
-      "canonical": "rend",
+      "canonical": "rent",
       "transformation": "plural"
     },
     "reopened": {
@@ -42093,12 +41897,8 @@
       "canonical": "round",
       "transformation": "past"
     },
-    "rounder": {
-      "canonical": "round",
-      "transformation": "comparison"
-    },
     "rounders": {
-      "canonical": "round",
+      "canonical": "rounder",
       "transformation": "plural"
     },
     "rounding": {
@@ -42524,10 +42324,6 @@
     "sassing": {
       "canonical": "sass",
       "transformation": "participle"
-    },
-    "sat": {
-      "canonical": "sit",
-      "transformation": "past"
     },
     "satellites": {
       "canonical": "satellite",
@@ -42961,10 +42757,6 @@
       "canonical": "screen",
       "transformation": "plural"
     },
-    "screwballer": {
-      "canonical": "screwball",
-      "transformation": "comparison"
-    },
     "screwed": {
       "canonical": "screw",
       "transformation": "past"
@@ -43153,10 +42945,6 @@
       "canonical": "secrete",
       "transformation": "past"
     },
-    "secreter": {
-      "canonical": "secret",
-      "transformation": "comparison"
-    },
     "secretions": {
       "canonical": "secretion",
       "transformation": "plural"
@@ -43180,10 +42968,6 @@
     "secularized": {
       "canonical": "secularize",
       "transformation": "past"
-    },
-    "securer": {
-      "canonical": "secure",
-      "transformation": "comparison"
     },
     "securing": {
       "canonical": "secure",
@@ -43313,10 +43097,6 @@
       "canonical": "sensitize",
       "transformation": "participle"
     },
-    "sent": {
-      "canonical": "send",
-      "transformation": "past"
-    },
     "sentenced": {
       "canonical": "sentence",
       "transformation": "past"
@@ -43416,10 +43196,6 @@
     "settlings": {
       "canonical": "settle",
       "transformation": "plural"
-    },
-    "sevener": {
-      "canonical": "seven",
-      "transformation": "comparison"
     },
     "sevens": {
       "canonical": "seven",
@@ -43597,10 +43373,6 @@
       "canonical": "sharpen",
       "transformation": "past"
     },
-    "sharper": {
-      "canonical": "sharp",
-      "transformation": "comparison"
-    },
     "shattered": {
       "canonical": "shatter",
       "transformation": "past"
@@ -43699,6 +43471,10 @@
     },
     "shelters": {
       "canonical": "shelter",
+      "transformation": "plural"
+    },
+    "shelves": {
+      "canonical": "shelf",
       "transformation": "plural"
     },
     "shied": {
@@ -43865,10 +43641,6 @@
       "canonical": "shoe",
       "transformation": "past"
     },
-    "shook": {
-      "canonical": "shake",
-      "transformation": "past"
-    },
     "shootings": {
       "canonical": "shoot",
       "transformation": "plural"
@@ -43917,10 +43689,6 @@
       "canonical": "short",
       "transformation": "participle"
     },
-    "shot": {
-      "canonical": "shoot",
-      "transformation": "past"
-    },
     "shotgunned": {
       "canonical": "shotgun",
       "transformation": "past"
@@ -43930,11 +43698,11 @@
       "transformation": "participle"
     },
     "shotted": {
-      "canonical": "shoot",
+      "canonical": "shot",
       "transformation": "past"
     },
     "shotting": {
-      "canonical": "shoot",
+      "canonical": "shot",
       "transformation": "participle"
     },
     "shouldered": {
@@ -44305,6 +44073,10 @@
       "canonical": "simulate",
       "transformation": "past"
     },
+    "singed": {
+      "canonical": "singe",
+      "transformation": "past"
+    },
     "singers": {
       "canonical": "singer",
       "transformation": "plural"
@@ -44364,10 +44136,6 @@
     "sittings": {
       "canonical": "sit",
       "transformation": "plural"
-    },
-    "sixer": {
-      "canonical": "six",
-      "transformation": "comparison"
     },
     "sixties": {
       "canonical": "sixty",
@@ -44504,10 +44272,6 @@
     "slackening": {
       "canonical": "slacken",
       "transformation": "participle"
-    },
-    "slacker": {
-      "canonical": "slack",
-      "transformation": "comparison"
     },
     "slacking": {
       "canonical": "slack",
@@ -44660,10 +44424,6 @@
     "slicked": {
       "canonical": "slick",
       "transformation": "past"
-    },
-    "slicker": {
-      "canonical": "slick",
-      "transformation": "comparison"
     },
     "slid": {
       "canonical": "slide",
@@ -44968,10 +44728,6 @@
     "smoothened": {
       "canonical": "smoothen",
       "transformation": "past"
-    },
-    "smoother": {
-      "canonical": "smooth",
-      "transformation": "comparison"
     },
     "smoothing": {
       "canonical": "smooth",
@@ -45393,6 +45149,10 @@
       "canonical": "solemnize",
       "transformation": "spelling-variant"
     },
+    "soles": {
+      "canonical": "sol",
+      "transformation": "plural"
+    },
     "solidified": {
       "canonical": "solidify",
       "transformation": "past"
@@ -45501,10 +45261,6 @@
       "canonical": "sound",
       "transformation": "past"
     },
-    "sounder": {
-      "canonical": "sound",
-      "transformation": "comparison"
-    },
     "sounding": {
       "canonical": "sound",
       "transformation": "participle"
@@ -45545,10 +45301,6 @@
       "canonical": "souse",
       "transformation": "participle"
     },
-    "southeaster": {
-      "canonical": "southeast",
-      "transformation": "comparison"
-    },
     "southernisms": {
       "canonical": "southernism",
       "transformation": "plural"
@@ -45556,10 +45308,6 @@
     "southwards": {
       "canonical": "southward",
       "transformation": "plural"
-    },
-    "southwester": {
-      "canonical": "southwest",
-      "transformation": "comparison"
     },
     "soviets": {
       "canonical": "soviet",
@@ -45600,10 +45348,6 @@
     "spared": {
       "canonical": "spare",
       "transformation": "past"
-    },
-    "sparer": {
-      "canonical": "spare",
-      "transformation": "comparison"
     },
     "spareribs": {
       "canonical": "sparerib",
@@ -46161,10 +45905,6 @@
       "canonical": "squat",
       "transformation": "past"
     },
-    "squatter": {
-      "canonical": "squat",
-      "transformation": "comparison"
-    },
     "squattest": {
       "canonical": "squat",
       "transformation": "comparison"
@@ -46232,10 +45972,6 @@
     "squinched": {
       "canonical": "squinch",
       "transformation": "past"
-    },
-    "squinter": {
-      "canonical": "squint",
-      "transformation": "comparison"
     },
     "squinting": {
       "canonical": "squint",
@@ -46593,10 +46329,6 @@
       "canonical": "steep",
       "transformation": "past"
     },
-    "steeper": {
-      "canonical": "steep",
-      "transformation": "comparison"
-    },
     "steered": {
       "canonical": "steer",
       "transformation": "past"
@@ -46833,10 +46565,6 @@
       "canonical": "stodgy",
       "transformation": "comparison"
     },
-    "stole": {
-      "canonical": "steal",
-      "transformation": "past"
-    },
     "stomachs": {
       "canonical": "stomach",
       "transformation": "plural"
@@ -46848,10 +46576,6 @@
     "stonefishes": {
       "canonical": "stonefish",
       "transformation": "plural"
-    },
-    "stoner": {
-      "canonical": "stone",
-      "transformation": "comparison"
     },
     "stonewalling": {
       "canonical": "stonewall",
@@ -46992,10 +46716,6 @@
     "straws": {
       "canonical": "straw",
       "transformation": "plural"
-    },
-    "strayer": {
-      "canonical": "stray",
-      "transformation": "comparison"
     },
     "straying": {
       "canonical": "stray",
@@ -47793,10 +47513,6 @@
       "canonical": "swag",
       "transformation": "past"
     },
-    "swaggerer": {
-      "canonical": "swagger",
-      "transformation": "comparison"
-    },
     "swaggering": {
       "canonical": "swagger",
       "transformation": "participle"
@@ -48093,6 +47809,10 @@
       "canonical": "siphon",
       "transformation": "spelling-variant"
     },
+    "syringes": {
+      "canonical": "syrinx",
+      "transformation": "plural"
+    },
     "systematisation": {
       "canonical": "systematization",
       "transformation": "spelling-variant"
@@ -48229,10 +47949,6 @@
       "canonical": "tame",
       "transformation": "past"
     },
-    "tamer": {
-      "canonical": "tame",
-      "transformation": "comparison"
-    },
     "tammied": {
       "canonical": "tammy",
       "transformation": "past"
@@ -48241,12 +47957,8 @@
       "canonical": "tamper",
       "transformation": "participle"
     },
-    "tangier": {
-      "canonical": "tangy",
-      "transformation": "comparison"
-    },
     "tangiers": {
-      "canonical": "tangy",
+      "canonical": "tangier",
       "transformation": "plural"
     },
     "tangiest": {
@@ -48268,10 +47980,6 @@
     "tanned": {
       "canonical": "tan",
       "transformation": "past"
-    },
-    "tanner": {
-      "canonical": "tan",
-      "transformation": "comparison"
     },
     "tannest": {
       "canonical": "tan",
@@ -48829,6 +48537,10 @@
       "canonical": "thickness",
       "transformation": "plural"
     },
+    "thieves": {
+      "canonical": "thief",
+      "transformation": "plural"
+    },
     "thieving": {
       "canonical": "thieve",
       "transformation": "participle"
@@ -48840,10 +48552,6 @@
     "thinned": {
       "canonical": "thin",
       "transformation": "past"
-    },
-    "thinner": {
-      "canonical": "thin",
-      "transformation": "comparison"
     },
     "thinnest": {
       "canonical": "thin",
@@ -49917,10 +49625,6 @@
       "canonical": "trim",
       "transformation": "comparison"
     },
-    "trimmer": {
-      "canonical": "trim",
-      "transformation": "comparison"
-    },
     "trimmest": {
       "canonical": "trim",
       "transformation": "comparison"
@@ -50200,10 +49904,6 @@
     "twilled": {
       "canonical": "twill",
       "transformation": "past"
-    },
-    "twiner": {
-      "canonical": "twin",
-      "transformation": "comparison"
     },
     "twinkling": {
       "canonical": "twinkle",
@@ -50797,10 +50497,6 @@
       "canonical": "unsnarl",
       "transformation": "participle"
     },
-    "unsolder": {
-      "canonical": "unsold",
-      "transformation": "comparison"
-    },
     "unsteadied": {
       "canonical": "unsteady",
       "transformation": "past"
@@ -50925,10 +50621,6 @@
       "canonical": "upset",
       "transformation": "participle"
     },
-    "upstager": {
-      "canonical": "upstage",
-      "transformation": "comparison"
-    },
     "urbanisation": {
       "canonical": "urbanization",
       "transformation": "spelling-variant"
@@ -50988,10 +50680,6 @@
     "uttered": {
       "canonical": "utter",
       "transformation": "past"
-    },
-    "utterer": {
-      "canonical": "utter",
-      "transformation": "comparison"
     },
     "vacated": {
       "canonical": "vacate",
@@ -51433,10 +51121,6 @@
       "canonical": "voice",
       "transformation": "participle"
     },
-    "voider": {
-      "canonical": "void",
-      "transformation": "comparison"
-    },
     "voiding": {
       "canonical": "void",
       "transformation": "participle"
@@ -51656,10 +51340,6 @@
     "warmed": {
       "canonical": "warm",
       "transformation": "past"
-    },
-    "warmer": {
-      "canonical": "warm",
-      "transformation": "comparison"
     },
     "warms": {
       "canonical": "warm",
@@ -52005,10 +51685,6 @@
       "canonical": "welcome",
       "transformation": "past"
     },
-    "welcomer": {
-      "canonical": "welcome",
-      "transformation": "comparison"
-    },
     "welcomes": {
       "canonical": "welcome",
       "transformation": "agreement"
@@ -52037,14 +51713,6 @@
       "canonical": "werewolf",
       "transformation": "plural"
     },
-    "wester": {
-      "canonical": "west",
-      "transformation": "comparison"
-    },
-    "westerner": {
-      "canonical": "western",
-      "transformation": "comparison"
-    },
     "westernisation": {
       "canonical": "westernization",
       "transformation": "spelling-variant"
@@ -52064,10 +51732,6 @@
     "wetted": {
       "canonical": "wet",
       "transformation": "past"
-    },
-    "wetter": {
-      "canonical": "wet",
-      "transformation": "comparison"
     },
     "wettest": {
       "canonical": "wet",
@@ -52309,10 +51973,6 @@
       "canonical": "wildcat",
       "transformation": "participle"
     },
-    "wilder": {
-      "canonical": "wild",
-      "transformation": "comparison"
-    },
     "wilier": {
       "canonical": "wily",
       "transformation": "comparison"
@@ -52529,10 +52189,6 @@
       "canonical": "womanize",
       "transformation": "participle"
     },
-    "won": {
-      "canonical": "win",
-      "transformation": "past"
-    },
     "wondered": {
       "canonical": "wonder",
       "transformation": "past"
@@ -52550,11 +52206,11 @@
       "transformation": "comparison"
     },
     "wonned": {
-      "canonical": "win",
+      "canonical": "won",
       "transformation": "past"
     },
     "wonning": {
-      "canonical": "win",
+      "canonical": "won",
       "transformation": "participle"
     },
     "woodier": {

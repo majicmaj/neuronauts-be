@@ -13,7 +13,7 @@ class ConceptLexicon {
     this.aliases = aliases;
     this.ambiguousAliases = ambiguousAliases;
     this.targetWords = new Set(targets);
-    this.knownWords = new Set();
+    this.knownWords = new Set(Object.keys(ambiguousAliases));
     for (const concept of concepts) {
       this.knownWords.add(concept.key);
       for (const alias of concept.aliases) this.knownWords.add(alias);
@@ -21,8 +21,10 @@ class ConceptLexicon {
   }
 
   resolve(word, { targetWord } = {}) {
-    const ambiguous = this.ambiguousAliases[word];
-    const alias = this.aliases[word] ||
+    const ambiguous = Object.hasOwn(this.ambiguousAliases, word)
+      ? this.ambiguousAliases[word]
+      : null;
+    const alias = (Object.hasOwn(this.aliases, word) && this.aliases[word]) ||
       (targetWord && ambiguous?.candidates.includes(targetWord)
         ? { canonical: targetWord, transformation: ambiguous.transformations[targetWord] }
         : null);

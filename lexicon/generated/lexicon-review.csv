@@ -1,29 +1,23 @@
 surface,candidate_lemmas,wordnet_exact,parts_of_speech,default_action,reason
-downloads,download,no,,target-excluded,No supported inflection rule safely maps this word to download.
 forgotten,forget,yes,,target-excluded,No supported inflection rule safely maps this word to forget.
-headquarters,headquarter,yes,NN|NNS,target-excluded,No supported inflection rule safely maps this word to headquarter.
 undertaken,undertake,no,,target-excluded,No supported inflection rule safely maps this word to undertake.
-institutes,institute,no,NN,target-excluded,No supported inflection rule safely maps this word to institute.
 forbidden,forbid,yes,,target-excluded,No supported inflection rule safely maps this word to forbid.
 would,will,no,MD,target-excluded,No supported inflection rule safely maps this word to will.
 could,can,no,MD,target-excluded,No supported inflection rule safely maps this word to can.
-might,may,yes,MD|NN,target-excluded,No supported inflection rule safely maps this word to may.
-james,jam,yes,,target-excluded,No supported inflection rule safely maps this word to jam.
+given,give,yes,VBN|JJ,target-excluded,Independent noun or verb also serves as the past of give.
+might,may,yes,MD|NN,target-excluded,Independent noun or verb also serves as the past of may.
+thought,think,yes,VBD|NN|VBN,target-excluded,Independent noun or verb also serves as the past of think.
+ground,grind,yes,NN|JJ|VB|VBD|VBN,target-excluded,Independent noun or verb also serves as the past of grind.
 lives,life|live,no,NNS|VBZ,target-excluded,"Ambiguous lemmas: life, live."
 forgot,forget,no,,target-excluded,No supported inflection rule safely maps this word to forget.
-suites,suit|suite,no,NNS,target-excluded,"Ambiguous lemmas: suit, suite."
 leaves,leaf|leave,no,VBZ|JJ|NNS,target-excluded,"Ambiguous lemmas: leaf, leave."
-alumni,alumnus,no,,target-excluded,No supported inflection rule safely maps this word to alumnus.
-broker,broke,yes,NN,target-excluded,No supported inflection rule safely maps this word to broke.
+chosen,choose,yes,VBN|JJ,target-excluded,Independent noun or verb also serves as the past of choose.
 proven,prove,yes,,target-excluded,No supported inflection rule safely maps this word to prove.
-outer,out,yes,JJ,target-excluded,No supported inflection rule safely maps this word to out.
-nodes,nod|node,no,,target-excluded,"Ambiguous lemmas: nod, node."
+spoke,speak,yes,VBD|NN,target-excluded,Independent noun or verb also serves as the past of speak.
+drunk,drink,yes,JJ|NN|VBN,target-excluded,Independent noun or verb also serves as the past of drink.
 spoken,speak,yes,,target-excluded,No supported inflection rule safely maps this word to speak.
 routing,rout|route,no,VBG|NN,target-excluded,"Ambiguous lemmas: rout, route."
-trivia,trivium,yes,,target-excluded,No supported inflection rule safely maps this word to trivium.
 dealt,deal,no,,target-excluded,No supported inflection rule safely maps this word to deal.
 prepaid,prepay,yes,,target-excluded,No supported inflection rule safely maps this word to prepay.
-podcasts,podcast,no,,target-excluded,No supported inflection rule safely maps this word to podcast.
-wives,wife|wive,no,,target-excluded,"Ambiguous lemmas: wife, wive."
-laden,lade,yes,,target-excluded,No supported inflection rule safely maps this word to lade.
-hayes,hay,yes,,target-excluded,No supported inflection rule safely maps this word to hay.
+laden,lade,yes,,target-excluded,Independent noun or verb also serves as the past of lade.
+drove,drive,yes,VBD|NN,target-excluded,Independent noun or verb also serves as the past of drive.

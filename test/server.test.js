@@ -378,25 +378,35 @@ test("concurrent spelling variants create one guess and recall it for the other 
 });
 
 test("VS lobbies ready both teams and never send opponent words", async (t) => {
+  const privateEmbeddings = Object.fromEntries(Object.entries(EMBEDDINGS).map(([word, vector]) => [
+    word === "moon" ? "canaryorigin" : word === "bridge" ? "canaryanswer" : word,
+    vector,
+  ]));
   const runtime = createGameServer({
     skipEmbeddingsBootstrap: true,
     guessRateLimitMs: 0,
     gameFactory: (options = {}) => new Game({
-      embeddings: EMBEDDINGS,
+      embeddings: privateEmbeddings,
       targetWord: options.targetWord || "star",
-      commonWords: Object.keys(EMBEDDINGS),
+      commonWords: Object.keys(privateEmbeddings),
       semanticFloor: 0,
       semanticCeiling: 1,
     }),
   });
   const address = await runtime.start(0, "127.0.0.1");
   const url = `http://127.0.0.1:${address.port}`;
-  const first = await connect(url);
-  const second = await connect(url);
+  let first = await connect(url);
+  const additional = [];
+  let second = await connect(url);
+  const rivalEvents = [];
+  second.onAny((event, payload) => rivalEvents.push({ event, payload }));
+  let reconnected;
 
   t.after(async () => {
     first.disconnect();
     second.disconnect();
+    reconnected?.disconnect();
+    additional.forEach(socket => socket.disconnect());
     await runtime.stop();
   });
 
@@ -404,13 +414,15 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   first.emit("createLobby", { preferredName: "Red Ranger", mode: "versus" });
   const created = await createdPromise;
   assert.equal(created.mode, "versus");
+  assert.match(created.resumeToken, /^[a-f0-9]{48}$/);
+  assert.ok(created.players.every(player => !("resumeToken" in player)));
 
   const joinedPromise = waitFor(second, "lobbyJoined");
   second.emit("joinLobby", {
     lobbyId: created.lobbyId,
     preferredName: "Blue Scout",
   });
-  await joinedPromise;
+  const joined = await joinedPromise;
 
   const redAssigned = waitFor(
     first,
@@ -442,6 +454,35 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   second.emit("toggleReady", { lobbyId: created.lobbyId });
   await launched;
 
+  const attacker = await connect(url);
+  additional.push(attacker);
+  const attackerEvents = [];
+  attacker.onAny((event, payload) => attackerEvents.push({ event, payload }));
+  const denyJoin = async (socket, payload, message = /started|unavailable/) => {
+    const denied = waitFor(socket, "error");
+    socket.emit("joinLobby", payload);
+    assert.match(await denied, message);
+    assert.equal(runtime.lobbies.get(created.lobbyId).players.has(socket.id), false);
+  };
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Late spectator" });
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: "f".repeat(48) });
+  assert.equal(attackerEvents.some(({ event }) => event === "lobbyJoined" || event === "versusUpdated"), false);
+  const staleBlue = second;
+  const staleBlueId = staleBlue.id;
+  const replacementBlue = await connect(url);
+  additional.push(replacementBlue);
+  replacementBlue.onAny((event, payload) => rivalEvents.push({ event, payload }));
+  const resumedStale = waitFor(replacementBlue, "lobbyJoined");
+  const staleDisconnected = waitFor(staleBlue, "disconnect");
+  replacementBlue.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: joined.resumeToken });
+  const replacementPayload = await resumedStale;
+  await staleDisconnected;
+  assert.equal(replacementPayload.versus.teamId, "blue", "the token, not the requested rival call sign, selects identity");
+  assert.equal(replacementPayload.players.find(player => player.id === replacementBlue.id).participantId, joined.players.find(player => player.id === staleBlueId).participantId);
+  assert.equal(runtime.lobbies.get(created.lobbyId).players.has(staleBlueId), false);
+  assert.equal(replacementPayload.playerCount, 2);
+  second = replacementBlue;
+
   const typingVisible = waitFor(
     second,
     "typingUpdated",
@@ -453,7 +494,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   const redUpdate = waitFor(
     first,
     "versusUpdated",
-    (payload) => payload.gameState.guessHistory.some((guess) => guess.guess === "moon")
+    (payload) => payload.gameState.guessHistory.some((guess) => guess.guess === "canaryorigin")
   );
   const blueUpdate = waitFor(
     second,
@@ -462,11 +503,11 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   );
   const response = await emitWithAck(first, "guess", {
     lobbyId: created.lobbyId,
-    guess: "moon",
+    guess: "canaryorigin",
   });
   const [redPayload, bluePayload] = await Promise.all([redUpdate, blueUpdate]);
   assert.equal(response.ok, true);
-  assert.equal(redPayload.gameState.guessHistory[0].guess, "moon");
+  assert.equal(redPayload.gameState.guessHistory[0].guess, "canaryorigin");
   assert.equal(bluePayload.gameState.guessHistory.length, 0);
   assert.equal("guess" in bluePayload.versus.opponentPoints[0], false);
   assert.equal("playerId" in bluePayload.versus.opponentPoints[0], false);
@@ -479,20 +520,166 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(redTelemetry.bestSimilarity, response.result.similarity);
   assert.equal(redTelemetry.playerStats[0].guessCount, 1);
   assert.equal(redTelemetry.playerStats[0].bestSimilarity, response.result.similarity);
-  assert.equal(JSON.stringify(bluePayload.versus).includes("moon"), false);
+  assert.equal(JSON.stringify(bluePayload.versus).includes("canaryorigin"), false);
 
+  // Both hint origin and hint answer are private words. Inspect the whole
+  // recipient payload, all event types, and public diagnostics, not just points.
+  const ownHint = waitFor(first, "versusUpdated", payload => payload.gameState.guessHistory.some(guess => guess.isHint));
+  const rivalHint = waitFor(second, "versusUpdated", payload => payload.versus.opponentPoints.some(point => point.isHint));
+  first.emit("requestHint", { lobbyId: created.lobbyId });
+  const [ownHintPayload, rivalHintPayload] = await Promise.all([ownHint, rivalHint]);
+  const hint = ownHintPayload.gameState.guessHistory.find(guess => guess.isHint);
+  assert.equal(hint.hintFrom, "canaryorigin");
+  assert.equal(hint.guess, "canaryanswer");
+  const assertPrivate = payload => {
+    const json = JSON.stringify(payload).toLowerCase();
+    for (const privateWord of ["canaryorigin", "canaryanswer"]) assert.equal(json.includes(privateWord), false, `leaked ${privateWord}`);
+    assert.equal(json.includes(created.resumeToken), false, "leaked opponent resume credential");
+  };
+  assertPrivate(rivalHintPayload);
+  assert.equal("resumeToken" in rivalHintPayload, false, "routine state does not repeat credentials");
+  assertPrivate(rivalEvents);
+  const stats = await (await fetch(`${url}/stats`)).json();
+  assert.equal(stats.lastEvent.type, "hint_used");
+  assertPrivate(stats);
+  assert.equal("hintFrom" in stats.lastEvent, false);
+
+  // Rejoining (including the complete lobbyJoined snapshot) must not bypass
+  // team filtering after a hint or after only the other team has finished.
+  const secondIdentity = replacementPayload.players.find(player => player.id === second.id);
+  const departed = waitFor(first, "playersUpdated", payload => payload.playerCount === 1);
+  second.disconnect();
+  await departed;
+  reconnected = await connect(url);
+  const reconnectEvents = [];
+  reconnected.onAny((event, payload) => reconnectEvents.push({ event, payload }));
+  const reconnectPromise = waitFor(reconnected, "lobbyJoined");
+  reconnected.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: secondIdentity.name, resumeToken: joined.resumeToken });
+  const reconnectPayload = await reconnectPromise;
+  assert.equal(reconnectPayload.versus.teamId, "blue");
+  assertPrivate(reconnectPayload);
+  const firstFinished = waitFor(reconnected, "versusUpdated", payload => payload.versus.firstFinishTeamId === "red");
   await emitWithAck(first, "guess", { lobbyId: created.lobbyId, guess: "star" });
-  await emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "moon" });
+  const firstFinishedPayload = await firstFinished;
+  assertPrivate(firstFinishedPayload);
+  assert.equal(firstFinishedPayload.gameState.targetWord, undefined);
+  assertPrivate(reconnectEvents);
+  // A disconnected winner's public name must never grant the solved target.
+  const redDeparted = waitFor(reconnected, "playersUpdated", payload => payload.playerCount === 1);
+  first.disconnect();
+  await redDeparted;
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger" });
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: "0".repeat(48) });
+  const recoveredRed = await connect(url);
+  additional.push(recoveredRed);
+  const recovered = waitFor(recoveredRed, "lobbyJoined");
+  recoveredRed.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "A forged call sign is ignored", resumeToken: created.resumeToken });
+  const recoveredPayload = await recovered;
+  assert.equal(recoveredPayload.players.find(player => player.id === recoveredRed.id).participantId, created.players[0].participantId);
+  assert.equal(recoveredPayload.gameState.targetWord, "star");
+  assert.equal(recoveredPayload.gameState.guessHistory[0].guess, "canaryorigin");
+  assert.equal(recoveredPayload.versus.teamId, "red");
+  first = recoveredRed;
+  second = reconnected;
   const completed = waitFor(
     second,
     "versusUpdated",
     (payload) => payload.versus.phase === "complete"
   );
   await emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "star" });
-  await completed;
+  const completePayload = await completed;
+  assert.equal(completePayload.versus.result.targetWord, "star");
+  assert.equal(completePayload.gameState.targetWord, "star");
+  assertPrivate(completePayload);
+  assertPrivate(reconnectEvents);
+  assertPrivate(await (await fetch(`${url}/stats`)).json());
 
   const rematchReady = waitFor(first, "rematchReady");
   first.emit("requestRematch", { lobbyId: created.lobbyId });
   const rematch = await rematchReady;
   assert.equal(runtime.lobbies.get(rematch.lobbyId).mode, "versus");
+  const badRematchResume = waitFor(first, "error");
+  first.emit("joinLobby", { lobbyId: rematch.lobbyId, preferredName: "Red Ranger", resumeToken: created.resumeToken });
+  assert.match(await badRematchResume, /unavailable/);
+  const rematchJoined = waitFor(first, "lobbyJoined");
+  first.emit("joinLobby", { lobbyId: rematch.lobbyId, preferredName: "Red Ranger" });
+  const rematchPayload = await rematchJoined;
+  assert.equal(rematchPayload.versus.phase, "setup");
+  assert.match(rematchPayload.resumeToken, /^[a-f0-9]{48}$/);
+  assert.notEqual(rematchPayload.resumeToken, created.resumeToken);
+  assert.equal(rematchPayload.gameState.guessHistory.length, 0);
+  assert.equal(attackerEvents.some(({ event }) => event === "lobbyJoined" || event === "versusUpdated"), false);
+});
+
+test("VS setup call signs and launch roster protect resume identities", async (t) => {
+  const runtime = createGameServer({
+    skipEmbeddingsBootstrap: true,
+    gameFactory: (options = {}) => new Game({
+      embeddings: EMBEDDINGS,
+      targetWord: options.targetWord || "star",
+      commonWords: Object.keys(EMBEDDINGS),
+    }),
+  });
+  const address = await runtime.start(0, "127.0.0.1");
+  const url = `http://127.0.0.1:${address.port}`;
+  const original = await connect(url);
+  const impersonator = await connect(url);
+  const resumed = await connect(url);
+  const leaver = await connect(url);
+  t.after(async () => {
+    [original, impersonator, resumed, leaver].forEach(socket => socket.disconnect());
+    await runtime.stop();
+  });
+  const createdPromise = waitFor(original, "lobbyCreated");
+  original.emit("createLobby", { mode: "versus", preferredName: "Private Captain" });
+  const created = await createdPromise;
+  const lobby = runtime.lobbies.get(created.lobbyId);
+  const departed = new Promise(resolve => original.once("disconnect", resolve));
+  original.disconnect();
+  await departed;
+  // Wait for the server to process the disconnect, not just the local client.
+  const disconnectDeadline = Date.now() + 2_000;
+  while (lobby.players.size && Date.now() < disconnectDeadline) await new Promise(resolve => setImmediate(resolve));
+  assert.equal(lobby.players.size, 0);
+  const impostorJoin = waitFor(impersonator, "lobbyJoined");
+  impersonator.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "Private Captain" });
+  const impostorPayload = await impostorJoin;
+  assert.notEqual(impostorPayload.players[0].participantId, created.players[0].participantId);
+  assert.notEqual(impostorPayload.resumeToken, created.resumeToken);
+  assert.equal(JSON.stringify(impostorPayload).includes(created.resumeToken), false);
+  const resumedJoin = waitFor(resumed, "lobbyJoined");
+  resumed.emit("joinLobby", { lobbyId: created.lobbyId, resumeToken: created.resumeToken });
+  const resumedPayload = await resumedJoin;
+  const self = resumedPayload.players.find(player => player.id === resumed.id);
+  assert.equal(self.participantId, created.players[0].participantId);
+  assert.notEqual(self.name, "Private Captain", "an occupied call sign does not replace the secret identity");
+  assert.equal(resumedPayload.resumeToken, created.resumeToken);
+  assert.ok(resumedPayload.players.every(player => !("resumeToken" in player)));
+  assert.equal(JSON.stringify(await (await fetch(`${url}/stats`)).json()).includes(created.resumeToken), false);
+  const invalidSetup = waitFor(leaver, "error");
+  leaver.emit("joinLobby", { lobbyId: created.lobbyId, resumeToken: "0".repeat(48) });
+  assert.match(await invalidSetup, /saved VS seat is unavailable/);
+  const leaverJoin = waitFor(leaver, "lobbyJoined");
+  leaver.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "Setup visitor" });
+  const leaverPayload = await leaverJoin;
+  const visitorLeft = waitFor(resumed, "playersUpdated", payload => payload.playerCount === 2);
+  leaver.disconnect();
+  await visitorLeft;
+  const redAssigned = waitFor(impersonator, "versusUpdated", payload => payload.players.find(player => player.id === impersonator.id)?.teamId === "red");
+  impersonator.emit("setTeam", { lobbyId: created.lobbyId, teamId: "red" });
+  await redAssigned;
+  const blueAssigned = waitFor(resumed, "versusUpdated", payload => payload.players.find(player => player.id === resumed.id)?.teamId === "blue");
+  resumed.emit("setTeam", { lobbyId: created.lobbyId, teamId: "blue" });
+  await blueAssigned;
+  const launched = waitFor(resumed, "versusUpdated", payload => payload.versus.phase === "playing");
+  impersonator.emit("toggleReady", { lobbyId: created.lobbyId });
+  resumed.emit("toggleReady", { lobbyId: created.lobbyId });
+  await launched;
+  assert.equal(lobby.resumeAssignments.has(leaverPayload.resumeToken), false, "a departed setup visitor is outside the launched crew");
+  leaver.connect();
+  await waitFor(leaver, "connect");
+  const oldSeatDenied = waitFor(leaver, "error");
+  leaver.emit("joinLobby", { lobbyId: created.lobbyId, resumeToken: leaverPayload.resumeToken });
+  assert.match(await oldSeatDenied, /unavailable/);
+  assert.equal(lobby.players.size, 2);
 });

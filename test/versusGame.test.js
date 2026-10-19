@@ -104,6 +104,10 @@ test("opponent views expose telemetry and points without transmitting words", as
     blueView.teams.find((team) => team.id === "red").playerStats[0].bestSimilarity,
     0
   );
+  const blueGuess = match.handleGuess("moon", blue);
+  assert.equal(blueGuess.ok, true, "an opponent's word is still a new guess for this team");
+  assert.equal(blueGuess.duplicate, undefined);
+  assert.equal(match.getView("blue", players).gameState.guessHistory[0].guess, "moon");
 });
 
 test("ranks sub-second finishes with exact timing instead of rounded display seconds", async () => {

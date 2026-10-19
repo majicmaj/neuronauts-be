@@ -58,8 +58,9 @@ function verbLemmas(word) {
   const matches = [...candidates].filter((base) => isVerb(base) && inflectVerb(base, ending) === word);
   // singed is singe + d, not the regular past of irregular sing. Keep regular
   // variants such as hanged when no competing verb explains the spelling.
-  return ending === "ed" && matches.length > 1
-    ? matches.filter((base) => !irregularPastBases.has(base))
+  const regularMatches = matches.filter((base) => !irregularPastBases.has(base));
+  return ending === "ed" && matches.length > 1 && regularMatches.length
+    ? regularMatches
     : matches;
 }
 
@@ -92,8 +93,8 @@ function transformationFor(word, canonical) {
       (canonical === nounLemma(word) || !verbLemmas(word).includes(canonical))) return "plural";
   if (isComparison(word, tags) && lemmatize.adjective(word) === canonical) return "comparison";
   if (tags.includes("VBG") || word.endsWith("ing")) return "participle";
-  if (tags.includes("VBD") || tags.includes("VBN") || word.endsWith("ed")) return "past";
   if (tags.includes("VBZ")) return "agreement";
+  if (tags.includes("VBD") || tags.includes("VBN") || word.endsWith("ed")) return "past";
   if (canonical !== word) return "irregular";
   return "inflection";
 }
@@ -277,7 +278,7 @@ function classify(word) {
   return {
     action: "alias",
     canonical: spellingDecision.canonical,
-    transformation: "spelling-variant",
+    transformation: spellingDecision.action === "alias" ? "inflection" : "spelling-variant",
     reason: `British spelling variant of ${spellingCanonical}.`,
     source: "spelling-data",
   };
@@ -290,6 +291,24 @@ function csvCell(value) {
 
 function serializeJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+function validateAmbiguousOverrides(ambiguousOverrides, aliases) {
+  const canonicalWords = new Set(Object.values(aliases).map((alias) => alias.canonical));
+  for (const [surface, candidates] of Object.entries(ambiguousOverrides)) {
+    if (!/^[a-z][a-z'-]*$/.test(surface) || !Array.isArray(candidates) || !candidates.length) {
+      throw new Error(`Invalid ambiguous alias override for ${surface}.`);
+    }
+    if (Object.hasOwn(aliases, surface)) {
+      throw new Error(`Ambiguous alias ${surface} conflicts with a direct alias.`);
+    }
+    for (const candidate of candidates) {
+      if (typeof candidate !== "string" || candidate === surface ||
+          (!isKnownWord(candidate) && !canonicalWords.has(candidate))) {
+        throw new Error(`Ambiguous alias ${surface} points to unknown or invalid ${candidate}.`);
+      }
+    }
+  }
 }
 
 function buildArtifacts() {
@@ -359,7 +378,7 @@ function buildArtifacts() {
     if (!conceptByKey.has(canonical) || aliases[surfaceWord]) continue;
     aliases[surfaceWord] = {
       canonical,
-      transformation: "spelling-variant",
+      transformation: spellingDecision.action === "alias" ? "inflection" : "spelling-variant",
     };
   }
 
@@ -391,11 +410,14 @@ function buildArtifacts() {
   // and one representative so wins, ranks, hints and duplicate recall all agree.
   for (const [surfaceWord, alias] of Object.entries(aliases)) {
     const seen = new Set([surfaceWord]);
+    const transformations = new Set([alias.transformation]);
     while (aliases[alias.canonical]) {
       if (seen.has(alias.canonical)) throw new Error(`Alias cycle at ${surfaceWord}.`);
       seen.add(alias.canonical);
+      transformations.add(aliases[alias.canonical].transformation);
       alias.canonical = aliases[alias.canonical].canonical;
     }
+    if (transformations.size > 1) alias.transformation = "inflection";
   }
   for (const [surfaceWord, alias] of Object.entries(aliases)) {
     conceptByKey.delete(surfaceWord);
@@ -414,6 +436,7 @@ function buildArtifacts() {
 
   const ambiguousAliases = {};
   const ambiguousOverrides = overrides.ambiguousAliases || {};
+  validateAmbiguousOverrides(ambiguousOverrides, aliases);
   for (const surface of [...new Set([...words, ...dictionaryWords,
     ...Object.keys(ambiguousOverrides)])].sort()) {
     if (aliases[surface] || !/^[a-z][a-z'-]*$/.test(surface)) continue;
@@ -516,4 +539,5 @@ function main() {
   );
 }
 
-main();
+if (require.main === module) main();
+module.exports = { validateAmbiguousOverrides };

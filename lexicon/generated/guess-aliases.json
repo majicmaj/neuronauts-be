@@ -335,7 +335,7 @@
     },
     "classifieds": {
       "canonical": "classify",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "supported": {
       "canonical": "support",
@@ -1003,7 +1003,7 @@
     },
     "organisations": {
       "canonical": "organization",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "explained": {
       "canonical": "explain",
@@ -1011,7 +1011,7 @@
     },
     "programmes": {
       "canonical": "program",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "jewellery": {
       "canonical": "jewelry",
@@ -1503,7 +1503,7 @@
     },
     "recordings": {
       "canonical": "record",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "gardening": {
       "canonical": "garden",
@@ -1919,7 +1919,7 @@
     },
     "stockings": {
       "canonical": "stock",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "destroyed": {
       "canonical": "destroy",
@@ -2115,11 +2115,11 @@
     },
     "offerings": {
       "canonical": "offer",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "furnishings": {
       "canonical": "furnish",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "photographers": {
       "canonical": "photographer",
@@ -2571,7 +2571,7 @@
     },
     "greetings": {
       "canonical": "greet",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "inherited": {
       "canonical": "inherit",
@@ -2655,7 +2655,7 @@
     },
     "standings": {
       "canonical": "stand",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "translations": {
       "canonical": "translation",
@@ -2727,7 +2727,7 @@
     },
     "modelling": {
       "canonical": "model",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "perceived": {
       "canonical": "perceive",
@@ -2855,7 +2855,7 @@
     },
     "travelling": {
       "canonical": "travel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "spreading": {
       "canonical": "spread",
@@ -3139,7 +3139,7 @@
     },
     "cancelled": {
       "canonical": "cancel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "respected": {
       "canonical": "respect",
@@ -3871,7 +3871,7 @@
     },
     "listings": {
       "canonical": "list",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "models": {
       "canonical": "model",
@@ -6739,7 +6739,7 @@
     },
     "centres": {
       "canonical": "center",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "lands": {
       "canonical": "land",
@@ -7315,7 +7315,7 @@
     },
     "rankings": {
       "canonical": "rank",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "remained": {
       "canonical": "remain",
@@ -7639,7 +7639,7 @@
     },
     "discs": {
       "canonical": "disk",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bargains": {
       "canonical": "bargain",
@@ -8331,7 +8331,7 @@
     },
     "readings": {
       "canonical": "read",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "confused": {
       "canonical": "confuse",
@@ -8579,7 +8579,7 @@
     },
     "enrolled": {
       "canonical": "enroll",
-      "transformation": "past"
+      "transformation": "inflection"
     },
     "sensors": {
       "canonical": "sensor",
@@ -9439,7 +9439,7 @@
     },
     "postings": {
       "canonical": "post",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fires": {
       "canonical": "fire",
@@ -9479,7 +9479,7 @@
     },
     "hearings": {
       "canonical": "hear",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "dried": {
       "canonical": "dry",
@@ -9831,7 +9831,7 @@
     },
     "writings": {
       "canonical": "write",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fathers": {
       "canonical": "father",
@@ -10051,7 +10051,7 @@
     },
     "metres": {
       "canonical": "meter",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "titled": {
       "canonical": "title",
@@ -10419,11 +10419,11 @@
     },
     "aeroplanes": {
       "canonical": "airplane",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "ageing": {
       "canonical": "age",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "analogue": {
       "canonical": "analog",
@@ -10431,7 +10431,7 @@
     },
     "analogues": {
       "canonical": "analog",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "analyse": {
       "canonical": "analyze",
@@ -10439,15 +10439,15 @@
     },
     "analysed": {
       "canonical": "analyze",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "analyses": {
       "canonical": "analyze",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "analysing": {
       "canonical": "analyze",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "arbour": {
       "canonical": "arbor",
@@ -10455,7 +10455,7 @@
     },
     "arbours": {
       "canonical": "arbor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "armour": {
       "canonical": "armor",
@@ -10463,7 +10463,7 @@
     },
     "armoured": {
       "canonical": "armor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "authorise": {
       "canonical": "authorize",
@@ -10471,15 +10471,15 @@
     },
     "authorised": {
       "canonical": "authorize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "authorises": {
       "canonical": "authorize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "authorising": {
       "canonical": "authorize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "behaviour": {
       "canonical": "behavior",
@@ -10491,43 +10491,43 @@
     },
     "behaviours": {
       "canonical": "behavior",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cancelling": {
       "canonical": "cancel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "carolled": {
       "canonical": "carol",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "carolling": {
       "canonical": "carol",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "catalogued": {
       "canonical": "catalog",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "catalogues": {
       "canonical": "catalog",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cataloguing": {
       "canonical": "catalog",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "centred": {
       "canonical": "center",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "channelled": {
       "canonical": "channel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "channelling": {
       "canonical": "channel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "characterise": {
       "canonical": "characterize",
@@ -10535,15 +10535,15 @@
     },
     "characterised": {
       "canonical": "characterize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "characterises": {
       "canonical": "characterize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "characterising": {
       "canonical": "characterize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "colour": {
       "canonical": "color",
@@ -10551,15 +10551,15 @@
     },
     "coloured": {
       "canonical": "color",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "colouring": {
       "canonical": "color",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "colours": {
       "canonical": "color",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "connexion": {
       "canonical": "connection",
@@ -10567,15 +10567,15 @@
     },
     "connexions": {
       "canonical": "connection",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "counselled": {
       "canonical": "counsel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "counselling": {
       "canonical": "counsel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "customise": {
       "canonical": "customize",
@@ -10583,19 +10583,19 @@
     },
     "customised": {
       "canonical": "customize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "customising": {
       "canonical": "customize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "defences": {
       "canonical": "defense",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "dialogues": {
       "canonical": "dialog",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "disc": {
       "canonical": "disk",
@@ -10611,7 +10611,7 @@
     },
     "encyclopaedias": {
       "canonical": "encyclopedia",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "favour": {
       "canonical": "favor",
@@ -10619,11 +10619,11 @@
     },
     "favoured": {
       "canonical": "favor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "favouring": {
       "canonical": "favor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "favourite": {
       "canonical": "favorite",
@@ -10631,15 +10631,15 @@
     },
     "favourites": {
       "canonical": "favorite",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "favours": {
       "canonical": "favor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "fibres": {
       "canonical": "fiber",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "flavour": {
       "canonical": "flavor",
@@ -10647,27 +10647,27 @@
     },
     "flavoured": {
       "canonical": "flavor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "flavouring": {
       "canonical": "flavor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "flavours": {
       "canonical": "flavor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gauged": {
       "canonical": "gage",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gauges": {
       "canonical": "gage",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gauging": {
       "canonical": "gage",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gramme": {
       "canonical": "gram",
@@ -10675,7 +10675,7 @@
     },
     "grammes": {
       "canonical": "gram",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gryphon": {
       "canonical": "griffin",
@@ -10683,7 +10683,7 @@
     },
     "gryphons": {
       "canonical": "griffin",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "harbour": {
       "canonical": "harbor",
@@ -10691,15 +10691,15 @@
     },
     "harboured": {
       "canonical": "harbor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "harbouring": {
       "canonical": "harbor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "harbours": {
       "canonical": "harbor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "honour": {
       "canonical": "honor",
@@ -10707,15 +10707,15 @@
     },
     "honoured": {
       "canonical": "honor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "honouring": {
       "canonical": "honor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "honours": {
       "canonical": "honor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "humour": {
       "canonical": "humor",
@@ -10723,27 +10723,27 @@
     },
     "humoured": {
       "canonical": "humor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "humouring": {
       "canonical": "humor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "humours": {
       "canonical": "humor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "hypothesises": {
       "canonical": "hypothesis",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "initialled": {
       "canonical": "initial",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "initialling": {
       "canonical": "initial",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "instal": {
       "canonical": "install",
@@ -10751,7 +10751,7 @@
     },
     "jewelled": {
       "canonical": "jewel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "judgement": {
       "canonical": "judgment",
@@ -10763,15 +10763,15 @@
     },
     "kilometres": {
       "canonical": "kilometer",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "labelled": {
       "canonical": "label",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "labelling": {
       "canonical": "label",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "labour": {
       "canonical": "labor",
@@ -10779,43 +10779,43 @@
     },
     "laboured": {
       "canonical": "labor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "labouring": {
       "canonical": "labor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "labours": {
       "canonical": "labor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "levelled": {
       "canonical": "level",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "levelling": {
       "canonical": "level",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "licenced": {
       "canonical": "license",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "licences": {
       "canonical": "license",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "licencing": {
       "canonical": "license",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "marvelled": {
       "canonical": "marvel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "marvelling": {
       "canonical": "marvel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "maximise": {
       "canonical": "maximize",
@@ -10823,11 +10823,11 @@
     },
     "maximised": {
       "canonical": "maximize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "maximising": {
       "canonical": "maximize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mediaeval": {
       "canonical": "medieval",
@@ -10839,19 +10839,19 @@
     },
     "minimised": {
       "canonical": "minimize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "minimises": {
       "canonical": "minimize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "minimising": {
       "canonical": "minimize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "modelled": {
       "canonical": "model",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "neighbour": {
       "canonical": "neighbor",
@@ -10863,15 +10863,15 @@
     },
     "neighbourhoods": {
       "canonical": "neighborhood",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "neighbouring": {
       "canonical": "neighbor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "neighbours": {
       "canonical": "neighbor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "offence": {
       "canonical": "offense",
@@ -10879,7 +10879,7 @@
     },
     "offences": {
       "canonical": "offense",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "optimisation": {
       "canonical": "optimization",
@@ -10887,7 +10887,7 @@
     },
     "optimisations": {
       "canonical": "optimization",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "optimise": {
       "canonical": "optimize",
@@ -10895,11 +10895,11 @@
     },
     "optimised": {
       "canonical": "optimize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "optimising": {
       "canonical": "optimize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "organisational": {
       "canonical": "organizational",
@@ -10911,7 +10911,7 @@
     },
     "organised": {
       "canonical": "organize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "organiser": {
       "canonical": "organizer",
@@ -10919,15 +10919,15 @@
     },
     "organisers": {
       "canonical": "organizer",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "organises": {
       "canonical": "organize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "organising": {
       "canonical": "organize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "paediatric": {
       "canonical": "pediatric",
@@ -10935,27 +10935,27 @@
     },
     "panelled": {
       "canonical": "panel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "panelling": {
       "canonical": "panel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "parcelled": {
       "canonical": "parcel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "parcelling": {
       "canonical": "parcel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "pencilled": {
       "canonical": "pencil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "pencilling": {
       "canonical": "pencil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "personalise": {
       "canonical": "personalize",
@@ -10963,11 +10963,11 @@
     },
     "personalised": {
       "canonical": "personalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "personalising": {
       "canonical": "personalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "philtre": {
       "canonical": "filter",
@@ -10975,7 +10975,7 @@
     },
     "philtres": {
       "canonical": "filter",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "practise": {
       "canonical": "practice",
@@ -10983,15 +10983,15 @@
     },
     "practised": {
       "canonical": "practice",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "practises": {
       "canonical": "practice",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "practising": {
       "canonical": "practice",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "realise": {
       "canonical": "realize",
@@ -10999,15 +10999,15 @@
     },
     "realised": {
       "canonical": "realize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "realises": {
       "canonical": "realize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "realising": {
       "canonical": "realize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "recognise": {
       "canonical": "recognize",
@@ -11015,23 +11015,23 @@
     },
     "recognised": {
       "canonical": "recognize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "recognises": {
       "canonical": "recognize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "recognising": {
       "canonical": "recognize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "signalled": {
       "canonical": "signal",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "signalling": {
       "canonical": "signal",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "specialise": {
       "canonical": "specialize",
@@ -11039,31 +11039,31 @@
     },
     "specialised": {
       "canonical": "specialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "specialises": {
       "canonical": "specialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "specialising": {
       "canonical": "specialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "synthesises": {
       "canonical": "synthesis",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "theatres": {
       "canonical": "theater",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "travelled": {
       "canonical": "travel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "travellers": {
       "canonical": "traveler",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tumour": {
       "canonical": "tumor",
@@ -11071,19 +11071,19 @@
     },
     "tumours": {
       "canonical": "tumor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tunnelled": {
       "canonical": "tunnel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tunnelling": {
       "canonical": "tunnel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tyres": {
       "canonical": "tire",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "unauthorised": {
       "canonical": "unauthorized",
@@ -11099,15 +11099,15 @@
     },
     "utilised": {
       "canonical": "utilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "utilises": {
       "canonical": "utilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "utilising": {
       "canonical": "utilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "waggon": {
       "canonical": "wagon",
@@ -11115,15 +11115,15 @@
     },
     "waggons": {
       "canonical": "wagon",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "worshipped": {
       "canonical": "worship",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "worshipping": {
       "canonical": "worship",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "aardwolves": {
       "canonical": "aardwolf",
@@ -11711,7 +11711,7 @@
     },
     "aesthetes": {
       "canonical": "esthete",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "aesthetic": {
       "canonical": "esthetic",
@@ -11723,7 +11723,7 @@
     },
     "aesthetics": {
       "canonical": "esthetic",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "aetiology": {
       "canonical": "etiology",
@@ -11823,11 +11823,11 @@
     },
     "agonised": {
       "canonical": "agonize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "agonising": {
       "canonical": "agonize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "agonized": {
       "canonical": "agonize",
@@ -11899,7 +11899,7 @@
     },
     "airings": {
       "canonical": "air",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "airliners": {
       "canonical": "airliner",
@@ -12451,11 +12451,11 @@
     },
     "appalled": {
       "canonical": "appall",
-      "transformation": "past"
+      "transformation": "inflection"
     },
     "appalling": {
       "canonical": "appall",
-      "transformation": "participle"
+      "transformation": "inflection"
     },
     "appareled": {
       "canonical": "apparel",
@@ -13447,7 +13447,7 @@
     },
     "baptised": {
       "canonical": "baptize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "baptists": {
       "canonical": "baptist",
@@ -13567,7 +13567,7 @@
     },
     "bastardised": {
       "canonical": "bastardize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bastardized": {
       "canonical": "bastardize",
@@ -13723,7 +13723,7 @@
     },
     "bearings": {
       "canonical": "bear",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "beastlier": {
       "canonical": "beastly",
@@ -13747,7 +13747,7 @@
     },
     "beatings": {
       "canonical": "beat",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "beatniks": {
       "canonical": "beatnik",
@@ -13779,11 +13779,11 @@
     },
     "bedevilled": {
       "canonical": "bedevil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bedevilling": {
       "canonical": "bedevil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bedewed": {
       "canonical": "bedew",
@@ -13899,7 +13899,7 @@
     },
     "beginnings": {
       "canonical": "begin",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "begrimed": {
       "canonical": "begrime",
@@ -13959,7 +13959,7 @@
     },
     "bejewelled": {
       "canonical": "bejewel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bejewelling": {
       "canonical": "bejewel",
@@ -14183,7 +14183,7 @@
     },
     "bevelled": {
       "canonical": "bevel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bevelling": {
       "canonical": "bevel",
@@ -14215,11 +14215,11 @@
     },
     "biassed": {
       "canonical": "bias",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "biassing": {
       "canonical": "bias",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "bibbed": {
       "canonical": "bib",
@@ -14275,7 +14275,7 @@
     },
     "billings": {
       "canonical": "bill",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "billions": {
       "canonical": "billion",
@@ -14515,7 +14515,7 @@
     },
     "blessings": {
       "canonical": "bless",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "blighted": {
       "canonical": "blight",
@@ -14719,7 +14719,7 @@
     },
     "boardings": {
       "canonical": "board",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "boarfishes": {
       "canonical": "boarfish",
@@ -14735,7 +14735,7 @@
     },
     "boastings": {
       "canonical": "boast",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "boasts": {
       "canonical": "boast",
@@ -14803,7 +14803,7 @@
     },
     "bombings": {
       "canonical": "bomb",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "bombs": {
       "canonical": "bomb",
@@ -14971,7 +14971,7 @@
     },
     "borrowings": {
       "canonical": "borrow",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "borrows": {
       "canonical": "borrow",
@@ -15339,7 +15339,7 @@
     },
     "briefings": {
       "canonical": "brief",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "brimmed": {
       "canonical": "brim",
@@ -15375,7 +15375,7 @@
     },
     "broadcastings": {
       "canonical": "broadcast",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "broadcasts": {
       "canonical": "broadcast",
@@ -15731,7 +15731,7 @@
     },
     "burnings": {
       "canonical": "burn",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "burnished": {
       "canonical": "burnish",
@@ -15863,7 +15863,7 @@
     },
     "buyings": {
       "canonical": "buy",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "buys": {
       "canonical": "buy",
@@ -16107,7 +16107,7 @@
     },
     "canonised": {
       "canonical": "canonize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "canonized": {
       "canonical": "canonize",
@@ -16347,7 +16347,7 @@
     },
     "carvings": {
       "canonical": "carve",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "caryopses": {
       "canonical": "caryopsis",
@@ -16379,11 +16379,11 @@
     },
     "casings": {
       "canonical": "case",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "castings": {
       "canonical": "cast",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "castled": {
       "canonical": "castle",
@@ -16439,7 +16439,7 @@
     },
     "categorised": {
       "canonical": "categorize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "categorized": {
       "canonical": "categorize",
@@ -16515,11 +16515,11 @@
     },
     "cavilled": {
       "canonical": "cavil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cavilling": {
       "canonical": "cavil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "caving": {
       "canonical": "cave",
@@ -16603,11 +16603,11 @@
     },
     "centralised": {
       "canonical": "centralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "centralising": {
       "canonical": "centralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "centralized": {
       "canonical": "centralize",
@@ -16891,7 +16891,7 @@
     },
     "chequered": {
       "canonical": "checker",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cherished": {
       "canonical": "cherish",
@@ -16971,7 +16971,7 @@
     },
     "chillies": {
       "canonical": "chili",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "chilliest": {
       "canonical": "chilly",
@@ -17031,11 +17031,11 @@
     },
     "chiselled": {
       "canonical": "chisel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "chiselling": {
       "canonical": "chisel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "chitchatted": {
       "canonical": "chitchat",
@@ -17243,7 +17243,7 @@
     },
     "civilised": {
       "canonical": "civilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "civilizations": {
       "canonical": "civilization",
@@ -17295,7 +17295,7 @@
     },
     "clamouring": {
       "canonical": "clamor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "clams": {
       "canonical": "clam",
@@ -17483,7 +17483,7 @@
     },
     "clippings": {
       "canonical": "clip",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "cloaked": {
       "canonical": "cloak",
@@ -17531,7 +17531,7 @@
     },
     "closings": {
       "canonical": "close",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "clothed": {
       "canonical": "clothe",
@@ -17667,7 +17667,7 @@
     },
     "coatings": {
       "canonical": "coat",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "coats": {
       "canonical": "coat",
@@ -17831,7 +17831,7 @@
     },
     "collectivised": {
       "canonical": "collectivize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "collectivized": {
       "canonical": "collectivize",
@@ -17871,7 +17871,7 @@
     },
     "colonised": {
       "canonical": "colonize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "coloniser": {
       "canonical": "colonizer",
@@ -17963,7 +17963,7 @@
     },
     "comings": {
       "canonical": "come",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "commanded": {
       "canonical": "command",
@@ -18011,7 +18011,7 @@
     },
     "commercialised": {
       "canonical": "commercialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "commercialized": {
       "canonical": "commercialize",
@@ -18075,7 +18075,7 @@
     },
     "compartmentalised": {
       "canonical": "compartmentalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "compartmentalized": {
       "canonical": "compartmentalize",
@@ -18907,7 +18907,7 @@
     },
     "copings": {
       "canonical": "cope",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "copped": {
       "canonical": "cop",
@@ -19059,11 +19059,11 @@
     },
     "cosier": {
       "canonical": "cozy",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cosiest": {
       "canonical": "cozy",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cosily": {
       "canonical": "cozily",
@@ -19215,7 +19215,7 @@
     },
     "coverings": {
       "canonical": "cover",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "coveted": {
       "canonical": "covet",
@@ -19287,7 +19287,7 @@
     },
     "cracklings": {
       "canonical": "crackle",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "cracks": {
       "canonical": "crack",
@@ -19595,7 +19595,7 @@
     },
     "crossings": {
       "canonical": "cross",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "crossroads": {
       "canonical": "crossroad",
@@ -19711,7 +19711,7 @@
     },
     "crystallised": {
       "canonical": "crystallize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "crystallized": {
       "canonical": "crystallize",
@@ -19739,11 +19739,11 @@
     },
     "cudgelled": {
       "canonical": "cudgel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cudgelling": {
       "canonical": "cudgel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "cues": {
       "canonical": "cue",
@@ -19907,7 +19907,7 @@
     },
     "cuttings": {
       "canonical": "cut",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "cuttlefishes": {
       "canonical": "cuttlefish",
@@ -20175,7 +20175,7 @@
     },
     "dealings": {
       "canonical": "deal",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "debarred": {
       "canonical": "debar",
@@ -20287,11 +20287,11 @@
     },
     "decentralised": {
       "canonical": "decentralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "decentralising": {
       "canonical": "decentralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "decentralized": {
       "canonical": "decentralize",
@@ -20543,7 +20543,7 @@
     },
     "dehumanised": {
       "canonical": "dehumanize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "dehumanized": {
       "canonical": "dehumanize",
@@ -20703,11 +20703,11 @@
     },
     "demoralised": {
       "canonical": "demoralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "demoralising": {
       "canonical": "demoralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "demoralized": {
       "canonical": "demoralize",
@@ -20991,7 +20991,7 @@
     },
     "desensitising": {
       "canonical": "desensitize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "desensitizing": {
       "canonical": "desensitize",
@@ -21243,11 +21243,11 @@
     },
     "dialled": {
       "canonical": "dial",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "dialling": {
       "canonical": "dial",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "dialyses": {
       "canonical": "dialysis",
@@ -21371,7 +21371,7 @@
     },
     "diggings": {
       "canonical": "dig",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "digitalized": {
       "canonical": "digitalize",
@@ -21755,11 +21755,11 @@
     },
     "disembowelled": {
       "canonical": "disembowel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "disembowelling": {
       "canonical": "disembowel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "disenchanted": {
       "canonical": "disenchant",
@@ -21827,7 +21827,7 @@
     },
     "dishevelled": {
       "canonical": "dishevel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "dishevelling": {
       "canonical": "dishevel",
@@ -21947,7 +21947,7 @@
     },
     "disorganised": {
       "canonical": "disorganize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "disorganized": {
       "canonical": "disorganize",
@@ -22083,11 +22083,11 @@
     },
     "distilled": {
       "canonical": "distill",
-      "transformation": "past"
+      "transformation": "inflection"
     },
     "distilling": {
       "canonical": "distill",
-      "transformation": "participle"
+      "transformation": "inflection"
     },
     "distinctions": {
       "canonical": "distinction",
@@ -22611,15 +22611,15 @@
     },
     "draughtier": {
       "canonical": "drafty",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "draughtiest": {
       "canonical": "drafty",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "draughts": {
       "canonical": "draft",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "draughtsman": {
       "canonical": "draftsman",
@@ -22687,7 +22687,7 @@
     },
     "dressings": {
       "canonical": "dress",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "dribbling": {
       "canonical": "dribble",
@@ -22739,15 +22739,15 @@
     },
     "drippings": {
       "canonical": "drip",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "drivelled": {
       "canonical": "drivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "drivelling": {
       "canonical": "drivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "driveways": {
       "canonical": "driveway",
@@ -22871,11 +22871,11 @@
     },
     "duelled": {
       "canonical": "duel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "duelling": {
       "canonical": "duel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "dues": {
       "canonical": "due",
@@ -23063,7 +23063,7 @@
     },
     "eatings": {
       "canonical": "eat",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "eats": {
       "canonical": "eat",
@@ -23451,7 +23451,7 @@
     },
     "emphasised": {
       "canonical": "emphasize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "emphasized": {
       "canonical": "emphasize",
@@ -23535,11 +23535,11 @@
     },
     "enamelled": {
       "canonical": "enamel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "enamelling": {
       "canonical": "enamel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "enamored": {
       "canonical": "enamor",
@@ -23619,7 +23619,7 @@
     },
     "endings": {
       "canonical": "end",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "endorsements": {
       "canonical": "endorsement",
@@ -23667,7 +23667,7 @@
     },
     "energising": {
       "canonical": "energize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "energizing": {
       "canonical": "energize",
@@ -23715,7 +23715,7 @@
     },
     "engages": {
       "canonical": "engage",
-      "transformation": "past"
+      "transformation": "agreement"
     },
     "engineered": {
       "canonical": "engineer",
@@ -23811,7 +23811,7 @@
     },
     "enrolling": {
       "canonical": "enroll",
-      "transformation": "participle"
+      "transformation": "inflection"
     },
     "enrollments": {
       "canonical": "enrollment",
@@ -23855,11 +23855,11 @@
     },
     "enthralled": {
       "canonical": "enthrall",
-      "transformation": "past"
+      "transformation": "inflection"
     },
     "enthralling": {
       "canonical": "enthrall",
-      "transformation": "participle"
+      "transformation": "inflection"
     },
     "enthusiasms": {
       "canonical": "enthusiasm",
@@ -24727,7 +24727,7 @@
     },
     "facings": {
       "canonical": "face",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "factored": {
       "canonical": "factor",
@@ -24787,7 +24787,7 @@
     },
     "failings": {
       "canonical": "fail",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fainted": {
       "canonical": "faint",
@@ -24835,11 +24835,11 @@
     },
     "familiarised": {
       "canonical": "familiarize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "familiarising": {
       "canonical": "familiarize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "familiarized": {
       "canonical": "familiarize",
@@ -25103,7 +25103,7 @@
     },
     "feedings": {
       "canonical": "feed",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fees": {
       "canonical": "fee",
@@ -25291,7 +25291,7 @@
     },
     "filings": {
       "canonical": "file",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fillet": {
       "canonical": "filet",
@@ -25299,7 +25299,7 @@
     },
     "fillings": {
       "canonical": "fill",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fills": {
       "canonical": "fill",
@@ -25359,7 +25359,7 @@
     },
     "financings": {
       "canonical": "finance",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fined": {
       "canonical": "fine",
@@ -25383,7 +25383,7 @@
     },
     "fingerings": {
       "canonical": "finger",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fingerprinting": {
       "canonical": "fingerprint",
@@ -25415,7 +25415,7 @@
     },
     "firings": {
       "canonical": "fire",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "firmed": {
       "canonical": "firm",
@@ -25463,7 +25463,7 @@
     },
     "fittings": {
       "canonical": "fit",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fives": {
       "canonical": "five",
@@ -25475,7 +25475,7 @@
     },
     "fixings": {
       "canonical": "fix",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fizzing": {
       "canonical": "fizz",
@@ -25631,7 +25631,7 @@
     },
     "flavorings": {
       "canonical": "flavor",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "flavors": {
       "canonical": "flavor",
@@ -26011,7 +26011,7 @@
     },
     "followings": {
       "canonical": "follow",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "fondling": {
       "canonical": "fondle",
@@ -26183,7 +26183,7 @@
     },
     "formalised": {
       "canonical": "formalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "formalities": {
       "canonical": "formality",
@@ -26255,7 +26255,7 @@
     },
     "fossilised": {
       "canonical": "fossilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "fossilized": {
       "canonical": "fossilize",
@@ -26695,11 +26695,11 @@
     },
     "fulfilled": {
       "canonical": "fulfill",
-      "transformation": "past"
+      "transformation": "inflection"
     },
     "fulfilling": {
       "canonical": "fulfill",
-      "transformation": "participle"
+      "transformation": "inflection"
     },
     "fulfilment": {
       "canonical": "fulfillment",
@@ -26739,11 +26739,11 @@
     },
     "funnelled": {
       "canonical": "funnel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "funnelling": {
       "canonical": "funnel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "funnier": {
       "canonical": "funny",
@@ -26871,7 +26871,7 @@
     },
     "galvanising": {
       "canonical": "galvanize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "galvanizing": {
       "canonical": "galvanize",
@@ -26879,11 +26879,11 @@
     },
     "gambolled": {
       "canonical": "gambol",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gambolling": {
       "canonical": "gambol",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gamier": {
       "canonical": "gamy",
@@ -27015,7 +27015,7 @@
     },
     "gatherings": {
       "canonical": "gather",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "gathers": {
       "canonical": "gather",
@@ -27131,7 +27131,7 @@
     },
     "generalised": {
       "canonical": "generalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "generalities": {
       "canonical": "generality",
@@ -27535,7 +27535,7 @@
     },
     "goings": {
       "canonical": "go",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "goitre": {
       "canonical": "goiter",
@@ -27783,11 +27783,11 @@
     },
     "gratings": {
       "canonical": "grate",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "gravelled": {
       "canonical": "gravel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "gravelling": {
       "canonical": "gravel",
@@ -27871,7 +27871,7 @@
     },
     "greyed": {
       "canonical": "gray",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "greyish": {
       "canonical": "grayish",
@@ -28063,7 +28063,7 @@
     },
     "groupings": {
       "canonical": "group",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "groveling": {
       "canonical": "grovel",
@@ -28071,11 +28071,11 @@
     },
     "grovelled": {
       "canonical": "grovel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "grovelling": {
       "canonical": "grovel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "groves": {
       "canonical": "grove",
@@ -28511,7 +28511,7 @@
     },
     "happenings": {
       "canonical": "happen",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "happier": {
       "canonical": "happy",
@@ -28571,7 +28571,7 @@
     },
     "harmonised": {
       "canonical": "harmonize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "harmonized": {
       "canonical": "harmonize",
@@ -28607,7 +28607,7 @@
     },
     "has": {
       "canonical": "have",
-      "transformation": "past"
+      "transformation": "agreement"
     },
     "hastier": {
       "canonical": "hasty",
@@ -28723,7 +28723,7 @@
     },
     "headings": {
       "canonical": "head",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "headlined": {
       "canonical": "headline",
@@ -28859,7 +28859,7 @@
     },
     "helpings": {
       "canonical": "help",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "hematolyses": {
       "canonical": "hematolysis",
@@ -29159,7 +29159,7 @@
     },
     "homogenised": {
       "canonical": "homogenize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "homogenized": {
       "canonical": "homogenize",
@@ -29335,7 +29335,7 @@
     },
     "housings": {
       "canonical": "house",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "houyhnhnms": {
       "canonical": "houyhnhnm",
@@ -29375,7 +29375,7 @@
     },
     "huggings": {
       "canonical": "hug",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "hugs": {
       "canonical": "hug",
@@ -29567,7 +29567,7 @@
     },
     "hypnotised": {
       "canonical": "hypnotize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "hypnotized": {
       "canonical": "hypnotize",
@@ -29639,7 +29639,7 @@
     },
     "idealised": {
       "canonical": "idealize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "idealisms": {
       "canonical": "idealism",
@@ -29679,7 +29679,7 @@
     },
     "idolised": {
       "canonical": "idolize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "idolized": {
       "canonical": "idolize",
@@ -29803,7 +29803,7 @@
     },
     "immunised": {
       "canonical": "immunize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "immunities": {
       "canonical": "immunity",
@@ -29819,11 +29819,11 @@
     },
     "impanelled": {
       "canonical": "impanel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "impanelling": {
       "canonical": "impanel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "imparting": {
       "canonical": "impart",
@@ -30023,7 +30023,7 @@
     },
     "individualised": {
       "canonical": "individualize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "individualized": {
       "canonical": "individualize",
@@ -30051,7 +30051,7 @@
     },
     "industrialised": {
       "canonical": "industrialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "industrialized": {
       "canonical": "industrialize",
@@ -30343,7 +30343,7 @@
     },
     "instalments": {
       "canonical": "installment",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "instil": {
       "canonical": "instill",
@@ -30371,7 +30371,7 @@
     },
     "institutionalised": {
       "canonical": "institutionalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "institutionalized": {
       "canonical": "institutionalize",
@@ -30811,7 +30811,7 @@
     },
     "ionised": {
       "canonical": "ionize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "ionized": {
       "canonical": "ionize",
@@ -31463,7 +31463,7 @@
     },
     "killings": {
       "canonical": "kill",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "kindled": {
       "canonical": "kindle",
@@ -31519,7 +31519,7 @@
     },
     "kissings": {
       "canonical": "kiss",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "kitchens": {
       "canonical": "kitchen",
@@ -31763,7 +31763,7 @@
     },
     "landings": {
       "canonical": "land",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "landmarks": {
       "canonical": "landmark",
@@ -31831,7 +31831,7 @@
     },
     "lashings": {
       "canonical": "lash",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "lassoes": {
       "canonical": "lasso",
@@ -31867,7 +31867,7 @@
     },
     "launchings": {
       "canonical": "launch",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "laundering": {
       "canonical": "launder",
@@ -31943,7 +31943,7 @@
     },
     "leadings": {
       "canonical": "lead",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "leafed": {
       "canonical": "leaf",
@@ -32255,11 +32255,11 @@
     },
     "libelled": {
       "canonical": "libel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "libelling": {
       "canonical": "libel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "libellous": {
       "canonical": "libelous",
@@ -32507,7 +32507,7 @@
     },
     "loadings": {
       "canonical": "load",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "loafing": {
       "canonical": "loaf",
@@ -32563,7 +32563,7 @@
     },
     "localised": {
       "canonical": "localize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "localisms": {
       "canonical": "localism",
@@ -32591,7 +32591,7 @@
     },
     "lodgings": {
       "canonical": "lodge",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "loftier": {
       "canonical": "lofty",
@@ -32639,7 +32639,7 @@
     },
     "longings": {
       "canonical": "long",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "longs": {
       "canonical": "long",
@@ -32959,7 +32959,7 @@
     },
     "magnetised": {
       "canonical": "magnetize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "magnetisms": {
       "canonical": "magnetism",
@@ -32987,7 +32987,7 @@
     },
     "mailings": {
       "canonical": "mail",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "maimed": {
       "canonical": "maim",
@@ -33019,7 +33019,7 @@
     },
     "makings": {
       "canonical": "make",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "malfunctioning": {
       "canonical": "malfunction",
@@ -33279,7 +33279,7 @@
     },
     "markings": {
       "canonical": "mark",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "marooned": {
       "canonical": "maroon",
@@ -33295,7 +33295,7 @@
     },
     "marrieds": {
       "canonical": "marry",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "marries": {
       "canonical": "marry",
@@ -33319,11 +33319,11 @@
     },
     "marshalled": {
       "canonical": "marshal",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "marshalling": {
       "canonical": "marshal",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "marshals": {
       "canonical": "marshal",
@@ -33483,7 +33483,7 @@
     },
     "meanings": {
       "canonical": "mean",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "measlier": {
       "canonical": "measly",
@@ -33515,7 +33515,7 @@
     },
     "mechanised": {
       "canonical": "mechanize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mechanized": {
       "canonical": "mechanize",
@@ -33695,7 +33695,7 @@
     },
     "mesmerised": {
       "canonical": "mesmerize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mesmerized": {
       "canonical": "mesmerize",
@@ -33851,7 +33851,7 @@
     },
     "militarised": {
       "canonical": "militarize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "militarized": {
       "canonical": "militarize",
@@ -34091,7 +34091,7 @@
     },
     "misspelt": {
       "canonical": "misspell",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mistaking": {
       "canonical": "mistake",
@@ -34199,7 +34199,7 @@
     },
     "modernised": {
       "canonical": "modernize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "modernized": {
       "canonical": "modernize",
@@ -34463,7 +34463,7 @@
     },
     "motorised": {
       "canonical": "motorize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "motorized": {
       "canonical": "motorize",
@@ -34491,15 +34491,15 @@
     },
     "mouldier": {
       "canonical": "moldy",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mouldiest": {
       "canonical": "moldy",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "moulding": {
       "canonical": "mold",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mouldy": {
       "canonical": "moldy",
@@ -34511,7 +34511,7 @@
     },
     "moulting": {
       "canonical": "molt",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "mountaineering": {
       "canonical": "mountaineer",
@@ -34527,7 +34527,7 @@
     },
     "mountings": {
       "canonical": "mount",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "mourning": {
       "canonical": "mourn",
@@ -34759,7 +34759,7 @@
     },
     "mutterings": {
       "canonical": "mutter",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "mutters": {
       "canonical": "mutter",
@@ -34963,7 +34963,7 @@
     },
     "naturalised": {
       "canonical": "naturalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "naturalized": {
       "canonical": "naturalize",
@@ -35187,7 +35187,7 @@
     },
     "neutralised": {
       "canonical": "neutralize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "neutralized": {
       "canonical": "neutralize",
@@ -35795,7 +35795,7 @@
     },
     "orderings": {
       "canonical": "order",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "organics": {
       "canonical": "organic",
@@ -36259,7 +36259,7 @@
     },
     "oxidised": {
       "canonical": "oxidize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "oxidized": {
       "canonical": "oxidize",
@@ -36359,7 +36359,7 @@
     },
     "pairings": {
       "canonical": "pair",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "palaces": {
       "canonical": "palace",
@@ -36639,7 +36639,7 @@
     },
     "particularised": {
       "canonical": "particularize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "particularized": {
       "canonical": "particularize",
@@ -36655,7 +36655,7 @@
     },
     "partings": {
       "canonical": "part",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "partitioning": {
       "canonical": "partition",
@@ -36703,7 +36703,7 @@
     },
     "pasteurised": {
       "canonical": "pasteurize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "pasteurized": {
       "canonical": "pasteurize",
@@ -36771,11 +36771,11 @@
     },
     "patronised": {
       "canonical": "patronize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "patronising": {
       "canonical": "patronize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "patronisingly": {
       "canonical": "patronizingly",
@@ -36891,11 +36891,11 @@
     },
     "pedalled": {
       "canonical": "pedal",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "pedalling": {
       "canonical": "pedal",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "peddling": {
       "canonical": "peddle",
@@ -37307,7 +37307,7 @@
     },
     "phrasings": {
       "canonical": "phrase",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "phylogeneses": {
       "canonical": "phylogenesis",
@@ -37335,7 +37335,7 @@
     },
     "pickings": {
       "canonical": "pick",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "pickled": {
       "canonical": "pickle",
@@ -37427,7 +37427,7 @@
     },
     "pilings": {
       "canonical": "pile",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "pillaged": {
       "canonical": "pillage",
@@ -37491,7 +37491,7 @@
     },
     "pinnings": {
       "canonical": "pin",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "pins": {
       "canonical": "pin",
@@ -37623,7 +37623,7 @@
     },
     "plagiarised": {
       "canonical": "plagiarize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "plagiarized": {
       "canonical": "plagiarize",
@@ -37651,7 +37651,7 @@
     },
     "plantings": {
       "canonical": "plant",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "plastered": {
       "canonical": "plaster",
@@ -37707,7 +37707,7 @@
     },
     "pleadings": {
       "canonical": "plead",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "pleads": {
       "canonical": "plead",
@@ -37775,11 +37775,11 @@
     },
     "ploughed": {
       "canonical": "plow",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "ploughing": {
       "canonical": "plow",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "ploughman": {
       "canonical": "plowman",
@@ -38567,7 +38567,7 @@
     },
     "pricings": {
       "canonical": "price",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "pricking": {
       "canonical": "prick",
@@ -38891,11 +38891,11 @@
     },
     "prologed": {
       "canonical": "prolog",
-      "transformation": "past"
+      "transformation": "inflection"
     },
     "prologing": {
       "canonical": "prolog",
-      "transformation": "participle"
+      "transformation": "inflection"
     },
     "prologue": {
       "canonical": "prolog",
@@ -38919,7 +38919,7 @@
     },
     "promptings": {
       "canonical": "prompt",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "prompts": {
       "canonical": "prompt",
@@ -39163,7 +39163,7 @@
     },
     "publicised": {
       "canonical": "publicize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "publicized": {
       "canonical": "publicize",
@@ -39247,7 +39247,7 @@
     },
     "pulverised": {
       "canonical": "pulverize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "pulverized": {
       "canonical": "pulverize",
@@ -39259,7 +39259,7 @@
     },
     "pummelling": {
       "canonical": "pummel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "pumped": {
       "canonical": "pump",
@@ -39483,11 +39483,11 @@
     },
     "quarrelled": {
       "canonical": "quarrel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "quarrelling": {
       "canonical": "quarrel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "quarried": {
       "canonical": "quarry",
@@ -39783,7 +39783,7 @@
     },
     "railings": {
       "canonical": "rail",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "railroading": {
       "canonical": "railroad",
@@ -39871,7 +39871,7 @@
     },
     "randomised": {
       "canonical": "randomize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "randomized": {
       "canonical": "randomize",
@@ -40039,11 +40039,11 @@
     },
     "ravelled": {
       "canonical": "ravel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "ravelling": {
       "canonical": "ravel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "ravening": {
       "canonical": "raven",
@@ -40311,7 +40311,7 @@
     },
     "reconnoitring": {
       "canonical": "reconnoiter",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "reconstructed": {
       "canonical": "reconstruct",
@@ -40495,11 +40495,11 @@
     },
     "refuelled": {
       "canonical": "refuel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "refuelling": {
       "canonical": "refuel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "refunding": {
       "canonical": "refund",
@@ -40779,7 +40779,7 @@
     },
     "renderings": {
       "canonical": "render",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "renders": {
       "canonical": "render",
@@ -40827,7 +40827,7 @@
     },
     "reorganised": {
       "canonical": "reorganize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "reorganized": {
       "canonical": "reorganize",
@@ -41267,7 +41267,7 @@
     },
     "revelled": {
       "canonical": "revel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "reveller": {
       "canonical": "reveler",
@@ -41275,11 +41275,11 @@
     },
     "revellers": {
       "canonical": "reveler",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "revelling": {
       "canonical": "revel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "revels": {
       "canonical": "revel",
@@ -41339,11 +41339,11 @@
     },
     "revitalised": {
       "canonical": "revitalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "revitalising": {
       "canonical": "revitalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "revitalized": {
       "canonical": "revitalize",
@@ -41499,7 +41499,7 @@
     },
     "ridings": {
       "canonical": "ride",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "rifled": {
       "canonical": "rifle",
@@ -41583,7 +41583,7 @@
     },
     "ringings": {
       "canonical": "ring",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "rinsing": {
       "canonical": "rinse",
@@ -41675,11 +41675,11 @@
     },
     "rivalled": {
       "canonical": "rival",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "rivalling": {
       "canonical": "rival",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "rivals": {
       "canonical": "rival",
@@ -41995,7 +41995,7 @@
     },
     "rulings": {
       "canonical": "rule",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "rumbling": {
       "canonical": "rumble",
@@ -42107,7 +42107,7 @@
     },
     "sackings": {
       "canonical": "sack",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sacks": {
       "canonical": "sack",
@@ -42227,7 +42227,7 @@
     },
     "samplings": {
       "canonical": "sample",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sanctified": {
       "canonical": "sanctify",
@@ -42283,7 +42283,7 @@
     },
     "sanitised": {
       "canonical": "sanitize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "sanitized": {
       "canonical": "sanitize",
@@ -42383,7 +42383,7 @@
     },
     "savouring": {
       "canonical": "savor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "savoury": {
       "canonical": "savory",
@@ -42411,7 +42411,7 @@
     },
     "sayings": {
       "canonical": "say",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "says": {
       "canonical": "say",
@@ -42755,7 +42755,7 @@
     },
     "screenings": {
       "canonical": "screen",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "screwed": {
       "canonical": "screw",
@@ -42919,7 +42919,7 @@
     },
     "seasonings": {
       "canonical": "season",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "seated": {
       "canonical": "seat",
@@ -43075,11 +43075,11 @@
     },
     "sensitised": {
       "canonical": "sensitize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "sensitising": {
       "canonical": "sensitize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "sensitives": {
       "canonical": "sensitive",
@@ -43175,7 +43175,7 @@
     },
     "servings": {
       "canonical": "serve",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sets": {
       "canonical": "set",
@@ -43195,7 +43195,7 @@
     },
     "settlings": {
       "canonical": "settle",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sevens": {
       "canonical": "seven",
@@ -43267,7 +43267,7 @@
     },
     "shadings": {
       "canonical": "shade",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "shadowboxing": {
       "canonical": "shadowbox",
@@ -43643,7 +43643,7 @@
     },
     "shootings": {
       "canonical": "shoot",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "shoots": {
       "canonical": "shoot",
@@ -43735,11 +43735,11 @@
     },
     "shovelled": {
       "canonical": "shovel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "shovelling": {
       "canonical": "shovel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "shoves": {
       "canonical": "shove",
@@ -43767,7 +43767,7 @@
     },
     "showings": {
       "canonical": "show",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "shredded": {
       "canonical": "shred",
@@ -43807,11 +43807,11 @@
     },
     "shrivelled": {
       "canonical": "shrivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "shrivelling": {
       "canonical": "shrivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "shrubbier": {
       "canonical": "shrubby",
@@ -43947,7 +43947,7 @@
     },
     "sidings": {
       "canonical": "side",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sifting": {
       "canonical": "sift",
@@ -43975,7 +43975,7 @@
     },
     "sightings": {
       "canonical": "sight",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sightlier": {
       "canonical": "sightly",
@@ -44135,7 +44135,7 @@
     },
     "sittings": {
       "canonical": "sit",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sixties": {
       "canonical": "sixty",
@@ -44747,7 +44747,7 @@
     },
     "smouldering": {
       "canonical": "smolder",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "smugger": {
       "canonical": "smug",
@@ -44891,11 +44891,11 @@
     },
     "snivelled": {
       "canonical": "snivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "snivelling": {
       "canonical": "snivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "snogged": {
       "canonical": "snog",
@@ -45055,11 +45055,11 @@
     },
     "socialised": {
       "canonical": "socialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "socialising": {
       "canonical": "socialize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "socialized": {
       "canonical": "socialize",
@@ -45267,7 +45267,7 @@
     },
     "soundings": {
       "canonical": "sound",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "soupier": {
       "canonical": "soupy",
@@ -45323,7 +45323,7 @@
     },
     "spacings": {
       "canonical": "space",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "spadefishes": {
       "canonical": "spadefish",
@@ -45587,11 +45587,11 @@
     },
     "spiralled": {
       "canonical": "spiral",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "spiralling": {
       "canonical": "spiral",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "spirited": {
       "canonical": "spirit",
@@ -46003,7 +46003,7 @@
     },
     "stabilised": {
       "canonical": "stabilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "stabiliser": {
       "canonical": "stabilizer",
@@ -46011,7 +46011,7 @@
     },
     "stabilising": {
       "canonical": "stabilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "stabilities": {
       "canonical": "stability",
@@ -46151,7 +46151,7 @@
     },
     "standardised": {
       "canonical": "standardize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "standardized": {
       "canonical": "standardize",
@@ -46351,11 +46351,11 @@
     },
     "stencilled": {
       "canonical": "stencil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "stencilling": {
       "canonical": "stencil",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "stenoses": {
       "canonical": "stenosis",
@@ -46387,7 +46387,7 @@
     },
     "sterilised": {
       "canonical": "sterilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "steriliser": {
       "canonical": "sterilizer",
@@ -46511,7 +46511,7 @@
     },
     "stirrings": {
       "canonical": "stir",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "stirs": {
       "canonical": "stir",
@@ -47103,7 +47103,7 @@
     },
     "subsidised": {
       "canonical": "subsidize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "subsidiser": {
       "canonical": "subsidizer",
@@ -47203,7 +47203,7 @@
     },
     "sufferings": {
       "canonical": "suffer",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "suffers": {
       "canonical": "suffer",
@@ -47603,7 +47603,7 @@
     },
     "sweepings": {
       "canonical": "sweep",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "sweeps": {
       "canonical": "sweep",
@@ -47635,7 +47635,7 @@
     },
     "swellings": {
       "canonical": "swell",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "swells": {
       "canonical": "swell",
@@ -47671,11 +47671,11 @@
     },
     "swivelled": {
       "canonical": "swivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "swivelling": {
       "canonical": "swivel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "swooning": {
       "canonical": "swoon",
@@ -47719,7 +47719,7 @@
     },
     "symbolising": {
       "canonical": "symbolize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "symbolized": {
       "canonical": "symbolize",
@@ -47771,11 +47771,11 @@
     },
     "synchronised": {
       "canonical": "synchronize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "synchronising": {
       "canonical": "synchronize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "synchronized": {
       "canonical": "synchronize",
@@ -47915,7 +47915,7 @@
     },
     "takings": {
       "canonical": "take",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "talcked": {
       "canonical": "talc",
@@ -47995,7 +47995,7 @@
     },
     "tantalising": {
       "canonical": "tantalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tantalizing": {
       "canonical": "tantalize",
@@ -48023,7 +48023,7 @@
     },
     "tapings": {
       "canonical": "tape",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "tapped": {
       "canonical": "tap",
@@ -48147,7 +48147,7 @@
     },
     "teachings": {
       "canonical": "teach",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "teamed": {
       "canonical": "team",
@@ -48327,7 +48327,7 @@
     },
     "tenderised": {
       "canonical": "tenderize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tenderized": {
       "canonical": "tenderize",
@@ -48451,7 +48451,7 @@
     },
     "testings": {
       "canonical": "test",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "testudines": {
       "canonical": "testudo",
@@ -49059,7 +49059,7 @@
     },
     "toppings": {
       "canonical": "top",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "tops": {
       "canonical": "top",
@@ -49179,11 +49179,11 @@
     },
     "towelled": {
       "canonical": "towel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "towelling": {
       "canonical": "towel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "towels": {
       "canonical": "towel",
@@ -49219,7 +49219,7 @@
     },
     "tracings": {
       "canonical": "trace",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "traded": {
       "canonical": "trade",
@@ -49299,7 +49299,7 @@
     },
     "tranquillising": {
       "canonical": "tranquilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tranquillity": {
       "canonical": "tranquility",
@@ -49315,7 +49315,7 @@
     },
     "tranquillizing": {
       "canonical": "tranquilize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "tranquilly": {
       "canonical": "tranquility",
@@ -49367,7 +49367,7 @@
     },
     "transistorised": {
       "canonical": "transistorize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "transistorized": {
       "canonical": "transistorize",
@@ -49451,7 +49451,7 @@
     },
     "trappings": {
       "canonical": "trap",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "traps": {
       "canonical": "trap",
@@ -49635,7 +49635,7 @@
     },
     "trimmings": {
       "canonical": "trim",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "trims": {
       "canonical": "trim",
@@ -49859,7 +49859,7 @@
     },
     "turnings": {
       "canonical": "turn",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "turps": {
       "canonical": "turp",
@@ -50171,7 +50171,7 @@
     },
     "understandings": {
       "canonical": "understand",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "understands": {
       "canonical": "understand",
@@ -50195,7 +50195,7 @@
     },
     "undertakings": {
       "canonical": "undertake",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "underwriters": {
       "canonical": "underwriter",
@@ -50343,7 +50343,7 @@
     },
     "unionised": {
       "canonical": "unionize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "unionized": {
       "canonical": "unionize",
@@ -50435,11 +50435,11 @@
     },
     "unravelled": {
       "canonical": "unravel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "unravelling": {
       "canonical": "unravel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "unrecognisable": {
       "canonical": "unrecognizable",
@@ -50631,7 +50631,7 @@
     },
     "urbanised": {
       "canonical": "urbanize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "urbanized": {
       "canonical": "urbanize",
@@ -50651,7 +50651,7 @@
     },
     "urgings": {
       "canonical": "urge",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "urinalyses": {
       "canonical": "urinalysis",
@@ -50783,7 +50783,7 @@
     },
     "vapours": {
       "canonical": "vapor",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "varices": {
       "canonical": "varix",
@@ -50875,7 +50875,7 @@
     },
     "verbalised": {
       "canonical": "verbalize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "verbalized": {
       "canonical": "verbalize",
@@ -50967,7 +50967,7 @@
     },
     "victimised": {
       "canonical": "victimize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "victimized": {
       "canonical": "victimize",
@@ -50999,7 +50999,7 @@
     },
     "viewings": {
       "canonical": "view",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "vigour": {
       "canonical": "vigor",
@@ -51059,7 +51059,7 @@
     },
     "visualised": {
       "canonical": "visualize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "visualizations": {
       "canonical": "visualization",
@@ -51159,7 +51159,7 @@
     },
     "vulcanised": {
       "canonical": "vulcanize",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "vulcanized": {
       "canonical": "vulcanize",
@@ -51291,7 +51291,7 @@
     },
     "wanderings": {
       "canonical": "wander",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "wanders": {
       "canonical": "wander",
@@ -51395,7 +51395,7 @@
     },
     "washings": {
       "canonical": "wash",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "wasted": {
       "canonical": "waste",
@@ -51411,7 +51411,7 @@
     },
     "watchings": {
       "canonical": "watch",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "watercolour": {
       "canonical": "watercolor",
@@ -51675,7 +51675,7 @@
     },
     "weightings": {
       "canonical": "weight",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "weightlifting": {
       "canonical": "weightlift",
@@ -51831,7 +51831,7 @@
     },
     "whippings": {
       "canonical": "whip",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "whips": {
       "canonical": "whip",
@@ -51867,7 +51867,7 @@
     },
     "whisperings": {
       "canonical": "whisper",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "whispers": {
       "canonical": "whisper",
@@ -52243,11 +52243,11 @@
     },
     "woollier": {
       "canonical": "wooly",
-      "transformation": "comparison"
+      "transformation": "inflection"
     },
     "woolliest": {
       "canonical": "wooly",
-      "transformation": "comparison"
+      "transformation": "inflection"
     },
     "woolly": {
       "canonical": "wooly",
@@ -52279,7 +52279,7 @@
     },
     "workings": {
       "canonical": "work",
-      "transformation": "plural"
+      "transformation": "inflection"
     },
     "workouts": {
       "canonical": "workout",
@@ -52531,11 +52531,11 @@
     },
     "yodelled": {
       "canonical": "yodel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "yodelling": {
       "canonical": "yodel",
-      "transformation": "spelling-variant"
+      "transformation": "inflection"
     },
     "yoghourt": {
       "canonical": "yogurt",

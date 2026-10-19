@@ -179,3 +179,25 @@ test("protected lexicalized nouns and comparisons retain their own meaning", () 
     assert.equal(defaultConceptLexicon.resolve(word, { targetWord: "moon" }).canonicalWord, word);
   }
 });
+
+test("composite transformations and present agreement use accurate labels", () => {
+  assert.equal(defaultConceptLexicon.resolve("readings").transformation, "inflection");
+  assert.equal(defaultConceptLexicon.resolve("has").transformation, "agreement");
+});
+
+test("custom lexicons do not inherit generated contextual aliases", () => {
+  const { ConceptLexicon } = require("../conceptLexicon");
+  const lexicon = new ConceptLexicon({
+    concepts: [{ key: "leaf", aliases: [] }], targets: ["leaf"], aliases: {},
+  });
+  assert.equal(lexicon.resolve("leaves", { targetWord: "leaf" }).canonicalWord, "leaves");
+  assert.equal(lexicon.knownWords.has("leaves"), false);
+});
+
+test("ambiguous overrides reject unknown candidates and direct-alias conflicts", () => {
+  const { validateAmbiguousOverrides } = require("../scripts/build-concept-lexicon");
+  assert.doesNotThrow(() => validateAmbiguousOverrides({ leaves: ["leaf", "leave"] }, {}));
+  assert.throws(() => validateAmbiguousOverrides({ leaves: ["unknownlemmaword"] }, {}), /unknown or invalid/);
+  assert.throws(() => validateAmbiguousOverrides({ reading: ["read"] }, { reading: { canonical: "read" } }), /conflicts/);
+  assert.throws(() => validateAmbiguousOverrides({ leaves: [] }, {}), /Invalid ambiguous alias/);
+});

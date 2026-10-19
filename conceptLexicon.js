@@ -8,7 +8,9 @@ class ConceptLexicon {
     concepts = generatedConcepts.concepts,
     targets = generatedTargets.targets,
     aliases = generatedAliases.aliases,
-    ambiguousAliases = generatedAmbiguousAliases.aliases,
+    ambiguousAliases = concepts === generatedConcepts.concepts &&
+      targets === generatedTargets.targets && aliases === generatedAliases.aliases
+        ? generatedAmbiguousAliases.aliases : {},
   } = {}) {
     this.aliases = aliases;
     this.ambiguousAliases = ambiguousAliases;

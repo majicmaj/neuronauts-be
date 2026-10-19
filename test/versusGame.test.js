@@ -233,3 +233,29 @@ test("keeps team setup reversible and randomizable until every player launches",
   assert.equal(match.setTeam(players[0], "red").code, "match_started");
   assert.equal(match.randomizeTeams(players).code, "match_started");
 });
+
+test("manual launch starts both clocks with unready crew or an empty team, only once", async () => {
+  let now = Date.parse("2026-10-19T21:00:00Z");
+  const match = new VersusGame({
+    now: () => now,
+    gameFactory: (options = {}) => new Game({
+      embeddings: EMBEDDINGS, targetWord: options.targetWord || "star",
+      commonWords: Object.keys(EMBEDDINGS), now: () => now,
+    }),
+  });
+  const host = makePlayer(1, "red");
+  match.registerPlayer(host);
+  assert.equal(match.startNow([host]).code, "match_loading");
+  await once(match, "ready");
+  assert.equal(match.maybeStart([host]), false);
+  assert.equal(match.getView("red", [host]).canHostStart, true);
+  assert.equal(match.startNow([host]).ok, true);
+  const startedAt = match.startedAt;
+  assert.equal(host.ready, false);
+  assert.equal(match.games.get("red").startedAt, startedAt);
+  assert.equal(match.games.get("blue").startedAt, startedAt);
+  now += 5_000;
+  assert.equal(match.startNow([host]).code, "match_started");
+  assert.equal(match.startedAt, startedAt);
+  assert.equal(match.handleGuess("moon", host).ok, true);
+});

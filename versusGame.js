@@ -233,13 +233,27 @@ class VersusGame extends EventEmitter {
     if (this.phase !== "setup" || this.readyTeams.size !== TEAM_IDS.length) return false;
     if (players.length < 2 || players.some((player) => !player.ready)) return false;
     if (TEAM_IDS.some((teamId) => !players.some((player) => player.teamId === teamId))) return false;
+    this.beginMatch();
+    return true;
+  }
+
+  startNow(players) {
+    if (this.phase !== "setup") return { ok: false, code: "match_started", error: "The match has already launched." };
+    if (this.readyTeams.size !== TEAM_IDS.length || this.status !== "setup") {
+      return { ok: false, code: "match_loading", error: "The word map is still loading. Try again in a moment." };
+    }
+    if (!players.length) return { ok: false, code: "no_players", error: "Join the lobby before starting." };
+    this.beginMatch();
+    return { ok: true, started: true };
+  }
+
+  beginMatch() {
     const startedAt = new Date(this.now()).toISOString();
     for (const game of this.games.values()) game.beginAt(startedAt);
     this.startedAt = startedAt;
     this.phase = "playing";
     this.status = "playing";
     this.emit("started");
-    return true;
   }
 
   handleGuess(rawGuess, player) {
@@ -346,6 +360,7 @@ class VersusGame extends EventEmitter {
       completedAt: this.completedAt,
       firstFinishTeamId: this.firstFinishTeamId,
       canStart: players.length >= 2 && TEAM_IDS.every((id) => players.some((player) => player.teamId === id)),
+      canHostStart: this.phase === "setup" && this.status === "setup" && this.readyTeams.size === TEAM_IDS.length && players.length > 0,
       readyCount: players.filter((player) => player.ready).length,
       totalCount: players.length,
       teams: TEAM_IDS.map((id) => this.getTeamSummary(id, players)),

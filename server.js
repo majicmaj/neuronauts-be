@@ -193,6 +193,15 @@ function createGameServer(options = {}) {
       players: serializePlayers(lobby),
       playerCount: lobby.players.size,
     });
+    emitJoinRequests(lobby);
+  }
+
+  function emitJoinRequests(lobby) {
+    if (lobby.mode !== "versus") return;
+    const host = Array.from(lobby.players.values()).find(player => player.participantId === lobby.hostParticipantId);
+    if (host) io.to(host.id).emit("joinRequestsUpdated", {
+      requests: Array.from(lobby.pendingJoins, ([id, request]) => ({ id, name: request.name })),
+    });
   }
 
   function emitVersusState(lobby) {
@@ -240,6 +249,7 @@ function createGameServer(options = {}) {
       players: new Map(),
       identityAssignments: new Map(),
       resumeAssignments: new Map(),
+      pendingJoins: new Map(),
       nextColorIndex: 0,
       nextAvatarIndex: 0,
       typingPlayerIds: new Set(),
@@ -286,6 +296,13 @@ function createGameServer(options = {}) {
         recordEvent("versus_team_finished", { lobbyId, teamId });
       });
       game.on("complete", () => {
+        for (const id of Array.from(lobby.pendingJoins.keys())) {
+          const waiting = io.sockets.sockets.get(id);
+          if (waiting) {
+            removePlayerFromCurrentLobby(waiting);
+            waiting.emit("error", "This match has finished. Ask the host for the rematch link.");
+          }
+        }
         lobby.typingPlayerIds.clear();
         emitTyping(lobby);
         emitVersusState(lobby);
@@ -357,7 +374,7 @@ function createGameServer(options = {}) {
     if (player.resumeToken) lobby.resumeAssignments.set(player.resumeToken, identity);
   }
 
-  function addPlayer(lobby, socket, preferredName, resumeIdentity = null) {
+  function addPlayer(lobby, socket, preferredName, resumeIdentity = null, approvedTeamId = null) {
     const requested = normalizePlayerName(resumeIdentity?.name || preferredName);
     const name =
       requested && isNameAvailable(lobby, requested)
@@ -401,7 +418,7 @@ function createGameServer(options = {}) {
     }
     const participantId = rememberedIdentity?.participantId || crypto.randomUUID();
     const teamId = lobby.mode === "versus"
-      ? rememberedIdentity?.teamId || lobby.game.assignTeam(Array.from(lobby.players.values()))
+      ? rememberedIdentity?.teamId || approvedTeamId || lobby.game.assignTeam(Array.from(lobby.players.values()))
       : null;
 
     const player = {
@@ -426,6 +443,9 @@ function createGameServer(options = {}) {
   }
 
   function removePlayerFromCurrentLobby(socket) {
+    const pendingLobby = lobbies.get(socket.data.pendingLobbyId);
+    socket.data.pendingLobbyId = null;
+    if (pendingLobby?.pendingJoins.delete(socket.id)) emitJoinRequests(pendingLobby);
     const currentLobbyId = socket.data.lobbyId;
     if (!currentLobbyId) return;
     const lobby = lobbies.get(currentLobbyId);
@@ -618,12 +638,25 @@ function createGameServer(options = {}) {
         // Once play starts, a fresh seat would reveal a team's private search.
         // Invalid credentials also fail during setup rather than silently
         // replacing the caller's saved identity with a new seat.
-        if (resumeToken && !resumeIdentity) {
+        if (resumeToken && !resumeIdentity && lobby.game.phase !== "playing") {
           socket.emit("error", "This saved VS seat is unavailable. Return to your original tab or start a new mission.");
           return;
         }
         if (lobby.game.phase !== "setup" && !resumeIdentity) {
-          socket.emit("error", "This VS match has started. Rejoin from your original tab, or start a new mission.");
+          if (lobby.game.phase !== "playing") {
+            socket.emit("error", "This match has finished. Ask the host for the rematch link.");
+            return;
+          }
+          if (!lobby.pendingJoins.has(socket.id) && lobby.pendingJoins.size >= limits.maxPlayersPerLobby) {
+            socket.emit("error", "The join queue is full. Try again shortly.");
+            return;
+          }
+          removePlayerFromCurrentLobby(socket);
+          lobby.pendingJoins.set(socket.id, { name: normalizePlayerName(preferredName) || "New teammate" });
+          updateLobbyActivity(lobby);
+          socket.data.pendingLobbyId = lobbyId;
+          socket.emit("lobbyJoinPending", { lobbyId });
+          emitJoinRequests(lobby);
           return;
         }
         const previous = resumeIdentity && Array.from(lobby.players.values()).find(player => player.participantId === resumeIdentity.participantId);
@@ -800,6 +833,57 @@ function createGameServer(options = {}) {
       emitPlayers(lobby);
       emitVersusState(lobby);
       recordEvent("versus_teams_randomized", { lobbyId: lobby.lobbyId });
+    });
+
+    socket.on("leaveLobby", () => removePlayerFromCurrentLobby(socket));
+
+    socket.on("reviewJoinRequest", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      const host = lobby?.players.get(socket.id);
+      if (!lobby || lobby.mode !== "versus" || host?.participantId !== lobby.hostParticipantId) {
+        emitActionError(socket, { error: "Only the lobby host can admit teammates.", code: "host_only" });
+        return;
+      }
+      const request = lobby.pendingJoins.get(payload.requestId);
+      const entrant = io.sockets.sockets.get(payload.requestId);
+      if (!request || !entrant || entrant.data.pendingLobbyId !== lobby.lobbyId) {
+        emitActionError(socket, { error: "This player is no longer waiting.", code: "join_request_expired" });
+        return;
+      }
+      if (payload.reject === true) {
+        removePlayerFromCurrentLobby(entrant);
+        entrant.emit("error", "The host declined your join request. Return home to start another game.");
+        return;
+      }
+      if (lobby.game.phase !== "playing" || !["red", "blue"].includes(payload.teamId) || lobby.players.size >= limits.maxPlayersPerLobby) {
+        emitActionError(socket, { error: "Choose a team with room in an active match.", code: "cannot_admit" });
+        return;
+      }
+      removePlayerFromCurrentLobby(entrant);
+      addPlayer(lobby, entrant, request.name, null, payload.teamId);
+      entrant.emit("lobbyJoined", lobbyPayload(lobby, entrant.id, true));
+      emitPlayers(lobby);
+      emitVersusState(lobby);
+    });
+
+    socket.on("startMatch", (payload = {}) => {
+      const lobby = getSocketLobby(socket, payload.lobbyId);
+      if (!lobby || lobby.mode !== "versus") {
+        emitActionError(socket, { error: "Join a VS lobby before starting.", code: "not_in_versus_lobby" });
+        return;
+      }
+      const player = lobby.players.get(socket.id);
+      if (player.participantId !== lobby.hostParticipantId) {
+        emitActionError(socket, { error: "Only the lobby host can start the match.", code: "host_only" });
+        return;
+      }
+      const response = lobby.game.startNow(Array.from(lobby.players.values()));
+      if (!response.ok) {
+        emitActionError(socket, response);
+        return;
+      }
+      updateLobbyActivity(lobby);
+      emitVersusState(lobby);
     });
 
     socket.on("toggleReady", (payload = {}) => {

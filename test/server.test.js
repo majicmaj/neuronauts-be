@@ -458,10 +458,10 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   additional.push(attacker);
   const attackerEvents = [];
   attacker.onAny((event, payload) => attackerEvents.push({ event, payload }));
-  const denyJoin = async (socket, payload, message = /started|unavailable/) => {
-    const denied = waitFor(socket, "error");
+  const denyJoin = async (socket, payload) => {
+    const denied = waitFor(socket, "lobbyJoinPending");
     socket.emit("joinLobby", payload);
-    assert.match(await denied, message);
+    assert.deepEqual(await denied, { lobbyId: created.lobbyId });
     assert.equal(runtime.lobbies.get(created.lobbyId).players.has(socket.id), false);
   };
   await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Late spectator" });
@@ -678,8 +678,69 @@ test("VS setup call signs and launch roster protect resume identities", async (t
   assert.equal(lobby.resumeAssignments.has(leaverPayload.resumeToken), false, "a departed setup visitor is outside the launched crew");
   leaver.connect();
   await waitFor(leaver, "connect");
-  const oldSeatDenied = waitFor(leaver, "error");
+  const oldSeatDenied = waitFor(leaver, "lobbyJoinPending");
   leaver.emit("joinLobby", { lobbyId: created.lobbyId, resumeToken: leaverPayload.resumeToken });
-  assert.match(await oldSeatDenied, /unavailable/);
+  assert.deepEqual(await oldSeatDenied, { lobbyId: created.lobbyId });
   assert.equal(lobby.players.size, 2);
+});
+
+test("host can launch unready crew and privately admit late teammates to a chosen team", async t => {
+  const runtime = createGameServer({
+    skipEmbeddingsBootstrap: true, guessRateLimitMs: 0,
+    gameFactory: (options = {}) => new Game({ embeddings: EMBEDDINGS,
+      targetWord: options.targetWord || "star", commonWords: Object.keys(EMBEDDINGS) }),
+  });
+  const address = await runtime.start(0, "127.0.0.1");
+  const url = `http://127.0.0.1:${address.port}`;
+  const host = await connect(url), guest = await connect(url), late = await connect(url);
+  t.after(async () => { [host, guest, late].forEach(s => s.disconnect()); await runtime.stop(); });
+  let next = waitFor(host, "lobbyCreated");
+  host.emit("createLobby", { mode: "versus", preferredName: "Host" });
+  const created = await next, lobbyId = created.lobbyId;
+  next = waitFor(guest, "lobbyJoined"); guest.emit("joinLobby", { lobbyId, preferredName: "Guest" }); await next;
+  if (!runtime.lobbies.get(lobbyId).game.readyTeams.has("blue")) {
+    await waitFor(host, "versusUpdated", p => p.versus.canHostStart);
+  }
+  next = waitFor(guest, "actionError"); guest.emit("startMatch", { lobbyId });
+  assert.equal((await next).code, "host_only");
+  assert.equal(runtime.lobbies.get(lobbyId).game.phase, "setup");
+  next = waitFor(guest, "versusUpdated", p => p.versus.phase === "playing");
+  host.emit("startMatch", { lobbyId });
+  const launched = await next;
+  assert.equal(launched.versus.readyCount, 0);
+  const startedAt = launched.versus.startedAt;
+  const hostTeam = launched.players.find(p => p.id === host.id).teamId;
+  await emitWithAck(host, "guess", { lobbyId, guess: "moon" });
+
+  const lateEvents = [], guestEvents = [];
+  late.onAny((event, payload) => lateEvents.push({ event, payload }));
+  guest.onAny((event, payload) => guestEvents.push({ event, payload }));
+  const pending = waitFor(late, "lobbyJoinPending");
+  next = waitFor(host, "joinRequestsUpdated", p => p.requests.length === 1);
+  late.emit("joinLobby", { lobbyId, preferredName: "Late Friend", teamId: hostTeam });
+  assert.deepEqual(await pending, { lobbyId });
+  const request = (await next).requests[0];
+  assert.equal(request.name, "Late Friend");
+  assert.equal(runtime.lobbies.get(lobbyId).players.has(late.id), false);
+  assert.equal(lateEvents.some(e => ["lobbyJoined", "versusUpdated", "playersUpdated"].includes(e.event)), false);
+  assert.equal(guestEvents.some(e => e.event === "joinRequestsUpdated"), false);
+  assert.equal(JSON.stringify(lateEvents).includes("moon"), false);
+  next = waitFor(guest, "actionError");
+  guest.emit("reviewJoinRequest", { lobbyId, requestId: request.id, teamId: hostTeam });
+  assert.equal((await next).code, "host_only");
+  next = waitFor(late, "lobbyJoined");
+  host.emit("reviewJoinRequest", { lobbyId, requestId: request.id, teamId: hostTeam });
+  const admitted = await next;
+  assert.equal(admitted.versus.teamId, hostTeam);
+  assert.equal(admitted.gameState.guessHistory[0].guess, "moon");
+  assert.match(admitted.resumeToken, /^[a-f0-9]{48}$/);
+  assert.equal(admitted.versus.startedAt, startedAt);
+  assert.equal(runtime.lobbies.get(lobbyId).pendingJoins.size, 0);
+  assert.equal((await emitWithAck(late, "guess", { lobbyId, guess: "bridge" })).ok, true);
+
+  next = waitFor(late, "actionError"); late.emit("startMatch", { lobbyId });
+  assert.equal((await next).code, "host_only");
+  next = waitFor(host, "actionError"); host.emit("startMatch", { lobbyId });
+  assert.equal((await next).code, "match_started");
+  assert.equal(runtime.lobbies.get(lobbyId).game.startedAt, startedAt);
 });

@@ -891,7 +891,6 @@ function createGameServer(options = {}) {
         lobbyId: lobby.lobbyId,
         playerName: player.name,
         teamId: player.teamId || undefined,
-        hintFrom: response.result.hintFrom,
       });
     });
 

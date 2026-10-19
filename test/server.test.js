@@ -392,11 +392,15 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   const address = await runtime.start(0, "127.0.0.1");
   const url = `http://127.0.0.1:${address.port}`;
   const first = await connect(url);
-  const second = await connect(url);
+  let second = await connect(url);
+  const rivalEvents = [];
+  second.onAny((event, payload) => rivalEvents.push({ event, payload }));
+  let reconnected;
 
   t.after(async () => {
     first.disconnect();
     second.disconnect();
+    reconnected?.disconnect();
     await runtime.stop();
   });
 
@@ -410,7 +414,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
     lobbyId: created.lobbyId,
     preferredName: "Blue Scout",
   });
-  await joinedPromise;
+  const joined = await joinedPromise;
 
   const redAssigned = waitFor(
     first,
@@ -481,15 +485,59 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(redTelemetry.playerStats[0].bestSimilarity, response.result.similarity);
   assert.equal(JSON.stringify(bluePayload.versus).includes("moon"), false);
 
+  // Both hint origin and hint answer are private words. Inspect the whole
+  // recipient payload, all event types, and public diagnostics, not just points.
+  const ownHint = waitFor(first, "versusUpdated", payload => payload.gameState.guessHistory.some(guess => guess.isHint));
+  const rivalHint = waitFor(second, "versusUpdated", payload => payload.versus.opponentPoints.some(point => point.isHint));
+  first.emit("requestHint", { lobbyId: created.lobbyId });
+  const [ownHintPayload, rivalHintPayload] = await Promise.all([ownHint, rivalHint]);
+  const hint = ownHintPayload.gameState.guessHistory.find(guess => guess.isHint);
+  assert.equal(hint.hintFrom, "moon");
+  assert.equal(hint.guess, "bridge");
+  const assertPrivate = payload => {
+    const json = JSON.stringify(payload);
+    for (const privateWord of ["moon", "bridge"]) assert.equal(json.includes(privateWord), false, `leaked ${privateWord}`);
+  };
+  assertPrivate(rivalHintPayload);
+  assertPrivate(rivalEvents);
+  const stats = await (await fetch(`${url}/stats`)).json();
+  assert.equal(stats.lastEvent.type, "hint_used");
+  assertPrivate(stats);
+  assert.equal("hintFrom" in stats.lastEvent, false);
+
+  // Rejoining (including the complete lobbyJoined snapshot) must not bypass
+  // team filtering after a hint or after only the other team has finished.
+  const secondIdentity = joined.players.find(player => player.id === second.id);
+  const departed = waitFor(first, "playersUpdated", payload => payload.playerCount === 1);
+  second.disconnect();
+  await departed;
+  reconnected = await connect(url);
+  const reconnectEvents = [];
+  reconnected.onAny((event, payload) => reconnectEvents.push({ event, payload }));
+  const reconnectPromise = waitFor(reconnected, "lobbyJoined");
+  reconnected.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: secondIdentity.name });
+  const reconnectPayload = await reconnectPromise;
+  assert.equal(reconnectPayload.versus.teamId, "blue");
+  assertPrivate(reconnectPayload);
+  const firstFinished = waitFor(reconnected, "versusUpdated", payload => payload.versus.firstFinishTeamId === "red");
   await emitWithAck(first, "guess", { lobbyId: created.lobbyId, guess: "star" });
-  await emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "moon" });
+  const firstFinishedPayload = await firstFinished;
+  assertPrivate(firstFinishedPayload);
+  assert.equal(firstFinishedPayload.gameState.targetWord, undefined);
+  assertPrivate(reconnectEvents);
+  second = reconnected;
   const completed = waitFor(
     second,
     "versusUpdated",
     (payload) => payload.versus.phase === "complete"
   );
   await emitWithAck(second, "guess", { lobbyId: created.lobbyId, guess: "star" });
-  await completed;
+  const completePayload = await completed;
+  assert.equal(completePayload.versus.result.targetWord, "star");
+  assert.equal(completePayload.gameState.targetWord, "star");
+  assertPrivate(completePayload);
+  assertPrivate(rivalEvents);
+  assertPrivate(await (await fetch(`${url}/stats`)).json());
 
   const rematchReady = waitFor(first, "rematchReady");
   first.emit("requestRematch", { lobbyId: created.lobbyId });

@@ -142,5 +142,11 @@ for (const mode of ['classic', 'versus']) {
     assert.equal(error.code, 'game_unavailable');
     assert.match(error.message, /Return home and choose another category or All words/);
     assert.equal(created.gameState.targetWord, undefined);
+    const rejoinedPromise = waitFor(socket, 'lobbyJoined');
+    socket.emit('joinLobby', { lobbyId: created.lobbyId });
+    const rejoined = await rejoinedPromise;
+    assert.equal(rejoined.gameState.status, 'error');
+    assert.match(rejoined.gameState.error, /Return home and choose another category or All words/);
+    assert.equal(rejoined.gameState.targetWord, undefined);
   });
 }

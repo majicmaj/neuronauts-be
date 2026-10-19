@@ -170,7 +170,7 @@ class VersusGame extends EventEmitter {
     });
     game.on("error", (error) => {
       this.status = "error";
-      this.error = error?.message || String(error);
+      this.error = game.error || error?.message || String(error);
       this.emit("error", error);
     });
     return game;

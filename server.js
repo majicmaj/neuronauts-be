@@ -291,7 +291,7 @@ function createGameServer(options = {}) {
           ? "No words in this category are available. Return home and choose another category or All words."
           : "The semantic model could not be loaded.",
       });
-      recordEvent("game_error", { lobbyId, message: error.message });
+      recordEvent("game_error", { lobbyId, categoryId: category.id, message: error.message });
     });
 
     lobbies.set(lobbyId, lobby);
@@ -495,6 +495,7 @@ function createGameServer(options = {}) {
         players: lobby.players.size,
         status: lobby.mode === "versus" ? lobby.game.status : lobby.game.getGameState().status,
         mode: lobby.mode,
+        category: lobby.category,
         createdAt: lobby.createdAt,
         lastActivityAt: lobby.lastActivityAt,
         idleMs: Date.now() - lobby.lastActivityMs,

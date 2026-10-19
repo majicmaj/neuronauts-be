@@ -14,7 +14,8 @@ for (const { words, ...metadata } of definitions) {
   if (categories.has(metadata.id)) throw new Error(`Duplicate category: ${metadata.id}`);
   if (!words.length || new Set(words).size !== words.length) throw new Error(`Invalid pool: ${metadata.id}`);
   for (const word of words) {
-    if (!targetInventory.has(word) || !eligibleInventory.has(word) ||
+    if (!targetInventory.has(word) || !defaultConceptLexicon.isConceptTargetEligible(word) ||
+        !eligibleInventory.has(word) ||
         defaultConceptLexicon.resolve(word).canonicalWord !== word) {
       throw new Error(`Category ${metadata.id} contains an ineligible target: ${word}`);
     }

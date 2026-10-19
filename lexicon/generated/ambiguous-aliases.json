@@ -1,0 +1,2256 @@
+{
+  "version": 1,
+  "aliases": {
+    "achaemenides": {
+      "candidates": [
+        "achaemenid"
+      ],
+      "transformation": "plural"
+    },
+    "aides": {
+      "candidates": [
+        "aide"
+      ],
+      "transformation": "plural"
+    },
+    "amphiarthroses": {
+      "candidates": [
+        "amphiarthrosis"
+      ],
+      "transformation": "plural"
+    },
+    "anabases": {
+      "candidates": [
+        "anabasis"
+      ],
+      "transformation": "plural"
+    },
+    "anacruses": {
+      "candidates": [
+        "anacrusis"
+      ],
+      "transformation": "plural"
+    },
+    "anagnorises": {
+      "candidates": [
+        "anagnorisis"
+      ],
+      "transformation": "plural"
+    },
+    "anastomoses": {
+      "candidates": [
+        "anastomosis"
+      ],
+      "transformation": "plural"
+    },
+    "anatyxes": {
+      "candidates": [
+        "anaptyxis"
+      ],
+      "transformation": "plural"
+    },
+    "ancones": {
+      "candidates": [
+        "ancon"
+      ],
+      "transformation": "plural"
+    },
+    "androsphinges": {
+      "candidates": [
+        "androsphinx"
+      ],
+      "transformation": "plural"
+    },
+    "anglified": {
+      "candidates": [
+        "anglify"
+      ],
+      "transformation": "past"
+    },
+    "annattos": {
+      "candidates": [
+        "annatto"
+      ],
+      "transformation": "plural"
+    },
+    "antalkalies": {
+      "candidates": [
+        "antalkali"
+      ],
+      "transformation": "plural"
+    },
+    "anthelices": {
+      "candidates": [
+        "anthelix"
+      ],
+      "transformation": "plural"
+    },
+    "antihelices": {
+      "candidates": [
+        "antihelix"
+      ],
+      "transformation": "plural"
+    },
+    "apodoses": {
+      "candidates": [
+        "apodosis"
+      ],
+      "transformation": "plural"
+    },
+    "apotheoses": {
+      "candidates": [
+        "apotheosis"
+      ],
+      "transformation": "plural"
+    },
+    "arses": {
+      "candidates": [
+        "arsis"
+      ],
+      "transformation": "plural"
+    },
+    "aruspices": {
+      "candidates": [
+        "aruspex"
+      ],
+      "transformation": "plural"
+    },
+    "atmolyses": {
+      "candidates": [
+        "atmolysis"
+      ],
+      "transformation": "plural"
+    },
+    "attaches": {
+      "candidates": [
+        "attach",
+        "attache"
+      ],
+      "transformation": "plural"
+    },
+    "axes": {
+      "candidates": [
+        "ax",
+        "axis"
+      ],
+      "transformation": "plural"
+    },
+    "behooves": {
+      "candidates": [
+        "behoof"
+      ],
+      "transformation": "plural"
+    },
+    "believes": {
+      "candidates": [
+        "belief",
+        "believe"
+      ],
+      "transformation": "plural"
+    },
+    "belles": {
+      "candidates": [
+        "belle"
+      ],
+      "transformation": "plural"
+    },
+    "best": {
+      "candidates": [
+        "good"
+      ],
+      "transformation": "comparison"
+    },
+    "better": {
+      "candidates": [
+        "good"
+      ],
+      "transformation": "comparison"
+    },
+    "bhishties": {
+      "candidates": [
+        "bhishti"
+      ],
+      "transformation": "plural"
+    },
+    "bilboes": {
+      "candidates": [
+        "bilbo"
+      ],
+      "transformation": "plural"
+    },
+    "birling": {
+      "candidates": [
+        "birl",
+        "birle"
+      ],
+      "transformation": "participle"
+    },
+    "bisectrices": {
+      "candidates": [
+        "bisectrix"
+      ],
+      "transformation": "plural"
+    },
+    "blindfishes": {
+      "candidates": [
+        "blindfish"
+      ],
+      "transformation": "plural"
+    },
+    "botargoes": {
+      "candidates": [
+        "botargo"
+      ],
+      "transformation": "plural"
+    },
+    "bound": {
+      "candidates": [
+        "bind"
+      ],
+      "transformation": "past"
+    },
+    "brutified": {
+      "candidates": [
+        "brutify"
+      ],
+      "transformation": "past"
+    },
+    "buckoes": {
+      "candidates": [
+        "bucko"
+      ],
+      "transformation": "plural"
+    },
+    "bullwhipped": {
+      "candidates": [
+        "bullwhip"
+      ],
+      "transformation": "past"
+    },
+    "bullwhipping": {
+      "candidates": [
+        "bullwhip"
+      ],
+      "transformation": "participle"
+    },
+    "bunches": {
+      "candidates": [
+        "bunche"
+      ],
+      "transformation": "plural"
+    },
+    "bushboks": {
+      "candidates": [
+        "boschbok"
+      ],
+      "transformation": "plural"
+    },
+    "caddies": {
+      "candidates": [
+        "caddie"
+      ],
+      "transformation": "plural"
+    },
+    "calices": {
+      "candidates": [
+        "calix"
+      ],
+      "transformation": "plural"
+    },
+    "calves": {
+      "candidates": [
+        "calf"
+      ],
+      "transformation": "plural"
+    },
+    "candlefishes": {
+      "candidates": [
+        "candlefish"
+      ],
+      "transformation": "plural"
+    },
+    "carnied": {
+      "candidates": [
+        "carny"
+      ],
+      "transformation": "past"
+    },
+    "casefied": {
+      "candidates": [
+        "casefy"
+      ],
+      "transformation": "past"
+    },
+    "catabases": {
+      "candidates": [
+        "catabasis"
+      ],
+      "transformation": "plural"
+    },
+    "cataclases": {
+      "candidates": [
+        "cataclasis"
+      ],
+      "transformation": "plural"
+    },
+    "cataloes": {
+      "candidates": [
+        "catalo"
+      ],
+      "transformation": "plural"
+    },
+    "caules": {
+      "candidates": [
+        "caulis"
+      ],
+      "transformation": "plural"
+    },
+    "cavefishes": {
+      "candidates": [
+        "cavefish"
+      ],
+      "transformation": "plural"
+    },
+    "cephalothoraces": {
+      "candidates": [
+        "cephalothorax"
+      ],
+      "transformation": "plural"
+    },
+    "cestuses": {
+      "candidates": [
+        "caestus"
+      ],
+      "transformation": "plural"
+    },
+    "chivved": {
+      "candidates": [
+        "chiv"
+      ],
+      "transformation": "past"
+    },
+    "chivving": {
+      "candidates": [
+        "chiv"
+      ],
+      "transformation": "participle"
+    },
+    "clanos": {
+      "candidates": [
+        "clarino"
+      ],
+      "transformation": "plural"
+    },
+    "clemmed": {
+      "candidates": [
+        "clem"
+      ],
+      "transformation": "past"
+    },
+    "clemming": {
+      "candidates": [
+        "clem"
+      ],
+      "transformation": "participle"
+    },
+    "coalfishes": {
+      "candidates": [
+        "coalfish"
+      ],
+      "transformation": "plural"
+    },
+    "cockneyfied": {
+      "candidates": [
+        "cockneyfy"
+      ],
+      "transformation": "past"
+    },
+    "corybantes": {
+      "candidates": [
+        "corybant"
+      ],
+      "transformation": "plural"
+    },
+    "cramboes": {
+      "candidates": [
+        "crambo"
+      ],
+      "transformation": "plural"
+    },
+    "crases": {
+      "candidates": [
+        "crasis"
+      ],
+      "transformation": "plural"
+    },
+    "crosses": {
+      "candidates": [
+        "cross",
+        "crosse"
+      ],
+      "transformation": "plural"
+    },
+    "crusadoes": {
+      "candidates": [
+        "crusado"
+      ],
+      "transformation": "plural"
+    },
+    "cruzadoes": {
+      "candidates": [
+        "cruzado"
+      ],
+      "transformation": "plural"
+    },
+    "curettes": {
+      "candidates": [
+        "curette"
+      ],
+      "transformation": "plural"
+    },
+    "custodes": {
+      "candidates": [
+        "custos"
+      ],
+      "transformation": "plural"
+    },
+    "cutes": {
+      "candidates": [
+        "cutis"
+      ],
+      "transformation": "plural"
+    },
+    "damnified": {
+      "candidates": [
+        "damnify"
+      ],
+      "transformation": "past"
+    },
+    "dapped": {
+      "candidates": [
+        "dap"
+      ],
+      "transformation": "past"
+    },
+    "dapping": {
+      "candidates": [
+        "dap"
+      ],
+      "transformation": "participle"
+    },
+    "daymios": {
+      "candidates": [
+        "daimio"
+      ],
+      "transformation": "plural"
+    },
+    "debussed": {
+      "candidates": [
+        "debus"
+      ],
+      "transformation": "past"
+    },
+    "debussing": {
+      "candidates": [
+        "debus"
+      ],
+      "transformation": "participle"
+    },
+    "deeper": {
+      "candidates": [
+        "deep"
+      ],
+      "transformation": "comparison"
+    },
+    "demitted": {
+      "candidates": [
+        "demit"
+      ],
+      "transformation": "past"
+    },
+    "demitting": {
+      "candidates": [
+        "demit"
+      ],
+      "transformation": "participle"
+    },
+    "diagnoses": {
+      "candidates": [
+        "diagnose",
+        "diagnosis"
+      ],
+      "transformation": "plural"
+    },
+    "dialyses": {
+      "candidates": [
+        "dialysis"
+      ],
+      "transformation": "plural"
+    },
+    "diapophyses": {
+      "candidates": [
+        "diapophysis"
+      ],
+      "transformation": "plural"
+    },
+    "diastalses": {
+      "candidates": [
+        "diastalsis"
+      ],
+      "transformation": "plural"
+    },
+    "dibbed": {
+      "candidates": [
+        "dib"
+      ],
+      "transformation": "past"
+    },
+    "dibbing": {
+      "candidates": [
+        "dib"
+      ],
+      "transformation": "participle"
+    },
+    "disannulled": {
+      "candidates": [
+        "disannul"
+      ],
+      "transformation": "past"
+    },
+    "disannulling": {
+      "candidates": [
+        "disannul"
+      ],
+      "transformation": "participle"
+    },
+    "disenthralled": {
+      "candidates": [
+        "disenthral"
+      ],
+      "transformation": "past"
+    },
+    "disenthralling": {
+      "candidates": [
+        "disenthral"
+      ],
+      "transformation": "participle"
+    },
+    "does": {
+      "candidates": [
+        "do",
+        "doe"
+      ],
+      "transformation": "plural"
+    },
+    "earlier": {
+      "candidates": [
+        "early"
+      ],
+      "transformation": "comparison"
+    },
+    "easier": {
+      "candidates": [
+        "easy"
+      ],
+      "transformation": "comparison"
+    },
+    "embussed": {
+      "candidates": [
+        "embus"
+      ],
+      "transformation": "past"
+    },
+    "embussing": {
+      "candidates": [
+        "embus"
+      ],
+      "transformation": "participle"
+    },
+    "emphasizes": {
+      "candidates": [
+        "emphasis",
+        "emphasize"
+      ],
+      "transformation": "plural"
+    },
+    "endostoses": {
+      "candidates": [
+        "endostosis"
+      ],
+      "transformation": "plural"
+    },
+    "entrammelled": {
+      "candidates": [
+        "entrammel"
+      ],
+      "transformation": "past"
+    },
+    "entrammelling": {
+      "candidates": [
+        "entrammel"
+      ],
+      "transformation": "participle"
+    },
+    "envelopes": {
+      "candidates": [
+        "envelope"
+      ],
+      "transformation": "plural"
+    },
+    "epexegeses": {
+      "candidates": [
+        "epexegesis"
+      ],
+      "transformation": "plural"
+    },
+    "epicleses": {
+      "candidates": [
+        "epiclesis"
+      ],
+      "transformation": "plural"
+    },
+    "estopped": {
+      "candidates": [
+        "estop"
+      ],
+      "transformation": "past"
+    },
+    "estopping": {
+      "candidates": [
+        "estop"
+      ],
+      "transformation": "participle"
+    },
+    "fallfishes": {
+      "candidates": [
+        "fallfish"
+      ],
+      "transformation": "plural"
+    },
+    "faster": {
+      "candidates": [
+        "fast"
+      ],
+      "transformation": "comparison"
+    },
+    "fell": {
+      "candidates": [
+        "fall"
+      ],
+      "transformation": "past"
+    },
+    "fetiales": {
+      "candidates": [
+        "fetial"
+      ],
+      "transformation": "plural"
+    },
+    "fewer": {
+      "candidates": [
+        "few"
+      ],
+      "transformation": "comparison"
+    },
+    "ficoes": {
+      "candidates": [
+        "fico"
+      ],
+      "transformation": "plural"
+    },
+    "filles": {
+      "candidates": [
+        "fille"
+      ],
+      "transformation": "plural"
+    },
+    "flammed": {
+      "candidates": [
+        "flam"
+      ],
+      "transformation": "past"
+    },
+    "flamming": {
+      "candidates": [
+        "flam"
+      ],
+      "transformation": "participle"
+    },
+    "forerunning": {
+      "candidates": [
+        "forerun"
+      ],
+      "transformation": "participle"
+    },
+    "fortes": {
+      "candidates": [
+        "fortis"
+      ],
+      "transformation": "plural"
+    },
+    "found": {
+      "candidates": [
+        "find"
+      ],
+      "transformation": "past"
+    },
+    "fricandoes": {
+      "candidates": [
+        "fricando"
+      ],
+      "transformation": "plural"
+    },
+    "frigged": {
+      "candidates": [
+        "frig"
+      ],
+      "transformation": "past"
+    },
+    "frigging": {
+      "candidates": [
+        "frig"
+      ],
+      "transformation": "participle"
+    },
+    "fritted": {
+      "candidates": [
+        "frit"
+      ],
+      "transformation": "past"
+    },
+    "fritting": {
+      "candidates": [
+        "frit"
+      ],
+      "transformation": "participle"
+    },
+    "frontes": {
+      "candidates": [
+        "frons"
+      ],
+      "transformation": "plural"
+    },
+    "furfures": {
+      "candidates": [
+        "furfur"
+      ],
+      "transformation": "plural"
+    },
+    "gambadoes": {
+      "candidates": [
+        "gambado"
+      ],
+      "transformation": "plural"
+    },
+    "ganned": {
+      "candidates": [
+        "gan"
+      ],
+      "transformation": "past"
+    },
+    "ganning": {
+      "candidates": [
+        "gan"
+      ],
+      "transformation": "participle"
+    },
+    "generatrices": {
+      "candidates": [
+        "generatrix"
+      ],
+      "transformation": "plural"
+    },
+    "giftwrapped": {
+      "candidates": [
+        "giftwrap"
+      ],
+      "transformation": "past"
+    },
+    "giftwrapping": {
+      "candidates": [
+        "giftwrap"
+      ],
+      "transformation": "participle"
+    },
+    "gippoes": {
+      "candidates": [
+        "gippo"
+      ],
+      "transformation": "plural"
+    },
+    "goboes": {
+      "candidates": [
+        "gobo"
+      ],
+      "transformation": "plural"
+    },
+    "gollied": {
+      "candidates": [
+        "golly"
+      ],
+      "transformation": "past"
+    },
+    "gomphoses": {
+      "candidates": [
+        "gomphosis"
+      ],
+      "transformation": "plural"
+    },
+    "goodwives": {
+      "candidates": [
+        "goodwife"
+      ],
+      "transformation": "plural"
+    },
+    "guilders": {
+      "candidates": [
+        "guilde"
+      ],
+      "transformation": "plural"
+    },
+    "gurnards": {
+      "candidates": [
+        "gurnar"
+      ],
+      "transformation": "plural"
+    },
+    "haeredes": {
+      "candidates": [
+        "haeres"
+      ],
+      "transformation": "plural"
+    },
+    "halves": {
+      "candidates": [
+        "half"
+      ],
+      "transformation": "plural"
+    },
+    "handfed": {
+      "candidates": [
+        "handfeed"
+      ],
+      "transformation": "past"
+    },
+    "handselled": {
+      "candidates": [
+        "handsel"
+      ],
+      "transformation": "past"
+    },
+    "handselling": {
+      "candidates": [
+        "handsel"
+      ],
+      "transformation": "participle"
+    },
+    "harder": {
+      "candidates": [
+        "hard"
+      ],
+      "transformation": "comparison"
+    },
+    "haruspices": {
+      "candidates": [
+        "haruspex"
+      ],
+      "transformation": "plural"
+    },
+    "hieracosphinges": {
+      "candidates": [
+        "hieracosphinx"
+      ],
+      "transformation": "plural"
+    },
+    "higher": {
+      "candidates": [
+        "high"
+      ],
+      "transformation": "comparison"
+    },
+    "highest": {
+      "candidates": [
+        "high"
+      ],
+      "transformation": "comparison"
+    },
+    "hocussed": {
+      "candidates": [
+        "hocus"
+      ],
+      "transformation": "past"
+    },
+    "hocussing": {
+      "candidates": [
+        "hocus"
+      ],
+      "transformation": "participle"
+    },
+    "hogtying": {
+      "candidates": [
+        "hogtie"
+      ],
+      "transformation": "participle"
+    },
+    "houselled": {
+      "candidates": [
+        "housel"
+      ],
+      "transformation": "past"
+    },
+    "houselling": {
+      "candidates": [
+        "housel"
+      ],
+      "transformation": "participle"
+    },
+    "hyperostoses": {
+      "candidates": [
+        "hyperostosis"
+      ],
+      "transformation": "plural"
+    },
+    "iconostases": {
+      "candidates": [
+        "iconostas"
+      ],
+      "transformation": "plural"
+    },
+    "imagines": {
+      "candidates": [
+        "imagine",
+        "imago"
+      ],
+      "transformation": "plural"
+    },
+    "impies": {
+      "candidates": [
+        "impi"
+      ],
+      "transformation": "plural"
+    },
+    "inbred": {
+      "candidates": [
+        "inbreed"
+      ],
+      "transformation": "past"
+    },
+    "ingushes": {
+      "candidates": [
+        "ingush"
+      ],
+      "transformation": "plural"
+    },
+    "intercropped": {
+      "candidates": [
+        "intercrop"
+      ],
+      "transformation": "past"
+    },
+    "intercropping": {
+      "candidates": [
+        "intercrop"
+      ],
+      "transformation": "participle"
+    },
+    "intercutting": {
+      "candidates": [
+        "intercut"
+      ],
+      "transformation": "participle"
+    },
+    "interlapped": {
+      "candidates": [
+        "interlap"
+      ],
+      "transformation": "past"
+    },
+    "interlapping": {
+      "candidates": [
+        "interlap"
+      ],
+      "transformation": "participle"
+    },
+    "interleaves": {
+      "candidates": [
+        "interleaf"
+      ],
+      "transformation": "plural"
+    },
+    "interpled": {
+      "candidates": [
+        "interplead"
+      ],
+      "transformation": "past"
+    },
+    "interreges": {
+      "candidates": [
+        "interrex"
+      ],
+      "transformation": "plural"
+    },
+    "inwrapped": {
+      "candidates": [
+        "inwrap"
+      ],
+      "transformation": "past"
+    },
+    "inwrapping": {
+      "candidates": [
+        "inwrap"
+      ],
+      "transformation": "participle"
+    },
+    "jackeroos": {
+      "candidates": [
+        "jackeroo"
+      ],
+      "transformation": "plural"
+    },
+    "jackfishes": {
+      "candidates": [
+        "jackfish"
+      ],
+      "transformation": "plural"
+    },
+    "jewelfishes": {
+      "candidates": [
+        "jewelfish"
+      ],
+      "transformation": "plural"
+    },
+    "joes": {
+      "candidates": [
+        "joe"
+      ],
+      "transformation": "plural"
+    },
+    "joypopped": {
+      "candidates": [
+        "joypop"
+      ],
+      "transformation": "past"
+    },
+    "joypopping": {
+      "candidates": [
+        "joypop"
+      ],
+      "transformation": "participle"
+    },
+    "kalmucks": {
+      "candidates": [
+        "kalmuc"
+      ],
+      "transformation": "plural"
+    },
+    "katabases": {
+      "candidates": [
+        "katabasis"
+      ],
+      "transformation": "plural"
+    },
+    "ladyfied": {
+      "candidates": [
+        "ladify"
+      ],
+      "transformation": "past"
+    },
+    "ladyfying": {
+      "candidates": [
+        "ladify"
+      ],
+      "transformation": "participle"
+    },
+    "later": {
+      "candidates": [
+        "late"
+      ],
+      "transformation": "comparison"
+    },
+    "latest": {
+      "candidates": [
+        "late"
+      ],
+      "transformation": "comparison"
+    },
+    "lay": {
+      "candidates": [
+        "lie"
+      ],
+      "transformation": "past"
+    },
+    "leaves": {
+      "candidates": [
+        "leaf",
+        "leave"
+      ],
+      "transformation": "plural"
+    },
+    "left": {
+      "candidates": [
+        "leave"
+      ],
+      "transformation": "past"
+    },
+    "leges": {
+      "candidates": [
+        "lex"
+      ],
+      "transformation": "plural"
+    },
+    "lenes": {
+      "candidates": [
+        "lenis"
+      ],
+      "transformation": "plural"
+    },
+    "leonides": {
+      "candidates": [
+        "leonid"
+      ],
+      "transformation": "plural"
+    },
+    "limites": {
+      "candidates": [
+        "limes"
+      ],
+      "transformation": "plural"
+    },
+    "lives": {
+      "candidates": [
+        "life",
+        "live"
+      ],
+      "transformation": "plural"
+    },
+    "longer": {
+      "candidates": [
+        "long"
+      ],
+      "transformation": "comparison"
+    },
+    "lower": {
+      "candidates": [
+        "low"
+      ],
+      "transformation": "comparison"
+    },
+    "lowest": {
+      "candidates": [
+        "low"
+      ],
+      "transformation": "comparison"
+    },
+    "lying": {
+      "candidates": [
+        "lie"
+      ],
+      "transformation": "participle"
+    },
+    "maccaronies": {
+      "candidates": [
+        "maccaroni"
+      ],
+      "transformation": "plural"
+    },
+    "mandingoes": {
+      "candidates": [
+        "mandingo"
+      ],
+      "transformation": "plural"
+    },
+    "manes": {
+      "candidates": [
+        "mane"
+      ],
+      "transformation": "plural"
+    },
+    "marches": {
+      "candidates": [
+        "march",
+        "marche"
+      ],
+      "transformation": "plural"
+    },
+    "masses": {
+      "candidates": [
+        "masse"
+      ],
+      "transformation": "plural"
+    },
+    "mesothoraces": {
+      "candidates": [
+        "mesothorax"
+      ],
+      "transformation": "plural"
+    },
+    "messeigneurs": {
+      "candidates": [
+        "monseigneur"
+      ],
+      "transformation": "plural"
+    },
+    "metamorphoses": {
+      "candidates": [
+        "metamorphosis"
+      ],
+      "transformation": "plural"
+    },
+    "metathoraces": {
+      "candidates": [
+        "metathorax"
+      ],
+      "transformation": "plural"
+    },
+    "microanalyses": {
+      "candidates": [
+        "microanalysis"
+      ],
+      "transformation": "plural"
+    },
+    "milkfishes": {
+      "candidates": [
+        "milkfish"
+      ],
+      "transformation": "plural"
+    },
+    "mishitting": {
+      "candidates": [
+        "mishit"
+      ],
+      "transformation": "participle"
+    },
+    "mispled": {
+      "candidates": [
+        "misplead"
+      ],
+      "transformation": "past"
+    },
+    "mooncalves": {
+      "candidates": [
+        "mooncalf"
+      ],
+      "transformation": "plural"
+    },
+    "morescoes": {
+      "candidates": [
+        "moresco"
+      ],
+      "transformation": "plural"
+    },
+    "moriscoes": {
+      "candidates": [
+        "morisco"
+      ],
+      "transformation": "plural"
+    },
+    "morphoses": {
+      "candidates": [
+        "morphosis"
+      ],
+      "transformation": "plural"
+    },
+    "mucrones": {
+      "candidates": [
+        "mucro"
+      ],
+      "transformation": "plural"
+    },
+    "mudejares": {
+      "candidates": [
+        "mudejar"
+      ],
+      "transformation": "plural"
+    },
+    "mudfishes": {
+      "candidates": [
+        "mudfish"
+      ],
+      "transformation": "plural"
+    },
+    "murices": {
+      "candidates": [
+        "murex"
+      ],
+      "transformation": "plural"
+    },
+    "negrilloes": {
+      "candidates": [
+        "negrillo"
+      ],
+      "transformation": "plural"
+    },
+    "negritoes": {
+      "candidates": [
+        "negrito"
+      ],
+      "transformation": "plural"
+    },
+    "nidified": {
+      "candidates": [
+        "nidify"
+      ],
+      "transformation": "past"
+    },
+    "nigrified": {
+      "candidates": [
+        "nigrify"
+      ],
+      "transformation": "past"
+    },
+    "nodes": {
+      "candidates": [
+        "node"
+      ],
+      "transformation": "plural"
+    },
+    "older": {
+      "candidates": [
+        "old"
+      ],
+      "transformation": "comparison"
+    },
+    "organums": {
+      "candidates": [
+        "organa"
+      ],
+      "transformation": "plural"
+    },
+    "outbred": {
+      "candidates": [
+        "outbreed"
+      ],
+      "transformation": "past"
+    },
+    "outgassed": {
+      "candidates": [
+        "outgas"
+      ],
+      "transformation": "past"
+    },
+    "outgassing": {
+      "candidates": [
+        "outgas"
+      ],
+      "transformation": "participle"
+    },
+    "outmanned": {
+      "candidates": [
+        "outman"
+      ],
+      "transformation": "past"
+    },
+    "outmanning": {
+      "candidates": [
+        "outman"
+      ],
+      "transformation": "participle"
+    },
+    "overmanned": {
+      "candidates": [
+        "overman"
+      ],
+      "transformation": "past"
+    },
+    "overmanning": {
+      "candidates": [
+        "overman"
+      ],
+      "transformation": "participle"
+    },
+    "oversetting": {
+      "candidates": [
+        "overset"
+      ],
+      "transformation": "participle"
+    },
+    "pandied": {
+      "candidates": [
+        "pandy"
+      ],
+      "transformation": "past"
+    },
+    "parabases": {
+      "candidates": [
+        "parabasis"
+      ],
+      "transformation": "plural"
+    },
+    "parulides": {
+      "candidates": [
+        "parulis"
+      ],
+      "transformation": "plural"
+    },
+    "pectines": {
+      "candidates": [
+        "pecten"
+      ],
+      "transformation": "plural"
+    },
+    "pedaloes": {
+      "candidates": [
+        "pedalo"
+      ],
+      "transformation": "plural"
+    },
+    "penes": {
+      "candidates": [
+        "penis"
+      ],
+      "transformation": "plural"
+    },
+    "photomapped": {
+      "candidates": [
+        "photomap"
+      ],
+      "transformation": "past"
+    },
+    "photomapping": {
+      "candidates": [
+        "photomap"
+      ],
+      "transformation": "participle"
+    },
+    "photosetting": {
+      "candidates": [
+        "photoset"
+      ],
+      "transformation": "participle"
+    },
+    "phyllotaxes": {
+      "candidates": [
+        "phyllotaxis"
+      ],
+      "transformation": "plural"
+    },
+    "pitapatted": {
+      "candidates": [
+        "pitapat"
+      ],
+      "transformation": "past"
+    },
+    "pitapatting": {
+      "candidates": [
+        "pitapat"
+      ],
+      "transformation": "participle"
+    },
+    "poleis": {
+      "candidates": [
+        "polis"
+      ],
+      "transformation": "plural"
+    },
+    "precancelled": {
+      "candidates": [
+        "precancel"
+      ],
+      "transformation": "past"
+    },
+    "precancelling": {
+      "candidates": [
+        "precancel"
+      ],
+      "transformation": "participle"
+    },
+    "presignified": {
+      "candidates": [
+        "presignify"
+      ],
+      "transformation": "past"
+    },
+    "proglottides": {
+      "candidates": [
+        "proglottis"
+      ],
+      "transformation": "plural"
+    },
+    "prologs": {
+      "candidates": [
+        "prolog"
+      ],
+      "transformation": "plural"
+    },
+    "proptoses": {
+      "candidates": [
+        "proptosis"
+      ],
+      "transformation": "plural"
+    },
+    "protases": {
+      "candidates": [
+        "protasis"
+      ],
+      "transformation": "plural"
+    },
+    "proves": {
+      "candidates": [
+        "prof",
+        "prove"
+      ],
+      "transformation": "plural"
+    },
+    "punchinelloes": {
+      "candidates": [
+        "punchinello"
+      ],
+      "transformation": "plural"
+    },
+    "putted": {
+      "candidates": [
+        "put",
+        "putt"
+      ],
+      "transformation": "past"
+    },
+    "quezales": {
+      "candidates": [
+        "quezal"
+      ],
+      "transformation": "plural"
+    },
+    "rachides": {
+      "candidates": [
+        "rhachis"
+      ],
+      "transformation": "plural"
+    },
+    "raphides": {
+      "candidates": [
+        "raphide"
+      ],
+      "transformation": "plural"
+    },
+    "ratfishes": {
+      "candidates": [
+        "ratfish"
+      ],
+      "transformation": "plural"
+    },
+    "rectrices": {
+      "candidates": [
+        "rectrix"
+      ],
+      "transformation": "plural"
+    },
+    "relieves": {
+      "candidates": [
+        "relief",
+        "relieve"
+      ],
+      "transformation": "plural"
+    },
+    "remiges": {
+      "candidates": [
+        "remex"
+      ],
+      "transformation": "plural"
+    },
+    "replevied": {
+      "candidates": [
+        "replevy"
+      ],
+      "transformation": "past"
+    },
+    "resitting": {
+      "candidates": [
+        "resit"
+      ],
+      "transformation": "participle"
+    },
+    "rhachides": {
+      "candidates": [
+        "rhachis"
+      ],
+      "transformation": "plural"
+    },
+    "rose": {
+      "candidates": [
+        "rise"
+      ],
+      "transformation": "past"
+    },
+    "routed": {
+      "candidates": [
+        "rout",
+        "route"
+      ],
+      "transformation": "past"
+    },
+    "routing": {
+      "candidates": [
+        "rout",
+        "route"
+      ],
+      "transformation": "participle"
+    },
+    "salified": {
+      "candidates": [
+        "salify"
+      ],
+      "transformation": "past"
+    },
+    "saw": {
+      "candidates": [
+        "see"
+      ],
+      "transformation": "past"
+    },
+    "scaldfishes": {
+      "candidates": [
+        "scaldfish"
+      ],
+      "transformation": "plural"
+    },
+    "scoleces": {
+      "candidates": [
+        "scolex"
+      ],
+      "transformation": "plural"
+    },
+    "scolices": {
+      "candidates": [
+        "scolex"
+      ],
+      "transformation": "plural"
+    },
+    "scorified": {
+      "candidates": [
+        "scorify"
+      ],
+      "transformation": "past"
+    },
+    "senussis": {
+      "candidates": [
+        "senussi"
+      ],
+      "transformation": "plural"
+    },
+    "shackoes": {
+      "candidates": [
+        "shacko"
+      ],
+      "transformation": "plural"
+    },
+    "shadchans": {
+      "candidates": [
+        "shadchan"
+      ],
+      "transformation": "plural"
+    },
+    "sharecropped": {
+      "candidates": [
+        "sharecrop"
+      ],
+      "transformation": "past"
+    },
+    "sharecropping": {
+      "candidates": [
+        "sharecrop"
+      ],
+      "transformation": "participle"
+    },
+    "shelves": {
+      "candidates": [
+        "shelf"
+      ],
+      "transformation": "plural"
+    },
+    "shikarred": {
+      "candidates": [
+        "shikar"
+      ],
+      "transformation": "past"
+    },
+    "shikarring": {
+      "candidates": [
+        "shikar"
+      ],
+      "transformation": "participle"
+    },
+    "silicified": {
+      "candidates": [
+        "silicify"
+      ],
+      "transformation": "past"
+    },
+    "singed": {
+      "candidates": [
+        "sing",
+        "singe"
+      ],
+      "transformation": "past"
+    },
+    "skellied": {
+      "candidates": [
+        "skelly"
+      ],
+      "transformation": "past"
+    },
+    "skenned": {
+      "candidates": [
+        "sken"
+      ],
+      "transformation": "past"
+    },
+    "skenning": {
+      "candidates": [
+        "sken"
+      ],
+      "transformation": "participle"
+    },
+    "sketted": {
+      "candidates": [
+        "sket"
+      ],
+      "transformation": "past"
+    },
+    "sketting": {
+      "candidates": [
+        "sket"
+      ],
+      "transformation": "participle"
+    },
+    "snedded": {
+      "candidates": [
+        "sned"
+      ],
+      "transformation": "past"
+    },
+    "snedding": {
+      "candidates": [
+        "sned"
+      ],
+      "transformation": "participle"
+    },
+    "solemnified": {
+      "candidates": [
+        "solemnify"
+      ],
+      "transformation": "past"
+    },
+    "soles": {
+      "candidates": [
+        "sol"
+      ],
+      "transformation": "plural"
+    },
+    "soroses": {
+      "candidates": [
+        "sorosis"
+      ],
+      "transformation": "plural"
+    },
+    "spagged": {
+      "candidates": [
+        "spag"
+      ],
+      "transformation": "past"
+    },
+    "spagging": {
+      "candidates": [
+        "spag"
+      ],
+      "transformation": "participle"
+    },
+    "spancelled": {
+      "candidates": [
+        "spancel"
+      ],
+      "transformation": "past"
+    },
+    "spancelling": {
+      "candidates": [
+        "spancel"
+      ],
+      "transformation": "participle"
+    },
+    "squizzes": {
+      "candidates": [
+        "squiz"
+      ],
+      "transformation": "plural"
+    },
+    "stellified": {
+      "candidates": [
+        "stellify"
+      ],
+      "transformation": "past"
+    },
+    "stipites": {
+      "candidates": [
+        "stipes"
+      ],
+      "transformation": "plural"
+    },
+    "stirpes": {
+      "candidates": [
+        "stirps"
+      ],
+      "transformation": "plural"
+    },
+    "stotted": {
+      "candidates": [
+        "stot"
+      ],
+      "transformation": "past"
+    },
+    "stotting": {
+      "candidates": [
+        "stot"
+      ],
+      "transformation": "participle"
+    },
+    "stummed": {
+      "candidates": [
+        "stum"
+      ],
+      "transformation": "past"
+    },
+    "stumming": {
+      "candidates": [
+        "stum"
+      ],
+      "transformation": "participle"
+    },
+    "stylopes": {
+      "candidates": [
+        "stylops"
+      ],
+      "transformation": "plural"
+    },
+    "subcortices": {
+      "candidates": [
+        "subcortex"
+      ],
+      "transformation": "plural"
+    },
+    "subindices": {
+      "candidates": [
+        "subindex"
+      ],
+      "transformation": "plural"
+    },
+    "subjectified": {
+      "candidates": [
+        "subjectify"
+      ],
+      "transformation": "past"
+    },
+    "suckfishes": {
+      "candidates": [
+        "suckfish"
+      ],
+      "transformation": "plural"
+    },
+    "suites": {
+      "candidates": [
+        "suite"
+      ],
+      "transformation": "plural"
+    },
+    "sulphuretted": {
+      "candidates": [
+        "sulphuret"
+      ],
+      "transformation": "past"
+    },
+    "sulphuretting": {
+      "candidates": [
+        "sulphuret"
+      ],
+      "transformation": "participle"
+    },
+    "superheroes": {
+      "candidates": [
+        "superhero"
+      ],
+      "transformation": "plural"
+    },
+    "sweetiewives": {
+      "candidates": [
+        "sweetiewife"
+      ],
+      "transformation": "plural"
+    },
+    "swellfishes": {
+      "candidates": [
+        "swellfish"
+      ],
+      "transformation": "plural"
+    },
+    "swinging": {
+      "candidates": [
+        "swing",
+        "swinge"
+      ],
+      "transformation": "participle"
+    },
+    "swops": {
+      "candidates": [
+        "swop"
+      ],
+      "transformation": "plural"
+    },
+    "synarthroses": {
+      "candidates": [
+        "synarthrosis"
+      ],
+      "transformation": "plural"
+    },
+    "syndesmoses": {
+      "candidates": [
+        "syndesmosis"
+      ],
+      "transformation": "plural"
+    },
+    "syringes": {
+      "candidates": [
+        "syrinx"
+      ],
+      "transformation": "plural"
+    },
+    "syssarcoses": {
+      "candidates": [
+        "syssarcosis"
+      ],
+      "transformation": "plural"
+    },
+    "tectrices": {
+      "candidates": [
+        "tectrix"
+      ],
+      "transformation": "plural"
+    },
+    "telangiectases": {
+      "candidates": [
+        "telangiectasia"
+      ],
+      "transformation": "plural"
+    },
+    "tenues": {
+      "candidates": [
+        "tenuis"
+      ],
+      "transformation": "plural"
+    },
+    "tepefied": {
+      "candidates": [
+        "tepefy"
+      ],
+      "transformation": "past"
+    },
+    "thickleaves": {
+      "candidates": [
+        "thickleaf"
+      ],
+      "transformation": "plural"
+    },
+    "thieves": {
+      "candidates": [
+        "thief"
+      ],
+      "transformation": "plural"
+    },
+    "torrefied": {
+      "candidates": [
+        "torrefy"
+      ],
+      "transformation": "past"
+    },
+    "traditores": {
+      "candidates": [
+        "traditor"
+      ],
+      "transformation": "plural"
+    },
+    "transhipped": {
+      "candidates": [
+        "tranship"
+      ],
+      "transformation": "past"
+    },
+    "transhipping": {
+      "candidates": [
+        "tranship"
+      ],
+      "transformation": "participle"
+    },
+    "trapanned": {
+      "candidates": [
+        "trapan"
+      ],
+      "transformation": "past"
+    },
+    "trapanning": {
+      "candidates": [
+        "trapan"
+      ],
+      "transformation": "participle"
+    },
+    "trimmed": {
+      "candidates": [
+        "trim"
+      ],
+      "transformation": "past"
+    },
+    "trogged": {
+      "candidates": [
+        "trog"
+      ],
+      "transformation": "past"
+    },
+    "trogging": {
+      "candidates": [
+        "trog"
+      ],
+      "transformation": "participle"
+    },
+    "uncapped": {
+      "candidates": [
+        "uncap"
+      ],
+      "transformation": "past"
+    },
+    "uncapping": {
+      "candidates": [
+        "uncap"
+      ],
+      "transformation": "participle"
+    },
+    "underfed": {
+      "candidates": [
+        "underfeed"
+      ],
+      "transformation": "past"
+    },
+    "underletting": {
+      "candidates": [
+        "underlet"
+      ],
+      "transformation": "participle"
+    },
+    "underpropped": {
+      "candidates": [
+        "underprop"
+      ],
+      "transformation": "past"
+    },
+    "underpropping": {
+      "candidates": [
+        "underprop"
+      ],
+      "transformation": "participle"
+    },
+    "undersetting": {
+      "candidates": [
+        "underset"
+      ],
+      "transformation": "participle"
+    },
+    "unkennelled": {
+      "candidates": [
+        "unkennel"
+      ],
+      "transformation": "past"
+    },
+    "unkennelling": {
+      "candidates": [
+        "unkennel"
+      ],
+      "transformation": "participle"
+    },
+    "unknitted": {
+      "candidates": [
+        "unknit"
+      ],
+      "transformation": "past"
+    },
+    "unknitting": {
+      "candidates": [
+        "unknit"
+      ],
+      "transformation": "participle"
+    },
+    "unpegged": {
+      "candidates": [
+        "unpeg"
+      ],
+      "transformation": "past"
+    },
+    "unpegging": {
+      "candidates": [
+        "unpeg"
+      ],
+      "transformation": "participle"
+    },
+    "unrigged": {
+      "candidates": [
+        "unrig"
+      ],
+      "transformation": "past"
+    },
+    "unrigging": {
+      "candidates": [
+        "unrig"
+      ],
+      "transformation": "participle"
+    },
+    "unripped": {
+      "candidates": [
+        "unrip"
+      ],
+      "transformation": "past"
+    },
+    "unripping": {
+      "candidates": [
+        "unrip"
+      ],
+      "transformation": "participle"
+    },
+    "unshipped": {
+      "candidates": [
+        "unship"
+      ],
+      "transformation": "past"
+    },
+    "unshipping": {
+      "candidates": [
+        "unship"
+      ],
+      "transformation": "participle"
+    },
+    "unsnapped": {
+      "candidates": [
+        "unsnap"
+      ],
+      "transformation": "past"
+    },
+    "unsnapping": {
+      "candidates": [
+        "unsnap"
+      ],
+      "transformation": "participle"
+    },
+    "unstepped": {
+      "candidates": [
+        "unstep"
+      ],
+      "transformation": "past"
+    },
+    "unstepping": {
+      "candidates": [
+        "unstep"
+      ],
+      "transformation": "participle"
+    },
+    "unstopped": {
+      "candidates": [
+        "unstop"
+      ],
+      "transformation": "past"
+    },
+    "unstopping": {
+      "candidates": [
+        "unstop"
+      ],
+      "transformation": "participle"
+    },
+    "uredines": {
+      "candidates": [
+        "uredo"
+      ],
+      "transformation": "plural"
+    },
+    "vagged": {
+      "candidates": [
+        "vag"
+      ],
+      "transformation": "past"
+    },
+    "vagging": {
+      "candidates": [
+        "vag"
+      ],
+      "transformation": "participle"
+    },
+    "viatores": {
+      "candidates": [
+        "viator"
+      ],
+      "transformation": "plural"
+    },
+    "vires": {
+      "candidates": [
+        "vis"
+      ],
+      "transformation": "plural"
+    },
+    "waddied": {
+      "candidates": [
+        "waddy"
+      ],
+      "transformation": "past"
+    },
+    "wadsetted": {
+      "candidates": [
+        "wadset"
+      ],
+      "transformation": "past"
+    },
+    "wadsetting": {
+      "candidates": [
+        "wadset"
+      ],
+      "transformation": "participle"
+    },
+    "winterfed": {
+      "candidates": [
+        "winterfeed"
+      ],
+      "transformation": "past"
+    },
+    "wives": {
+      "candidates": [
+        "wife"
+      ],
+      "transformation": "plural"
+    },
+    "worse": {
+      "candidates": [
+        "bad"
+      ],
+      "transformation": "comparison"
+    },
+    "worst": {
+      "candidates": [
+        "bad"
+      ],
+      "transformation": "comparison"
+    },
+    "wound": {
+      "candidates": [
+        "wind"
+      ],
+      "transformation": "past"
+    },
+    "ycleped": {
+      "candidates": [
+        "clepe"
+      ],
+      "transformation": "past"
+    },
+    "zamindaris": {
+      "candidates": [
+        "zamindari"
+      ],
+      "transformation": "plural"
+    },
+    "zoeas": {
+      "candidates": [
+        "zoaea"
+      ],
+      "transformation": "plural"
+    }
+  }
+}

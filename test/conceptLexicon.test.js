@@ -90,3 +90,27 @@ test("plural-only, unresolved plurals and ambiguous inflections are never hidden
     assert.equal(defaultConceptLexicon.isTargetEligible(word), true, word);
   }
 });
+
+test("verb spelling reconstruction separates silent-e stems and doubled consonants", () => {
+  for (const [form, base] of Object.entries({
+    hoping: "hope", hopping: "hop", hoped: "hope", hopped: "hop",
+    riding: "ride", ridding: "rid", filing: "file", filling: "fill",
+    caring: "care", carrying: "carry", dying: "die", dyeing: "dye",
+    staring: "stare", starring: "star", scaring: "scare", scarring: "scar",
+    taping: "tape", tapping: "tap", mating: "mate", matting: "mat",
+  })) assert.equal(defaultConceptLexicon.resolve(form).canonicalWord, base, form);
+});
+
+test("context accepts ambiguous inflections only for an attested answer", () => {
+  for (const [surface, target] of [["leaves", "leaf"], ["leaves", "leave"],
+    ["axes", "ax"], ["axes", "axis"], ["saw", "see"], ["rose", "rise"],
+    ["better", "good"], ["best", "good"], ["worse", "bad"], ["worst", "bad"]]) {
+    assert.equal(defaultConceptLexicon.resolve(surface, { targetWord: target }).canonicalWord, target);
+    assert.equal(defaultConceptLexicon.resolve(surface, { targetWord: "moon" }).canonicalWord, surface);
+  }
+  for (const [surface, target] of [["booking", "book"], ["building", "build"],
+    ["painting", "paint"], ["evening", "even"], ["rating", "rat"],
+    ["dining", "din"], ["dive", "diva"]]) {
+    assert.equal(defaultConceptLexicon.resolve(surface, { targetWord: target }).canonicalWord, surface);
+  }
+});

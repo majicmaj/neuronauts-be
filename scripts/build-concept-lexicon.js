@@ -12,11 +12,53 @@ const overrides = require(path.join(root, "lexicon", "lexicon-overrides.json"));
 const outputDirectory = path.join(root, "lexicon", "generated");
 const checkOnly = process.argv.includes("--check");
 const wordSet = new Set(words);
+const invariantSingular = new Set(overrides.invariantSingular || []);
+
+function isVerb(word) {
+  const index = winkLexicon.wnWords[word];
+  return index !== undefined &&
+    winkLexicon.wnWordSenses[index].some((sense) => sense > 28 && sense < 44);
+}
+
+function inflectVerb(base, ending) {
+  if (ending === "ing") {
+    if (base.endsWith("ie")) return `${base.slice(0, -2)}ying`;
+    if (base.endsWith("e") && !/(ee|ye|oe)$/.test(base)) return `${base.slice(0, -1)}ing`;
+  } else {
+    if (base.endsWith("e")) return `${base}d`;
+    if (/[^aeiou]y$/.test(base)) return `${base.slice(0, -1)}ied`;
+  }
+  // A one-syllable CVC stem doubles its final consonant: hop/hopping,
+  // rid/ridding. Multi-syllable stress exceptions use attested WordNet forms.
+  if (/^[^aeiou]*[aeiou][^aeiouwxy]$/.test(base)) {
+    return `${base}${base.at(-1)}${ending}`;
+  }
+  return `${base}${ending}`;
+}
+
+function verbLemmas(word) {
+  const attested = winkLexicon.wnVerbExceptions[word];
+  if (attested) return attested === word ? [] : [attested];
+  const ending = word.endsWith("ing") ? "ing" : word.endsWith("ed") ? "ed" : null;
+  if (!ending) {
+    const lemma = lemmatize.verb(word);
+    return lemma === word ? [] : [lemma];
+  }
+  const stem = word.slice(0, -ending.length);
+  const candidates = new Set([
+    stem, `${stem}e`, stem.slice(0, -1),
+    stem.endsWith("i") ? `${stem.slice(0, -1)}y` : "",
+    stem.endsWith("y") ? `${stem.slice(0, -1)}ie` : "",
+  ]);
+  // Reconstruct the actual spelling rather than trusting Morphy's first valid
+  // stem (which incorrectly returns hoping/hop, riding/rid, staring/star).
+  return [...candidates].filter((base) => isVerb(base) && inflectVerb(base, ending) === word);
+}
 
 function distinctLemmas(word) {
   return [...new Set([
     lemmatize.noun(word),
-    lemmatize.verb(word),
+    ...verbLemmas(word),
     lemmatize.adjective(word),
   ])]
     .filter(
@@ -34,7 +76,7 @@ function distinctLemmas(word) {
 
 function transformationFor(word, canonical) {
   const tags = winkLexicon.lexicon[word] || [];
-  if (tags.includes("NNS")) return "plural";
+  if (tags.includes("NNS") || (word.endsWith("s") && lemmatize.noun(word) !== word)) return "plural";
   if (tags.includes("VBG") || word.endsWith("ing")) return "participle";
   if (tags.includes("VBD") || tags.includes("VBN") || word.endsWith("ed")) {
     return "past";
@@ -59,7 +101,7 @@ function getSpellingVariant(word) {
 
 function canBeTarget(word) {
   if (overrides.targetExcluded[word]) return false;
-  if ((overrides.invariantSingular || []).includes(word)) return true;
+  if (invariantSingular.has(word) || winkLexicon.singularNouns[word]) return true;
   const tags = winkLexicon.lexicon[word] || [];
   // Unknown s-endings include web vocabulary and compounds that the lemma
   // dictionary misses (screenshots, plugins). Keep them guessable, never answers.
@@ -86,12 +128,12 @@ function classifyInflection(word) {
     };
   }
 
-  if (overrides.standalone[word]) {
+  if (overrides.standalone[word] || invariantSingular.has(word)) {
     return {
       action: "standalone",
       canonical: word,
       targetEligible: canBeTarget(word),
-      reason: overrides.standalone[word],
+      reason: overrides.standalone[word] || "Singular or invariant noun ending in s.",
       source: "override",
     };
   }
@@ -157,8 +199,7 @@ function classifyInflection(word) {
     };
   }
 
-  const verbLemma = lemmatize.verb(word);
-  if (canonical === verbLemma && verbLemma !== word &&
+  if (verbLemmas(word).includes(canonical) &&
       (tags.some((tag) => ["VBG", "VBD", "VBN"].includes(tag)) ||
        word.endsWith("ing") || word.endsWith("ed"))) {
     return {
@@ -236,15 +277,8 @@ function buildArtifacts() {
     if (!conceptByKey.has(key)) {
       conceptByKey.set(key, { key, aliases: [], targetEligible: false });
     }
-    if (word !== key) conceptByKey.get(key).aliases.push(word);
     if (decision.action === "standalone" && decision.targetEligible) {
       conceptByKey.get(key).targetEligible = true;
-    } else if (decision.action === "alias" && !wordSet.has(key)) {
-      // Replace an inflected target with its scoreable base form when the base
-      // is outside words.json (for example ending -> end).
-      const baseDecision = classify(key);
-      conceptByKey.get(key).targetEligible =
-        baseDecision.action === "standalone" && baseDecision.targetEligible;
     }
     if (decision.review) {
       reviewRows.push([
@@ -271,7 +305,6 @@ function buildArtifacts() {
       canonical: override.canonical,
       transformation: override.transformation || transformationFor(surfaceWord, override.canonical),
     };
-    conceptByKey.get(override.canonical).aliases.push(surfaceWord);
   }
 
   for (const surfaceWord of Object.keys(overrides.standalone).sort()) {
@@ -295,13 +328,14 @@ function buildArtifacts() {
       canonical,
       transformation: "spelling-variant",
     };
-    conceptByKey.get(canonical).aliases.push(surfaceWord);
   }
 
   // Use the same decision for guesses inside and outside the target vocabulary.
   // This includes dictionary-attested irregulars without accepting arbitrary stems.
   const dictionaryWords = new Set([
     ...Object.keys(winkLexicon.lexicon), ...Object.keys(winkLexicon.wnWords),
+    ...Object.keys(winkLexicon.wnVerbExceptions),
+    ...Object.keys(winkLexicon.wnNounExceptions),
   ]);
   for (const surfaceWord of [...dictionaryWords].sort()) {
     if (wordSet.has(surfaceWord) || aliases[surfaceWord] ||
@@ -317,7 +351,6 @@ function buildArtifacts() {
       canonical: decision.canonical,
       transformation: decision.transformation,
     };
-    conceptByKey.get(decision.canonical).aliases.push(surfaceWord);
   }
 
   // Inflections can compose (readings -> reading -> read). Emit direct aliases
@@ -330,11 +363,47 @@ function buildArtifacts() {
       alias.canonical = aliases[alias.canonical].canonical;
     }
   }
-  for (const concept of conceptByKey.values()) concept.aliases = [];
   for (const [surfaceWord, alias] of Object.entries(aliases)) {
-    const oldConcept = conceptByKey.get(surfaceWord);
-    if (oldConcept) conceptByKey.delete(surfaceWord);
+    conceptByKey.delete(surfaceWord);
     conceptByKey.get(alias.canonical).aliases.push(surfaceWord);
+  }
+  // Replace an inflected target with its scoreable base form when the final
+  // base is outside words.json (ending -> end, readings -> reading -> read).
+  for (const word of words) {
+    const alias = aliases[word];
+    if (!alias || wordSet.has(alias.canonical)) continue;
+    const baseDecision = classify(alias.canonical);
+    if (baseDecision.action === "standalone" && baseDecision.targetEligible) {
+      conceptByKey.get(alias.canonical).targetEligible = true;
+    }
+  }
+
+  const ambiguousAliases = {};
+  for (const surface of [...new Set([...words, ...dictionaryWords,
+    ...Object.keys(overrides.ambiguousAliases || {})])].sort()) {
+    if (aliases[surface] || !/^[a-z][a-z'-]*$/.test(surface)) continue;
+    const explicit = (overrides.ambiguousAliases || {})[surface];
+    if (overrides.standalone[surface] && !explicit) continue;
+    const tags = winkLexicon.lexicon[surface] || [];
+    const attestedCandidates = [];
+    if (tags.includes("NNS") || (surface.endsWith("s") && !surface.endsWith("ss"))) {
+      attestedCandidates.push(lemmatize.noun(surface));
+    }
+    if (tags.some((tag) => ["VBG", "VBD", "VBN", "VBZ"].includes(tag)) ||
+        surface.endsWith("ing") || surface.endsWith("ed")) {
+      attestedCandidates.push(...verbLemmas(surface));
+    }
+    if (tags.some((tag) => ["JJR", "JJS", "RBR", "RBS"].includes(tag))) {
+      attestedCandidates.push(lemmatize.adjective(surface));
+    }
+    const candidates = [...new Set((explicit || attestedCandidates)
+      .map((candidate) => aliases[candidate]?.canonical || candidate))]
+      .filter((candidate) => candidate !== surface);
+    if (!candidates.length) continue;
+    ambiguousAliases[surface] = {
+      candidates: candidates.sort(),
+      transformation: transformationFor(surface, candidates[0]),
+    };
   }
 
   const concepts = [...conceptByKey.values()].map((concept) => ({
@@ -374,6 +443,7 @@ function buildArtifacts() {
     conceptCount: concepts.length,
     targetCount: targets.length,
     aliasCount: Object.keys(aliases).length,
+    ambiguousAliasCount: Object.keys(ambiguousAliases).length,
     reviewCount: reviewRows.length,
   };
   const review = [
@@ -385,6 +455,7 @@ function buildArtifacts() {
     "concepts.json": serializeJson({ ...summary, concepts }),
     "targets.json": serializeJson({ version: summary.version, targets }),
     "guess-aliases.json": serializeJson({ version: summary.version, aliases }),
+    "ambiguous-aliases.json": serializeJson({ version: summary.version, aliases: ambiguousAliases }),
     "lexicon-review.csv": review,
     "summary.json": serializeJson(summary),
   };

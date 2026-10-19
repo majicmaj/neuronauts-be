@@ -1,14 +1,17 @@
 const generatedConcepts = require("./lexicon/generated/concepts.json");
 const generatedTargets = require("./lexicon/generated/targets.json");
 const generatedAliases = require("./lexicon/generated/guess-aliases.json");
+const generatedAmbiguousAliases = require("./lexicon/generated/ambiguous-aliases.json");
 
 class ConceptLexicon {
   constructor({
     concepts = generatedConcepts.concepts,
     targets = generatedTargets.targets,
     aliases = generatedAliases.aliases,
+    ambiguousAliases = generatedAmbiguousAliases.aliases,
   } = {}) {
     this.aliases = aliases;
+    this.ambiguousAliases = ambiguousAliases;
     this.targetWords = new Set(targets);
     this.knownWords = new Set();
     for (const concept of concepts) {
@@ -17,8 +20,12 @@ class ConceptLexicon {
     }
   }
 
-  resolve(word) {
-    const alias = this.aliases[word];
+  resolve(word, { targetWord } = {}) {
+    const ambiguous = this.ambiguousAliases[word];
+    const alias = this.aliases[word] ||
+      (targetWord && ambiguous?.candidates.includes(targetWord)
+        ? { canonical: targetWord, transformation: ambiguous.transformation }
+        : null);
     if (!alias) {
       return {
         submittedWord: word,

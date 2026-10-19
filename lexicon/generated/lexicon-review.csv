@@ -6,7 +6,7 @@ undertaken,undertake,no,,target-excluded,No supported inflection rule safely map
 forbidden,forbid,yes,,target-excluded,No supported inflection rule safely maps this word to forbid.
 would,will,no,MD,target-excluded,No supported inflection rule safely maps this word to will.
 could,can,no,MD,target-excluded,No supported inflection rule safely maps this word to can.
-better,good,yes,JJR|JJ|RB|VB|RBR,standalone,Comparison form has an independent lexical role alongside good.
+better,good,yes,JJR|JJ|RB|VB|RBR,target-excluded,Comparison form has an independent lexical role alongside good.
 latest,late,yes,JJS|JJ,standalone,Comparison form has an independent lexical role alongside late.
 might,may,yes,MD|NN,target-excluded,No supported inflection rule safely maps this word to may.
 james,jam,yes,,target-excluded,No supported inflection rule safely maps this word to jam.
@@ -27,10 +27,10 @@ suites,suit|suite,no,NNS,target-excluded,"Ambiguous lemmas: suit, suite."
 newest,new,no,,target-excluded,No supported inflection rule safely maps this word to new.
 leaves,leaf|leave,no,VBZ|JJ|NNS,target-excluded,"Ambiguous lemmas: leaf, leave."
 alumni,alumnus,no,,target-excluded,No supported inflection rule safely maps this word to alumnus.
-worst,bad,yes,JJS|RBS|JJ,standalone,Comparison form has an independent lexical role alongside bad.
+worst,bad,yes,JJS|RBS|JJ,target-excluded,Comparison form has an independent lexical role alongside bad.
 buffer,buff,yes,,target-excluded,No supported inflection rule safely maps this word to buff.
 oldest,old,no,,target-excluded,No supported inflection rule safely maps this word to old.
-worse,bad,yes,JJR|JJ|RBR,standalone,Comparison form has an independent lexical role alongside bad.
+worse,bad,yes,JJR|JJ|RBR,target-excluded,Comparison form has an independent lexical role alongside bad.
 nearest,near,yes,,target-excluded,No supported inflection rule safely maps this word to near.
 broker,broke,yes,NN,target-excluded,No supported inflection rule safely maps this word to broke.
 proven,prove,yes,,target-excluded,No supported inflection rule safely maps this word to prove.
@@ -39,6 +39,7 @@ outer,out,yes,JJ,target-excluded,No supported inflection rule safely maps this w
 nodes,nod|node,no,,target-excluded,"Ambiguous lemmas: nod, node."
 fewer,few,yes,JJR|RB|RBR,standalone,Comparison form has an independent lexical role alongside few.
 spoken,speak,yes,,target-excluded,No supported inflection rule safely maps this word to speak.
+routing,rout|route,no,VBG|NN,target-excluded,"Ambiguous lemmas: rout, route."
 finest,fine,no,,target-excluded,No supported inflection rule safely maps this word to fine.
 harder,hard,no,JJR|RBR|JJ|RB,standalone,Comparison form has an independent lexical role alongside hard.
 cheapest,cheap,no,,target-excluded,No supported inflection rule safely maps this word to cheap.

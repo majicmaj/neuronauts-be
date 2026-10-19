@@ -60,3 +60,27 @@ docker run --rm -p 3000:3000 -v neuronauts-data:/app/data neuronauts-be
 ```
 
 The production compose layout and deployment procedure are documented in the parent workspace's `DEPLOYMENT.md`.
+
+### Optional mission categories
+
+`createLobby` accepts an optional `categoryId`. Omitting it selects `all`
+(All words, Hardest), preserving older clients. `categoryCatalog` sends the
+server-owned catalog on connect; `getCategories` requests it again. Each lobby
+payload includes public `category` metadata. Invalid IDs are rejected before
+changing the player's current lobby. Joining uses the lobby's category, and
+shared rematches preserve it in Classic and VS. Both VS teams receive one target.
+
+The six curated pools in `categories.json` offer Easy (Animals, Food & drink),
+Medium (The natural world, Places & travel), and Hard (Science & technology,
+Ideas & society). These are guidance levels based on topic specificity, not a
+promise about individual word difficulty. Pools must contain unique canonical
+words from both the committed target inventory and the existing reference
+vocabulary's canonical forms; startup validates this contract. Missing embeddings
+are filtered during target selection; a pool with no available targets fails
+visibly rather than falling back to another category. Full dictionary guesses,
+inflection matching, reference ranks, score calibration, and hints remain global.
+
+Release the backend before the category-aware frontend. An older frontend keeps
+creating All words missions; the new chooser stays on All words if the API does
+not yet advertise categories. Backend deployment restarts in-memory rooms and
+requires explicit release authorization.

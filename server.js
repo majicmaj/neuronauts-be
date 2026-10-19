@@ -1,3 +1,4 @@
+const { getCategory, getTargetPool, getCategoryCatalog } = require("./categories");
 const express = require("express");
 const http = require("http");
 const path = require("path");
@@ -227,10 +228,14 @@ function createGameServer(options = {}) {
 
   function createLobbyRecord(lobbyId, lobbyOptions = {}) {
     const mode = lobbyOptions.mode === "versus" ? "versus" : "classic";
-    const game = mode === "versus" ? versusFactory() : gameFactory();
+    const category = getCategory(lobbyOptions.categoryId);
+    if (!category) throw new Error("Unknown mission category.");
+    const gameOptions = { targetPool: getTargetPool(category.id) };
+    const game = mode === "versus" ? versusFactory(gameOptions) : gameFactory(gameOptions);
     const lobby = {
       lobbyId,
       mode,
+      category,
       game,
       players: new Map(),
       identityAssignments: new Map(),
@@ -282,9 +287,11 @@ function createGameServer(options = {}) {
     game.on("error", (error) => {
       io.to(lobbyId).emit("actionError", {
         code: "game_unavailable",
-        message: "The semantic model could not be loaded.",
+        message: error.code === "no_eligible_targets"
+          ? "No words in this category are available. Return home and choose another category or All words."
+          : "The semantic model could not be loaded.",
       });
-      recordEvent("game_error", { lobbyId, message: error.message });
+      recordEvent("game_error", { lobbyId, categoryId: category.id, message: error.message });
     });
 
     lobbies.set(lobbyId, lobby);
@@ -436,6 +443,7 @@ function createGameServer(options = {}) {
     return {
       lobbyId: lobby.lobbyId,
       mode: lobby.mode,
+      category: lobby.category,
       gameState: versus?.gameState || lobby.game.getGameState(),
       versus: versus ? { ...versus, gameState: undefined } : null,
       players: serializePlayers(lobby),
@@ -487,6 +495,7 @@ function createGameServer(options = {}) {
         players: lobby.players.size,
         status: lobby.mode === "versus" ? lobby.game.status : lobby.game.getGameState().status,
         mode: lobby.mode,
+        category: lobby.category,
         createdAt: lobby.createdAt,
         lastActivityAt: lobby.lastActivityAt,
         idleMs: Date.now() - lobby.lastActivityMs,
@@ -530,16 +539,23 @@ function createGameServer(options = {}) {
   io.on("connection", (socket) => {
     socket.data.lobbyId = null;
     socket.data.lastGuessAt = 0;
+    socket.emit("categoryCatalog", getCategoryCatalog());
+    socket.on("getCategories", () => socket.emit("categoryCatalog", getCategoryCatalog()));
 
     socket.on("createLobby", (payload = {}) => {
       if (lobbies.size >= limits.maxLobbies) {
         socket.emit("error", "Server room capacity reached. Try again later.");
         return;
       }
+      const category = getCategory(payload?.categoryId);
+      if (!category) {
+        socket.emit("error", "Unknown mission category. Choose a category and try again.");
+        return;
+      }
       removePlayerFromCurrentLobby(socket);
       const lobbyId = generateLobbyId();
       const mode = payload?.mode === "versus" ? "versus" : "classic";
-      const lobby = createLobbyRecord(lobbyId, { mode });
+      const lobby = createLobbyRecord(lobbyId, { mode, categoryId: category.id });
       addPlayer(lobby, socket, payload?.preferredName);
       const response = lobbyPayload(lobby, socket.id);
       socket.emit("lobbyCreated", response);
@@ -909,7 +925,7 @@ function createGameServer(options = {}) {
         }
         sourceLobby.rematchLobbyId = generateLobbyId();
         sourceLobby.rematchReadyParticipantIds.clear();
-        createLobbyRecord(sourceLobby.rematchLobbyId, { mode: sourceLobby.mode });
+        createLobbyRecord(sourceLobby.rematchLobbyId, { mode: sourceLobby.mode, categoryId: sourceLobby.category.id });
       }
 
       const player = sourceLobby.players.get(socket.id);

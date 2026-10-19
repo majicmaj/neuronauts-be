@@ -114,3 +114,37 @@ test("context accepts ambiguous inflections only for an attested answer", () => 
     assert.equal(defaultConceptLexicon.resolve(surface, { targetWord: target }).canonicalWord, surface);
   }
 });
+
+test("attested comparative spellings join their adjective and never become answers", () => {
+  for (const [base, forms] of Object.entries({
+    happy: ["happier", "happiest"], easy: ["easier", "easiest"],
+    funny: ["funnier", "funniest"], hot: ["hotter", "hottest"],
+    thin: ["thinner", "thinnest"], fast: ["faster", "fastest"],
+  })) for (const form of forms) {
+    assert.equal(defaultConceptLexicon.resolve(form).canonicalWord, base, form);
+    assert.equal(defaultConceptLexicon.isTargetEligible(form), false, form);
+  }
+});
+
+test("noun and verb evidence keep ambiguous meanings and labels accurate", () => {
+  for (const [form, target, label] of [["leaves", "leaf", "plural"],
+    ["leaves", "leave", "agreement"], ["lives", "life", "plural"],
+    ["lives", "live", "agreement"], ["people", "person", "plural"],
+    ["media", "medium", "plural"], ["glasses", "glass", "plural"]]) {
+    const result = defaultConceptLexicon.resolve(form, { targetWord: target });
+    assert.equal(result.canonicalWord, target, `${form}/${target}`);
+    assert.equal(result.transformation, label, `${form}/${target}`);
+  }
+  for (const [form, base] of [["believes", "believe"], ["proves", "prove"], ["reads", "read"]]) {
+    assert.equal(defaultConceptLexicon.resolve(form).canonicalWord, base);
+    assert.equal(defaultConceptLexicon.resolve(form).transformation, "agreement");
+  }
+  assert.notEqual(defaultConceptLexicon.resolve("believes", { targetWord: "belief" }).canonicalWord, "belief");
+  assert.notEqual(defaultConceptLexicon.resolve("proves", { targetWord: "prof" }).canonicalWord, "prof");
+  assert.equal(defaultConceptLexicon.resolve("corps").canonicalWord, "corps");
+  assert.equal(defaultConceptLexicon.isTargetEligible("media"), false);
+  for (const [plural, noun] of [["settings", "setting"], ["holdings", "holding"],
+    ["findings", "finding"], ["belongings", "belonging"]]) {
+    assert.equal(defaultConceptLexicon.resolve(plural).canonicalWord, noun);
+  }
+});

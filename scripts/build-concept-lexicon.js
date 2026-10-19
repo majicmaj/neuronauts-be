@@ -57,7 +57,8 @@ function verbLemmas(word) {
 
 function distinctLemmas(word) {
   return [...new Set([
-    lemmatize.noun(word),
+    ...((looksPlural(word, winkLexicon.lexicon[word] || []) ||
+      !(winkLexicon.lexicon[word] || []).length) ? [nounLemma(word)] : []),
     ...verbLemmas(word),
     lemmatize.adjective(word),
   ])]
@@ -76,13 +77,12 @@ function distinctLemmas(word) {
 
 function transformationFor(word, canonical) {
   const tags = winkLexicon.lexicon[word] || [];
-  if (tags.includes("NNS") || (word.endsWith("s") && lemmatize.noun(word) !== word)) return "plural";
+  if (canonical !== word && looksPlural(word, tags) &&
+      (canonical === nounLemma(word) || !verbLemmas(word).includes(canonical))) return "plural";
+  if (isComparison(word, tags) && lemmatize.adjective(word) === canonical) return "comparison";
   if (tags.includes("VBG") || word.endsWith("ing")) return "participle";
-  if (tags.includes("VBD") || tags.includes("VBN") || word.endsWith("ed")) {
-    return "past";
-  }
+  if (tags.includes("VBD") || tags.includes("VBN") || word.endsWith("ed")) return "past";
   if (tags.includes("VBZ")) return "agreement";
-  if (tags.includes("JJR") || tags.includes("JJS")) return "comparison";
   if (canonical !== word) return "irregular";
   return "inflection";
 }
@@ -97,6 +97,24 @@ function getSpellingVariant(word) {
   const canonical = britishSpellings[word];
   if (!canonical || overrides.spellingVariantExcluded[word]) return null;
   return /^[a-z][a-z'-]*$/.test(canonical) ? canonical : null;
+}
+
+function looksPlural(word, tags) {
+  return tags.includes("NNS") ||
+    (tags.length === 0 && word.endsWith("s") && !word.endsWith("ss"));
+}
+
+function nounLemma(word) {
+  if (winkLexicon.uninflectedNouns[word] ||
+      (word.endsWith("s") && winkLexicon.uncountableNouns[word])) return word;
+  return lemmatize.noun(word);
+}
+
+function isComparison(word, tags) {
+  return tags.some((tag) => ["JJR", "JJS", "RBR", "RBS"].includes(tag)) ||
+    Boolean(winkLexicon.wnAdjectiveExceptions[word] &&
+      winkLexicon.wnAdjectiveExceptions[word] !== word) ||
+    (tags.length === 0 && lemmatize.adjective(word) !== word);
 }
 
 function canBeTarget(word) {
@@ -165,9 +183,8 @@ function classifyInflection(word) {
   const tags = winkLexicon.lexicon[word] || [];
   // WordNet lists ordinary plurals and gerunds as senses too. Dictionary
   // membership alone must not force an almost-identical answer into the pool.
-  const nounLemma = lemmatize.noun(word);
-  if (nounLemma !== word && canonical === nounLemma &&
-      (tags.includes("NNS") || (word.endsWith("s") && !word.endsWith("ss")))) {
+  const singular = nounLemma(word);
+  if (singular !== word && canonical === singular && looksPlural(word, tags)) {
     return {
       action: "alias",
       canonical,
@@ -177,25 +194,16 @@ function classifyInflection(word) {
     };
   }
 
-  if (tags.includes("JJR") || tags.includes("JJS") || tags.includes("RBR") || tags.includes("RBS")) {
-    const lexicalized = tags.some((tag) => ["NN", "JJ", "RB", "VB"].includes(tag));
-    if (!lexicalized) {
+  if (isComparison(word, tags)) {
+    if (overrides.targetExcluded[word]) {
       return {
-        action: "alias",
-        canonical,
-        transformation: "comparison",
-        reason: `One unambiguous comparison form of ${canonical}.`,
-        source: "automatic",
+        action: "standalone", canonical: word, targetEligible: false,
+        reason: overrides.targetExcluded[word], source: "override",
       };
     }
     return {
-      action: "standalone",
-      canonical: word,
-      targetEligible: canBeTarget(word),
-      reason: `Comparison form has an independent lexical role alongside ${canonical}.`,
-      source: "lexicalized",
-      review: true,
-      candidates,
+      action: "alias", canonical, transformation: "comparison",
+      reason: `Attested comparison form of ${canonical}.`, source: "automatic",
     };
   }
 
@@ -336,6 +344,7 @@ function buildArtifacts() {
     ...Object.keys(winkLexicon.lexicon), ...Object.keys(winkLexicon.wnWords),
     ...Object.keys(winkLexicon.wnVerbExceptions),
     ...Object.keys(winkLexicon.wnNounExceptions),
+    ...Object.keys(winkLexicon.wnAdjectiveExceptions),
   ]);
   for (const surfaceWord of [...dictionaryWords].sort()) {
     if (wordSet.has(surfaceWord) || aliases[surfaceWord] ||
@@ -379,21 +388,22 @@ function buildArtifacts() {
   }
 
   const ambiguousAliases = {};
+  const ambiguousOverrides = overrides.ambiguousAliases || {};
   for (const surface of [...new Set([...words, ...dictionaryWords,
-    ...Object.keys(overrides.ambiguousAliases || {})])].sort()) {
+    ...Object.keys(ambiguousOverrides)])].sort()) {
     if (aliases[surface] || !/^[a-z][a-z'-]*$/.test(surface)) continue;
-    const explicit = (overrides.ambiguousAliases || {})[surface];
-    if (overrides.standalone[surface] && !explicit) continue;
+    const explicit = ambiguousOverrides[surface];
     const tags = winkLexicon.lexicon[surface] || [];
+    const protectedConcept = overrides.standalone[surface] && !explicit;
     const attestedCandidates = [];
-    if (tags.includes("NNS") || (surface.endsWith("s") && !surface.endsWith("ss"))) {
-      attestedCandidates.push(lemmatize.noun(surface));
+    if (looksPlural(surface, tags)) {
+      attestedCandidates.push(nounLemma(surface));
     }
-    if (tags.some((tag) => ["VBG", "VBD", "VBN", "VBZ"].includes(tag)) ||
-        surface.endsWith("ing") || surface.endsWith("ed")) {
+    if (!protectedConcept && (tags.some((tag) => ["VBG", "VBD", "VBN", "VBZ"].includes(tag)) ||
+        surface.endsWith("ing") || surface.endsWith("ed"))) {
       attestedCandidates.push(...verbLemmas(surface));
     }
-    if (tags.some((tag) => ["JJR", "JJS", "RBR", "RBS"].includes(tag))) {
+    if (!protectedConcept && isComparison(surface, tags)) {
       attestedCandidates.push(lemmatize.adjective(surface));
     }
     const candidates = [...new Set((explicit || attestedCandidates)
@@ -402,7 +412,8 @@ function buildArtifacts() {
     if (!candidates.length) continue;
     ambiguousAliases[surface] = {
       candidates: candidates.sort(),
-      transformation: transformationFor(surface, candidates[0]),
+      transformations: Object.fromEntries(candidates.map((candidate) =>
+        [candidate, transformationFor(surface, candidate)])),
     };
   }
 

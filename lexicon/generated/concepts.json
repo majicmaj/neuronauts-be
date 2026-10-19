@@ -1,11 +1,11 @@
 {
   "version": 1,
   "sourceWordCount": 7700,
-  "conceptCount": 10091,
-  "targetCount": 5495,
-  "aliasCount": 11958,
-  "ambiguousAliasCount": 372,
-  "reviewCount": 64,
+  "conceptCount": 10591,
+  "targetCount": 5499,
+  "aliasCount": 13241,
+  "ambiguousAliasCount": 500,
+  "reviewCount": 28,
   "concepts": [
     {
       "key": "information",
@@ -565,7 +565,6 @@
       "key": "institute",
       "aliases": [
         "instituted",
-        "institutes",
         "instituting"
       ],
       "targetEligible": true
@@ -2809,7 +2808,7 @@
         "discusses",
         "discussing"
       ],
-      "targetEligible": false
+      "targetEligible": true
     },
     {
       "key": "elizabeth",
@@ -3662,7 +3661,9 @@
     },
     {
       "key": "northwest",
-      "aliases": [],
+      "aliases": [
+        "northwester"
+      ],
       "targetEligible": true
     },
     {
@@ -5180,7 +5181,9 @@
     },
     {
       "key": "southwest",
-      "aliases": [],
+      "aliases": [
+        "southwester"
+      ],
       "targetEligible": true
     },
     {
@@ -5219,9 +5222,7 @@
     },
     {
       "key": "somewhere",
-      "aliases": [
-        "somewheres"
-      ],
+      "aliases": [],
       "targetEligible": true
     },
     {
@@ -5730,7 +5731,9 @@
     },
     {
       "key": "southeast",
-      "aliases": [],
+      "aliases": [
+        "southeaster"
+      ],
       "targetEligible": true
     },
     {
@@ -6405,7 +6408,9 @@
     },
     {
       "key": "northeast",
-      "aliases": [],
+      "aliases": [
+        "northeaster"
+      ],
       "targetEligible": true
     },
     {
@@ -9018,6 +9023,7 @@
       "key": "abstract",
       "aliases": [
         "abstracted",
+        "abstracter",
         "abstracting",
         "abstracts"
       ],
@@ -9315,7 +9321,9 @@
     },
     {
       "key": "freelance",
-      "aliases": [],
+      "aliases": [
+        "freelancer"
+      ],
       "targetEligible": true
     },
     {
@@ -10440,6 +10448,11 @@
       "targetEligible": true
     },
     {
+      "key": "institutes",
+      "aliases": [],
+      "targetEligible": false
+    },
+    {
       "key": "brochure",
       "aliases": [
         "brochures"
@@ -11446,8 +11459,7 @@
       "key": "forward",
       "aliases": [
         "forwarded",
-        "forwarding",
-        "forwards"
+        "forwarding"
       ],
       "targetEligible": true
     },
@@ -12478,7 +12490,7 @@
     {
       "key": "media",
       "aliases": [],
-      "targetEligible": true
+      "targetEligible": false
     },
     {
       "key": "water",
@@ -12549,7 +12561,8 @@
     {
       "key": "small",
       "aliases": [
-        "smaller"
+        "smaller",
+        "smallest"
       ],
       "targetEligible": true
     },
@@ -12730,7 +12743,9 @@
     },
     {
       "key": "little",
-      "aliases": [],
+      "aliases": [
+        "littler"
+      ],
       "targetEligible": true
     },
     {
@@ -13306,7 +13321,8 @@
     {
       "key": "young",
       "aliases": [
-        "younger"
+        "younger",
+        "youngest"
       ],
       "targetEligible": true
     },
@@ -13358,8 +13374,11 @@
       "targetEligible": true
     },
     {
-      "key": "latest",
-      "aliases": [],
+      "key": "late",
+      "aliases": [
+        "later",
+        "latest"
+      ],
       "targetEligible": true
     },
     {
@@ -13437,6 +13456,7 @@
       "key": "light",
       "aliases": [
         "lighted",
+        "lighter",
         "lighting",
         "lights"
       ],
@@ -13664,6 +13684,7 @@
       "key": "welcome",
       "aliases": [
         "welcomed",
+        "welcomer",
         "welcomes",
         "welcoming"
       ],
@@ -13831,8 +13852,7 @@
       "key": "common",
       "aliases": [
         "commoner",
-        "commoners",
-        "commons"
+        "commoners"
       ],
       "targetEligible": true
     },
@@ -13872,6 +13892,7 @@
       "key": "short",
       "aliases": [
         "shorted",
+        "shorter",
         "shorting"
       ],
       "targetEligible": true
@@ -14017,7 +14038,10 @@
     },
     {
       "key": "early",
-      "aliases": [],
+      "aliases": [
+        "earlier",
+        "earliest"
+      ],
       "targetEligible": true
     },
     {
@@ -14031,6 +14055,7 @@
       "key": "sound",
       "aliases": [
         "sounded",
+        "sounder",
         "sounding",
         "soundings",
         "sounds"
@@ -14097,7 +14122,8 @@
     {
       "key": "cheap",
       "aliases": [
-        "cheaper"
+        "cheaper",
+        "cheapest"
       ],
       "targetEligible": true
     },
@@ -14409,7 +14435,10 @@
     },
     {
       "key": "quick",
-      "aliases": [],
+      "aliases": [
+        "quicker",
+        "quickest"
+      ],
       "targetEligible": true
     },
     {
@@ -14431,11 +14460,6 @@
     },
     {
       "key": "annual",
-      "aliases": [],
-      "targetEligible": true
-    },
-    {
-      "key": "later",
       "aliases": [],
       "targetEligible": true
     },
@@ -14539,8 +14563,12 @@
       "targetEligible": true
     },
     {
-      "key": "higher",
-      "aliases": [],
+      "key": "high",
+      "aliases": [
+        "higher",
+        "highest",
+        "highs"
+      ],
       "targetEligible": true
     },
     {
@@ -14598,6 +14626,7 @@
       "key": "do",
       "aliases": [
         "did",
+        "does",
         "doing",
         "done"
       ],
@@ -14679,7 +14708,9 @@
     },
     {
       "key": "western",
-      "aliases": [],
+      "aliases": [
+        "westerner"
+      ],
       "targetEligible": true
     },
     {
@@ -14759,6 +14790,7 @@
       "key": "double",
       "aliases": [
         "doubled",
+        "doubler",
         "doubles",
         "doubling"
       ],
@@ -14846,6 +14878,7 @@
       "key": "believe",
       "aliases": [
         "believed",
+        "believes",
         "believing"
       ],
       "targetEligible": true
@@ -14946,11 +14979,14 @@
       "targetEligible": true
     },
     {
-      "key": "lower",
+      "key": "low",
       "aliases": [
+        "lower",
         "lowered",
         "lowering",
-        "lowers"
+        "lowers",
+        "lowest",
+        "lows"
       ],
       "targetEligible": true
     },
@@ -15022,8 +15058,7 @@
       "key": "leave",
       "aliases": [
         "leaved",
-        "leaving",
-        "leavings"
+        "leaving"
       ],
       "targetEligible": true
     },
@@ -15408,7 +15443,10 @@
     },
     {
       "key": "friendly",
-      "aliases": [],
+      "aliases": [
+        "friendlier",
+        "friendliest"
+      ],
       "targetEligible": true
     },
     {
@@ -15469,7 +15507,10 @@
     },
     {
       "key": "happy",
-      "aliases": [],
+      "aliases": [
+        "happier",
+        "happiest"
+      ],
       "targetEligible": true
     },
     {
@@ -15517,6 +15558,8 @@
       "key": "ready",
       "aliases": [
         "readied",
+        "readier",
+        "readiest",
         "readying"
       ],
       "targetEligible": true
@@ -15544,6 +15587,7 @@
       "key": "secure",
       "aliases": [
         "secured",
+        "securer",
         "securing"
       ],
       "targetEligible": true
@@ -15574,6 +15618,8 @@
       "key": "round",
       "aliases": [
         "rounded",
+        "rounder",
+        "rounders",
         "rounding",
         "rounds"
       ],
@@ -15706,6 +15752,7 @@
       "key": "perfect",
       "aliases": [
         "perfected",
+        "perfecter",
         "perfecting"
       ],
       "targetEligible": true
@@ -16209,8 +16256,15 @@
       "targetEligible": true
     },
     {
-      "key": "longer",
-      "aliases": [],
+      "key": "long",
+      "aliases": [
+        "longed",
+        "longer",
+        "longest",
+        "longing",
+        "longings",
+        "longs"
+      ],
       "targetEligible": true
     },
     {
@@ -16434,7 +16488,9 @@
     {
       "key": "pretty",
       "aliases": [
-        "prettied"
+        "prettied",
+        "prettier",
+        "prettiest"
       ],
       "targetEligible": true
     },
@@ -16921,10 +16977,8 @@
       "targetEligible": true
     },
     {
-      "key": "set",
+      "key": "setting",
       "aliases": [
-        "sets",
-        "setting",
         "settings"
       ],
       "targetEligible": true
@@ -16946,11 +17000,6 @@
         "stands",
         "stood"
       ],
-      "targetEligible": true
-    },
-    {
-      "key": "highest",
-      "aliases": [],
       "targetEligible": true
     },
     {
@@ -17151,13 +17200,18 @@
     {
       "key": "seven",
       "aliases": [
+        "sevener",
         "sevens"
       ],
       "targetEligible": true
     },
     {
-      "key": "older",
-      "aliases": [],
+      "key": "old",
+      "aliases": [
+        "older",
+        "oldest",
+        "olds"
+      ],
       "targetEligible": true
     },
     {
@@ -17295,11 +17349,6 @@
       "targetEligible": true
     },
     {
-      "key": "lowest",
-      "aliases": [],
-      "targetEligible": true
-    },
-    {
       "key": "highly",
       "aliases": [],
       "targetEligible": true
@@ -17326,6 +17375,7 @@
       "key": "stone",
       "aliases": [
         "stoned",
+        "stoner",
         "stones",
         "stoning"
       ],
@@ -17756,7 +17806,9 @@
     },
     {
       "key": "fresh",
-      "aliases": [],
+      "aliases": [
+        "fresher"
+      ],
       "targetEligible": true
     },
     {
@@ -17771,7 +17823,9 @@
     },
     {
       "key": "eastern",
-      "aliases": [],
+      "aliases": [
+        "easterner"
+      ],
       "targetEligible": true
     },
     {
@@ -17909,7 +17963,9 @@
     {
       "key": "heavy",
       "aliases": [
-        "heavies"
+        "heavier",
+        "heavies",
+        "heaviest"
       ],
       "targetEligible": true
     },
@@ -17964,11 +18020,9 @@
       "targetEligible": true
     },
     {
-      "key": "find",
+      "key": "finding",
       "aliases": [
-        "finding",
-        "findings",
-        "finds"
+        "findings"
       ],
       "targetEligible": true
     },
@@ -18254,7 +18308,10 @@
     },
     {
       "key": "sorry",
-      "aliases": [],
+      "aliases": [
+        "sorrier",
+        "sorriest"
+      ],
       "targetEligible": true
     },
     {
@@ -18490,7 +18547,9 @@
     {
       "key": "funny",
       "aliases": [
-        "funnies"
+        "funnier",
+        "funnies",
+        "funniest"
       ],
       "targetEligible": true
     },
@@ -18538,11 +18597,6 @@
       "aliases": [
         "lasers"
       ],
-      "targetEligible": true
-    },
-    {
-      "key": "earlier",
-      "aliases": [],
       "targetEligible": true
     },
     {
@@ -18655,7 +18709,7 @@
         "passes",
         "passing"
       ],
-      "targetEligible": false
+      "targetEligible": true
     },
     {
       "key": "fall",
@@ -18746,7 +18800,6 @@
       "key": "win",
       "aliases": [
         "winning",
-        "winnings",
         "wins",
         "won",
         "wonned",
@@ -18756,7 +18809,9 @@
     },
     {
       "key": "eight",
-      "aliases": [],
+      "aliases": [
+        "eighter"
+      ],
       "targetEligible": true
     },
     {
@@ -18982,8 +19037,12 @@
       "targetEligible": true
     },
     {
-      "key": "faster",
-      "aliases": [],
+      "key": "fast",
+      "aliases": [
+        "faster",
+        "fastest",
+        "fasting"
+      ],
       "targetEligible": true
     },
     {
@@ -19135,6 +19194,7 @@
     {
       "key": "secret",
       "aliases": [
+        "secreter",
         "secrets"
       ],
       "targetEligible": true
@@ -19175,7 +19235,10 @@
     },
     {
       "key": "healthy",
-      "aliases": [],
+      "aliases": [
+        "healthier",
+        "healthiest"
+      ],
       "targetEligible": true
     },
     {
@@ -19812,8 +19875,12 @@
       "targetEligible": true
     },
     {
-      "key": "easier",
-      "aliases": [],
+      "key": "easy",
+      "aliases": [
+        "easied",
+        "easier",
+        "easiest"
+      ],
       "targetEligible": true
     },
     {
@@ -19975,7 +20042,9 @@
       "key": "empty",
       "aliases": [
         "emptied",
+        "emptier",
         "empties",
+        "emptiest",
         "emptying"
       ],
       "targetEligible": true
@@ -20259,9 +20328,12 @@
       "targetEligible": true
     },
     {
-      "key": "newest",
-      "aliases": [],
-      "targetEligible": false
+      "key": "new",
+      "aliases": [
+        "newer",
+        "newest"
+      ],
+      "targetEligible": true
     },
     {
       "key": "extent",
@@ -20270,7 +20342,9 @@
     },
     {
       "key": "sharp",
-      "aliases": [],
+      "aliases": [
+        "sharper"
+      ],
       "targetEligible": true
     },
     {
@@ -20312,12 +20386,9 @@
       "targetEligible": true
     },
     {
-      "key": "hold",
+      "key": "holding",
       "aliases": [
-        "held",
-        "holding",
-        "holdings",
-        "holds"
+        "holdings"
       ],
       "targetEligible": true
     },
@@ -20655,7 +20726,9 @@
     {
       "key": "blue",
       "aliases": [
+        "bluer",
         "blues",
+        "bluest",
         "bluing"
       ],
       "targetEligible": true
@@ -20750,6 +20823,7 @@
       "key": "attach",
       "aliases": [
         "attached",
+        "attaches",
         "attaching"
       ],
       "targetEligible": true
@@ -20780,7 +20854,9 @@
     {
       "key": "crazy",
       "aliases": [
-        "crazies"
+        "crazier",
+        "crazies",
+        "craziest"
       ],
       "targetEligible": true
     },
@@ -21417,9 +21493,7 @@
     },
     {
       "key": "drama",
-      "aliases": [
-        "dramas"
-      ],
+      "aliases": [],
       "targetEligible": true
     },
     {
@@ -22075,7 +22149,10 @@
     },
     {
       "key": "hairy",
-      "aliases": [],
+      "aliases": [
+        "hairier",
+        "hairiest"
+      ],
       "targetEligible": true
     },
     {
@@ -22119,6 +22196,14 @@
         "booted",
         "booting",
         "boots"
+      ],
+      "targetEligible": true
+    },
+    {
+      "key": "hold",
+      "aliases": [
+        "held",
+        "holds"
       ],
       "targetEligible": true
     },
@@ -22212,6 +22297,7 @@
       "key": "smooth",
       "aliases": [
         "smoothed",
+        "smoother",
         "smoothing"
       ],
       "targetEligible": true
@@ -22465,6 +22551,7 @@
       "aliases": [
         "flied",
         "flies",
+        "flyer",
         "flying"
       ],
       "targetEligible": true
@@ -22716,6 +22803,7 @@
       "key": "imagine",
       "aliases": [
         "imagined",
+        "imagines",
         "imagining"
       ],
       "targetEligible": true
@@ -23157,6 +23245,7 @@
       "key": "blind",
       "aliases": [
         "blinded",
+        "blinder",
         "blinding",
         "blinds"
       ],
@@ -23265,6 +23354,13 @@
       "targetEligible": true
     },
     {
+      "key": "find",
+      "aliases": [
+        "finds"
+      ],
+      "targetEligible": true
+    },
+    {
       "key": "fifth",
       "aliases": [],
       "targetEligible": true
@@ -23325,6 +23421,8 @@
       "key": "dirty",
       "aliases": [
         "dirtied",
+        "dirtier",
+        "dirtiest",
         "dirtying"
       ],
       "targetEligible": true
@@ -23359,6 +23457,7 @@
       "key": "prove",
       "aliases": [
         "proved",
+        "proves",
         "proving"
       ],
       "targetEligible": true
@@ -23433,9 +23532,11 @@
       "targetEligible": true
     },
     {
-      "key": "buffer",
-      "aliases": [],
-      "targetEligible": false
+      "key": "buff",
+      "aliases": [
+        "buffer"
+      ],
+      "targetEligible": true
     },
     {
       "key": "purple",
@@ -23518,11 +23619,6 @@
         "deserts"
       ],
       "targetEligible": true
-    },
-    {
-      "key": "oldest",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "rhode",
@@ -23716,6 +23812,11 @@
     },
     {
       "key": "alberta",
+      "aliases": [],
+      "targetEligible": true
+    },
+    {
+      "key": "commons",
       "aliases": [],
       "targetEligible": true
     },
@@ -24184,9 +24285,15 @@
       "targetEligible": true
     },
     {
-      "key": "nearest",
-      "aliases": [],
-      "targetEligible": false
+      "key": "near",
+      "aliases": [
+        "neared",
+        "nearer",
+        "nearest",
+        "nearing",
+        "nears"
+      ],
+      "targetEligible": true
     },
     {
       "key": "cluster",
@@ -24345,7 +24452,10 @@
     },
     {
       "key": "cloudy",
-      "aliases": [],
+      "aliases": [
+        "cloudier",
+        "cloudiest"
+      ],
       "targetEligible": true
     },
     {
@@ -24645,7 +24755,10 @@
     },
     {
       "key": "lucky",
-      "aliases": [],
+      "aliases": [
+        "luckier",
+        "luckiest"
+      ],
       "targetEligible": true
     },
     {
@@ -24764,7 +24877,9 @@
     {
       "key": "lovely",
       "aliases": [
-        "lovelies"
+        "lovelier",
+        "lovelies",
+        "loveliest"
       ],
       "targetEligible": true
     },
@@ -24843,6 +24958,7 @@
       "key": "cool",
       "aliases": [
         "cooled",
+        "cooler",
         "cooling",
         "cools"
       ],
@@ -25628,11 +25744,6 @@
       "targetEligible": true
     },
     {
-      "key": "believes",
-      "aliases": [],
-      "targetEligible": false
-    },
-    {
       "key": "swedish",
       "aliases": [],
       "targetEligible": true
@@ -26082,11 +26193,9 @@
       "targetEligible": true
     },
     {
-      "key": "corp",
-      "aliases": [
-        "corps"
-      ],
-      "targetEligible": true
+      "key": "corps",
+      "aliases": [],
+      "targetEligible": false
     },
     {
       "key": "liver",
@@ -27355,8 +27464,11 @@
       "targetEligible": true
     },
     {
-      "key": "fewer",
-      "aliases": [],
+      "key": "few",
+      "aliases": [
+        "fewer",
+        "fewest"
+      ],
       "targetEligible": true
     },
     {
@@ -27547,7 +27659,10 @@
     },
     {
       "key": "guilty",
-      "aliases": [],
+      "aliases": [
+        "guiltier",
+        "guiltiest"
+      ],
       "targetEligible": true
     },
     {
@@ -27690,13 +27805,17 @@
     },
     {
       "key": "rocky",
-      "aliases": [],
+      "aliases": [
+        "rockier",
+        "rockiest"
+      ],
       "targetEligible": true
     },
     {
       "key": "frequent",
       "aliases": [
         "frequented",
+        "frequenter",
         "frequents"
       ],
       "targetEligible": true
@@ -28141,6 +28260,7 @@
       "key": "spare",
       "aliases": [
         "spared",
+        "sparer",
         "spares",
         "sparing"
       ],
@@ -28296,7 +28416,10 @@
     },
     {
       "key": "sandy",
-      "aliases": [],
+      "aliases": [
+        "sandier",
+        "sandiest"
+      ],
       "targetEligible": true
     },
     {
@@ -28550,9 +28673,15 @@
       "targetEligible": true
     },
     {
-      "key": "finest",
-      "aliases": [],
-      "targetEligible": false
+      "key": "fine",
+      "aliases": [
+        "fined",
+        "finer",
+        "fines",
+        "finest",
+        "fining"
+      ],
+      "targetEligible": true
     },
     {
       "key": "realty",
@@ -28610,7 +28739,10 @@
     },
     {
       "key": "timely",
-      "aliases": [],
+      "aliases": [
+        "timelier",
+        "timeliest"
+      ],
       "targetEligible": true
     },
     {
@@ -28721,7 +28853,10 @@
     },
     {
       "key": "sunny",
-      "aliases": [],
+      "aliases": [
+        "sunnier",
+        "sunniest"
+      ],
       "targetEligible": true
     },
     {
@@ -28870,6 +29005,7 @@
     {
       "key": "divine",
       "aliases": [
+        "diviner",
         "divining"
       ],
       "targetEligible": true
@@ -29103,7 +29239,10 @@
     },
     {
       "key": "angry",
-      "aliases": [],
+      "aliases": [
+        "angrier",
+        "angriest"
+      ],
       "targetEligible": true
     },
     {
@@ -29115,8 +29254,6 @@
       "key": "belong",
       "aliases": [
         "belonged",
-        "belonging",
-        "belongings",
         "belongs"
       ],
       "targetEligible": true
@@ -29537,14 +29674,11 @@
       "targetEligible": true
     },
     {
-      "key": "harder",
-      "aliases": [],
+      "key": "hard",
+      "aliases": [
+        "harder"
+      ],
       "targetEligible": true
-    },
-    {
-      "key": "cheapest",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "travesti",
@@ -29801,7 +29935,9 @@
     {
       "key": "fancy",
       "aliases": [
-        "fancied"
+        "fancied",
+        "fancier",
+        "fanciest"
       ],
       "targetEligible": true
     },
@@ -30164,6 +30300,7 @@
     {
       "key": "hot",
       "aliases": [
+        "hotter",
         "hottest"
       ],
       "targetEligible": true
@@ -30275,11 +30412,6 @@
       "key": "ampland",
       "aliases": [],
       "targetEligible": true
-    },
-    {
-      "key": "fastest",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "butler",
@@ -30618,6 +30750,8 @@
       "key": "steady",
       "aliases": [
         "steadied",
+        "steadier",
+        "steadiest",
         "steadying"
       ],
       "targetEligible": true
@@ -30750,7 +30884,10 @@
     },
     {
       "key": "randy",
-      "aliases": [],
+      "aliases": [
+        "randier",
+        "randiest"
+      ],
       "targetEligible": true
     },
     {
@@ -31058,7 +31195,10 @@
     },
     {
       "key": "handy",
-      "aliases": [],
+      "aliases": [
+        "handier",
+        "handiest"
+      ],
       "targetEligible": true
     },
     {
@@ -31250,6 +31390,8 @@
       "aliases": [
         "fits",
         "fitted",
+        "fitter",
+        "fittest",
         "fitting",
         "fittings"
       ],
@@ -31270,6 +31412,7 @@
     {
       "key": "twin",
       "aliases": [
+        "twiner",
         "twinned",
         "twinning",
         "twins"
@@ -31655,7 +31798,10 @@
     },
     {
       "key": "lonely",
-      "aliases": [],
+      "aliases": [
+        "lonelier",
+        "loneliest"
+      ],
       "targetEligible": true
     },
     {
@@ -31821,13 +31967,6 @@
       "targetEligible": true
     },
     {
-      "key": "high",
-      "aliases": [
-        "highs"
-      ],
-      "targetEligible": true
-    },
-    {
       "key": "custody",
       "aliases": [],
       "targetEligible": true
@@ -31873,7 +32012,10 @@
     },
     {
       "key": "nasty",
-      "aliases": [],
+      "aliases": [
+        "nastier",
+        "nastiest"
+      ],
       "targetEligible": true
     },
     {
@@ -32183,7 +32325,10 @@
     },
     {
       "key": "mighty",
-      "aliases": [],
+      "aliases": [
+        "mightier",
+        "mightiest"
+      ],
       "targetEligible": true
     },
     {
@@ -32467,19 +32612,9 @@
       "targetEligible": true
     },
     {
-      "key": "newer",
-      "aliases": [],
-      "targetEligible": false
-    },
-    {
       "key": "spice",
       "aliases": [],
       "targetEligible": true
-    },
-    {
-      "key": "cooler",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "maritime",
@@ -32773,6 +32908,7 @@
       "key": "warm",
       "aliases": [
         "warmed",
+        "warmer",
         "warming",
         "warms"
       ],
@@ -32785,12 +32921,16 @@
     },
     {
       "key": "chubby",
-      "aliases": [],
+      "aliases": [
+        "chubbier",
+        "chubbiest"
+      ],
       "targetEligible": true
     },
     {
       "key": "grave",
       "aliases": [
+        "graver",
         "graves"
       ],
       "targetEligible": true
@@ -32811,8 +32951,11 @@
       "targetEligible": true
     },
     {
-      "key": "deeper",
-      "aliases": [],
+      "key": "deep",
+      "aliases": [
+        "deeper",
+        "deeps"
+      ],
       "targetEligible": true
     },
     {
@@ -32827,7 +32970,10 @@
     },
     {
       "key": "worthy",
-      "aliases": [],
+      "aliases": [
+        "worthier",
+        "worthiest"
+      ],
       "targetEligible": true
     },
     {
@@ -32924,7 +33070,10 @@
     },
     {
       "key": "naughty",
-      "aliases": [],
+      "aliases": [
+        "naughtier",
+        "naughtiest"
+      ],
       "targetEligible": true
     },
     {
@@ -32979,7 +33128,10 @@
     },
     {
       "key": "silly",
-      "aliases": [],
+      "aliases": [
+        "sillier",
+        "silliest"
+      ],
       "targetEligible": true
     },
     {
@@ -33181,6 +33333,7 @@
     {
       "key": "highland",
       "aliases": [
+        "highlander",
         "highlands"
       ],
       "targetEligible": true
@@ -33483,7 +33636,10 @@
     },
     {
       "key": "floppy",
-      "aliases": [],
+      "aliases": [
+        "floppier",
+        "floppiest"
+      ],
       "targetEligible": true
     },
     {
@@ -33904,7 +34060,10 @@
     },
     {
       "key": "merry",
-      "aliases": [],
+      "aliases": [
+        "merrier",
+        "merriest"
+      ],
       "targetEligible": true
     },
     {
@@ -33956,7 +34115,11 @@
       "key": "dry",
       "aliases": [
         "dried",
+        "drier",
         "dries",
+        "driest",
+        "dryer",
+        "dryest",
         "drying"
       ],
       "targetEligible": true
@@ -34031,11 +34194,6 @@
       "targetEligible": false
     },
     {
-      "key": "lighter",
-      "aliases": [],
-      "targetEligible": false
-    },
-    {
       "key": "pavilion",
       "aliases": [],
       "targetEligible": true
@@ -34068,11 +34226,6 @@
       "key": "derek",
       "aliases": [],
       "targetEligible": true
-    },
-    {
-      "key": "shorter",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "harley",
@@ -34177,7 +34330,10 @@
     },
     {
       "key": "hungry",
-      "aliases": [],
+      "aliases": [
+        "hungrier",
+        "hungriest"
+      ],
       "targetEligible": true
     },
     {
@@ -34211,9 +34367,11 @@
       "targetEligible": true
     },
     {
-      "key": "lesser",
-      "aliases": [],
-      "targetEligible": false
+      "key": "less",
+      "aliases": [
+        "lesser"
+      ],
+      "targetEligible": true
     },
     {
       "key": "marathon",
@@ -35175,7 +35333,10 @@
     },
     {
       "key": "deadly",
-      "aliases": [],
+      "aliases": [
+        "deadlier",
+        "deadliest"
+      ],
       "targetEligible": true
     },
     {
@@ -35189,11 +35350,6 @@
       "targetEligible": true
     },
     {
-      "key": "longest",
-      "aliases": [],
-      "targetEligible": false
-    },
-    {
       "key": "tions",
       "aliases": [],
       "targetEligible": false
@@ -35204,11 +35360,6 @@
         "dentists"
       ],
       "targetEligible": true
-    },
-    {
-      "key": "flyer",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "dosage",
@@ -35531,11 +35682,6 @@
       "targetEligible": true
     },
     {
-      "key": "dryer",
-      "aliases": [],
-      "targetEligible": false
-    },
-    {
       "key": "painful",
       "aliases": [],
       "targetEligible": true
@@ -35552,7 +35698,10 @@
     },
     {
       "key": "funky",
-      "aliases": [],
+      "aliases": [
+        "funkier",
+        "funkiest"
+      ],
       "targetEligible": true
     },
     {
@@ -35572,7 +35721,10 @@
     },
     {
       "key": "scary",
-      "aliases": [],
+      "aliases": [
+        "scarier",
+        "scariest"
+      ],
       "targetEligible": true
     },
     {
@@ -36151,7 +36303,10 @@
     },
     {
       "key": "fatty",
-      "aliases": [],
+      "aliases": [
+        "fattier",
+        "fattiest"
+      ],
       "targetEligible": true
     },
     {
@@ -36456,7 +36611,10 @@
     },
     {
       "key": "fuzzy",
-      "aliases": [],
+      "aliases": [
+        "fuzzier",
+        "fuzziest"
+      ],
       "targetEligible": true
     },
     {
@@ -36808,11 +36966,6 @@
       "targetEligible": true
     },
     {
-      "key": "earliest",
-      "aliases": [],
-      "targetEligible": false
-    },
-    {
       "key": "insect",
       "aliases": [
         "insects"
@@ -36927,9 +37080,11 @@
       "targetEligible": true
     },
     {
-      "key": "safer",
-      "aliases": [],
-      "targetEligible": false
+      "key": "safe",
+      "aliases": [
+        "safer"
+      ],
+      "targetEligible": true
     },
     {
       "key": "wagner",
@@ -36940,11 +37095,6 @@
       "key": "cologne",
       "aliases": [],
       "targetEligible": true
-    },
-    {
-      "key": "smallest",
-      "aliases": [],
-      "targetEligible": false
     },
     {
       "key": "newman",
@@ -37050,6 +37200,13 @@
       "targetEligible": false
     },
     {
+      "key": "belonging",
+      "aliases": [
+        "belongings"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "crooked",
       "aliases": [],
       "targetEligible": false
@@ -37071,6 +37228,11 @@
         "laying",
         "lays"
       ],
+      "targetEligible": false
+    },
+    {
+      "key": "leavings",
+      "aliases": [],
       "targetEligible": false
     },
     {
@@ -37100,6 +37262,11 @@
     },
     {
       "key": "trousers",
+      "aliases": [],
+      "targetEligible": false
+    },
+    {
+      "key": "winnings",
       "aliases": [],
       "targetEligible": false
     },
@@ -37766,6 +37933,14 @@
         "airing",
         "airings",
         "airs"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "airy",
+      "aliases": [
+        "airier",
+        "airiest"
       ],
       "targetEligible": false
     },
@@ -38571,6 +38746,14 @@
       "targetEligible": false
     },
     {
+      "key": "arty",
+      "aliases": [
+        "artier",
+        "artiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "art",
       "aliases": [
         "arts"
@@ -38609,6 +38792,14 @@
       "key": "ash",
       "aliases": [
         "ashes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ashy",
+      "aliases": [
+        "ashier",
+        "ashiest"
       ],
       "targetEligible": false
     },
@@ -38948,7 +39139,8 @@
     {
       "key": "backhand",
       "aliases": [
-        "backhanded"
+        "backhanded",
+        "backhander"
       ],
       "targetEligible": false
     },
@@ -39012,6 +39204,14 @@
       "targetEligible": false
     },
     {
+      "key": "baggy",
+      "aliases": [
+        "baggier",
+        "baggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bait",
       "aliases": [
         "baiting"
@@ -39021,6 +39221,7 @@
     {
       "key": "bald",
       "aliases": [
+        "balder",
         "balding"
       ],
       "targetEligible": false
@@ -39029,6 +39230,14 @@
       "key": "balkan",
       "aliases": [
         "balkans"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "balky",
+      "aliases": [
+        "balkier",
+        "balkiest"
       ],
       "targetEligible": false
     },
@@ -39058,6 +39267,14 @@
       "targetEligible": false
     },
     {
+      "key": "balmy",
+      "aliases": [
+        "balmier",
+        "balmiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "baluster",
       "aliases": [
         "balusters"
@@ -39075,7 +39292,9 @@
     {
       "key": "bandy",
       "aliases": [
-        "bandied"
+        "bandied",
+        "bandier",
+        "bandiest"
       ],
       "targetEligible": false
     },
@@ -39150,6 +39369,14 @@
       "aliases": [
         "bared",
         "baring"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "barmy",
+      "aliases": [
+        "barmier",
+        "barmiest"
       ],
       "targetEligible": false
     },
@@ -39274,6 +39501,22 @@
       "targetEligible": false
     },
     {
+      "key": "batty",
+      "aliases": [
+        "battier",
+        "battiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bawdy",
+      "aliases": [
+        "bawdier",
+        "bawdiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bawl",
       "aliases": [
         "bawling"
@@ -39298,6 +39541,14 @@
       "targetEligible": false
     },
     {
+      "key": "beady",
+      "aliases": [
+        "beadier",
+        "beadiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "beak",
       "aliases": [
         "beaked"
@@ -39318,6 +39569,14 @@
       "aliases": [
         "bearded",
         "beards"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "beastly",
+      "aliases": [
+        "beastlier",
+        "beastliest"
       ],
       "targetEligible": false
     },
@@ -39397,12 +39656,28 @@
       "targetEligible": false
     },
     {
+      "key": "beefy",
+      "aliases": [
+        "beefier",
+        "beefiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "be",
       "aliases": [
         "been",
         "is",
         "was",
         "were"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "beery",
+      "aliases": [
+        "beerier",
+        "beeriest"
       ],
       "targetEligible": false
     },
@@ -39681,6 +39956,13 @@
       "targetEligible": false
     },
     {
+      "key": "berserk",
+      "aliases": [
+        "berserker"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "beseech",
       "aliases": [
         "beseeching"
@@ -39856,9 +40138,25 @@
       "targetEligible": false
     },
     {
+      "key": "bitchy",
+      "aliases": [
+        "bitchier",
+        "bitchiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bitter",
       "aliases": [
         "bitters"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bitty",
+      "aliases": [
+        "bittier",
+        "bittiest"
       ],
       "targetEligible": false
     },
@@ -39952,6 +40250,14 @@
       "targetEligible": false
     },
     {
+      "key": "bleary",
+      "aliases": [
+        "blearier",
+        "bleariest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "blemish",
       "aliases": [
         "blemished"
@@ -39988,6 +40294,13 @@
       "targetEligible": false
     },
     {
+      "key": "blithe",
+      "aliases": [
+        "blither"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "blob",
       "aliases": [
         "blobbed",
@@ -40006,7 +40319,17 @@
     {
       "key": "bloody",
       "aliases": [
-        "bloodied"
+        "bloodied",
+        "bloodier",
+        "bloodiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bloodthirsty",
+      "aliases": [
+        "bloodthirstier",
+        "bloodthirstiest"
       ],
       "targetEligible": false
     },
@@ -40047,6 +40370,30 @@
       "targetEligible": false
     },
     {
+      "key": "blowy",
+      "aliases": [
+        "blowier",
+        "blowiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "blowsy",
+      "aliases": [
+        "blowsier",
+        "blowsiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "blowzy",
+      "aliases": [
+        "blowzier",
+        "blowziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "blub",
       "aliases": [
         "blubbed",
@@ -40058,6 +40405,13 @@
       "key": "bluefish",
       "aliases": [
         "bluefishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bluff",
+      "aliases": [
+        "bluffer"
       ],
       "targetEligible": false
     },
@@ -40193,9 +40547,25 @@
       "targetEligible": false
     },
     {
+      "key": "bony",
+      "aliases": [
+        "bonier",
+        "boniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bonito",
       "aliases": [
         "bonitoes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bonny",
+      "aliases": [
+        "bonnier",
+        "bonniest"
       ],
       "targetEligible": false
     },
@@ -40234,6 +40604,14 @@
       "key": "bootlick",
       "aliases": [
         "bootlicking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "boozy",
+      "aliases": [
+        "boozier",
+        "booziest"
       ],
       "targetEligible": false
     },
@@ -40277,6 +40655,14 @@
       "targetEligible": false
     },
     {
+      "key": "bosky",
+      "aliases": [
+        "boskier",
+        "boskiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bosom",
       "aliases": [
         "bosomed"
@@ -40292,9 +40678,25 @@
       "targetEligible": false
     },
     {
+      "key": "bossy",
+      "aliases": [
+        "bossier",
+        "bossiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "botch",
       "aliases": [
         "botched"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "botchy",
+      "aliases": [
+        "botchier",
+        "botchiest"
       ],
       "targetEligible": false
     },
@@ -40311,6 +40713,14 @@
         "bounced",
         "bounces",
         "bouncing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bouncy",
+      "aliases": [
+        "bouncier",
+        "bounciest"
       ],
       "targetEligible": false
     },
@@ -40398,6 +40808,14 @@
       "targetEligible": false
     },
     {
+      "key": "brainy",
+      "aliases": [
+        "brainier",
+        "brainiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "brainstorm",
       "aliases": [
         "brainstorming"
@@ -40428,6 +40846,14 @@
       "targetEligible": false
     },
     {
+      "key": "brassy",
+      "aliases": [
+        "brassier",
+        "brassiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bravado",
       "aliases": [
         "bravadoes"
@@ -40438,6 +40864,14 @@
       "key": "bravo",
       "aliases": [
         "bravoes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "brawny",
+      "aliases": [
+        "brawnier",
+        "brawniest"
       ],
       "targetEligible": false
     },
@@ -40477,6 +40911,14 @@
       "targetEligible": false
     },
     {
+      "key": "breezy",
+      "aliases": [
+        "breezier",
+        "breeziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "brevet",
       "aliases": [
         "brevetted",
@@ -40496,6 +40938,14 @@
       "aliases": [
         "brimmed",
         "brimming"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "briny",
+      "aliases": [
+        "brinier",
+        "briniest"
       ],
       "targetEligible": false
     },
@@ -40557,6 +41007,14 @@
       "targetEligible": false
     },
     {
+      "key": "broody",
+      "aliases": [
+        "broodier",
+        "broodiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "brood",
       "aliases": [
         "brooding"
@@ -40582,6 +41040,14 @@
       "key": "brutality",
       "aliases": [
         "brutalities"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bubbly",
+      "aliases": [
+        "bubblier",
+        "bubbliest"
       ],
       "targetEligible": false
     },
@@ -40639,6 +41105,14 @@
       "targetEligible": false
     },
     {
+      "key": "buggy",
+      "aliases": [
+        "buggier",
+        "buggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bulb",
       "aliases": [
         "bulbs"
@@ -40658,6 +41132,14 @@
         "bulked",
         "bulking",
         "bulks"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bulky",
+      "aliases": [
+        "bulkier",
+        "bulkiest"
       ],
       "targetEligible": false
     },
@@ -40715,6 +41197,22 @@
       "targetEligible": false
     },
     {
+      "key": "bumpy",
+      "aliases": [
+        "bumpier",
+        "bumpiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "bunchy",
+      "aliases": [
+        "bunchier",
+        "bunchiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bungle",
       "aliases": [
         "bungled",
@@ -40765,6 +41263,14 @@
       "targetEligible": false
     },
     {
+      "key": "burly",
+      "aliases": [
+        "burlier",
+        "burliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "burnish",
       "aliases": [
         "burnished"
@@ -40787,6 +41293,14 @@
       "targetEligible": false
     },
     {
+      "key": "burry",
+      "aliases": [
+        "burrier",
+        "burriest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bush",
       "aliases": [
         "bushed",
@@ -40804,6 +41318,14 @@
       "targetEligible": false
     },
     {
+      "key": "bushy",
+      "aliases": [
+        "bushier",
+        "bushiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bushwhack",
       "aliases": [
         "bushwhacking"
@@ -40813,7 +41335,9 @@
     {
       "key": "busy",
       "aliases": [
-        "busied"
+        "busied",
+        "busier",
+        "busiest"
       ],
       "targetEligible": false
     },
@@ -40825,6 +41349,14 @@
       "targetEligible": false
     },
     {
+      "key": "busty",
+      "aliases": [
+        "bustier",
+        "bustiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "bustle",
       "aliases": [
         "bustling"
@@ -40832,8 +41364,9 @@
       "targetEligible": false
     },
     {
-      "key": "butcher",
+      "key": "butch",
       "aliases": [
+        "butcher",
         "butchering"
       ],
       "targetEligible": false
@@ -40902,6 +41435,14 @@
       "aliases": [
         "caged",
         "cages"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cagey",
+      "aliases": [
+        "cagier",
+        "cagiest"
       ],
       "targetEligible": false
     },
@@ -41077,6 +41618,14 @@
       "targetEligible": false
     },
     {
+      "key": "canny",
+      "aliases": [
+        "cannier",
+        "canniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "canonize",
       "aliases": [
         "canonise",
@@ -41110,6 +41659,14 @@
       "key": "canticle",
       "aliases": [
         "canticles"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "canty",
+      "aliases": [
+        "cantier",
+        "cantiest"
       ],
       "targetEligible": false
     },
@@ -41347,6 +41904,14 @@
       "targetEligible": false
     },
     {
+      "key": "catchy",
+      "aliases": [
+        "catchier",
+        "catchiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "categorize",
       "aliases": [
         "categorise",
@@ -41390,6 +41955,14 @@
       "key": "cattalo",
       "aliases": [
         "cattaloes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "catty",
+      "aliases": [
+        "cattier",
+        "cattiest"
       ],
       "targetEligible": false
     },
@@ -41553,6 +42126,14 @@
       "targetEligible": false
     },
     {
+      "key": "chancy",
+      "aliases": [
+        "chancier",
+        "chanciest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "chant",
       "aliases": [
         "chanted",
@@ -41590,6 +42171,14 @@
       "targetEligible": false
     },
     {
+      "key": "chary",
+      "aliases": [
+        "charier",
+        "chariest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "char",
       "aliases": [
         "charred",
@@ -41620,6 +42209,14 @@
       "targetEligible": false
     },
     {
+      "key": "chatty",
+      "aliases": [
+        "chattier",
+        "chattiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "checker",
       "aliases": [
         "checkered",
@@ -41629,9 +42226,33 @@
       "targetEligible": false
     },
     {
+      "key": "cheeky",
+      "aliases": [
+        "cheekier",
+        "cheekiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "cheek",
       "aliases": [
         "cheeks"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cheery",
+      "aliases": [
+        "cheerier",
+        "cheeriest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cheesy",
+      "aliases": [
+        "cheesier",
+        "cheesiest"
       ],
       "targetEligible": false
     },
@@ -41664,6 +42285,14 @@
       "targetEligible": false
     },
     {
+      "key": "chesty",
+      "aliases": [
+        "chestier",
+        "chestiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "chivy",
       "aliases": [
         "chevied",
@@ -41687,6 +42316,14 @@
         "chewed",
         "chewing",
         "chews"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "chewy",
+      "aliases": [
+        "chewier",
+        "chewiest"
       ],
       "targetEligible": false
     },
@@ -41722,6 +42359,14 @@
       "targetEligible": false
     },
     {
+      "key": "chilly",
+      "aliases": [
+        "chillier",
+        "chilliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "chimera",
       "aliases": [
         "chimaera"
@@ -41748,6 +42393,14 @@
       "key": "chino",
       "aliases": [
         "chinos"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "chintzy",
+      "aliases": [
+        "chintzier",
+        "chintziest"
       ],
       "targetEligible": false
     },
@@ -41806,11 +42459,27 @@
       "targetEligible": false
     },
     {
+      "key": "choosy",
+      "aliases": [
+        "choosier",
+        "choosiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "chop",
       "aliases": [
         "chopped",
         "chopping",
         "chops"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "choppy",
+      "aliases": [
+        "choppier",
+        "choppiest"
       ],
       "targetEligible": false
     },
@@ -41848,6 +42517,22 @@
       "aliases": [
         "chummed",
         "chumming"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "chummy",
+      "aliases": [
+        "chummier",
+        "chummiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "chunky",
+      "aliases": [
+        "chunkier",
+        "chunkiest"
       ],
       "targetEligible": false
     },
@@ -41943,6 +42628,14 @@
       "targetEligible": false
     },
     {
+      "key": "clammy",
+      "aliases": [
+        "clammier",
+        "clammiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "clamor",
       "aliases": [
         "clamoring",
@@ -42018,6 +42711,14 @@
       "targetEligible": false
     },
     {
+      "key": "classy",
+      "aliases": [
+        "classier",
+        "classiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "classifier",
       "aliases": [
         "classifiers"
@@ -42035,6 +42736,14 @@
       "key": "clay",
       "aliases": [
         "clays"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cleanly",
+      "aliases": [
+        "cleanlier",
+        "cleanliest"
       ],
       "targetEligible": false
     },
@@ -42177,6 +42886,14 @@
       "targetEligible": false
     },
     {
+      "key": "clubby",
+      "aliases": [
+        "clubbier",
+        "clubbiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "cluck",
       "aliases": [
         "clucking"
@@ -42194,6 +42911,14 @@
       "key": "clump",
       "aliases": [
         "clumping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "clumsy",
+      "aliases": [
+        "clumsier",
+        "clumsiest"
       ],
       "targetEligible": false
     },
@@ -42272,6 +42997,14 @@
       "key": "coccyx",
       "aliases": [
         "coccyges"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cocky",
+      "aliases": [
+        "cockier",
+        "cockiest"
       ],
       "targetEligible": false
     },
@@ -42405,7 +43138,9 @@
     {
       "key": "colly",
       "aliases": [
-        "collied"
+        "collied",
+        "collier",
+        "colliest"
       ],
       "targetEligible": false
     },
@@ -42479,6 +43214,22 @@
       "key": "comedo",
       "aliases": [
         "comedones"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "comely",
+      "aliases": [
+        "comelier",
+        "comeliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "comfy",
+      "aliases": [
+        "comfier",
+        "comfiest"
       ],
       "targetEligible": false
     },
@@ -43137,6 +43888,14 @@
       "targetEligible": false
     },
     {
+      "key": "corny",
+      "aliases": [
+        "cornier",
+        "corniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "cornu",
       "aliases": [
         "cornus"
@@ -43205,6 +43964,17 @@
       "targetEligible": false
     },
     {
+      "key": "cozy",
+      "aliases": [
+        "cosier",
+        "cosiest",
+        "cosy",
+        "cozier",
+        "coziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "cozily",
       "aliases": [
         "cosily"
@@ -43219,9 +43989,10 @@
       "targetEligible": false
     },
     {
-      "key": "cozy",
+      "key": "costly",
       "aliases": [
-        "cosy"
+        "costlier",
+        "costliest"
       ],
       "targetEligible": false
     },
@@ -43307,6 +44078,14 @@
       "targetEligible": false
     },
     {
+      "key": "courtly",
+      "aliases": [
+        "courtlier",
+        "courtliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "courtroom",
       "aliases": [
         "courtrooms"
@@ -43360,6 +44139,14 @@
       "targetEligible": false
     },
     {
+      "key": "crabby",
+      "aliases": [
+        "crabbier",
+        "crabbiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "cracker",
       "aliases": [
         "crackers"
@@ -43375,6 +44162,22 @@
       "targetEligible": false
     },
     {
+      "key": "crafty",
+      "aliases": [
+        "craftier",
+        "craftiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "craggy",
+      "aliases": [
+        "craggier",
+        "craggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "cram",
       "aliases": [
         "crammed",
@@ -43386,6 +44189,14 @@
       "key": "cramp",
       "aliases": [
         "cramped"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cranky",
+      "aliases": [
+        "crankier",
+        "crankiest"
       ],
       "targetEligible": false
     },
@@ -43435,6 +44246,14 @@
       "targetEligible": false
     },
     {
+      "key": "creamy",
+      "aliases": [
+        "creamier",
+        "creamiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "credential",
       "aliases": [
         "credentials"
@@ -43454,6 +44273,14 @@
         "creeped",
         "creeping",
         "creeps"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "creepy",
+      "aliases": [
+        "creepier",
+        "creepiest"
       ],
       "targetEligible": false
     },
@@ -43510,6 +44337,14 @@
       "aliases": [
         "crippled",
         "crippling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "crispy",
+      "aliases": [
+        "crispier",
+        "crispiest"
       ],
       "targetEligible": false
     },
@@ -43616,6 +44451,22 @@
       "targetEligible": false
     },
     {
+      "key": "crumbly",
+      "aliases": [
+        "crumblier",
+        "crumbliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "crummy",
+      "aliases": [
+        "crummier",
+        "crummiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "crumple",
       "aliases": [
         "crumpled"
@@ -43635,6 +44486,14 @@
       "key": "crust",
       "aliases": [
         "crusted"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "crusty",
+      "aliases": [
+        "crustier",
+        "crustiest"
       ],
       "targetEligible": false
     },
@@ -43778,6 +44637,14 @@
       "targetEligible": false
     },
     {
+      "key": "curly",
+      "aliases": [
+        "curlier",
+        "curliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "curry",
       "aliases": [
         "curried"
@@ -43833,6 +44700,13 @@
       "key": "cutback",
       "aliases": [
         "cutbacks"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "cute",
+      "aliases": [
+        "cuter"
       ],
       "targetEligible": false
     },
@@ -43903,6 +44777,14 @@
       "targetEligible": false
     },
     {
+      "key": "dainty",
+      "aliases": [
+        "daintier",
+        "daintiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dally",
       "aliases": [
         "dallied"
@@ -43934,6 +44816,13 @@
       "targetEligible": false
     },
     {
+      "key": "damp",
+      "aliases": [
+        "damper"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "damselfish",
       "aliases": [
         "damselfishes"
@@ -43951,6 +44840,14 @@
       "key": "dancer",
       "aliases": [
         "dancers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dandy",
+      "aliases": [
+        "dandier",
+        "dandiest"
       ],
       "targetEligible": false
     },
@@ -44102,6 +44999,13 @@
       "key": "dealfish",
       "aliases": [
         "dealfishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dear",
+      "aliases": [
+        "dearest"
       ],
       "targetEligible": false
     },
@@ -44343,13 +45247,6 @@
       "key": "deepen",
       "aliases": [
         "deepening"
-      ],
-      "targetEligible": false
-    },
-    {
-      "key": "deep",
-      "aliases": [
-        "deeps"
       ],
       "targetEligible": false
     },
@@ -45102,6 +45999,14 @@
       "targetEligible": false
     },
     {
+      "key": "dewy",
+      "aliases": [
+        "dewier",
+        "dewiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "diabetic",
       "aliases": [
         "diabetics"
@@ -45189,6 +46094,14 @@
       "targetEligible": false
     },
     {
+      "key": "dicey",
+      "aliases": [
+        "dicier",
+        "diciest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dictate",
       "aliases": [
         "dictated",
@@ -45244,6 +46157,7 @@
       "key": "diffuse",
       "aliases": [
         "diffused",
+        "diffuser",
         "diffusing"
       ],
       "targetEligible": false
@@ -45314,6 +46228,8 @@
       "key": "dim",
       "aliases": [
         "dimmed",
+        "dimmer",
+        "dimmest",
         "dimming"
       ],
       "targetEligible": false
@@ -45327,9 +46243,25 @@
       "targetEligible": false
     },
     {
+      "key": "dingy",
+      "aliases": [
+        "dingier",
+        "dingiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dingo",
       "aliases": [
         "dingoes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dinky",
+      "aliases": [
+        "dinkier",
+        "dinkiest"
       ],
       "targetEligible": false
     },
@@ -45684,6 +46616,14 @@
         "disheveled",
         "dishevelled",
         "dishevelling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dishy",
+      "aliases": [
+        "dishier",
+        "dishiest"
       ],
       "targetEligible": false
     },
@@ -46083,7 +47023,9 @@
     {
       "key": "dizzy",
       "aliases": [
-        "dizzied"
+        "dizzied",
+        "dizzier",
+        "dizziest"
       ],
       "targetEligible": false
     },
@@ -46107,6 +47049,14 @@
       "key": "dodder",
       "aliases": [
         "doddering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dodgy",
+      "aliases": [
+        "dodgier",
+        "dodgiest"
       ],
       "targetEligible": false
     },
@@ -46217,6 +47167,14 @@
       "targetEligible": false
     },
     {
+      "key": "dopey",
+      "aliases": [
+        "dopier",
+        "dopiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dose",
       "aliases": [
         "dosed",
@@ -46241,9 +47199,33 @@
       "targetEligible": false
     },
     {
+      "key": "dotty",
+      "aliases": [
+        "dottier",
+        "dottiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "doughy",
+      "aliases": [
+        "doughier",
+        "doughiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "douse",
       "aliases": [
         "dousing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dowdy",
+      "aliases": [
+        "dowdier",
+        "dowdiest"
       ],
       "targetEligible": false
     },
@@ -46271,6 +47253,14 @@
       "targetEligible": false
     },
     {
+      "key": "downy",
+      "aliases": [
+        "downier",
+        "downiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "downsize",
       "aliases": [
         "downsizing"
@@ -46285,10 +47275,31 @@
       "targetEligible": false
     },
     {
+      "key": "dozy",
+      "aliases": [
+        "dozier",
+        "doziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "drab",
       "aliases": [
         "drabbed",
+        "drabber",
+        "drabbest",
         "drabbing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "drafty",
+      "aliases": [
+        "draftier",
+        "draftiest",
+        "draughtier",
+        "draughtiest",
+        "draughty"
       ],
       "targetEligible": false
     },
@@ -46341,13 +47352,6 @@
       "targetEligible": false
     },
     {
-      "key": "drafty",
-      "aliases": [
-        "draughty"
-      ],
-      "targetEligible": false
-    },
-    {
       "key": "drawer",
       "aliases": [
         "drawers"
@@ -46369,6 +47373,22 @@
       "targetEligible": false
     },
     {
+      "key": "dreamy",
+      "aliases": [
+        "dreamier",
+        "dreamiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dreary",
+      "aliases": [
+        "drearier",
+        "dreariest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dreg",
       "aliases": [
         "dregs"
@@ -46380,6 +47400,14 @@
       "aliases": [
         "drenched",
         "drenching"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dressy",
+      "aliases": [
+        "dressier",
+        "dressiest"
       ],
       "targetEligible": false
     },
@@ -46405,6 +47433,14 @@
         "dripped",
         "dripping",
         "drippings"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "drippy",
+      "aliases": [
+        "drippier",
+        "drippiest"
       ],
       "targetEligible": false
     },
@@ -46450,6 +47486,14 @@
         "drowned",
         "drowning",
         "drowns"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "drowsy",
+      "aliases": [
+        "drowsier",
+        "drowsiest"
       ],
       "targetEligible": false
     },
@@ -46581,6 +47625,14 @@
       "targetEligible": false
     },
     {
+      "key": "dumpy",
+      "aliases": [
+        "dumpier",
+        "dumpiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dumpling",
       "aliases": [
         "dumplings"
@@ -46598,6 +47650,8 @@
       "key": "dun",
       "aliases": [
         "dunned",
+        "dunner",
+        "dunnest",
         "dunning"
       ],
       "targetEligible": false
@@ -46610,11 +47664,27 @@
       "targetEligible": false
     },
     {
+      "key": "dusky",
+      "aliases": [
+        "duskier",
+        "duskiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "dust",
       "aliases": [
         "dusted",
         "dusting",
         "dusts"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "dusty",
+      "aliases": [
+        "dustier",
+        "dustiest"
       ],
       "targetEligible": false
     },
@@ -46655,18 +47725,27 @@
       "targetEligible": false
     },
     {
+      "key": "earthy",
+      "aliases": [
+        "earthier",
+        "earthiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "earthly",
+      "aliases": [
+        "earthlier",
+        "earthliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "ease",
       "aliases": [
         "eased",
         "eases",
         "easing"
-      ],
-      "targetEligible": false
-    },
-    {
-      "key": "easy",
-      "aliases": [
-        "easied"
       ],
       "targetEligible": false
     },
@@ -46745,6 +47824,14 @@
       "targetEligible": false
     },
     {
+      "key": "edgy",
+      "aliases": [
+        "edgier",
+        "edgiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "edify",
       "aliases": [
         "edified",
@@ -46756,6 +47843,14 @@
       "key": "editorialize",
       "aliases": [
         "editorialise"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "eerie",
+      "aliases": [
+        "eerier",
+        "eeriest"
       ],
       "targetEligible": false
     },
@@ -47043,6 +48138,7 @@
         "emphasise",
         "emphasised",
         "emphasized",
+        "emphasizes",
         "emphasizing"
       ],
       "targetEligible": false
@@ -48228,6 +49324,13 @@
       "targetEligible": false
     },
     {
+      "key": "fake",
+      "aliases": [
+        "fakeer"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "falsify",
       "aliases": [
         "falsified",
@@ -48305,6 +49408,14 @@
       "targetEligible": false
     },
     {
+      "key": "far",
+      "aliases": [
+        "farthest",
+        "furthest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "fart",
       "aliases": [
         "farting"
@@ -48316,13 +49427,6 @@
       "aliases": [
         "fastened",
         "fastening"
-      ],
-      "targetEligible": false
-    },
-    {
-      "key": "fast",
-      "aliases": [
-        "fasting"
       ],
       "targetEligible": false
     },
@@ -48354,6 +49458,8 @@
       "aliases": [
         "fats",
         "fatted",
+        "fatter",
+        "fattest",
         "fatting"
       ],
       "targetEligible": false
@@ -48370,6 +49476,14 @@
       "aliases": [
         "fattened",
         "fattening"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "faulty",
+      "aliases": [
+        "faultier",
+        "faultiest"
       ],
       "targetEligible": false
     },
@@ -48458,6 +49572,14 @@
       "aliases": [
         "feigned",
         "feigning"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "feisty",
+      "aliases": [
+        "feistier",
+        "feistiest"
       ],
       "targetEligible": false
     },
@@ -48620,6 +49742,22 @@
       "targetEligible": false
     },
     {
+      "key": "filmy",
+      "aliases": [
+        "filmier",
+        "filmiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "filthy",
+      "aliases": [
+        "filthier",
+        "filthiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "finalization",
       "aliases": [
         "finalisation"
@@ -48639,15 +49777,6 @@
       "key": "financier",
       "aliases": [
         "financiers"
-      ],
-      "targetEligible": false
-    },
-    {
-      "key": "fine",
-      "aliases": [
-        "fined",
-        "fines",
-        "fining"
       ],
       "targetEligible": false
     },
@@ -48674,6 +49803,14 @@
       "targetEligible": false
     },
     {
+      "key": "fishy",
+      "aliases": [
+        "fishier",
+        "fishiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "fishwife",
       "aliases": [
         "fishwives"
@@ -48690,6 +49827,7 @@
     {
       "key": "five",
       "aliases": [
+        "fiver",
         "fives"
       ],
       "targetEligible": false
@@ -48709,6 +49847,14 @@
       "targetEligible": false
     },
     {
+      "key": "flabby",
+      "aliases": [
+        "flabbier",
+        "flabbiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "flagellate",
       "aliases": [
         "flagellated"
@@ -48719,6 +49865,14 @@
       "key": "flagstaff",
       "aliases": [
         "flagstaves"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "flaky",
+      "aliases": [
+        "flakier",
+        "flakiest"
       ],
       "targetEligible": false
     },
@@ -48761,6 +49915,14 @@
       "targetEligible": false
     },
     {
+      "key": "flashy",
+      "aliases": [
+        "flashier",
+        "flashiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "flatfish",
       "aliases": [
         "flatfishes"
@@ -48779,6 +49941,9 @@
       "aliases": [
         "flats",
         "flatted",
+        "flatter",
+        "flattering",
+        "flattest",
         "flatting"
       ],
       "targetEligible": false
@@ -48791,9 +49956,10 @@
       "targetEligible": false
     },
     {
-      "key": "flatter",
+      "key": "flaunty",
       "aliases": [
-        "flattering"
+        "flauntier",
+        "flauntiest"
       ],
       "targetEligible": false
     },
@@ -48849,9 +50015,41 @@
       "targetEligible": false
     },
     {
+      "key": "fleecy",
+      "aliases": [
+        "fleecier",
+        "fleeciest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fleshy",
+      "aliases": [
+        "fleshier",
+        "fleshiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fleshly",
+      "aliases": [
+        "fleshlier",
+        "fleshliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "flicker",
       "aliases": [
         "flickering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "flighty",
+      "aliases": [
+        "flightier",
+        "flightiest"
       ],
       "targetEligible": false
     },
@@ -48860,6 +50058,22 @@
       "aliases": [
         "flimflammed",
         "flimflamming"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "flimsy",
+      "aliases": [
+        "flimsier",
+        "flimsiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "flinty",
+      "aliases": [
+        "flintier",
+        "flintiest"
       ],
       "targetEligible": false
     },
@@ -48888,6 +50102,14 @@
       "targetEligible": false
     },
     {
+      "key": "floaty",
+      "aliases": [
+        "floatier",
+        "floatiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "flog",
       "aliases": [
         "flogged",
@@ -48907,6 +50129,14 @@
       "aliases": [
         "flopped",
         "flopping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "flossy",
+      "aliases": [
+        "flossier",
+        "flossiest"
       ],
       "targetEligible": false
     },
@@ -48936,6 +50166,22 @@
       "key": "fluctuation",
       "aliases": [
         "fluctuations"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fluffy",
+      "aliases": [
+        "fluffier",
+        "fluffiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fluky",
+      "aliases": [
+        "flukier",
+        "flukiest"
       ],
       "targetEligible": false
     },
@@ -48971,6 +50217,14 @@
       "key": "flyleaf",
       "aliases": [
         "flyleaves"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "foamy",
+      "aliases": [
+        "foamier",
+        "foamiest"
       ],
       "targetEligible": false
     },
@@ -49019,6 +50273,14 @@
       "targetEligible": false
     },
     {
+      "key": "foggy",
+      "aliases": [
+        "foggier",
+        "foggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "foil",
       "aliases": [
         "foiled",
@@ -49030,6 +50292,14 @@
       "key": "foliate",
       "aliases": [
         "foliated"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "folksy",
+      "aliases": [
+        "folksier",
+        "folksiest"
       ],
       "targetEligible": false
     },
@@ -49060,6 +50330,14 @@
         "fooled",
         "fooling",
         "fools"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "foolhardy",
+      "aliases": [
+        "foolhardier",
+        "foolhardiest"
       ],
       "targetEligible": false
     },
@@ -49297,6 +50575,14 @@
       "targetEligible": false
     },
     {
+      "key": "foxy",
+      "aliases": [
+        "foxier",
+        "foxiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "foxtrot",
       "aliases": [
         "foxtrotted",
@@ -49363,6 +50649,14 @@
       "targetEligible": false
     },
     {
+      "key": "freaky",
+      "aliases": [
+        "freakier",
+        "freakiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "freckle",
       "aliases": [
         "freckled"
@@ -49373,7 +50667,9 @@
       "key": "free",
       "aliases": [
         "freeing",
-        "frees"
+        "freer",
+        "frees",
+        "freest"
       ],
       "targetEligible": false
     },
@@ -49445,6 +50741,14 @@
       "targetEligible": false
     },
     {
+      "key": "frisky",
+      "aliases": [
+        "friskier",
+        "friskiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "frisk",
       "aliases": [
         "frisking"
@@ -49456,6 +50760,22 @@
       "aliases": [
         "frivolled",
         "frivolling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "frizzy",
+      "aliases": [
+        "frizzier",
+        "frizziest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "frizzly",
+      "aliases": [
+        "frizzlier",
+        "frizzliest"
       ],
       "targetEligible": false
     },
@@ -49483,6 +50803,14 @@
       "targetEligible": false
     },
     {
+      "key": "frosty",
+      "aliases": [
+        "frostier",
+        "frostiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "froth",
       "aliases": [
         "frothing"
@@ -49499,9 +50827,33 @@
       "targetEligible": false
     },
     {
+      "key": "frowsy",
+      "aliases": [
+        "frowsier",
+        "frowsiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "frowzy",
+      "aliases": [
+        "frowzier",
+        "frowziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "fructify",
       "aliases": [
         "fructified"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fruity",
+      "aliases": [
+        "fruitier",
+        "fruitiest"
       ],
       "targetEligible": false
     },
@@ -49564,6 +50916,13 @@
       "targetEligible": false
     },
     {
+      "key": "full",
+      "aliases": [
+        "fuller"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "fumble",
       "aliases": [
         "fumbling"
@@ -49611,6 +50970,14 @@
       "targetEligible": false
     },
     {
+      "key": "furry",
+      "aliases": [
+        "furrier",
+        "furriest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "furrow",
       "aliases": [
         "furrowed"
@@ -49621,6 +50988,30 @@
       "key": "fuse",
       "aliases": [
         "fused"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fussy",
+      "aliases": [
+        "fussier",
+        "fussiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "fusty",
+      "aliases": [
+        "fustier",
+        "fustiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gabby",
+      "aliases": [
+        "gabbier",
+        "gabbiest"
       ],
       "targetEligible": false
     },
@@ -49673,10 +51064,26 @@
       "targetEligible": false
     },
     {
+      "key": "gamy",
+      "aliases": [
+        "gamier",
+        "gamiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "gam",
       "aliases": [
         "gammed",
         "gamming"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gammy",
+      "aliases": [
+        "gammier",
+        "gammiest"
       ],
       "targetEligible": false
     },
@@ -49777,6 +51184,14 @@
       "targetEligible": false
     },
     {
+      "key": "gassy",
+      "aliases": [
+        "gassier",
+        "gassiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "gasteromycete",
       "aliases": [
         "gasteromycetes"
@@ -49787,6 +51202,30 @@
       "key": "gastromycete",
       "aliases": [
         "gastromycetes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gaudy",
+      "aliases": [
+        "gaudier",
+        "gaudiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gauzy",
+      "aliases": [
+        "gauzier",
+        "gauziest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gawky",
+      "aliases": [
+        "gawkier",
+        "gawkiest"
       ],
       "targetEligible": false
     },
@@ -49916,6 +51355,14 @@
       "targetEligible": false
     },
     {
+      "key": "ghastly",
+      "aliases": [
+        "ghastlier",
+        "ghastliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "ghetto",
       "aliases": [
         "ghettoes"
@@ -49926,6 +51373,14 @@
       "key": "ghettoize",
       "aliases": [
         "ghettoise"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ghostly",
+      "aliases": [
+        "ghostlier",
+        "ghostliest"
       ],
       "targetEligible": false
     },
@@ -49947,7 +51402,9 @@
     {
       "key": "giddy",
       "aliases": [
-        "giddied"
+        "giddied",
+        "giddier",
+        "giddiest"
       ],
       "targetEligible": false
     },
@@ -50012,6 +51469,14 @@
       "targetEligible": false
     },
     {
+      "key": "glad",
+      "aliases": [
+        "gladder",
+        "gladdest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "glamorize",
       "aliases": [
         "glamorise"
@@ -50040,6 +51505,14 @@
       "targetEligible": false
     },
     {
+      "key": "glassy",
+      "aliases": [
+        "glassier",
+        "glassiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "glasswork",
       "aliases": [
         "glassworks"
@@ -50057,6 +51530,14 @@
       "key": "gleam",
       "aliases": [
         "gleaming"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "glib",
+      "aliases": [
+        "glibber",
+        "glibbest"
       ],
       "targetEligible": false
     },
@@ -50142,9 +51623,25 @@
       "targetEligible": false
     },
     {
+      "key": "gloomy",
+      "aliases": [
+        "gloomier",
+        "gloomiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "glorify",
       "aliases": [
         "glorified"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "glossy",
+      "aliases": [
+        "glossier",
+        "glossiest"
       ],
       "targetEligible": false
     },
@@ -50173,6 +51670,14 @@
       "key": "glue",
       "aliases": [
         "glued"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "glum",
+      "aliases": [
+        "glummer",
+        "glummest"
       ],
       "targetEligible": false
     },
@@ -50228,6 +51733,14 @@
       "targetEligible": false
     },
     {
+      "key": "godly",
+      "aliases": [
+        "godlier",
+        "godliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "goiter",
       "aliases": [
         "goitre"
@@ -50279,9 +51792,49 @@
       "targetEligible": false
     },
     {
+      "key": "goodly",
+      "aliases": [
+        "goodlier",
+        "goodliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "goofy",
+      "aliases": [
+        "goofier",
+        "goofiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gooey",
+      "aliases": [
+        "gooier",
+        "gooiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "goosefish",
       "aliases": [
         "goosefishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "goosy",
+      "aliases": [
+        "goosier",
+        "goosiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gory",
+      "aliases": [
+        "gorier",
+        "goriest"
       ],
       "targetEligible": false
     },
@@ -50312,6 +51865,14 @@
       "key": "graft",
       "aliases": [
         "grafting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "grainy",
+      "aliases": [
+        "grainier",
+        "grainiest"
       ],
       "targetEligible": false
     },
@@ -50362,6 +51923,14 @@
       "aliases": [
         "grasped",
         "grasping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "grassy",
+      "aliases": [
+        "grassier",
+        "grassiest"
       ],
       "targetEligible": false
     },
@@ -50418,9 +51987,25 @@
       "targetEligible": false
     },
     {
+      "key": "greasy",
+      "aliases": [
+        "greasier",
+        "greasiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "greave",
       "aliases": [
         "greaves"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "greedy",
+      "aliases": [
+        "greedier",
+        "greediest"
       ],
       "targetEligible": false
     },
@@ -50442,6 +52027,14 @@
       "key": "grieve",
       "aliases": [
         "grieving"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "grim",
+      "aliases": [
+        "grimmer",
+        "grimmest"
       ],
       "targetEligible": false
     },
@@ -50472,11 +52065,27 @@
       "targetEligible": false
     },
     {
+      "key": "grisly",
+      "aliases": [
+        "grislier",
+        "grisliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "grit",
       "aliases": [
         "grits",
         "gritted",
         "gritting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gritty",
+      "aliases": [
+        "grittier",
+        "grittiest"
       ],
       "targetEligible": false
     },
@@ -50488,9 +52097,25 @@
       "targetEligible": false
     },
     {
+      "key": "grizzly",
+      "aliases": [
+        "grizzlier",
+        "grizzliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "groat",
       "aliases": [
         "groats"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "groggy",
+      "aliases": [
+        "groggier",
+        "groggiest"
       ],
       "targetEligible": false
     },
@@ -50503,9 +52128,25 @@
       "targetEligible": false
     },
     {
+      "key": "groovy",
+      "aliases": [
+        "groovier",
+        "grooviest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "grope",
       "aliases": [
         "groping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "grotty",
+      "aliases": [
+        "grottier",
+        "grottiest"
       ],
       "targetEligible": false
     },
@@ -50555,6 +52196,14 @@
       "targetEligible": false
     },
     {
+      "key": "grubby",
+      "aliases": [
+        "grubbier",
+        "grubbiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "grudge",
       "aliases": [
         "grudging"
@@ -50572,6 +52221,14 @@
       "key": "grumble",
       "aliases": [
         "grumbling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "grumpy",
+      "aliases": [
+        "grumpier",
+        "grumpiest"
       ],
       "targetEligible": false
     },
@@ -50619,11 +52276,27 @@
       "targetEligible": false
     },
     {
+      "key": "gummy",
+      "aliases": [
+        "gummier",
+        "gummiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "gun",
       "aliases": [
         "gunned",
         "gunning",
         "guns"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gushy",
+      "aliases": [
+        "gushier",
+        "gushiest"
       ],
       "targetEligible": false
     },
@@ -50635,10 +52308,26 @@
       "targetEligible": false
     },
     {
+      "key": "gusty",
+      "aliases": [
+        "gustier",
+        "gustiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "gut",
       "aliases": [
         "guts",
         "gutted"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "gutsy",
+      "aliases": [
+        "gutsier",
+        "gutsiest"
       ],
       "targetEligible": false
     },
@@ -50834,6 +52523,20 @@
       "targetEligible": false
     },
     {
+      "key": "hale",
+      "aliases": [
+        "haler"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "halfway",
+      "aliases": [
+        "halfways"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "hallow",
       "aliases": [
         "hallowed"
@@ -50895,6 +52598,14 @@
       "aliases": [
         "hammed",
         "hamming"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "hammy",
+      "aliases": [
+        "hammier",
+        "hammiest"
       ],
       "targetEligible": false
     },
@@ -50965,6 +52676,21 @@
       "targetEligible": false
     },
     {
+      "key": "hardy",
+      "aliases": [
+        "hardier",
+        "hardiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "hardline",
+      "aliases": [
+        "hardliner"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "harm",
       "aliases": [
         "harmed",
@@ -51011,6 +52737,14 @@
       "targetEligible": false
     },
     {
+      "key": "hasty",
+      "aliases": [
+        "hastier",
+        "hastiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "hatch",
       "aliases": [
         "hatched",
@@ -51041,6 +52775,14 @@
         "hats",
         "hatted",
         "hatting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "haughty",
+      "aliases": [
+        "haughtier",
+        "haughtiest"
       ],
       "targetEligible": false
     },
@@ -51077,9 +52819,25 @@
       "targetEligible": false
     },
     {
+      "key": "hazy",
+      "aliases": [
+        "hazier",
+        "haziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "headache",
       "aliases": [
         "headaches"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "heady",
+      "aliases": [
+        "headier",
+        "headiest"
       ],
       "targetEligible": false
     },
@@ -51101,6 +52859,14 @@
       "key": "hearten",
       "aliases": [
         "heartening"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "hearty",
+      "aliases": [
+        "heartier",
+        "heartiest"
       ],
       "targetEligible": false
     },
@@ -51139,6 +52905,14 @@
       "key": "heel",
       "aliases": [
         "heels"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "hefty",
+      "aliases": [
+        "heftier",
+        "heftiest"
       ],
       "targetEligible": false
     },
@@ -51207,6 +52981,14 @@
       "targetEligible": false
     },
     {
+      "key": "hep",
+      "aliases": [
+        "hepper",
+        "heppest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "heroic",
       "aliases": [
         "heroics"
@@ -51266,8 +53048,9 @@
       "targetEligible": false
     },
     {
-      "key": "hinder",
+      "key": "hind",
       "aliases": [
+        "hinder",
         "hindering"
       ],
       "targetEligible": false
@@ -51287,16 +53070,26 @@
       "targetEligible": false
     },
     {
-      "key": "hippie",
+      "key": "hip",
       "aliases": [
-        "hippies"
+        "hipper",
+        "hippest",
+        "hips"
       ],
       "targetEligible": false
     },
     {
-      "key": "hip",
+      "key": "hippy",
       "aliases": [
-        "hips"
+        "hippier",
+        "hippiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "hippie",
+      "aliases": [
+        "hippies"
       ],
       "targetEligible": false
     },
@@ -51332,6 +53125,14 @@
       "key": "hoard",
       "aliases": [
         "hoarding"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "hoary",
+      "aliases": [
+        "hoarier",
+        "hoariest"
       ],
       "targetEligible": false
     },
@@ -51383,7 +53184,9 @@
     {
       "key": "holy",
       "aliases": [
-        "holies"
+        "holier",
+        "holies",
+        "holiest"
       ],
       "targetEligible": false
     },
@@ -51395,9 +53198,25 @@
       "targetEligible": false
     },
     {
+      "key": "homely",
+      "aliases": [
+        "homelier",
+        "homeliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "homeowner",
       "aliases": [
         "homeowners"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "homey",
+      "aliases": [
+        "homier",
+        "homiest"
       ],
       "targetEligible": false
     },
@@ -51491,6 +53310,14 @@
       "aliases": [
         "horned",
         "horns"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "horny",
+      "aliases": [
+        "hornier",
+        "horniest"
       ],
       "targetEligible": false
     },
@@ -51751,6 +53578,14 @@
       "targetEligible": false
     },
     {
+      "key": "husky",
+      "aliases": [
+        "huskier",
+        "huskiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "husk",
       "aliases": [
         "husking"
@@ -51881,6 +53716,14 @@
       "targetEligible": false
     },
     {
+      "key": "icy",
+      "aliases": [
+        "icier",
+        "iciest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "idealization",
       "aliases": [
         "idealisation"
@@ -51913,6 +53756,7 @@
     {
       "key": "idle",
       "aliases": [
+        "idler",
         "idling"
       ],
       "targetEligible": false
@@ -52431,16 +54275,17 @@
       "targetEligible": false
     },
     {
-      "key": "inmate",
+      "key": "inky",
       "aliases": [
-        "inmates"
+        "inkier",
+        "inkiest"
       ],
       "targetEligible": false
     },
     {
-      "key": "inning",
+      "key": "inmate",
       "aliases": [
-        "innings"
+        "inmates"
       ],
       "targetEligible": false
     },
@@ -53080,6 +54925,14 @@
       "targetEligible": false
     },
     {
+      "key": "jaggy",
+      "aliases": [
+        "jaggier",
+        "jaggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "jail",
       "aliases": [
         "jailed",
@@ -53127,10 +54980,26 @@
       "targetEligible": false
     },
     {
+      "key": "jaunty",
+      "aliases": [
+        "jauntier",
+        "jauntiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "jaw",
       "aliases": [
         "jawed",
         "jaws"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "jazzy",
+      "aliases": [
+        "jazzier",
+        "jazziest"
       ],
       "targetEligible": false
     },
@@ -53180,6 +55049,14 @@
       "key": "jeopardize",
       "aliases": [
         "jeopardise"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "jerky",
+      "aliases": [
+        "jerkier",
+        "jerkiest"
       ],
       "targetEligible": false
     },
@@ -53306,7 +55183,9 @@
     {
       "key": "jolly",
       "aliases": [
-        "jollied"
+        "jollied",
+        "jollier",
+        "jolliest"
       ],
       "targetEligible": false
     },
@@ -53370,9 +55249,25 @@
       "targetEligible": false
     },
     {
+      "key": "juicy",
+      "aliases": [
+        "juicier",
+        "juiciest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "jumble",
       "aliases": [
         "jumbled"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "jumpy",
+      "aliases": [
+        "jumpier",
+        "jumpiest"
       ],
       "targetEligible": false
     },
@@ -53507,6 +55402,14 @@
       "targetEligible": false
     },
     {
+      "key": "kindly",
+      "aliases": [
+        "kindlier",
+        "kindliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "kindness",
       "aliases": [
         "kindnesses"
@@ -53517,6 +55420,14 @@
       "key": "kingfish",
       "aliases": [
         "kingfishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "kinky",
+      "aliases": [
+        "kinkier",
+        "kinkiest"
       ],
       "targetEligible": false
     },
@@ -53584,6 +55495,14 @@
       "targetEligible": false
     },
     {
+      "key": "knotty",
+      "aliases": [
+        "knottier",
+        "knottiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "knuckle",
       "aliases": [
         "knuckles"
@@ -53594,6 +55513,14 @@
       "key": "kohlrabi",
       "aliases": [
         "kohlrabies"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "kooky",
+      "aliases": [
+        "kookier",
+        "kookiest"
       ],
       "targetEligible": false
     },
@@ -53638,6 +55565,14 @@
       "key": "lacerate",
       "aliases": [
         "lacerated"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "lacy",
+      "aliases": [
+        "lacier",
+        "laciest"
       ],
       "targetEligible": false
     },
@@ -53728,6 +55663,14 @@
       "key": "landscaper",
       "aliases": [
         "landscapers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "lanky",
+      "aliases": [
+        "lankier",
+        "lankiest"
       ],
       "targetEligible": false
     },
@@ -53836,6 +55779,14 @@
       "targetEligible": false
     },
     {
+      "key": "lazy",
+      "aliases": [
+        "lazier",
+        "laziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "leach",
       "aliases": [
         "leaching"
@@ -53851,9 +55802,26 @@
       "targetEligible": false
     },
     {
+      "key": "leafy",
+      "aliases": [
+        "leafier",
+        "leafiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "leaky",
+      "aliases": [
+        "leakier",
+        "leakiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "lean",
       "aliases": [
         "leaned",
+        "leaner",
         "leaning",
         "leans"
       ],
@@ -53877,6 +55845,14 @@
       "targetEligible": false
     },
     {
+      "key": "leary",
+      "aliases": [
+        "learier",
+        "leariest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "leaven",
       "aliases": [
         "leavened",
@@ -53888,6 +55864,14 @@
       "key": "lecturer",
       "aliases": [
         "lecturers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "leery",
+      "aliases": [
+        "leerier",
+        "leeriest"
       ],
       "targetEligible": false
     },
@@ -53925,6 +55909,14 @@
         "legalise",
         "legalized",
         "legalizing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "leggy",
+      "aliases": [
+        "leggier",
+        "leggiest"
       ],
       "targetEligible": false
     },
@@ -53972,6 +55964,14 @@
       "aliases": [
         "lengthened",
         "lengthening"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "lengthy",
+      "aliases": [
+        "lengthier",
+        "lengthiest"
       ],
       "targetEligible": false
     },
@@ -54177,6 +56177,7 @@
     {
       "key": "limp",
       "aliases": [
+        "limper",
         "limping"
       ],
       "targetEligible": false
@@ -54312,6 +56313,14 @@
       "targetEligible": false
     },
     {
+      "key": "lively",
+      "aliases": [
+        "livelier",
+        "liveliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "loaf",
       "aliases": [
         "loafing",
@@ -54365,6 +56374,22 @@
       "targetEligible": false
     },
     {
+      "key": "lofty",
+      "aliases": [
+        "loftier",
+        "loftiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "logy",
+      "aliases": [
+        "logier",
+        "logiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "logroll",
       "aliases": [
         "logrolling"
@@ -54379,12 +56404,18 @@
       "targetEligible": false
     },
     {
-      "key": "long",
+      "key": "loony",
       "aliases": [
-        "longed",
-        "longing",
-        "longings",
-        "longs"
+        "loonier",
+        "looniest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "loopy",
+      "aliases": [
+        "loopier",
+        "loopiest"
       ],
       "targetEligible": false
     },
@@ -54420,6 +56451,14 @@
       "targetEligible": false
     },
     {
+      "key": "lordly",
+      "aliases": [
+        "lordlier",
+        "lordliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "loser",
       "aliases": [
         "losers"
@@ -54432,6 +56471,14 @@
         "lots",
         "lotted",
         "lotting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "lousy",
+      "aliases": [
+        "lousier",
+        "lousiest"
       ],
       "targetEligible": false
     },
@@ -54450,9 +56497,10 @@
       "targetEligible": false
     },
     {
-      "key": "low",
+      "key": "lowly",
       "aliases": [
-        "lows"
+        "lowlier",
+        "lowliest"
       ],
       "targetEligible": false
     },
@@ -54514,6 +56562,14 @@
       "targetEligible": false
     },
     {
+      "key": "lumpy",
+      "aliases": [
+        "lumpier",
+        "lumpiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "lunge",
       "aliases": [
         "lunged",
@@ -54540,6 +56596,14 @@
       "key": "lure",
       "aliases": [
         "lures"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "lusty",
+      "aliases": [
+        "lustier",
+        "lustiest"
       ],
       "targetEligible": false
     },
@@ -54624,6 +56688,8 @@
       "key": "mad",
       "aliases": [
         "madded",
+        "madder",
+        "maddest",
         "madding"
       ],
       "targetEligible": false
@@ -54744,6 +56810,14 @@
       "targetEligible": false
     },
     {
+      "key": "mangy",
+      "aliases": [
+        "mangier",
+        "mangiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "mangle",
       "aliases": [
         "mangled"
@@ -54784,6 +56858,22 @@
       "key": "manipulator",
       "aliases": [
         "manipulators"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "manky",
+      "aliases": [
+        "mankier",
+        "mankiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "manly",
+      "aliases": [
+        "manlier",
+        "manliest"
       ],
       "targetEligible": false
     },
@@ -54938,6 +57028,14 @@
       "targetEligible": false
     },
     {
+      "key": "marshy",
+      "aliases": [
+        "marshier",
+        "marshiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "marvelous",
       "aliases": [
         "marvellous"
@@ -54969,6 +57067,15 @@
       "targetEligible": false
     },
     {
+      "key": "mat",
+      "aliases": [
+        "mater",
+        "matted",
+        "matting"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "materialization",
       "aliases": [
         "materialisation"
@@ -54988,14 +57095,6 @@
       "key": "math",
       "aliases": [
         "maths"
-      ],
-      "targetEligible": false
-    },
-    {
-      "key": "mat",
-      "aliases": [
-        "matted",
-        "matting"
       ],
       "targetEligible": false
     },
@@ -55028,6 +57127,14 @@
       "targetEligible": false
     },
     {
+      "key": "mazy",
+      "aliases": [
+        "mazier",
+        "maziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "meager",
       "aliases": [
         "meagre"
@@ -55035,9 +57142,33 @@
       "targetEligible": false
     },
     {
+      "key": "mealy",
+      "aliases": [
+        "mealier",
+        "mealiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "meander",
       "aliases": [
         "meandering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "measly",
+      "aliases": [
+        "measlier",
+        "measliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "meaty",
+      "aliases": [
+        "meatier",
+        "meatiest"
       ],
       "targetEligible": false
     },
@@ -55229,6 +57360,14 @@
       "targetEligible": false
     },
     {
+      "key": "messy",
+      "aliases": [
+        "messier",
+        "messiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "monsieur",
       "aliases": [
         "messieurs"
@@ -55306,13 +57445,6 @@
       "targetEligible": false
     },
     {
-      "key": "mew",
-      "aliases": [
-        "mews"
-      ],
-      "targetEligible": false
-    },
-    {
       "key": "midst",
       "aliases": [
         "midsts"
@@ -55368,6 +57500,14 @@
       "targetEligible": false
     },
     {
+      "key": "milky",
+      "aliases": [
+        "milkier",
+        "milkiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "milliliter",
       "aliases": [
         "millilitre"
@@ -55411,6 +57551,14 @@
       "targetEligible": false
     },
     {
+      "key": "mingy",
+      "aliases": [
+        "mingier",
+        "mingiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "mingle",
       "aliases": [
         "mingling"
@@ -55449,6 +57597,14 @@
       "key": "mire",
       "aliases": [
         "mired"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "mirky",
+      "aliases": [
+        "mirkier",
+        "mirkiest"
       ],
       "targetEligible": false
     },
@@ -55571,6 +57727,14 @@
       "aliases": [
         "misspelling",
         "misspelt"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "misty",
+      "aliases": [
+        "mistier",
+        "mistiest"
       ],
       "targetEligible": false
     },
@@ -55724,6 +57888,17 @@
       "targetEligible": false
     },
     {
+      "key": "moldy",
+      "aliases": [
+        "moldier",
+        "moldiest",
+        "mouldier",
+        "mouldiest",
+        "mouldy"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "mollify",
       "aliases": [
         "mollified"
@@ -55796,6 +57971,14 @@
       "targetEligible": false
     },
     {
+      "key": "moody",
+      "aliases": [
+        "moodier",
+        "moodiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "mood",
       "aliases": [
         "moods"
@@ -55806,6 +57989,14 @@
       "key": "moonfish",
       "aliases": [
         "moonfishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "moony",
+      "aliases": [
+        "moonier",
+        "mooniest"
       ],
       "targetEligible": false
     },
@@ -55905,6 +58096,14 @@
       "targetEligible": false
     },
     {
+      "key": "mothy",
+      "aliases": [
+        "mothier",
+        "mothiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "motive",
       "aliases": [
         "motives"
@@ -55942,13 +58141,6 @@
       "targetEligible": false
     },
     {
-      "key": "moldy",
-      "aliases": [
-        "mouldy"
-      ],
-      "targetEligible": false
-    },
-    {
       "key": "mountaineer",
       "aliases": [
         "mountaineering",
@@ -55971,9 +58163,25 @@
       "targetEligible": false
     },
     {
+      "key": "mousy",
+      "aliases": [
+        "mousier",
+        "mousiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "mustache",
       "aliases": [
         "moustache"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "mucky",
+      "aliases": [
+        "muckier",
+        "muckiest"
       ],
       "targetEligible": false
     },
@@ -55995,7 +58203,9 @@
     {
       "key": "muddy",
       "aliases": [
-        "muddied"
+        "muddied",
+        "muddier",
+        "muddiest"
       ],
       "targetEligible": false
     },
@@ -56018,6 +58228,14 @@
       "aliases": [
         "mugged",
         "mugging"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "muggy",
+      "aliases": [
+        "muggier",
+        "muggiest"
       ],
       "targetEligible": false
     },
@@ -56072,9 +58290,25 @@
       "targetEligible": false
     },
     {
+      "key": "murky",
+      "aliases": [
+        "murkier",
+        "murkiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "murmur",
       "aliases": [
         "murmuring"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "mushy",
+      "aliases": [
+        "mushier",
+        "mushiest"
       ],
       "targetEligible": false
     },
@@ -56091,6 +58325,22 @@
       "key": "muse",
       "aliases": [
         "musing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "musky",
+      "aliases": [
+        "muskier",
+        "muskiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "musty",
+      "aliases": [
+        "mustier",
+        "mustiest"
       ],
       "targetEligible": false
     },
@@ -56136,6 +58386,14 @@
       "key": "mutterer",
       "aliases": [
         "mutterers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "muzzy",
+      "aliases": [
+        "muzzier",
+        "muzziest"
       ],
       "targetEligible": false
     },
@@ -56221,6 +58479,14 @@
       "targetEligible": false
     },
     {
+      "key": "nappy",
+      "aliases": [
+        "nappier",
+        "nappiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "narcotise",
       "aliases": [
         "narcotised",
@@ -56288,6 +58554,14 @@
       "targetEligible": false
     },
     {
+      "key": "natty",
+      "aliases": [
+        "nattier",
+        "nattiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "naturalization",
       "aliases": [
         "naturalisation"
@@ -56326,15 +58600,6 @@
       "targetEligible": false
     },
     {
-      "key": "near",
-      "aliases": [
-        "neared",
-        "nearing",
-        "nears"
-      ],
-      "targetEligible": false
-    },
-    {
       "key": "neck",
       "aliases": [
         "necked",
@@ -56347,6 +58612,14 @@
       "key": "necropolis",
       "aliases": [
         "necropoleis"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "needy",
+      "aliases": [
+        "needier",
+        "neediest"
       ],
       "targetEligible": false
     },
@@ -56423,6 +58696,14 @@
       "targetEligible": false
     },
     {
+      "key": "nervy",
+      "aliases": [
+        "nervier",
+        "nerviest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "nestle",
       "aliases": [
         "nestled",
@@ -56486,10 +58767,26 @@
       "targetEligible": false
     },
     {
+      "key": "newsy",
+      "aliases": [
+        "newsier",
+        "newsiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "nib",
       "aliases": [
         "nibbed",
         "nibbing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "nifty",
+      "aliases": [
+        "niftier",
+        "niftiest"
       ],
       "targetEligible": false
     },
@@ -56501,9 +58798,24 @@
       "targetEligible": false
     },
     {
+      "key": "nigh",
+      "aliases": [
+        "nigher",
+        "nighest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "ninepin",
       "aliases": [
         "ninepins"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "nine",
+      "aliases": [
+        "niner"
       ],
       "targetEligible": false
     },
@@ -56519,6 +58831,14 @@
       "aliases": [
         "nipped",
         "nipping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "nippy",
+      "aliases": [
+        "nippier",
+        "nippiest"
       ],
       "targetEligible": false
     },
@@ -56542,6 +58862,14 @@
       "key": "no",
       "aliases": [
         "noes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "noisy",
+      "aliases": [
+        "noisier",
+        "noisiest"
       ],
       "targetEligible": false
     },
@@ -56615,6 +58943,14 @@
       "targetEligible": false
     },
     {
+      "key": "nosy",
+      "aliases": [
+        "nosier",
+        "nosiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "notch",
       "aliases": [
         "notched"
@@ -56684,6 +59020,14 @@
         "nuts",
         "nutted",
         "nutting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "nutty",
+      "aliases": [
+        "nuttier",
+        "nuttiest"
       ],
       "targetEligible": false
     },
@@ -56885,9 +59229,10 @@
       "targetEligible": false
     },
     {
-      "key": "old",
+      "key": "oily",
       "aliases": [
-        "olds"
+        "oilier",
+        "oiliest"
       ],
       "targetEligible": false
     },
@@ -56931,6 +59276,14 @@
       "key": "one",
       "aliases": [
         "ones"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "oozy",
+      "aliases": [
+        "oozier",
+        "ooziest"
       ],
       "targetEligible": false
     },
@@ -57684,6 +60037,14 @@
       "targetEligible": false
     },
     {
+      "key": "pally",
+      "aliases": [
+        "pallier",
+        "palliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "palm",
       "aliases": [
         "palmed",
@@ -57695,6 +60056,14 @@
       "key": "palmetto",
       "aliases": [
         "palmettoes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "palmy",
+      "aliases": [
+        "palmier",
+        "palmiest"
       ],
       "targetEligible": false
     },
@@ -57716,6 +60085,14 @@
       "key": "palter",
       "aliases": [
         "paltering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "paltry",
+      "aliases": [
+        "paltrier",
+        "paltriest"
       ],
       "targetEligible": false
     },
@@ -57835,6 +60212,14 @@
       "targetEligible": false
     },
     {
+      "key": "parky",
+      "aliases": [
+        "parkier",
+        "parkiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "parlor",
       "aliases": [
         "parlour"
@@ -57903,6 +60288,22 @@
       "targetEligible": false
     },
     {
+      "key": "pasty",
+      "aliases": [
+        "pastier",
+        "pastiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "patchy",
+      "aliases": [
+        "patchier",
+        "patchiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "paterfamilias",
       "aliases": [
         "patresfamilias"
@@ -57961,6 +60362,22 @@
       "targetEligible": false
     },
     {
+      "key": "pawky",
+      "aliases": [
+        "pawkier",
+        "pawkiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "peachy",
+      "aliases": [
+        "peachier",
+        "peachiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "peak",
       "aliases": [
         "peaked",
@@ -57980,6 +60397,14 @@
       "key": "peanut",
       "aliases": [
         "peanuts"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "pearly",
+      "aliases": [
+        "pearlier",
+        "pearliest"
       ],
       "targetEligible": false
     },
@@ -58103,6 +60528,14 @@
       "targetEligible": false
     },
     {
+      "key": "peppy",
+      "aliases": [
+        "peppier",
+        "peppiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "perambulate",
       "aliases": [
         "perambulating"
@@ -58134,6 +60567,14 @@
       "key": "peristalsis",
       "aliases": [
         "peristalses"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "perky",
+      "aliases": [
+        "perkier",
+        "perkiest"
       ],
       "targetEligible": false
     },
@@ -58221,6 +60662,14 @@
       "targetEligible": false
     },
     {
+      "key": "pesky",
+      "aliases": [
+        "peskier",
+        "peskiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "pester",
       "aliases": [
         "pestered",
@@ -58249,6 +60698,14 @@
         "pets",
         "petted",
         "petting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "petty",
+      "aliases": [
+        "pettier",
+        "pettiest"
       ],
       "targetEligible": false
     },
@@ -58321,7 +60778,9 @@
     {
       "key": "phony",
       "aliases": [
-        "phoney"
+        "phoney",
+        "phonier",
+        "phoniest"
       ],
       "targetEligible": false
     },
@@ -58344,6 +60803,14 @@
       "aliases": [
         "physicked",
         "physicking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "picky",
+      "aliases": [
+        "pickier",
+        "pickiest"
       ],
       "targetEligible": false
     },
@@ -58395,6 +60862,14 @@
         "pigged",
         "pigging",
         "pigs"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "piggy",
+      "aliases": [
+        "piggier",
+        "piggiest"
       ],
       "targetEligible": false
     },
@@ -58523,6 +60998,22 @@
       "targetEligible": false
     },
     {
+      "key": "pitchy",
+      "aliases": [
+        "pitchier",
+        "pitchiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "pithy",
+      "aliases": [
+        "pithier",
+        "pithiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "pity",
       "aliases": [
         "pitied"
@@ -58573,6 +61064,14 @@
       "aliases": [
         "plastered",
         "plastering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "platy",
+      "aliases": [
+        "platier",
+        "platiest"
       ],
       "targetEligible": false
     },
@@ -58638,13 +61137,6 @@
       "targetEligible": false
     },
     {
-      "key": "plier",
-      "aliases": [
-        "pliers"
-      ],
-      "targetEligible": false
-    },
-    {
       "key": "plod",
       "aliases": [
         "plodded",
@@ -58700,6 +61192,14 @@
       "targetEligible": false
     },
     {
+      "key": "plucky",
+      "aliases": [
+        "pluckier",
+        "pluckiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "plug",
       "aliases": [
         "plugged",
@@ -58715,9 +61215,25 @@
       "targetEligible": false
     },
     {
+      "key": "plumy",
+      "aliases": [
+        "plumier",
+        "plumiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "plummet",
       "aliases": [
         "plummeted"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "plummy",
+      "aliases": [
+        "plummier",
+        "plummiest"
       ],
       "targetEligible": false
     },
@@ -58790,6 +61306,14 @@
       "targetEligible": false
     },
     {
+      "key": "podgy",
+      "aliases": [
+        "podgier",
+        "podgiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "poet",
       "aliases": [
         "poets"
@@ -58816,6 +61340,14 @@
         "poked",
         "pokes",
         "poking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "poky",
+      "aliases": [
+        "pokier",
+        "pokiest"
       ],
       "targetEligible": false
     },
@@ -58989,6 +61521,14 @@
       "targetEligible": false
     },
     {
+      "key": "portly",
+      "aliases": [
+        "portlier",
+        "portliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "portrayal",
       "aliases": [
         "portrayals"
@@ -59031,6 +61571,14 @@
         "pots",
         "potted",
         "potting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "potty",
+      "aliases": [
+        "pottier",
+        "pottiest"
       ],
       "targetEligible": false
     },
@@ -59093,6 +61641,14 @@
         "preached",
         "preaches",
         "preaching"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "preachy",
+      "aliases": [
+        "preachier",
+        "preachiest"
       ],
       "targetEligible": false
     },
@@ -59317,9 +61873,25 @@
       "targetEligible": false
     },
     {
+      "key": "pricy",
+      "aliases": [
+        "pricier",
+        "priciest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "prick",
       "aliases": [
         "pricking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "prickly",
+      "aliases": [
+        "pricklier",
+        "prickliest"
       ],
       "targetEligible": false
     },
@@ -59335,6 +61907,14 @@
       "aliases": [
         "pried",
         "prying"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "priestly",
+      "aliases": [
+        "priestlier",
+        "priestliest"
       ],
       "targetEligible": false
     },
@@ -59364,6 +61944,8 @@
       "key": "prim",
       "aliases": [
         "primmed",
+        "primmer",
+        "primmest",
         "primming"
       ],
       "targetEligible": false
@@ -59376,9 +61958,25 @@
       "targetEligible": false
     },
     {
+      "key": "princely",
+      "aliases": [
+        "princelier",
+        "princeliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "prioritize",
       "aliases": [
         "prioritise"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "prissy",
+      "aliases": [
+        "prissier",
+        "prissiest"
       ],
       "targetEligible": false
     },
@@ -59403,6 +62001,14 @@
         "privatise",
         "privatized",
         "privatizing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "privy",
+      "aliases": [
+        "privier",
+        "priviest"
       ],
       "targetEligible": false
     },
@@ -59615,6 +62221,14 @@
       "targetEligible": false
     },
     {
+      "key": "prosy",
+      "aliases": [
+        "prosier",
+        "prosiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "prosper",
       "aliases": [
         "prospering"
@@ -59768,10 +62382,26 @@
       "targetEligible": false
     },
     {
+      "key": "pudgy",
+      "aliases": [
+        "pudgier",
+        "pudgiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "puff",
       "aliases": [
         "puffed",
         "puffing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "puffy",
+      "aliases": [
+        "puffier",
+        "puffiest"
       ],
       "targetEligible": false
     },
@@ -59787,6 +62417,14 @@
       "key": "puke",
       "aliases": [
         "puking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "pulpy",
+      "aliases": [
+        "pulpier",
+        "pulpiest"
       ],
       "targetEligible": false
     },
@@ -59818,6 +62456,14 @@
       "key": "puncture",
       "aliases": [
         "punctured"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "puny",
+      "aliases": [
+        "punier",
+        "puniest"
       ],
       "targetEligible": false
     },
@@ -59879,6 +62525,22 @@
       "aliases": [
         "purified",
         "purifying"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "pushy",
+      "aliases": [
+        "pushier",
+        "pushiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "pussy",
+      "aliases": [
+        "pussier",
+        "pussiest"
       ],
       "targetEligible": false
     },
@@ -59953,6 +62615,14 @@
       "targetEligible": false
     },
     {
+      "key": "quaggy",
+      "aliases": [
+        "quaggier",
+        "quaggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "quaker",
       "aliases": [
         "quakers"
@@ -60014,6 +62684,22 @@
       "key": "quaver",
       "aliases": [
         "quavering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "queasy",
+      "aliases": [
+        "queasier",
+        "queasiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "queenly",
+      "aliases": [
+        "queenlier",
+        "queenliest"
       ],
       "targetEligible": false
     },
@@ -60111,6 +62797,14 @@
       "key": "rabbitfish",
       "aliases": [
         "rabbitfishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "racy",
+      "aliases": [
+        "racier",
+        "raciest"
       ],
       "targetEligible": false
     },
@@ -60223,6 +62917,14 @@
       "targetEligible": false
     },
     {
+      "key": "rainy",
+      "aliases": [
+        "rainier",
+        "rainiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "ramble",
       "aliases": [
         "rambling"
@@ -60257,6 +62959,14 @@
         "randomise",
         "randomised",
         "randomized"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "rangy",
+      "aliases": [
+        "rangier",
+        "rangiest"
       ],
       "targetEligible": false
     },
@@ -60322,6 +63032,13 @@
       "targetEligible": false
     },
     {
+      "key": "rash",
+      "aliases": [
+        "rasher"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rasp",
       "aliases": [
         "rasping"
@@ -60378,10 +63095,26 @@
       "targetEligible": false
     },
     {
+      "key": "ratty",
+      "aliases": [
+        "rattier",
+        "rattiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rattle",
       "aliases": [
         "rattled",
         "rattling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "raunchy",
+      "aliases": [
+        "raunchier",
+        "raunchiest"
       ],
       "targetEligible": false
     },
@@ -60687,6 +63420,8 @@
       "key": "red",
       "aliases": [
         "redded",
+        "redder",
+        "reddest",
         "redding",
         "reds"
       ],
@@ -60731,6 +63466,14 @@
       "key": "reecho",
       "aliases": [
         "reechoing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "reedy",
+      "aliases": [
+        "reedier",
+        "reediest"
       ],
       "targetEligible": false
     },
@@ -60931,6 +63674,7 @@
       "key": "relieve",
       "aliases": [
         "relieved",
+        "relieves",
         "relieving"
       ],
       "targetEligible": false
@@ -61599,6 +64343,14 @@
       "targetEligible": false
     },
     {
+      "key": "rimy",
+      "aliases": [
+        "rimier",
+        "rimiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rim",
       "aliases": [
         "rimmed",
@@ -61655,6 +64407,14 @@
       "targetEligible": false
     },
     {
+      "key": "risky",
+      "aliases": [
+        "riskier",
+        "riskiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "ritualize",
       "aliases": [
         "ritualized"
@@ -61665,6 +64425,14 @@
       "key": "ritual",
       "aliases": [
         "rituals"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ritzy",
+      "aliases": [
+        "ritzier",
+        "ritziest"
       ],
       "targetEligible": false
     },
@@ -61746,6 +64514,14 @@
       "targetEligible": false
     },
     {
+      "key": "roily",
+      "aliases": [
+        "roilier",
+        "roiliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "roleplay",
       "aliases": [
         "roleplaying"
@@ -61783,6 +64559,14 @@
       "targetEligible": false
     },
     {
+      "key": "roomy",
+      "aliases": [
+        "roomier",
+        "roomiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rope",
       "aliases": [
         "roped",
@@ -61792,9 +64576,25 @@
       "targetEligible": false
     },
     {
+      "key": "ropy",
+      "aliases": [
+        "ropier",
+        "ropiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rosefish",
       "aliases": [
         "rosefishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "rosy",
+      "aliases": [
+        "rosier",
+        "rosiest"
       ],
       "targetEligible": false
     },
@@ -61821,13 +64621,6 @@
       "targetEligible": false
     },
     {
-      "key": "rounder",
-      "aliases": [
-        "rounders"
-      ],
-      "targetEligible": false
-    },
-    {
       "key": "rouse",
       "aliases": [
         "rousing"
@@ -61838,6 +64631,14 @@
       "key": "rove",
       "aliases": [
         "roving"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "rowdy",
+      "aliases": [
+        "rowdier",
+        "rowdiest"
       ],
       "targetEligible": false
     },
@@ -61878,6 +64679,14 @@
       "key": "ruble",
       "aliases": [
         "rubles"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ruddy",
+      "aliases": [
+        "ruddier",
+        "ruddiest"
       ],
       "targetEligible": false
     },
@@ -61935,6 +64744,14 @@
       "targetEligible": false
     },
     {
+      "key": "runny",
+      "aliases": [
+        "runnier",
+        "runniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rush",
       "aliases": [
         "rushed",
@@ -61944,10 +64761,26 @@
       "targetEligible": false
     },
     {
+      "key": "rushy",
+      "aliases": [
+        "rushier",
+        "rushiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "rust",
       "aliases": [
         "rusted",
         "rusting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "rusty",
+      "aliases": [
+        "rustier",
+        "rustiest"
       ],
       "targetEligible": false
     },
@@ -61963,6 +64796,14 @@
       "aliases": [
         "rutted",
         "rutting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "rutty",
+      "aliases": [
+        "ruttier",
+        "ruttiest"
       ],
       "targetEligible": false
     },
@@ -61987,6 +64828,14 @@
         "sacking",
         "sackings",
         "sacks"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sad",
+      "aliases": [
+        "sadder",
+        "saddest"
       ],
       "targetEligible": false
     },
@@ -62046,6 +64895,14 @@
         "salted",
         "salting",
         "salts"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "salty",
+      "aliases": [
+        "saltier",
+        "saltiest"
       ],
       "targetEligible": false
     },
@@ -62136,6 +64993,22 @@
       "targetEligible": false
     },
     {
+      "key": "sappy",
+      "aliases": [
+        "sappier",
+        "sappiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sassy",
+      "aliases": [
+        "sassier",
+        "sassiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sass",
       "aliases": [
         "sassing"
@@ -62160,6 +65033,14 @@
       "key": "saturate",
       "aliases": [
         "saturated"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "saucy",
+      "aliases": [
+        "saucier",
+        "sauciest"
       ],
       "targetEligible": false
     },
@@ -62196,7 +65077,9 @@
     {
       "key": "savvy",
       "aliases": [
-        "savvied"
+        "savvied",
+        "savvier",
+        "savviest"
       ],
       "targetEligible": false
     },
@@ -62204,6 +65087,14 @@
       "key": "sawfish",
       "aliases": [
         "sawfishes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "scabby",
+      "aliases": [
+        "scabbier",
+        "scabbiest"
       ],
       "targetEligible": false
     },
@@ -62230,6 +65121,14 @@
       "targetEligible": false
     },
     {
+      "key": "scaly",
+      "aliases": [
+        "scalier",
+        "scaliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "scallop",
       "aliases": [
         "scalloped"
@@ -62250,6 +65149,14 @@
       "key": "scandal",
       "aliases": [
         "scandals"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "scanty",
+      "aliases": [
+        "scantier",
+        "scantiest"
       ],
       "targetEligible": false
     },
@@ -62417,6 +65324,22 @@
       "targetEligible": false
     },
     {
+      "key": "scraggy",
+      "aliases": [
+        "scraggier",
+        "scraggiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "scraggly",
+      "aliases": [
+        "scragglier",
+        "scraggliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "scramble",
       "aliases": [
         "scrambled",
@@ -62450,6 +65373,22 @@
       "targetEligible": false
     },
     {
+      "key": "scrappy",
+      "aliases": [
+        "scrappier",
+        "scrappiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "scrawny",
+      "aliases": [
+        "scrawnier",
+        "scrawniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "scream",
       "aliases": [
         "screamed",
@@ -62466,6 +65405,21 @@
       "targetEligible": false
     },
     {
+      "key": "screwball",
+      "aliases": [
+        "screwballer"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "screwy",
+      "aliases": [
+        "screwier",
+        "screwiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "scry",
       "aliases": [
         "scried"
@@ -62478,6 +65432,22 @@
         "scrubbed",
         "scrubbing",
         "scrubs"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "scrubby",
+      "aliases": [
+        "scrubbier",
+        "scrubbiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "scruffy",
+      "aliases": [
+        "scruffier",
+        "scruffiest"
       ],
       "targetEligible": false
     },
@@ -62542,9 +65512,25 @@
       "targetEligible": false
     },
     {
+      "key": "scurvy",
+      "aliases": [
+        "scurvier",
+        "scurviest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "seam",
       "aliases": [
         "seamed"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "seamy",
+      "aliases": [
+        "seamier",
+        "seamiest"
       ],
       "targetEligible": false
     },
@@ -62617,6 +65603,22 @@
       "aliases": [
         "secularise",
         "secularized"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "seedy",
+      "aliases": [
+        "seedier",
+        "seediest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "seemly",
+      "aliases": [
+        "seemlier",
+        "seemliest"
       ],
       "targetEligible": false
     },
@@ -62767,6 +65769,13 @@
       "targetEligible": false
     },
     {
+      "key": "set",
+      "aliases": [
+        "sets"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "seventy",
       "aliases": [
         "seventies"
@@ -62790,6 +65799,14 @@
       "targetEligible": false
     },
     {
+      "key": "sexy",
+      "aliases": [
+        "sexier",
+        "sexiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sexualize",
       "aliases": [
         "sexualized"
@@ -62797,9 +65814,25 @@
       "targetEligible": false
     },
     {
+      "key": "shabby",
+      "aliases": [
+        "shabbier",
+        "shabbiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "shackle",
       "aliases": [
         "shackled"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "shady",
+      "aliases": [
+        "shadier",
+        "shadiest"
       ],
       "targetEligible": false
     },
@@ -62819,9 +65852,25 @@
       "targetEligible": false
     },
     {
+      "key": "shaggy",
+      "aliases": [
+        "shaggier",
+        "shaggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "shaker",
       "aliases": [
         "shakers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "shaky",
+      "aliases": [
+        "shakier",
+        "shakiest"
       ],
       "targetEligible": false
     },
@@ -62856,6 +65905,14 @@
       "targetEligible": false
     },
     {
+      "key": "shapely",
+      "aliases": [
+        "shapelier",
+        "shapeliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "shareholding",
       "aliases": [
         "shareholdings"
@@ -62881,8 +65938,7 @@
       "key": "shear",
       "aliases": [
         "sheared",
-        "shearing",
-        "shears"
+        "shearing"
       ],
       "targetEligible": false
     },
@@ -62949,8 +66005,20 @@
       "key": "shy",
       "aliases": [
         "shied",
+        "shier",
         "shies",
+        "shiest",
+        "shyer",
+        "shyest",
         "shying"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "shifty",
+      "aliases": [
+        "shiftier",
+        "shiftiest"
       ],
       "targetEligible": false
     },
@@ -62992,6 +66060,14 @@
       "targetEligible": false
     },
     {
+      "key": "shiny",
+      "aliases": [
+        "shinier",
+        "shiniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "shinleaf",
       "aliases": [
         "shinleaves"
@@ -63021,6 +66097,14 @@
       "targetEligible": false
     },
     {
+      "key": "shirty",
+      "aliases": [
+        "shirtier",
+        "shirtiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "shirtsleeve",
       "aliases": [
         "shirtsleeves"
@@ -63046,6 +66130,14 @@
       "key": "shmo",
       "aliases": [
         "shmoes"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "shoddy",
+      "aliases": [
+        "shoddier",
+        "shoddiest"
       ],
       "targetEligible": false
     },
@@ -63106,6 +66198,14 @@
       "targetEligible": false
     },
     {
+      "key": "showy",
+      "aliases": [
+        "showier",
+        "showiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "shred",
       "aliases": [
         "shredded",
@@ -63149,6 +66249,14 @@
         "shriveled",
         "shrivelled",
         "shrivelling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "shrubby",
+      "aliases": [
+        "shrubbier",
+        "shrubbiest"
       ],
       "targetEligible": false
     },
@@ -63228,6 +66336,14 @@
       "targetEligible": false
     },
     {
+      "key": "sickly",
+      "aliases": [
+        "sicklier",
+        "sickliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sideline",
       "aliases": [
         "sidelines"
@@ -63274,6 +66390,14 @@
       "targetEligible": false
     },
     {
+      "key": "sightly",
+      "aliases": [
+        "sightlier",
+        "sightliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sightsee",
       "aliases": [
         "sightseeing"
@@ -63292,6 +66416,14 @@
       "key": "signify",
       "aliases": [
         "signified"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "silky",
+      "aliases": [
+        "silkier",
+        "silkiest"
       ],
       "targetEligible": false
     },
@@ -63369,6 +66501,13 @@
       "targetEligible": false
     },
     {
+      "key": "six",
+      "aliases": [
+        "sixer"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sixty",
       "aliases": [
         "sixties"
@@ -63386,6 +66525,14 @@
       "key": "skateboard",
       "aliases": [
         "skateboarding"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sketchy",
+      "aliases": [
+        "sketchier",
+        "sketchiest"
       ],
       "targetEligible": false
     },
@@ -63420,9 +66567,25 @@
       "targetEligible": false
     },
     {
+      "key": "skimpy",
+      "aliases": [
+        "skimpier",
+        "skimpiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "skinhead",
       "aliases": [
         "skinheads"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "skinny",
+      "aliases": [
+        "skinnier",
+        "skinniest"
       ],
       "targetEligible": false
     },
@@ -63489,6 +66652,7 @@
     {
       "key": "slack",
       "aliases": [
+        "slacker",
         "slacking",
         "slacks"
       ],
@@ -63527,6 +66691,14 @@
       "targetEligible": false
     },
     {
+      "key": "slaphappy",
+      "aliases": [
+        "slaphappier",
+        "slaphappiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "slap",
       "aliases": [
         "slapped",
@@ -63552,6 +66724,14 @@
       "targetEligible": false
     },
     {
+      "key": "slaty",
+      "aliases": [
+        "slatier",
+        "slatiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "slat",
       "aliases": [
         "slatted",
@@ -63567,9 +66747,25 @@
       "targetEligible": false
     },
     {
+      "key": "sleazy",
+      "aliases": [
+        "sleazier",
+        "sleaziest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sled",
       "aliases": [
         "sledding"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sleepy",
+      "aliases": [
+        "sleepier",
+        "sleepiest"
       ],
       "targetEligible": false
     },
@@ -63606,7 +66802,18 @@
     {
       "key": "slick",
       "aliases": [
-        "slicked"
+        "slicked",
+        "slicker"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sly",
+      "aliases": [
+        "slier",
+        "sliest",
+        "slyer",
+        "slyest"
       ],
       "targetEligible": false
     },
@@ -63614,6 +66821,22 @@
       "key": "slime",
       "aliases": [
         "slimed"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "slimy",
+      "aliases": [
+        "slimier",
+        "slimiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "slim",
+      "aliases": [
+        "slimmer",
+        "slimmest"
       ],
       "targetEligible": false
     },
@@ -63630,6 +66853,14 @@
         "slipped",
         "slipping",
         "slips"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "slippy",
+      "aliases": [
+        "slippier",
+        "slippiest"
       ],
       "targetEligible": false
     },
@@ -63672,6 +66903,14 @@
       "targetEligible": false
     },
     {
+      "key": "sloppy",
+      "aliases": [
+        "sloppier",
+        "sloppiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "slosh",
       "aliases": [
         "sloshed"
@@ -63690,6 +66929,7 @@
       "aliases": [
         "slowed",
         "slower",
+        "slowest",
         "slowing",
         "slows"
       ],
@@ -63741,6 +66981,14 @@
       "targetEligible": false
     },
     {
+      "key": "smarmy",
+      "aliases": [
+        "smarmier",
+        "smarmiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "smash",
       "aliases": [
         "smashed",
@@ -63756,9 +67004,25 @@
       "targetEligible": false
     },
     {
+      "key": "smelly",
+      "aliases": [
+        "smellier",
+        "smelliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "smock",
       "aliases": [
         "smocking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "smoky",
+      "aliases": [
+        "smokier",
+        "smokiest"
       ],
       "targetEligible": false
     },
@@ -63790,6 +67054,14 @@
       "aliases": [
         "smothered",
         "smothering"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "smug",
+      "aliases": [
+        "smugger",
+        "smuggest"
       ],
       "targetEligible": false
     },
@@ -63826,6 +67098,14 @@
       "targetEligible": false
     },
     {
+      "key": "snaky",
+      "aliases": [
+        "snakier",
+        "snakiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "snap",
       "aliases": [
         "snapped",
@@ -63835,9 +67115,25 @@
       "targetEligible": false
     },
     {
+      "key": "snappy",
+      "aliases": [
+        "snappier",
+        "snappiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "snarl",
       "aliases": [
         "snarled"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "snazzy",
+      "aliases": [
+        "snazzier",
+        "snazziest"
       ],
       "targetEligible": false
     },
@@ -63861,6 +67157,14 @@
       "key": "sneeze",
       "aliases": [
         "sneezing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sniffy",
+      "aliases": [
+        "sniffier",
+        "sniffiest"
       ],
       "targetEligible": false
     },
@@ -63898,6 +67202,14 @@
       "targetEligible": false
     },
     {
+      "key": "snooty",
+      "aliases": [
+        "snootier",
+        "snootiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "snore",
       "aliases": [
         "snoring"
@@ -63919,11 +67231,27 @@
       "targetEligible": false
     },
     {
+      "key": "snotty",
+      "aliases": [
+        "snottier",
+        "snottiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "snow",
       "aliases": [
         "snowed",
         "snowing",
         "snows"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "snowy",
+      "aliases": [
+        "snowier",
+        "snowiest"
       ],
       "targetEligible": false
     },
@@ -63960,6 +67288,8 @@
       "key": "snug",
       "aliases": [
         "snugged",
+        "snugger",
+        "snuggest",
         "snugging"
       ],
       "targetEligible": false
@@ -63977,6 +67307,14 @@
       "aliases": [
         "soaked",
         "soaking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "soapy",
+      "aliases": [
+        "soapier",
+        "soapiest"
       ],
       "targetEligible": false
     },
@@ -64062,6 +67400,14 @@
       "targetEligible": false
     },
     {
+      "key": "soggy",
+      "aliases": [
+        "soggier",
+        "soggiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "soil",
       "aliases": [
         "soiled",
@@ -64121,9 +67467,25 @@
       "targetEligible": false
     },
     {
+      "key": "sonsy",
+      "aliases": [
+        "sonsier",
+        "sonsiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "soothe",
       "aliases": [
         "soothing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sooty",
+      "aliases": [
+        "sootier",
+        "sootiest"
       ],
       "targetEligible": false
     },
@@ -64140,6 +67502,14 @@
         "sopped",
         "sopping",
         "sops"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "soppy",
+      "aliases": [
+        "soppier",
+        "soppiest"
       ],
       "targetEligible": false
     },
@@ -64161,6 +67531,14 @@
       "key": "sough",
       "aliases": [
         "soughing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "soupy",
+      "aliases": [
+        "soupier",
+        "soupiest"
       ],
       "targetEligible": false
     },
@@ -64358,6 +67736,14 @@
       "targetEligible": false
     },
     {
+      "key": "speedy",
+      "aliases": [
+        "speedier",
+        "speediest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "spellbind",
       "aliases": [
         "spellbinding"
@@ -64372,9 +67758,33 @@
       "targetEligible": false
     },
     {
+      "key": "spicy",
+      "aliases": [
+        "spicier",
+        "spiciest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "spiffy",
+      "aliases": [
+        "spiffier",
+        "spiffiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "spike",
       "aliases": [
         "spiked"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "spiky",
+      "aliases": [
+        "spikier",
+        "spikiest"
       ],
       "targetEligible": false
     },
@@ -64391,6 +67801,22 @@
       "key": "spillikin",
       "aliases": [
         "spillikins"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "spindly",
+      "aliases": [
+        "spindlier",
+        "spindliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "spiny",
+      "aliases": [
+        "spinier",
+        "spiniest"
       ],
       "targetEligible": false
     },
@@ -64425,6 +67851,14 @@
       "aliases": [
         "splashed",
         "splashing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "splashy",
+      "aliases": [
+        "splashier",
+        "splashiest"
       ],
       "targetEligible": false
     },
@@ -64474,6 +67908,22 @@
       "targetEligible": false
     },
     {
+      "key": "spongy",
+      "aliases": [
+        "spongier",
+        "spongiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "spooky",
+      "aliases": [
+        "spookier",
+        "spookiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "spoon",
       "aliases": [
         "spooned",
@@ -64496,6 +67946,22 @@
       "targetEligible": false
     },
     {
+      "key": "sporty",
+      "aliases": [
+        "sportier",
+        "sportiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "spotty",
+      "aliases": [
+        "spottier",
+        "spottiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "spout",
       "aliases": [
         "spouting"
@@ -64510,10 +67976,34 @@
       "targetEligible": false
     },
     {
+      "key": "spry",
+      "aliases": [
+        "sprier",
+        "spriest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sprig",
       "aliases": [
         "sprigged",
         "sprigging"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sprightly",
+      "aliases": [
+        "sprightlier",
+        "sprightliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "springy",
+      "aliases": [
+        "springier",
+        "springiest"
       ],
       "targetEligible": false
     },
@@ -64602,10 +68092,28 @@
       "targetEligible": false
     },
     {
+      "key": "squashy",
+      "aliases": [
+        "squashier",
+        "squashiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "squat",
       "aliases": [
         "squatted",
+        "squatter",
+        "squattest",
         "squatting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "squatty",
+      "aliases": [
+        "squattier",
+        "squattiest"
       ],
       "targetEligible": false
     },
@@ -64656,6 +68164,14 @@
       "targetEligible": false
     },
     {
+      "key": "squiffy",
+      "aliases": [
+        "squiffier",
+        "squiffiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "squinch",
       "aliases": [
         "squinched"
@@ -64665,6 +68181,7 @@
     {
       "key": "squint",
       "aliases": [
+        "squinter",
         "squinting"
       ],
       "targetEligible": false
@@ -64730,6 +68247,14 @@
       "aliases": [
         "staggering",
         "staggers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stagy",
+      "aliases": [
+        "stagier",
+        "stagiest"
       ],
       "targetEligible": false
     },
@@ -64811,6 +68336,14 @@
       "targetEligible": false
     },
     {
+      "key": "starchy",
+      "aliases": [
+        "starchier",
+        "starchiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "stare",
       "aliases": [
         "stared",
@@ -64834,6 +68367,14 @@
       "targetEligible": false
     },
     {
+      "key": "starry",
+      "aliases": [
+        "starrier",
+        "starriest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "startle",
       "aliases": [
         "startled",
@@ -64846,6 +68387,14 @@
       "aliases": [
         "starved",
         "starving"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stately",
+      "aliases": [
+        "statelier",
+        "stateliest"
       ],
       "targetEligible": false
     },
@@ -64864,6 +68413,22 @@
       "targetEligible": false
     },
     {
+      "key": "stealthy",
+      "aliases": [
+        "stealthier",
+        "stealthiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "steamy",
+      "aliases": [
+        "steamier",
+        "steamiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "steelmaker",
       "aliases": [
         "steelmakers"
@@ -64873,7 +68438,8 @@
     {
       "key": "steep",
       "aliases": [
-        "steeped"
+        "steeped",
+        "steeper"
       ],
       "targetEligible": false
     },
@@ -65022,6 +68588,14 @@
       "targetEligible": false
     },
     {
+      "key": "stingy",
+      "aliases": [
+        "stingier",
+        "stingiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sting",
       "aliases": [
         "stinging"
@@ -65039,6 +68613,13 @@
       "key": "stint",
       "aliases": [
         "stinting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "striper",
+      "aliases": [
+        "stiper"
       ],
       "targetEligible": false
     },
@@ -65089,9 +68670,25 @@
       "targetEligible": false
     },
     {
+      "key": "stocky",
+      "aliases": [
+        "stockier",
+        "stockiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "stockpile",
       "aliases": [
         "stockpiling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stodgy",
+      "aliases": [
+        "stodgier",
+        "stodgiest"
       ],
       "targetEligible": false
     },
@@ -65110,6 +68707,14 @@
       "targetEligible": false
     },
     {
+      "key": "stony",
+      "aliases": [
+        "stonier",
+        "stoniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "stoop",
       "aliases": [
         "stooped",
@@ -65121,6 +68726,14 @@
       "key": "stopper",
       "aliases": [
         "stoppered"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stormy",
+      "aliases": [
+        "stormier",
+        "stormiest"
       ],
       "targetEligible": false
     },
@@ -65200,6 +68813,7 @@
     {
       "key": "stray",
       "aliases": [
+        "strayer",
         "straying"
       ],
       "targetEligible": false
@@ -65214,6 +68828,14 @@
       "targetEligible": false
     },
     {
+      "key": "streaky",
+      "aliases": [
+        "streakier",
+        "streakiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "streamline",
       "aliases": [
         "streamlined",
@@ -65222,9 +68844,33 @@
       "targetEligible": false
     },
     {
+      "key": "stretchy",
+      "aliases": [
+        "stretchier",
+        "stretchiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "strew",
       "aliases": [
         "strewing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stringy",
+      "aliases": [
+        "stringier",
+        "stringiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stripy",
+      "aliases": [
+        "stripier",
+        "stripiest"
       ],
       "targetEligible": false
     },
@@ -65240,6 +68886,14 @@
       "aliases": [
         "stropped",
         "stropping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stroppy",
+      "aliases": [
+        "stroppier",
+        "stroppiest"
       ],
       "targetEligible": false
     },
@@ -65283,6 +68937,14 @@
       "targetEligible": false
     },
     {
+      "key": "stuffy",
+      "aliases": [
+        "stuffier",
+        "stuffiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "stultify",
       "aliases": [
         "stultified"
@@ -65295,6 +68957,14 @@
         "stumbled",
         "stumbles",
         "stumbling"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "stumpy",
+      "aliases": [
+        "stumpier",
+        "stumpiest"
       ],
       "targetEligible": false
     },
@@ -65325,6 +68995,14 @@
       "key": "stupidity",
       "aliases": [
         "stupidities"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sturdy",
+      "aliases": [
+        "sturdier",
+        "sturdiest"
       ],
       "targetEligible": false
     },
@@ -65542,6 +69220,14 @@
       "targetEligible": false
     },
     {
+      "key": "sulky",
+      "aliases": [
+        "sulkier",
+        "sulkiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "sully",
       "aliases": [
         "sullied"
@@ -65573,6 +69259,14 @@
       "key": "sulfurous",
       "aliases": [
         "sulphurous"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "sultry",
+      "aliases": [
+        "sultrier",
+        "sultriest"
       ],
       "targetEligible": false
     },
@@ -65709,6 +69403,14 @@
       "targetEligible": false
     },
     {
+      "key": "surly",
+      "aliases": [
+        "surlier",
+        "surliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "surmount",
       "aliases": [
         "surmounted"
@@ -65762,6 +69464,7 @@
     {
       "key": "swagger",
       "aliases": [
+        "swaggerer",
         "swaggering"
       ],
       "targetEligible": false
@@ -65783,12 +69486,28 @@
       "targetEligible": false
     },
     {
+      "key": "swanky",
+      "aliases": [
+        "swankier",
+        "swankiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "swap",
       "aliases": [
         "swapped",
         "swapping",
         "swopped",
         "swopping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "swarthy",
+      "aliases": [
+        "swarthier",
+        "swarthiest"
       ],
       "targetEligible": false
     },
@@ -66074,6 +69793,14 @@
       "targetEligible": false
     },
     {
+      "key": "tacky",
+      "aliases": [
+        "tackier",
+        "tackiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "tack",
       "aliases": [
         "tacking"
@@ -66120,6 +69847,14 @@
       "targetEligible": false
     },
     {
+      "key": "talky",
+      "aliases": [
+        "talkier",
+        "talkiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "tally",
       "aliases": [
         "tallied"
@@ -66136,7 +69871,8 @@
     {
       "key": "tame",
       "aliases": [
-        "tamed"
+        "tamed",
+        "tamer"
       ],
       "targetEligible": false
     },
@@ -66155,9 +69891,11 @@
       "targetEligible": false
     },
     {
-      "key": "tangier",
+      "key": "tangy",
       "aliases": [
-        "tangiers"
+        "tangier",
+        "tangiers",
+        "tangiest"
       ],
       "targetEligible": false
     },
@@ -66172,6 +69910,8 @@
       "key": "tan",
       "aliases": [
         "tanned",
+        "tanner",
+        "tannest",
         "tanning"
       ],
       "targetEligible": false
@@ -66210,6 +69950,14 @@
       "targetEligible": false
     },
     {
+      "key": "tardy",
+      "aliases": [
+        "tardier",
+        "tardiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "tar",
       "aliases": [
         "tarred",
@@ -66239,10 +69987,26 @@
       "targetEligible": false
     },
     {
+      "key": "tasty",
+      "aliases": [
+        "tastier",
+        "tastiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "tat",
       "aliases": [
         "tatted",
         "tatting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tatty",
+      "aliases": [
+        "tattier",
+        "tattiest"
       ],
       "targetEligible": false
     },
@@ -66257,6 +70021,14 @@
       "key": "taunt",
       "aliases": [
         "taunting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tawdry",
+      "aliases": [
+        "tawdrier",
+        "tawdriest"
       ],
       "targetEligible": false
     },
@@ -66321,6 +70093,14 @@
       "targetEligible": false
     },
     {
+      "key": "techy",
+      "aliases": [
+        "techier",
+        "techiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "technicality",
       "aliases": [
         "technicalities"
@@ -66346,6 +70126,14 @@
       "key": "teenager",
       "aliases": [
         "teenagers"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "teeny",
+      "aliases": [
+        "teenier",
+        "teeniest"
       ],
       "targetEligible": false
     },
@@ -66521,6 +70309,14 @@
       "targetEligible": false
     },
     {
+      "key": "testy",
+      "aliases": [
+        "testier",
+        "testiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "testify",
       "aliases": [
         "testified",
@@ -66533,6 +70329,14 @@
       "key": "testudo",
       "aliases": [
         "testudines"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tetchy",
+      "aliases": [
+        "tetchier",
+        "tetchiest"
       ],
       "targetEligible": false
     },
@@ -66605,7 +70409,17 @@
       "key": "thin",
       "aliases": [
         "thinned",
+        "thinner",
+        "thinnest",
         "thinning"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "thirsty",
+      "aliases": [
+        "thirstier",
+        "thirstiest"
       ],
       "targetEligible": false
     },
@@ -66624,6 +70438,14 @@
       "targetEligible": false
     },
     {
+      "key": "thorny",
+      "aliases": [
+        "thornier",
+        "thorniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "thrash",
       "aliases": [
         "thrashing"
@@ -66631,9 +70453,25 @@
       "targetEligible": false
     },
     {
+      "key": "thready",
+      "aliases": [
+        "threadier",
+        "threadiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "thresh",
       "aliases": [
         "threshing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "thrifty",
+      "aliases": [
+        "thriftier",
+        "thriftiest"
       ],
       "targetEligible": false
     },
@@ -66665,6 +70503,14 @@
         "thrived",
         "thrives",
         "thriving"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "throaty",
+      "aliases": [
+        "throatier",
+        "throatiest"
       ],
       "targetEligible": false
     },
@@ -66766,7 +70612,9 @@
     {
       "key": "tidy",
       "aliases": [
-        "tidied"
+        "tidied",
+        "tidier",
+        "tidiest"
       ],
       "targetEligible": false
     },
@@ -66818,6 +70666,14 @@
       "targetEligible": false
     },
     {
+      "key": "tiny",
+      "aliases": [
+        "tinier",
+        "tiniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "tinkle",
       "aliases": [
         "tinkling"
@@ -66829,6 +70685,14 @@
       "aliases": [
         "tinned",
         "tinning"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tinny",
+      "aliases": [
+        "tinnier",
+        "tinniest"
       ],
       "targetEligible": false
     },
@@ -66854,6 +70718,14 @@
         "tipped",
         "tipping",
         "tips"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tipsy",
+      "aliases": [
+        "tipsier",
+        "tipsiest"
       ],
       "targetEligible": false
     },
@@ -66965,6 +70837,14 @@
       "targetEligible": false
     },
     {
+      "key": "toothy",
+      "aliases": [
+        "toothier",
+        "toothiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "top",
       "aliases": [
         "topped",
@@ -67023,6 +70903,14 @@
       "key": "touchdown",
       "aliases": [
         "touchdowns"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "touchy",
+      "aliases": [
+        "touchier",
+        "touchiest"
       ],
       "targetEligible": false
     },
@@ -67222,6 +71110,14 @@
       "targetEligible": false
     },
     {
+      "key": "trashy",
+      "aliases": [
+        "trashier",
+        "trashiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "traumatize",
       "aliases": [
         "traumatise"
@@ -67266,6 +71162,14 @@
       "targetEligible": false
     },
     {
+      "key": "trendy",
+      "aliases": [
+        "trendier",
+        "trendiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "trepan",
       "aliases": [
         "trepanned",
@@ -67277,6 +71181,22 @@
       "key": "trespass",
       "aliases": [
         "trespassing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tricky",
+      "aliases": [
+        "trickier",
+        "trickiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tricksy",
+      "aliases": [
+        "tricksier",
+        "tricksiest"
       ],
       "targetEligible": false
     },
@@ -67320,6 +71240,9 @@
     {
       "key": "trim",
       "aliases": [
+        "trimmed",
+        "trimmer",
+        "trimmest",
         "trimming",
         "trimmings",
         "trims"
@@ -67385,6 +71308,14 @@
       "targetEligible": false
     },
     {
+      "key": "true",
+      "aliases": [
+        "truer",
+        "truest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "trumpet",
       "aliases": [
         "trumpets"
@@ -67416,6 +71347,22 @@
       "key": "truss",
       "aliases": [
         "trussed"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "trusty",
+      "aliases": [
+        "trustier",
+        "trustiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "tubby",
+      "aliases": [
+        "tubbier",
+        "tubbiest"
       ],
       "targetEligible": false
     },
@@ -67495,10 +71442,26 @@
       "targetEligible": false
     },
     {
+      "key": "tweedy",
+      "aliases": [
+        "tweedier",
+        "tweediest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "twig",
       "aliases": [
         "twigged",
         "twigging"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "twiggy",
+      "aliases": [
+        "twiggier",
+        "twiggiest"
       ],
       "targetEligible": false
     },
@@ -67563,6 +71526,14 @@
       "key": "tyro",
       "aliases": [
         "tyros"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ugly",
+      "aliases": [
+        "uglier",
+        "ugliest"
       ],
       "targetEligible": false
     },
@@ -67936,6 +71907,30 @@
       "targetEligible": false
     },
     {
+      "key": "unfriendly",
+      "aliases": [
+        "unfriendlier",
+        "unfriendliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ungainly",
+      "aliases": [
+        "ungainlier",
+        "ungainliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "ungodly",
+      "aliases": [
+        "ungodlier",
+        "ungodliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "unhallow",
       "aliases": [
         "unhallowed"
@@ -67943,9 +71938,33 @@
       "targetEligible": false
     },
     {
+      "key": "unhappy",
+      "aliases": [
+        "unhappier",
+        "unhappiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "unhealthy",
+      "aliases": [
+        "unhealthier",
+        "unhealthiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "unhinge",
       "aliases": [
         "unhinged"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "unholy",
+      "aliases": [
+        "unholier",
+        "unholiest"
       ],
       "targetEligible": false
     },
@@ -68070,6 +72089,14 @@
       "targetEligible": false
     },
     {
+      "key": "unruly",
+      "aliases": [
+        "unrulier",
+        "unruliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "unsaddle",
       "aliases": [
         "unsaddled"
@@ -68127,6 +72154,13 @@
       "targetEligible": false
     },
     {
+      "key": "unsold",
+      "aliases": [
+        "unsolder"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "unsteady",
       "aliases": [
         "unsteadied"
@@ -68158,7 +72192,9 @@
     {
       "key": "untidy",
       "aliases": [
-        "untidied"
+        "untidied",
+        "untidier",
+        "untidiest"
       ],
       "targetEligible": false
     },
@@ -68260,6 +72296,13 @@
       "targetEligible": false
     },
     {
+      "key": "upstage",
+      "aliases": [
+        "upstager"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "urbanization",
       "aliases": [
         "urbanisation"
@@ -68295,7 +72338,8 @@
     {
       "key": "utter",
       "aliases": [
-        "uttered"
+        "uttered",
+        "utterer"
       ],
       "targetEligible": false
     },
@@ -68758,6 +72802,7 @@
     {
       "key": "void",
       "aliases": [
+        "voider",
         "voiding"
       ],
       "targetEligible": false
@@ -68830,6 +72875,14 @@
       "key": "vie",
       "aliases": [
         "vying"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wacky",
+      "aliases": [
+        "wackier",
+        "wackiest"
       ],
       "targetEligible": false
     },
@@ -68950,7 +73003,17 @@
       "key": "wan",
       "aliases": [
         "wanned",
+        "wanner",
+        "wannest",
         "wanning"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wary",
+      "aliases": [
+        "warier",
+        "wariest"
       ],
       "targetEligible": false
     },
@@ -68972,6 +73035,14 @@
       "targetEligible": false
     },
     {
+      "key": "washy",
+      "aliases": [
+        "washier",
+        "washiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "watercolor",
       "aliases": [
         "watercolour"
@@ -68986,10 +73057,26 @@
       "targetEligible": false
     },
     {
+      "key": "wavy",
+      "aliases": [
+        "wavier",
+        "waviest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "wax",
       "aliases": [
         "waxed",
         "waxing"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "waxy",
+      "aliases": [
+        "waxier",
+        "waxiest"
       ],
       "targetEligible": false
     },
@@ -69024,9 +73111,25 @@
       "targetEligible": false
     },
     {
+      "key": "weakly",
+      "aliases": [
+        "weaklier",
+        "weakliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "weakness",
       "aliases": [
         "weaknesses"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wealthy",
+      "aliases": [
+        "wealthier",
+        "wealthiest"
       ],
       "targetEligible": false
     },
@@ -69042,6 +73145,8 @@
       "key": "weary",
       "aliases": [
         "wearied",
+        "wearier",
+        "weariest",
         "wearying"
       ],
       "targetEligible": false
@@ -69072,6 +73177,14 @@
       "targetEligible": false
     },
     {
+      "key": "webby",
+      "aliases": [
+        "webbier",
+        "webbiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "wed",
       "aliases": [
         "wedded",
@@ -69096,6 +73209,38 @@
       "targetEligible": false
     },
     {
+      "key": "weedy",
+      "aliases": [
+        "weedier",
+        "weediest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "weeny",
+      "aliases": [
+        "weenier",
+        "weeniest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "weensy",
+      "aliases": [
+        "weensier",
+        "weensiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "weepy",
+      "aliases": [
+        "weepier",
+        "weepiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "weep",
       "aliases": [
         "weeping"
@@ -69112,6 +73257,14 @@
       "targetEligible": false
     },
     {
+      "key": "weighty",
+      "aliases": [
+        "weightier",
+        "weightiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "weightlift",
       "aliases": [
         "weightlifting"
@@ -69122,6 +73275,13 @@
       "key": "werewolf",
       "aliases": [
         "werewolves"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "west",
+      "aliases": [
+        "wester"
       ],
       "targetEligible": false
     },
@@ -69151,6 +73311,8 @@
       "aliases": [
         "wets",
         "wetted",
+        "wetter",
+        "wettest",
         "wetting"
       ],
       "targetEligible": false
@@ -69160,6 +73322,14 @@
       "aliases": [
         "whacked",
         "whacking"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "whacky",
+      "aliases": [
+        "whackier",
+        "whackiest"
       ],
       "targetEligible": false
     },
@@ -69205,6 +73375,14 @@
       "aliases": [
         "whetted",
         "whetting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "whimsy",
+      "aliases": [
+        "whimsier",
+        "whimsiest"
       ],
       "targetEligible": false
     },
@@ -69327,6 +73505,14 @@
       "targetEligible": false
     },
     {
+      "key": "wieldy",
+      "aliases": [
+        "wieldier",
+        "wieldiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "wig",
       "aliases": [
         "wigged",
@@ -69351,10 +73537,41 @@
       "targetEligible": false
     },
     {
+      "key": "wild",
+      "aliases": [
+        "wilder"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wily",
+      "aliases": [
+        "wilier",
+        "wiliest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "wilt",
       "aliases": [
         "wilted",
         "wilting"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "windy",
+      "aliases": [
+        "windier",
+        "windiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "winy",
+      "aliases": [
+        "winier",
+        "winiest"
       ],
       "targetEligible": false
     },
@@ -69373,11 +73590,43 @@
       "targetEligible": false
     },
     {
+      "key": "wintery",
+      "aliases": [
+        "winterier",
+        "winteriest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wintry",
+      "aliases": [
+        "wintrier",
+        "wintriest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "wipe",
       "aliases": [
         "wiped",
         "wipes",
         "wiping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wiry",
+      "aliases": [
+        "wirier",
+        "wiriest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wispy",
+      "aliases": [
+        "wispier",
+        "wispiest"
       ],
       "targetEligible": false
     },
@@ -69421,6 +73670,14 @@
       "targetEligible": false
     },
     {
+      "key": "witty",
+      "aliases": [
+        "wittier",
+        "wittiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "wobble",
       "aliases": [
         "wobbling"
@@ -69457,6 +73714,30 @@
       "targetEligible": false
     },
     {
+      "key": "wonky",
+      "aliases": [
+        "wonkier",
+        "wonkiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "woody",
+      "aliases": [
+        "woodier",
+        "woodiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "woodsy",
+      "aliases": [
+        "woodsier",
+        "woodsiest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "woo",
       "aliases": [
         "wooing"
@@ -69480,7 +73761,41 @@
     {
       "key": "wooly",
       "aliases": [
+        "woollier",
+        "woolliest",
         "woolly"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "woozy",
+      "aliases": [
+        "woozier",
+        "wooziest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wordy",
+      "aliases": [
+        "wordier",
+        "wordiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "worldly",
+      "aliases": [
+        "worldlier",
+        "worldliest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "wormy",
+      "aliases": [
+        "wormier",
+        "wormiest"
       ],
       "targetEligible": false
     },
@@ -69539,7 +73854,11 @@
     {
       "key": "wry",
       "aliases": [
-        "wried"
+        "wried",
+        "wrier",
+        "wriest",
+        "wryer",
+        "wryest"
       ],
       "targetEligible": false
     },
@@ -69599,6 +73918,14 @@
       "key": "yearn",
       "aliases": [
         "yearning"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "yeasty",
+      "aliases": [
+        "yeastier",
+        "yeastiest"
       ],
       "targetEligible": false
     },
@@ -69665,6 +73992,22 @@
       "targetEligible": false
     },
     {
+      "key": "yummy",
+      "aliases": [
+        "yummier",
+        "yummiest"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "zany",
+      "aliases": [
+        "zanier",
+        "zaniest"
+      ],
+      "targetEligible": false
+    },
+    {
       "key": "zap",
       "aliases": [
         "zapped",
@@ -69692,6 +74035,14 @@
       "aliases": [
         "zipped",
         "zipping"
+      ],
+      "targetEligible": false
+    },
+    {
+      "key": "zippy",
+      "aliases": [
+        "zippier",
+        "zippiest"
       ],
       "targetEligible": false
     },

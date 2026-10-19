@@ -176,7 +176,13 @@
     "media": "Communication channels, distinct from the size or substance medium.",
     "data": "Information as a mass noun, never the rare singular datum.",
     "ethics": "A singular discipline distinct from one ethic.",
-    "mechanics": "A branch of physics distinct from a mechanic."
+    "mechanics": "A branch of physics distinct from a mechanic.",
+    "setting": "A configuration or environment distinct from the verb set.",
+    "holding": "An asset or possession distinct from hold.",
+    "finding": "A discovery or conclusion distinct from find.",
+    "belonging": "A possession distinct from belong.",
+    "winnings": "Gambling proceeds distinct from win.",
+    "leavings": "Leftover remnants distinct from leave."
   },
   "spellingVariantExcluded": {
     "metre": "Meter also names a measuring device; merging the unsensed embeddings could solve the wrong concept.",
@@ -207,7 +213,10 @@
     "best": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
     "worse": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
     "worst": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
-    "people": "Plural collective noun; accepted as a guess but never a hidden answer."
+    "people": "Plural collective noun; accepted as a guess but never a hidden answer.",
+    "media": "A lexicalized plural/mass communication concept; accepted as a guess but never a hidden answer.",
+    "winnings": "Plural-only noun; accepted as a guess but never a hidden answer.",
+    "leavings": "Plural-only noun; accepted as a guess but never a hidden answer."
   },
   "invariantSingular": [
     "news",
@@ -261,6 +270,15 @@
     ],
     "lying": [
       "lie"
+    ],
+    "people": [
+      "person"
+    ],
+    "media": [
+      "medium"
+    ],
+    "data": [
+      "datum"
     ]
   }
 }

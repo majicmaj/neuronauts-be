@@ -3,63 +3,27 @@ downloads,download,no,,target-excluded,No supported inflection rule safely maps 
 forgotten,forget,yes,,target-excluded,No supported inflection rule safely maps this word to forget.
 headquarters,headquarter,yes,NN|NNS,target-excluded,No supported inflection rule safely maps this word to headquarter.
 undertaken,undertake,no,,target-excluded,No supported inflection rule safely maps this word to undertake.
+institutes,institute,no,NN,target-excluded,No supported inflection rule safely maps this word to institute.
 forbidden,forbid,yes,,target-excluded,No supported inflection rule safely maps this word to forbid.
 would,will,no,MD,target-excluded,No supported inflection rule safely maps this word to will.
 could,can,no,MD,target-excluded,No supported inflection rule safely maps this word to can.
-better,good,yes,JJR|JJ|RB|VB|RBR,target-excluded,Comparison form has an independent lexical role alongside good.
-latest,late,yes,JJS|JJ,standalone,Comparison form has an independent lexical role alongside late.
 might,may,yes,MD|NN,target-excluded,No supported inflection rule safely maps this word to may.
 james,jam,yes,,target-excluded,No supported inflection rule safely maps this word to jam.
-later,late,yes,RB|JJ|RP|JJR|RBR,standalone,Comparison form has an independent lexical role alongside late.
-higher,high,yes,JJR|RB|RBR,standalone,Comparison form has an independent lexical role alongside high.
-lower,low,yes,JJR|RBR|VBP|JJ|RB|VB,standalone,Comparison form has an independent lexical role alongside low.
-longer,long,yes,RB|JJR|RBR,standalone,Comparison form has an independent lexical role alongside long.
-highest,high,no,JJS|RB|RBS,standalone,Comparison form has an independent lexical role alongside high.
-older,old,yes,JJR|RBR|JJ,standalone,Comparison form has an independent lexical role alongside old.
-discuss,discus,yes,VB|VBP,target-excluded,No supported inflection rule safely maps this word to discus.
-lowest,low,yes,JJS|JJ,standalone,Comparison form has an independent lexical role alongside low.
 lives,life|live,no,NNS|VBZ,target-excluded,"Ambiguous lemmas: life, live."
-earlier,early,yes,RBR|JJR|JJ|NN|RB,standalone,Comparison form has an independent lexical role alongside early.
 forgot,forget,no,,target-excluded,No supported inflection rule safely maps this word to forget.
-faster,fast,yes,RBR|JJR|RB,standalone,Comparison form has an independent lexical role alongside fast.
-easier,easy,no,JJR|RBR|RB,standalone,Comparison form has an independent lexical role alongside easy.
 suites,suit|suite,no,NNS,target-excluded,"Ambiguous lemmas: suit, suite."
-newest,new,no,,target-excluded,No supported inflection rule safely maps this word to new.
 leaves,leaf|leave,no,VBZ|JJ|NNS,target-excluded,"Ambiguous lemmas: leaf, leave."
 alumni,alumnus,no,,target-excluded,No supported inflection rule safely maps this word to alumnus.
-worst,bad,yes,JJS|RBS|JJ,target-excluded,Comparison form has an independent lexical role alongside bad.
-buffer,buff,yes,,target-excluded,No supported inflection rule safely maps this word to buff.
-oldest,old,no,,target-excluded,No supported inflection rule safely maps this word to old.
-worse,bad,yes,JJR|JJ|RBR,target-excluded,Comparison form has an independent lexical role alongside bad.
-nearest,near,yes,,target-excluded,No supported inflection rule safely maps this word to near.
 broker,broke,yes,NN,target-excluded,No supported inflection rule safely maps this word to broke.
 proven,prove,yes,,target-excluded,No supported inflection rule safely maps this word to prove.
-believes,belief|believe,no,VBZ,target-excluded,"Ambiguous lemmas: belief, believe."
 outer,out,yes,JJ,target-excluded,No supported inflection rule safely maps this word to out.
 nodes,nod|node,no,,target-excluded,"Ambiguous lemmas: nod, node."
-fewer,few,yes,JJR|RB|RBR,standalone,Comparison form has an independent lexical role alongside few.
 spoken,speak,yes,,target-excluded,No supported inflection rule safely maps this word to speak.
 routing,rout|route,no,VBG|NN,target-excluded,"Ambiguous lemmas: rout, route."
-finest,fine,no,,target-excluded,No supported inflection rule safely maps this word to fine.
-harder,hard,no,JJR|RBR|JJ|RB,standalone,Comparison form has an independent lexical role alongside hard.
-cheapest,cheap,no,,target-excluded,No supported inflection rule safely maps this word to cheap.
-fastest,fast,yes,,target-excluded,No supported inflection rule safely maps this word to fast.
 trivia,trivium,yes,,target-excluded,No supported inflection rule safely maps this word to trivium.
-newer,new,no,,target-excluded,No supported inflection rule safely maps this word to new.
-cooler,cool,yes,,target-excluded,No supported inflection rule safely maps this word to cool.
-deeper,deep,no,JJR|RBR|RB,standalone,Comparison form has an independent lexical role alongside deep.
-lighter,light,yes,,target-excluded,No supported inflection rule safely maps this word to light.
-shorter,short,no,,target-excluded,No supported inflection rule safely maps this word to short.
-lesser,less,yes,,target-excluded,No supported inflection rule safely maps this word to less.
 dealt,deal,no,,target-excluded,No supported inflection rule safely maps this word to deal.
 prepaid,prepay,yes,,target-excluded,No supported inflection rule safely maps this word to prepay.
 podcasts,podcast,no,,target-excluded,No supported inflection rule safely maps this word to podcast.
 wives,wife|wive,no,,target-excluded,"Ambiguous lemmas: wife, wive."
 laden,lade,yes,,target-excluded,No supported inflection rule safely maps this word to lade.
-longest,long,yes,,target-excluded,No supported inflection rule safely maps this word to long.
-flyer,fly,yes,,target-excluded,No supported inflection rule safely maps this word to fly.
 hayes,hay,yes,,target-excluded,No supported inflection rule safely maps this word to hay.
-dryer,dry,yes,,target-excluded,No supported inflection rule safely maps this word to dry.
-earliest,early,yes,,target-excluded,No supported inflection rule safely maps this word to early.
-safer,safe,no,,target-excluded,No supported inflection rule safely maps this word to safe.
-smallest,small,no,,target-excluded,No supported inflection rule safely maps this word to small.

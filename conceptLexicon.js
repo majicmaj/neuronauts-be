@@ -24,7 +24,7 @@ class ConceptLexicon {
     const ambiguous = this.ambiguousAliases[word];
     const alias = this.aliases[word] ||
       (targetWord && ambiguous?.candidates.includes(targetWord)
-        ? { canonical: targetWord, transformation: ambiguous.transformation }
+        ? { canonical: targetWord, transformation: ambiguous.transformations[targetWord] }
         : null);
     if (!alias) {
       return {

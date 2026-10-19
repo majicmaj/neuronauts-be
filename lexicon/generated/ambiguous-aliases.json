@@ -1,0 +1,3897 @@
+{
+  "version": 1,
+  "aliases": {
+    "abode": {
+      "candidates": [
+        "abide"
+      ],
+      "transformations": {
+        "abide": "irregular"
+      }
+    },
+    "abought": {
+      "candidates": [
+        "aby"
+      ],
+      "transformations": {
+        "aby": "irregular"
+      }
+    },
+    "abstracter": {
+      "candidates": [
+        "abstract"
+      ],
+      "transformations": {
+        "abstract": "comparison"
+      }
+    },
+    "abye": {
+      "candidates": [
+        "aby"
+      ],
+      "transformations": {
+        "aby": "irregular"
+      }
+    },
+    "addrest": {
+      "candidates": [
+        "address"
+      ],
+      "transformations": {
+        "address": "irregular"
+      }
+    },
+    "am": {
+      "candidates": [
+        "be"
+      ],
+      "transformations": {
+        "be": "irregular"
+      }
+    },
+    "are": {
+      "candidates": [
+        "be"
+      ],
+      "transformations": {
+        "be": "irregular"
+      }
+    },
+    "arisen": {
+      "candidates": [
+        "arise"
+      ],
+      "transformations": {
+        "arise": "irregular"
+      }
+    },
+    "arose": {
+      "candidates": [
+        "arise"
+      ],
+      "transformations": {
+        "arise": "irregular"
+      }
+    },
+    "ate": {
+      "candidates": [
+        "eat"
+      ],
+      "transformations": {
+        "eat": "past"
+      }
+    },
+    "awoke": {
+      "candidates": [
+        "awake"
+      ],
+      "transformations": {
+        "awake": "irregular"
+      }
+    },
+    "awoken": {
+      "candidates": [
+        "awake"
+      ],
+      "transformations": {
+        "awake": "irregular"
+      }
+    },
+    "axes": {
+      "candidates": [
+        "ax",
+        "axis"
+      ],
+      "transformations": {
+        "ax": "plural",
+        "axis": "plural"
+      }
+    },
+    "backbit": {
+      "candidates": [
+        "backbite"
+      ],
+      "transformations": {
+        "backbite": "irregular"
+      }
+    },
+    "backbitten": {
+      "candidates": [
+        "backbite"
+      ],
+      "transformations": {
+        "backbite": "irregular"
+      }
+    },
+    "backhander": {
+      "candidates": [
+        "backhand"
+      ],
+      "transformations": {
+        "backhand": "comparison"
+      }
+    },
+    "backslid": {
+      "candidates": [
+        "backslide"
+      ],
+      "transformations": {
+        "backslide": "irregular"
+      }
+    },
+    "backslidden": {
+      "candidates": [
+        "backslide"
+      ],
+      "transformations": {
+        "backslide": "irregular"
+      }
+    },
+    "bade": {
+      "candidates": [
+        "bid"
+      ],
+      "transformations": {
+        "bid": "irregular"
+      }
+    },
+    "balder": {
+      "candidates": [
+        "bald"
+      ],
+      "transformations": {
+        "bald": "comparison"
+      }
+    },
+    "beaten": {
+      "candidates": [
+        "beat"
+      ],
+      "transformations": {
+        "beat": "irregular"
+      }
+    },
+    "befallen": {
+      "candidates": [
+        "befall"
+      ],
+      "transformations": {
+        "befall": "irregular"
+      }
+    },
+    "befell": {
+      "candidates": [
+        "befall"
+      ],
+      "transformations": {
+        "befall": "irregular"
+      }
+    },
+    "begat": {
+      "candidates": [
+        "beget"
+      ],
+      "transformations": {
+        "beget": "irregular"
+      }
+    },
+    "begot": {
+      "candidates": [
+        "beget"
+      ],
+      "transformations": {
+        "beget": "irregular"
+      }
+    },
+    "begotten": {
+      "candidates": [
+        "beget"
+      ],
+      "transformations": {
+        "beget": "irregular"
+      }
+    },
+    "beheld": {
+      "candidates": [
+        "behold"
+      ],
+      "transformations": {
+        "behold": "irregular"
+      }
+    },
+    "beholden": {
+      "candidates": [
+        "behold"
+      ],
+      "transformations": {
+        "behold": "irregular"
+      }
+    },
+    "bent": {
+      "candidates": [
+        "bend"
+      ],
+      "transformations": {
+        "bend": "irregular"
+      }
+    },
+    "berserker": {
+      "candidates": [
+        "berserk"
+      ],
+      "transformations": {
+        "berserk": "comparison"
+      }
+    },
+    "besought": {
+      "candidates": [
+        "beseech"
+      ],
+      "transformations": {
+        "beseech": "irregular"
+      }
+    },
+    "bespoke": {
+      "candidates": [
+        "bespeak"
+      ],
+      "transformations": {
+        "bespeak": "irregular"
+      }
+    },
+    "bespoken": {
+      "candidates": [
+        "bespeak"
+      ],
+      "transformations": {
+        "bespeak": "irregular"
+      }
+    },
+    "best": {
+      "candidates": [
+        "good"
+      ],
+      "transformations": {
+        "good": "comparison"
+      }
+    },
+    "bestrewn": {
+      "candidates": [
+        "bestrew"
+      ],
+      "transformations": {
+        "bestrew": "irregular"
+      }
+    },
+    "bestrid": {
+      "candidates": [
+        "bestride"
+      ],
+      "transformations": {
+        "bestride": "irregular"
+      }
+    },
+    "bestridden": {
+      "candidates": [
+        "bestride"
+      ],
+      "transformations": {
+        "bestride": "irregular"
+      }
+    },
+    "bestrode": {
+      "candidates": [
+        "bestride"
+      ],
+      "transformations": {
+        "bestride": "irregular"
+      }
+    },
+    "bethought": {
+      "candidates": [
+        "bethink"
+      ],
+      "transformations": {
+        "bethink": "irregular"
+      }
+    },
+    "better": {
+      "candidates": [
+        "good"
+      ],
+      "transformations": {
+        "good": "comparison"
+      }
+    },
+    "bidden": {
+      "candidates": [
+        "bid"
+      ],
+      "transformations": {
+        "bid": "irregular"
+      }
+    },
+    "birling": {
+      "candidates": [
+        "birl",
+        "birle"
+      ],
+      "transformations": {
+        "birl": "participle",
+        "birle": "participle"
+      }
+    },
+    "bit": {
+      "candidates": [
+        "bite"
+      ],
+      "transformations": {
+        "bite": "past"
+      }
+    },
+    "bitten": {
+      "candidates": [
+        "bite"
+      ],
+      "transformations": {
+        "bite": "irregular"
+      }
+    },
+    "blest": {
+      "candidates": [
+        "bless"
+      ],
+      "transformations": {
+        "bless": "irregular"
+      }
+    },
+    "blew": {
+      "candidates": [
+        "blow"
+      ],
+      "transformations": {
+        "blow": "irregular"
+      }
+    },
+    "blinder": {
+      "candidates": [
+        "blind"
+      ],
+      "transformations": {
+        "blind": "comparison"
+      }
+    },
+    "blither": {
+      "candidates": [
+        "blithe"
+      ],
+      "transformations": {
+        "blithe": "comparison"
+      }
+    },
+    "blown": {
+      "candidates": [
+        "blow"
+      ],
+      "transformations": {
+        "blow": "irregular"
+      }
+    },
+    "bluffer": {
+      "candidates": [
+        "bluff"
+      ],
+      "transformations": {
+        "bluff": "comparison"
+      }
+    },
+    "bore": {
+      "candidates": [
+        "bear"
+      ],
+      "transformations": {
+        "bear": "past"
+      }
+    },
+    "born": {
+      "candidates": [
+        "bear"
+      ],
+      "transformations": {
+        "bear": "past"
+      }
+    },
+    "bound": {
+      "candidates": [
+        "bind"
+      ],
+      "transformations": {
+        "bind": "past"
+      }
+    },
+    "browbeaten": {
+      "candidates": [
+        "browbeat"
+      ],
+      "transformations": {
+        "browbeat": "irregular"
+      }
+    },
+    "buffer": {
+      "candidates": [
+        "buff"
+      ],
+      "transformations": {
+        "buff": "comparison"
+      }
+    },
+    "burnt": {
+      "candidates": [
+        "burn"
+      ],
+      "transformations": {
+        "burn": "irregular"
+      }
+    },
+    "bustier": {
+      "candidates": [
+        "busty"
+      ],
+      "transformations": {
+        "busty": "comparison"
+      }
+    },
+    "butcher": {
+      "candidates": [
+        "butch"
+      ],
+      "transformations": {
+        "butch": "comparison"
+      }
+    },
+    "bypast": {
+      "candidates": [
+        "bypass"
+      ],
+      "transformations": {
+        "bypass": "irregular"
+      }
+    },
+    "caddies": {
+      "candidates": [
+        "caddie",
+        "caddy"
+      ],
+      "transformations": {
+        "caddie": "plural",
+        "caddy": "irregular"
+      }
+    },
+    "chevies": {
+      "candidates": [
+        "chivy"
+      ],
+      "transformations": {
+        "chivy": "irregular"
+      }
+    },
+    "chid": {
+      "candidates": [
+        "chide"
+      ],
+      "transformations": {
+        "chide": "irregular"
+      }
+    },
+    "chidden": {
+      "candidates": [
+        "chide"
+      ],
+      "transformations": {
+        "chide": "irregular"
+      }
+    },
+    "chivvies": {
+      "candidates": [
+        "chivy"
+      ],
+      "transformations": {
+        "chivy": "irregular"
+      }
+    },
+    "chosen": {
+      "candidates": [
+        "choose"
+      ],
+      "transformations": {
+        "choose": "past"
+      }
+    },
+    "clad": {
+      "candidates": [
+        "clothe"
+      ],
+      "transformations": {
+        "clothe": "irregular"
+      }
+    },
+    "cleft": {
+      "candidates": [
+        "cleave"
+      ],
+      "transformations": {
+        "cleave": "irregular"
+      }
+    },
+    "clove": {
+      "candidates": [
+        "cleave"
+      ],
+      "transformations": {
+        "cleave": "irregular"
+      }
+    },
+    "cloven": {
+      "candidates": [
+        "cleave"
+      ],
+      "transformations": {
+        "cleave": "irregular"
+      }
+    },
+    "clung": {
+      "candidates": [
+        "cling"
+      ],
+      "transformations": {
+        "cling": "irregular"
+      }
+    },
+    "collier": {
+      "candidates": [
+        "colly"
+      ],
+      "transformations": {
+        "colly": "comparison"
+      }
+    },
+    "commoner": {
+      "candidates": [
+        "common"
+      ],
+      "transformations": {
+        "common": "comparison"
+      }
+    },
+    "contents": {
+      "candidates": [
+        "content"
+      ],
+      "transformations": {
+        "content": "plural"
+      }
+    },
+    "cooler": {
+      "candidates": [
+        "cool"
+      ],
+      "transformations": {
+        "cool": "comparison"
+      }
+    },
+    "could": {
+      "candidates": [
+        "can"
+      ],
+      "transformations": {
+        "can": "irregular"
+      }
+    },
+    "countersank": {
+      "candidates": [
+        "countersink"
+      ],
+      "transformations": {
+        "countersink": "irregular"
+      }
+    },
+    "countersunk": {
+      "candidates": [
+        "countersink"
+      ],
+      "transformations": {
+        "countersink": "irregular"
+      }
+    },
+    "crept": {
+      "candidates": [
+        "creep"
+      ],
+      "transformations": {
+        "creep": "irregular"
+      }
+    },
+    "crosses": {
+      "candidates": [
+        "cross",
+        "crosse"
+      ],
+      "transformations": {
+        "cross": "agreement",
+        "crosse": "plural"
+      }
+    },
+    "curettes": {
+      "candidates": [
+        "curet",
+        "curette"
+      ],
+      "transformations": {
+        "curet": "irregular",
+        "curette": "plural"
+      }
+    },
+    "curst": {
+      "candidates": [
+        "curse"
+      ],
+      "transformations": {
+        "curse": "irregular"
+      }
+    },
+    "customs": {
+      "candidates": [
+        "custom"
+      ],
+      "transformations": {
+        "custom": "plural"
+      }
+    },
+    "damages": {
+      "candidates": [
+        "damage"
+      ],
+      "transformations": {
+        "damage": "plural"
+      }
+    },
+    "damper": {
+      "candidates": [
+        "damp"
+      ],
+      "transformations": {
+        "damp": "comparison"
+      }
+    },
+    "data": {
+      "candidates": [
+        "datum"
+      ],
+      "transformations": {
+        "datum": "plural"
+      }
+    },
+    "dealt": {
+      "candidates": [
+        "deal"
+      ],
+      "transformations": {
+        "deal": "irregular"
+      }
+    },
+    "dearest": {
+      "candidates": [
+        "dear"
+      ],
+      "transformations": {
+        "dear": "comparison"
+      }
+    },
+    "degasses": {
+      "candidates": [
+        "degas"
+      ],
+      "transformations": {
+        "degas": "irregular"
+      }
+    },
+    "diagnoses": {
+      "candidates": [
+        "diagnose",
+        "diagnosis"
+      ],
+      "transformations": {
+        "diagnose": "agreement",
+        "diagnosis": "plural"
+      }
+    },
+    "diffuser": {
+      "candidates": [
+        "diffuse"
+      ],
+      "transformations": {
+        "diffuse": "comparison"
+      }
+    },
+    "dimmer": {
+      "candidates": [
+        "dim"
+      ],
+      "transformations": {
+        "dim": "comparison"
+      }
+    },
+    "diviner": {
+      "candidates": [
+        "divine"
+      ],
+      "transformations": {
+        "divine": "comparison"
+      }
+    },
+    "doubler": {
+      "candidates": [
+        "double"
+      ],
+      "transformations": {
+        "double": "comparison"
+      }
+    },
+    "dove": {
+      "candidates": [
+        "dive"
+      ],
+      "transformations": {
+        "dive": "irregular"
+      }
+    },
+    "drank": {
+      "candidates": [
+        "drink"
+      ],
+      "transformations": {
+        "drink": "irregular"
+      }
+    },
+    "dreamt": {
+      "candidates": [
+        "dream"
+      ],
+      "transformations": {
+        "dream": "irregular"
+      }
+    },
+    "drew": {
+      "candidates": [
+        "draw"
+      ],
+      "transformations": {
+        "draw": "past"
+      }
+    },
+    "drier": {
+      "candidates": [
+        "dry"
+      ],
+      "transformations": {
+        "dry": "comparison"
+      }
+    },
+    "drove": {
+      "candidates": [
+        "drive"
+      ],
+      "transformations": {
+        "drive": "past"
+      }
+    },
+    "drunk": {
+      "candidates": [
+        "drink"
+      ],
+      "transformations": {
+        "drink": "past"
+      }
+    },
+    "dryer": {
+      "candidates": [
+        "dry"
+      ],
+      "transformations": {
+        "dry": "comparison"
+      }
+    },
+    "dug": {
+      "candidates": [
+        "dig"
+      ],
+      "transformations": {
+        "dig": "irregular"
+      }
+    },
+    "dwelt": {
+      "candidates": [
+        "dwell"
+      ],
+      "transformations": {
+        "dwell": "irregular"
+      }
+    },
+    "dynamics": {
+      "candidates": [
+        "dynamic"
+      ],
+      "transformations": {
+        "dynamic": "plural"
+      }
+    },
+    "easterner": {
+      "candidates": [
+        "eastern"
+      ],
+      "transformations": {
+        "eastern": "comparison"
+      }
+    },
+    "eighter": {
+      "candidates": [
+        "eight"
+      ],
+      "transformations": {
+        "eight": "comparison"
+      }
+    },
+    "fakeer": {
+      "candidates": [
+        "fake"
+      ],
+      "transformations": {
+        "fake": "comparison"
+      }
+    },
+    "fancier": {
+      "candidates": [
+        "fancy"
+      ],
+      "transformations": {
+        "fancy": "comparison"
+      }
+    },
+    "fell": {
+      "candidates": [
+        "fall"
+      ],
+      "transformations": {
+        "fall": "past"
+      }
+    },
+    "felt": {
+      "candidates": [
+        "feel"
+      ],
+      "transformations": {
+        "feel": "past"
+      }
+    },
+    "fitter": {
+      "candidates": [
+        "fit"
+      ],
+      "transformations": {
+        "fit": "comparison"
+      }
+    },
+    "fiver": {
+      "candidates": [
+        "five"
+      ],
+      "transformations": {
+        "five": "comparison"
+      }
+    },
+    "flatter": {
+      "candidates": [
+        "flat"
+      ],
+      "transformations": {
+        "flat": "comparison"
+      }
+    },
+    "flew": {
+      "candidates": [
+        "fly"
+      ],
+      "transformations": {
+        "fly": "irregular"
+      }
+    },
+    "floodlit": {
+      "candidates": [
+        "floodlight"
+      ],
+      "transformations": {
+        "floodlight": "irregular"
+      }
+    },
+    "flown": {
+      "candidates": [
+        "fly"
+      ],
+      "transformations": {
+        "fly": "irregular"
+      }
+    },
+    "flung": {
+      "candidates": [
+        "fling"
+      ],
+      "transformations": {
+        "fling": "irregular"
+      }
+    },
+    "flyer": {
+      "candidates": [
+        "fly"
+      ],
+      "transformations": {
+        "fly": "comparison"
+      }
+    },
+    "forbad": {
+      "candidates": [
+        "forbid"
+      ],
+      "transformations": {
+        "forbid": "irregular"
+      }
+    },
+    "forbade": {
+      "candidates": [
+        "forbid"
+      ],
+      "transformations": {
+        "forbid": "irregular"
+      }
+    },
+    "forbidden": {
+      "candidates": [
+        "forbid"
+      ],
+      "transformations": {
+        "forbid": "irregular"
+      }
+    },
+    "forbore": {
+      "candidates": [
+        "forbear"
+      ],
+      "transformations": {
+        "forbear": "irregular"
+      }
+    },
+    "forborne": {
+      "candidates": [
+        "forbear"
+      ],
+      "transformations": {
+        "forbear": "irregular"
+      }
+    },
+    "foregone": {
+      "candidates": [
+        "forego"
+      ],
+      "transformations": {
+        "forego": "irregular"
+      }
+    },
+    "foreknew": {
+      "candidates": [
+        "foreknow"
+      ],
+      "transformations": {
+        "foreknow": "irregular"
+      }
+    },
+    "foreknown": {
+      "candidates": [
+        "foreknow"
+      ],
+      "transformations": {
+        "foreknow": "irregular"
+      }
+    },
+    "foresaw": {
+      "candidates": [
+        "foresee"
+      ],
+      "transformations": {
+        "foresee": "irregular"
+      }
+    },
+    "foreseen": {
+      "candidates": [
+        "foresee"
+      ],
+      "transformations": {
+        "foresee": "irregular"
+      }
+    },
+    "foreshown": {
+      "candidates": [
+        "foreshow"
+      ],
+      "transformations": {
+        "foreshow": "irregular"
+      }
+    },
+    "foretold": {
+      "candidates": [
+        "foretell"
+      ],
+      "transformations": {
+        "foretell": "irregular"
+      }
+    },
+    "forewent": {
+      "candidates": [
+        "forego"
+      ],
+      "transformations": {
+        "forego": "irregular"
+      }
+    },
+    "forgave": {
+      "candidates": [
+        "forgive"
+      ],
+      "transformations": {
+        "forgive": "irregular"
+      }
+    },
+    "forgiven": {
+      "candidates": [
+        "forgive"
+      ],
+      "transformations": {
+        "forgive": "irregular"
+      }
+    },
+    "forgone": {
+      "candidates": [
+        "forgo"
+      ],
+      "transformations": {
+        "forgo": "irregular"
+      }
+    },
+    "forgot": {
+      "candidates": [
+        "forget"
+      ],
+      "transformations": {
+        "forget": "irregular"
+      }
+    },
+    "forgotten": {
+      "candidates": [
+        "forget"
+      ],
+      "transformations": {
+        "forget": "irregular"
+      }
+    },
+    "forsaken": {
+      "candidates": [
+        "forsake"
+      ],
+      "transformations": {
+        "forsake": "irregular"
+      }
+    },
+    "forsook": {
+      "candidates": [
+        "forsake"
+      ],
+      "transformations": {
+        "forsake": "irregular"
+      }
+    },
+    "forswore": {
+      "candidates": [
+        "forswear"
+      ],
+      "transformations": {
+        "forswear": "irregular"
+      }
+    },
+    "forsworn": {
+      "candidates": [
+        "forswear"
+      ],
+      "transformations": {
+        "forswear": "irregular"
+      }
+    },
+    "forwent": {
+      "candidates": [
+        "forgo"
+      ],
+      "transformations": {
+        "forgo": "irregular"
+      }
+    },
+    "found": {
+      "candidates": [
+        "find"
+      ],
+      "transformations": {
+        "find": "past"
+      }
+    },
+    "freelancer": {
+      "candidates": [
+        "freelance"
+      ],
+      "transformations": {
+        "freelance": "comparison"
+      }
+    },
+    "frequenter": {
+      "candidates": [
+        "frequent"
+      ],
+      "transformations": {
+        "frequent": "comparison"
+      }
+    },
+    "fresher": {
+      "candidates": [
+        "fresh"
+      ],
+      "transformations": {
+        "fresh": "comparison"
+      }
+    },
+    "froze": {
+      "candidates": [
+        "freeze"
+      ],
+      "transformations": {
+        "freeze": "irregular"
+      }
+    },
+    "fuller": {
+      "candidates": [
+        "full"
+      ],
+      "transformations": {
+        "full": "comparison"
+      }
+    },
+    "furrier": {
+      "candidates": [
+        "furry"
+      ],
+      "transformations": {
+        "furry": "comparison"
+      }
+    },
+    "gainsaid": {
+      "candidates": [
+        "gainsay"
+      ],
+      "transformations": {
+        "gainsay": "irregular"
+      }
+    },
+    "gan": {
+      "candidates": [
+        "gin"
+      ],
+      "transformations": {
+        "gin": "irregular"
+      }
+    },
+    "gelt": {
+      "candidates": [
+        "geld"
+      ],
+      "transformations": {
+        "geld": "irregular"
+      }
+    },
+    "ghostwritten": {
+      "candidates": [
+        "ghostwrite"
+      ],
+      "transformations": {
+        "ghostwrite": "irregular"
+      }
+    },
+    "ghostwrote": {
+      "candidates": [
+        "ghostwrite"
+      ],
+      "transformations": {
+        "ghostwrite": "irregular"
+      }
+    },
+    "gilt": {
+      "candidates": [
+        "gild"
+      ],
+      "transformations": {
+        "gild": "irregular"
+      }
+    },
+    "girt": {
+      "candidates": [
+        "gird"
+      ],
+      "transformations": {
+        "gird": "irregular"
+      }
+    },
+    "given": {
+      "candidates": [
+        "give"
+      ],
+      "transformations": {
+        "give": "past"
+      }
+    },
+    "glasses": {
+      "candidates": [
+        "glass"
+      ],
+      "transformations": {
+        "glass": "plural"
+      }
+    },
+    "gnawn": {
+      "candidates": [
+        "gnaw"
+      ],
+      "transformations": {
+        "gnaw": "irregular"
+      }
+    },
+    "goods": {
+      "candidates": [
+        "good"
+      ],
+      "transformations": {
+        "good": "plural"
+      }
+    },
+    "graphics": {
+      "candidates": [
+        "graphic"
+      ],
+      "transformations": {
+        "graphic": "plural"
+      }
+    },
+    "graven": {
+      "candidates": [
+        "grave"
+      ],
+      "transformations": {
+        "grave": "irregular"
+      }
+    },
+    "graver": {
+      "candidates": [
+        "grave"
+      ],
+      "transformations": {
+        "grave": "comparison"
+      }
+    },
+    "gript": {
+      "candidates": [
+        "grip"
+      ],
+      "transformations": {
+        "grip": "irregular"
+      }
+    },
+    "ground": {
+      "candidates": [
+        "grind"
+      ],
+      "transformations": {
+        "grind": "past"
+      }
+    },
+    "hacksawn": {
+      "candidates": [
+        "hacksaw"
+      ],
+      "transformations": {
+        "hacksaw": "irregular"
+      }
+    },
+    "haler": {
+      "candidates": [
+        "hale"
+      ],
+      "transformations": {
+        "hale": "comparison"
+      }
+    },
+    "hamstrung": {
+      "candidates": [
+        "hamstring"
+      ],
+      "transformations": {
+        "hamstring": "irregular"
+      }
+    },
+    "hardliner": {
+      "candidates": [
+        "hardline"
+      ],
+      "transformations": {
+        "hardline": "comparison"
+      }
+    },
+    "hewn": {
+      "candidates": [
+        "hew"
+      ],
+      "transformations": {
+        "hew": "irregular"
+      }
+    },
+    "hid": {
+      "candidates": [
+        "hide"
+      ],
+      "transformations": {
+        "hide": "irregular"
+      }
+    },
+    "highlander": {
+      "candidates": [
+        "highland"
+      ],
+      "transformations": {
+        "highland": "comparison"
+      }
+    },
+    "hinder": {
+      "candidates": [
+        "hind"
+      ],
+      "transformations": {
+        "hind": "comparison"
+      }
+    },
+    "hove": {
+      "candidates": [
+        "heave"
+      ],
+      "transformations": {
+        "heave": "irregular"
+      }
+    },
+    "humanities": {
+      "candidates": [
+        "humanity"
+      ],
+      "transformations": {
+        "humanity": "plural"
+      }
+    },
+    "hung": {
+      "candidates": [
+        "hang"
+      ],
+      "transformations": {
+        "hang": "irregular"
+      }
+    },
+    "idler": {
+      "candidates": [
+        "idle"
+      ],
+      "transformations": {
+        "idle": "comparison"
+      }
+    },
+    "indwelt": {
+      "candidates": [
+        "indwell"
+      ],
+      "transformations": {
+        "indwell": "irregular"
+      }
+    },
+    "inlaid": {
+      "candidates": [
+        "inlay"
+      ],
+      "transformations": {
+        "inlay": "irregular"
+      }
+    },
+    "interwove": {
+      "candidates": [
+        "interweave"
+      ],
+      "transformations": {
+        "interweave": "irregular"
+      }
+    },
+    "interwoven": {
+      "candidates": [
+        "interweave"
+      ],
+      "transformations": {
+        "interweave": "irregular"
+      }
+    },
+    "inwove": {
+      "candidates": [
+        "inweave"
+      ],
+      "transformations": {
+        "inweave": "irregular"
+      }
+    },
+    "inwoven": {
+      "candidates": [
+        "inweave"
+      ],
+      "transformations": {
+        "inweave": "irregular"
+      }
+    },
+    "kent": {
+      "candidates": [
+        "ken"
+      ],
+      "transformations": {
+        "ken": "irregular"
+      }
+    },
+    "knelt": {
+      "candidates": [
+        "kneel"
+      ],
+      "transformations": {
+        "kneel": "irregular"
+      }
+    },
+    "laden": {
+      "candidates": [
+        "lade"
+      ],
+      "transformations": {
+        "lade": "irregular"
+      }
+    },
+    "lain": {
+      "candidates": [
+        "lie"
+      ],
+      "transformations": {
+        "lie": "irregular"
+      }
+    },
+    "latest": {
+      "candidates": [
+        "late"
+      ],
+      "transformations": {
+        "late": "comparison"
+      }
+    },
+    "lay": {
+      "candidates": [
+        "lie"
+      ],
+      "transformations": {
+        "lie": "past"
+      }
+    },
+    "leaner": {
+      "candidates": [
+        "lean"
+      ],
+      "transformations": {
+        "lean": "comparison"
+      }
+    },
+    "leant": {
+      "candidates": [
+        "lean"
+      ],
+      "transformations": {
+        "lean": "irregular"
+      }
+    },
+    "leapt": {
+      "candidates": [
+        "leap"
+      ],
+      "transformations": {
+        "leap": "irregular"
+      }
+    },
+    "learnt": {
+      "candidates": [
+        "learn"
+      ],
+      "transformations": {
+        "learn": "irregular"
+      }
+    },
+    "leaves": {
+      "candidates": [
+        "leaf",
+        "leave"
+      ],
+      "transformations": {
+        "leaf": "plural",
+        "leave": "agreement"
+      }
+    },
+    "left": {
+      "candidates": [
+        "leave"
+      ],
+      "transformations": {
+        "leave": "past"
+      }
+    },
+    "lent": {
+      "candidates": [
+        "lend"
+      ],
+      "transformations": {
+        "lend": "irregular"
+      }
+    },
+    "lighter": {
+      "candidates": [
+        "light"
+      ],
+      "transformations": {
+        "light": "comparison"
+      }
+    },
+    "limper": {
+      "candidates": [
+        "limp"
+      ],
+      "transformations": {
+        "limp": "comparison"
+      }
+    },
+    "lit": {
+      "candidates": [
+        "light"
+      ],
+      "transformations": {
+        "light": "irregular"
+      }
+    },
+    "lives": {
+      "candidates": [
+        "life",
+        "live"
+      ],
+      "transformations": {
+        "life": "plural",
+        "live": "agreement"
+      }
+    },
+    "longer": {
+      "candidates": [
+        "long"
+      ],
+      "transformations": {
+        "long": "comparison"
+      }
+    },
+    "lost": {
+      "candidates": [
+        "lose"
+      ],
+      "transformations": {
+        "lose": "past"
+      }
+    },
+    "lower": {
+      "candidates": [
+        "low"
+      ],
+      "transformations": {
+        "low": "comparison"
+      }
+    },
+    "lying": {
+      "candidates": [
+        "lie"
+      ],
+      "transformations": {
+        "lie": "participle"
+      }
+    },
+    "madder": {
+      "candidates": [
+        "mad"
+      ],
+      "transformations": {
+        "mad": "comparison"
+      }
+    },
+    "manners": {
+      "candidates": [
+        "manner"
+      ],
+      "transformations": {
+        "manner": "plural"
+      }
+    },
+    "marches": {
+      "candidates": [
+        "march",
+        "marche"
+      ],
+      "transformations": {
+        "march": "agreement",
+        "marche": "plural"
+      }
+    },
+    "mater": {
+      "candidates": [
+        "mat"
+      ],
+      "transformations": {
+        "mat": "comparison"
+      }
+    },
+    "means": {
+      "candidates": [
+        "mean"
+      ],
+      "transformations": {
+        "mean": "plural"
+      }
+    },
+    "media": {
+      "candidates": [
+        "medium"
+      ],
+      "transformations": {
+        "medium": "plural"
+      }
+    },
+    "might": {
+      "candidates": [
+        "may"
+      ],
+      "transformations": {
+        "may": "irregular"
+      }
+    },
+    "misdealt": {
+      "candidates": [
+        "misdeal"
+      ],
+      "transformations": {
+        "misdeal": "irregular"
+      }
+    },
+    "misgave": {
+      "candidates": [
+        "misgive"
+      ],
+      "transformations": {
+        "misgive": "irregular"
+      }
+    },
+    "misgiven": {
+      "candidates": [
+        "misgive"
+      ],
+      "transformations": {
+        "misgive": "irregular"
+      }
+    },
+    "mislaid": {
+      "candidates": [
+        "mislay"
+      ],
+      "transformations": {
+        "mislay": "irregular"
+      }
+    },
+    "misspent": {
+      "candidates": [
+        "misspend"
+      ],
+      "transformations": {
+        "misspend": "irregular"
+      }
+    },
+    "mistaken": {
+      "candidates": [
+        "mistake"
+      ],
+      "transformations": {
+        "mistake": "irregular"
+      }
+    },
+    "mistook": {
+      "candidates": [
+        "mistake"
+      ],
+      "transformations": {
+        "mistake": "irregular"
+      }
+    },
+    "misunderstood": {
+      "candidates": [
+        "misunderstand"
+      ],
+      "transformations": {
+        "misunderstand": "irregular"
+      }
+    },
+    "molten": {
+      "candidates": [
+        "melt"
+      ],
+      "transformations": {
+        "melt": "irregular"
+      }
+    },
+    "mown": {
+      "candidates": [
+        "mow"
+      ],
+      "transformations": {
+        "mow": "irregular"
+      }
+    },
+    "niner": {
+      "candidates": [
+        "nine"
+      ],
+      "transformations": {
+        "nine": "comparison"
+      }
+    },
+    "nonplusses": {
+      "candidates": [
+        "nonplus"
+      ],
+      "transformations": {
+        "nonplus": "irregular"
+      }
+    },
+    "northeaster": {
+      "candidates": [
+        "northeast"
+      ],
+      "transformations": {
+        "northeast": "comparison"
+      }
+    },
+    "northwester": {
+      "candidates": [
+        "northwest"
+      ],
+      "transformations": {
+        "northwest": "comparison"
+      }
+    },
+    "outbidden": {
+      "candidates": [
+        "outbid"
+      ],
+      "transformations": {
+        "outbid": "irregular"
+      }
+    },
+    "outdid": {
+      "candidates": [
+        "outdo"
+      ],
+      "transformations": {
+        "outdo": "irregular"
+      }
+    },
+    "outdone": {
+      "candidates": [
+        "outdo"
+      ],
+      "transformations": {
+        "outdo": "irregular"
+      }
+    },
+    "outdrawn": {
+      "candidates": [
+        "outdraw"
+      ],
+      "transformations": {
+        "outdraw": "irregular"
+      }
+    },
+    "outdrew": {
+      "candidates": [
+        "outdraw"
+      ],
+      "transformations": {
+        "outdraw": "irregular"
+      }
+    },
+    "outfought": {
+      "candidates": [
+        "outfight"
+      ],
+      "transformations": {
+        "outfight": "irregular"
+      }
+    },
+    "outgone": {
+      "candidates": [
+        "outgo"
+      ],
+      "transformations": {
+        "outgo": "irregular"
+      }
+    },
+    "outgrew": {
+      "candidates": [
+        "outgrow"
+      ],
+      "transformations": {
+        "outgrow": "irregular"
+      }
+    },
+    "outgrown": {
+      "candidates": [
+        "outgrow"
+      ],
+      "transformations": {
+        "outgrow": "irregular"
+      }
+    },
+    "outlaid": {
+      "candidates": [
+        "outlay"
+      ],
+      "transformations": {
+        "outlay": "irregular"
+      }
+    },
+    "outran": {
+      "candidates": [
+        "outrun"
+      ],
+      "transformations": {
+        "outrun": "irregular"
+      }
+    },
+    "outridden": {
+      "candidates": [
+        "outride"
+      ],
+      "transformations": {
+        "outride": "irregular"
+      }
+    },
+    "outrode": {
+      "candidates": [
+        "outride"
+      ],
+      "transformations": {
+        "outride": "irregular"
+      }
+    },
+    "outshone": {
+      "candidates": [
+        "outshine"
+      ],
+      "transformations": {
+        "outshine": "irregular"
+      }
+    },
+    "outsold": {
+      "candidates": [
+        "outsell"
+      ],
+      "transformations": {
+        "outsell": "irregular"
+      }
+    },
+    "outwent": {
+      "candidates": [
+        "outgo"
+      ],
+      "transformations": {
+        "outgo": "irregular"
+      }
+    },
+    "outwore": {
+      "candidates": [
+        "outwear"
+      ],
+      "transformations": {
+        "outwear": "irregular"
+      }
+    },
+    "outworn": {
+      "candidates": [
+        "outwear"
+      ],
+      "transformations": {
+        "outwear": "irregular"
+      }
+    },
+    "overbidden": {
+      "candidates": [
+        "overbid"
+      ],
+      "transformations": {
+        "overbid": "irregular"
+      }
+    },
+    "overbore": {
+      "candidates": [
+        "overbear"
+      ],
+      "transformations": {
+        "overbear": "irregular"
+      }
+    },
+    "overborne": {
+      "candidates": [
+        "overbear"
+      ],
+      "transformations": {
+        "overbear": "irregular"
+      }
+    },
+    "overcame": {
+      "candidates": [
+        "overcome"
+      ],
+      "transformations": {
+        "overcome": "irregular"
+      }
+    },
+    "overdid": {
+      "candidates": [
+        "overdo"
+      ],
+      "transformations": {
+        "overdo": "irregular"
+      }
+    },
+    "overdone": {
+      "candidates": [
+        "overdo"
+      ],
+      "transformations": {
+        "overdo": "irregular"
+      }
+    },
+    "overdrawn": {
+      "candidates": [
+        "overdraw"
+      ],
+      "transformations": {
+        "overdraw": "irregular"
+      }
+    },
+    "overdrew": {
+      "candidates": [
+        "overdraw"
+      ],
+      "transformations": {
+        "overdraw": "irregular"
+      }
+    },
+    "overdriven": {
+      "candidates": [
+        "overdrive"
+      ],
+      "transformations": {
+        "overdrive": "irregular"
+      }
+    },
+    "overdrove": {
+      "candidates": [
+        "overdrive"
+      ],
+      "transformations": {
+        "overdrive": "irregular"
+      }
+    },
+    "overflew": {
+      "candidates": [
+        "overfly"
+      ],
+      "transformations": {
+        "overfly": "irregular"
+      }
+    },
+    "overflown": {
+      "candidates": [
+        "overflow"
+      ],
+      "transformations": {
+        "overflow": "irregular"
+      }
+    },
+    "overgrew": {
+      "candidates": [
+        "overgrow"
+      ],
+      "transformations": {
+        "overgrow": "irregular"
+      }
+    },
+    "overgrown": {
+      "candidates": [
+        "overgrow"
+      ],
+      "transformations": {
+        "overgrow": "irregular"
+      }
+    },
+    "overheard": {
+      "candidates": [
+        "overhear"
+      ],
+      "transformations": {
+        "overhear": "irregular"
+      }
+    },
+    "overhung": {
+      "candidates": [
+        "overhang"
+      ],
+      "transformations": {
+        "overhang": "irregular"
+      }
+    },
+    "overlaid": {
+      "candidates": [
+        "overlay"
+      ],
+      "transformations": {
+        "overlay": "irregular"
+      }
+    },
+    "overlain": {
+      "candidates": [
+        "overlie"
+      ],
+      "transformations": {
+        "overlie": "irregular"
+      }
+    },
+    "overlay": {
+      "candidates": [
+        "overlie"
+      ],
+      "transformations": {
+        "overlie": "irregular"
+      }
+    },
+    "overpaid": {
+      "candidates": [
+        "overpay"
+      ],
+      "transformations": {
+        "overpay": "irregular"
+      }
+    },
+    "overpast": {
+      "candidates": [
+        "overpass"
+      ],
+      "transformations": {
+        "overpass": "irregular"
+      }
+    },
+    "overran": {
+      "candidates": [
+        "overrun"
+      ],
+      "transformations": {
+        "overrun": "irregular"
+      }
+    },
+    "overridden": {
+      "candidates": [
+        "override"
+      ],
+      "transformations": {
+        "override": "irregular"
+      }
+    },
+    "overrode": {
+      "candidates": [
+        "override"
+      ],
+      "transformations": {
+        "override": "irregular"
+      }
+    },
+    "oversaw": {
+      "candidates": [
+        "oversee"
+      ],
+      "transformations": {
+        "oversee": "irregular"
+      }
+    },
+    "overseen": {
+      "candidates": [
+        "oversee"
+      ],
+      "transformations": {
+        "oversee": "irregular"
+      }
+    },
+    "oversewn": {
+      "candidates": [
+        "oversew"
+      ],
+      "transformations": {
+        "oversew": "irregular"
+      }
+    },
+    "overshot": {
+      "candidates": [
+        "overshoot"
+      ],
+      "transformations": {
+        "overshoot": "irregular"
+      }
+    },
+    "overslept": {
+      "candidates": [
+        "oversleep"
+      ],
+      "transformations": {
+        "oversleep": "irregular"
+      }
+    },
+    "overspent": {
+      "candidates": [
+        "overspend"
+      ],
+      "transformations": {
+        "overspend": "irregular"
+      }
+    },
+    "overspilt": {
+      "candidates": [
+        "overspill"
+      ],
+      "transformations": {
+        "overspill": "irregular"
+      }
+    },
+    "overtaken": {
+      "candidates": [
+        "overtake"
+      ],
+      "transformations": {
+        "overtake": "irregular"
+      }
+    },
+    "overthrew": {
+      "candidates": [
+        "overthrow"
+      ],
+      "transformations": {
+        "overthrow": "irregular"
+      }
+    },
+    "overthrown": {
+      "candidates": [
+        "overthrow"
+      ],
+      "transformations": {
+        "overthrow": "irregular"
+      }
+    },
+    "overtook": {
+      "candidates": [
+        "overtake"
+      ],
+      "transformations": {
+        "overtake": "irregular"
+      }
+    },
+    "overwritten": {
+      "candidates": [
+        "overwrite"
+      ],
+      "transformations": {
+        "overwrite": "irregular"
+      }
+    },
+    "overwrote": {
+      "candidates": [
+        "overwrite"
+      ],
+      "transformations": {
+        "overwrite": "irregular"
+      }
+    },
+    "pants": {
+      "candidates": [
+        "pant"
+      ],
+      "transformations": {
+        "pant": "plural"
+      }
+    },
+    "partaken": {
+      "candidates": [
+        "partake"
+      ],
+      "transformations": {
+        "partake": "irregular"
+      }
+    },
+    "partook": {
+      "candidates": [
+        "partake"
+      ],
+      "transformations": {
+        "partake": "irregular"
+      }
+    },
+    "pasquil": {
+      "candidates": [
+        "pasquinade"
+      ],
+      "transformations": {
+        "pasquinade": "irregular"
+      }
+    },
+    "pasquils": {
+      "candidates": [
+        "pasquinade"
+      ],
+      "transformations": {
+        "pasquinade": "irregular"
+      }
+    },
+    "pent": {
+      "candidates": [
+        "pen"
+      ],
+      "transformations": {
+        "pen": "irregular"
+      }
+    },
+    "people": {
+      "candidates": [
+        "person"
+      ],
+      "transformations": {
+        "person": "plural"
+      }
+    },
+    "perfecter": {
+      "candidates": [
+        "perfect"
+      ],
+      "transformations": {
+        "perfect": "comparison"
+      }
+    },
+    "premises": {
+      "candidates": [
+        "premise"
+      ],
+      "transformations": {
+        "premise": "plural"
+      }
+    },
+    "prepaid": {
+      "candidates": [
+        "prepay"
+      ],
+      "transformations": {
+        "prepay": "irregular"
+      }
+    },
+    "prologs": {
+      "candidates": [
+        "prolog"
+      ],
+      "transformations": {
+        "prolog": "plural"
+      }
+    },
+    "proven": {
+      "candidates": [
+        "prove"
+      ],
+      "transformations": {
+        "prove": "irregular"
+      }
+    },
+    "putted": {
+      "candidates": [
+        "put",
+        "putt"
+      ],
+      "transformations": {
+        "put": "past",
+        "putt": "past"
+      }
+    },
+    "rainier": {
+      "candidates": [
+        "rainy"
+      ],
+      "transformations": {
+        "rainy": "comparison"
+      }
+    },
+    "rasher": {
+      "candidates": [
+        "rash"
+      ],
+      "transformations": {
+        "rash": "comparison"
+      }
+    },
+    "rebuilt": {
+      "candidates": [
+        "rebuild"
+      ],
+      "transformations": {
+        "rebuild": "irregular"
+      }
+    },
+    "redid": {
+      "candidates": [
+        "redo"
+      ],
+      "transformations": {
+        "redo": "irregular"
+      }
+    },
+    "redone": {
+      "candidates": [
+        "redo"
+      ],
+      "transformations": {
+        "redo": "irregular"
+      }
+    },
+    "reft": {
+      "candidates": [
+        "reave"
+      ],
+      "transformations": {
+        "reave": "irregular"
+      }
+    },
+    "reheard": {
+      "candidates": [
+        "rehear"
+      ],
+      "transformations": {
+        "rehear": "irregular"
+      }
+    },
+    "remade": {
+      "candidates": [
+        "remake"
+      ],
+      "transformations": {
+        "remake": "irregular"
+      }
+    },
+    "rent": {
+      "candidates": [
+        "rend"
+      ],
+      "transformations": {
+        "rend": "past"
+      }
+    },
+    "reran": {
+      "candidates": [
+        "rerun"
+      ],
+      "transformations": {
+        "rerun": "irregular"
+      }
+    },
+    "resewn": {
+      "candidates": [
+        "resew"
+      ],
+      "transformations": {
+        "resew": "irregular"
+      }
+    },
+    "retaken": {
+      "candidates": [
+        "retake"
+      ],
+      "transformations": {
+        "retake": "irregular"
+      }
+    },
+    "rethought": {
+      "candidates": [
+        "rethink"
+      ],
+      "transformations": {
+        "rethink": "irregular"
+      }
+    },
+    "retold": {
+      "candidates": [
+        "retell"
+      ],
+      "transformations": {
+        "retell": "irregular"
+      }
+    },
+    "retook": {
+      "candidates": [
+        "retake"
+      ],
+      "transformations": {
+        "retake": "irregular"
+      }
+    },
+    "rewound": {
+      "candidates": [
+        "rewind"
+      ],
+      "transformations": {
+        "rewind": "irregular"
+      }
+    },
+    "rewritten": {
+      "candidates": [
+        "rewrite"
+      ],
+      "transformations": {
+        "rewrite": "irregular"
+      }
+    },
+    "rewrote": {
+      "candidates": [
+        "rewrite"
+      ],
+      "transformations": {
+        "rewrite": "irregular"
+      }
+    },
+    "riven": {
+      "candidates": [
+        "rive"
+      ],
+      "transformations": {
+        "rive": "irregular"
+      }
+    },
+    "rode": {
+      "candidates": [
+        "ride"
+      ],
+      "transformations": {
+        "ride": "irregular"
+      }
+    },
+    "rose": {
+      "candidates": [
+        "rise"
+      ],
+      "transformations": {
+        "rise": "past"
+      }
+    },
+    "rounder": {
+      "candidates": [
+        "round"
+      ],
+      "transformations": {
+        "round": "comparison"
+      }
+    },
+    "routed": {
+      "candidates": [
+        "rout",
+        "route"
+      ],
+      "transformations": {
+        "rout": "past",
+        "route": "past"
+      }
+    },
+    "routing": {
+      "candidates": [
+        "rout",
+        "route"
+      ],
+      "transformations": {
+        "rout": "participle",
+        "route": "participle"
+      }
+    },
+    "rove": {
+      "candidates": [
+        "reeve"
+      ],
+      "transformations": {
+        "reeve": "irregular"
+      }
+    },
+    "rung": {
+      "candidates": [
+        "ring"
+      ],
+      "transformations": {
+        "ring": "irregular"
+      }
+    },
+    "sang": {
+      "candidates": [
+        "sing"
+      ],
+      "transformations": {
+        "sing": "irregular"
+      }
+    },
+    "sat": {
+      "candidates": [
+        "sit"
+      ],
+      "transformations": {
+        "sit": "past"
+      }
+    },
+    "saw": {
+      "candidates": [
+        "see"
+      ],
+      "transformations": {
+        "see": "past"
+      }
+    },
+    "sawn": {
+      "candidates": [
+        "saw"
+      ],
+      "transformations": {
+        "saw": "irregular"
+      }
+    },
+    "screwballer": {
+      "candidates": [
+        "screwball"
+      ],
+      "transformations": {
+        "screwball": "comparison"
+      }
+    },
+    "secreter": {
+      "candidates": [
+        "secret"
+      ],
+      "transformations": {
+        "secret": "comparison"
+      }
+    },
+    "securer": {
+      "candidates": [
+        "secure"
+      ],
+      "transformations": {
+        "secure": "comparison"
+      }
+    },
+    "sent": {
+      "candidates": [
+        "send"
+      ],
+      "transformations": {
+        "send": "past"
+      }
+    },
+    "sevener": {
+      "candidates": [
+        "seven"
+      ],
+      "transformations": {
+        "seven": "comparison"
+      }
+    },
+    "sewn": {
+      "candidates": [
+        "sew"
+      ],
+      "transformations": {
+        "sew": "irregular"
+      }
+    },
+    "shaken": {
+      "candidates": [
+        "shake"
+      ],
+      "transformations": {
+        "shake": "irregular"
+      }
+    },
+    "sharper": {
+      "candidates": [
+        "sharp"
+      ],
+      "transformations": {
+        "sharp": "comparison"
+      }
+    },
+    "shat": {
+      "candidates": [
+        "shit"
+      ],
+      "transformations": {
+        "shit": "irregular"
+      }
+    },
+    "shaven": {
+      "candidates": [
+        "shave"
+      ],
+      "transformations": {
+        "shave": "irregular"
+      }
+    },
+    "shewn": {
+      "candidates": [
+        "shew"
+      ],
+      "transformations": {
+        "shew": "irregular"
+      }
+    },
+    "shod": {
+      "candidates": [
+        "shoe"
+      ],
+      "transformations": {
+        "shoe": "irregular"
+      }
+    },
+    "shone": {
+      "candidates": [
+        "shine"
+      ],
+      "transformations": {
+        "shine": "irregular"
+      }
+    },
+    "shook": {
+      "candidates": [
+        "shake"
+      ],
+      "transformations": {
+        "shake": "past"
+      }
+    },
+    "shorn": {
+      "candidates": [
+        "shear"
+      ],
+      "transformations": {
+        "shear": "irregular"
+      }
+    },
+    "shorts": {
+      "candidates": [
+        "short"
+      ],
+      "transformations": {
+        "short": "plural"
+      }
+    },
+    "shot": {
+      "candidates": [
+        "shoot"
+      ],
+      "transformations": {
+        "shoot": "past"
+      }
+    },
+    "shrank": {
+      "candidates": [
+        "shrink"
+      ],
+      "transformations": {
+        "shrink": "irregular"
+      }
+    },
+    "shriven": {
+      "candidates": [
+        "shrive"
+      ],
+      "transformations": {
+        "shrive": "irregular"
+      }
+    },
+    "shrove": {
+      "candidates": [
+        "shrive"
+      ],
+      "transformations": {
+        "shrive": "irregular"
+      }
+    },
+    "shrunk": {
+      "candidates": [
+        "shrink"
+      ],
+      "transformations": {
+        "shrink": "irregular"
+      }
+    },
+    "shrunken": {
+      "candidates": [
+        "shrink"
+      ],
+      "transformations": {
+        "shrink": "irregular"
+      }
+    },
+    "sightsaw": {
+      "candidates": [
+        "sightsee"
+      ],
+      "transformations": {
+        "sightsee": "irregular"
+      }
+    },
+    "sightseen": {
+      "candidates": [
+        "sightsee"
+      ],
+      "transformations": {
+        "sightsee": "irregular"
+      }
+    },
+    "sixer": {
+      "candidates": [
+        "six"
+      ],
+      "transformations": {
+        "six": "comparison"
+      }
+    },
+    "skydove": {
+      "candidates": [
+        "skydive"
+      ],
+      "transformations": {
+        "skydive": "irregular"
+      }
+    },
+    "slacker": {
+      "candidates": [
+        "slack"
+      ],
+      "transformations": {
+        "slack": "comparison"
+      }
+    },
+    "slain": {
+      "candidates": [
+        "slay"
+      ],
+      "transformations": {
+        "slay": "irregular"
+      }
+    },
+    "slept": {
+      "candidates": [
+        "sleep"
+      ],
+      "transformations": {
+        "sleep": "irregular"
+      }
+    },
+    "slew": {
+      "candidates": [
+        "slay"
+      ],
+      "transformations": {
+        "slay": "irregular"
+      }
+    },
+    "slicker": {
+      "candidates": [
+        "slick"
+      ],
+      "transformations": {
+        "slick": "comparison"
+      }
+    },
+    "slidden": {
+      "candidates": [
+        "slide"
+      ],
+      "transformations": {
+        "slide": "irregular"
+      }
+    },
+    "slung": {
+      "candidates": [
+        "sling"
+      ],
+      "transformations": {
+        "sling": "irregular"
+      }
+    },
+    "slunk": {
+      "candidates": [
+        "slink"
+      ],
+      "transformations": {
+        "slink": "irregular"
+      }
+    },
+    "smelt": {
+      "candidates": [
+        "smell"
+      ],
+      "transformations": {
+        "smell": "irregular"
+      }
+    },
+    "smit": {
+      "candidates": [
+        "smite"
+      ],
+      "transformations": {
+        "smite": "irregular"
+      }
+    },
+    "smitten": {
+      "candidates": [
+        "smite"
+      ],
+      "transformations": {
+        "smite": "irregular"
+      }
+    },
+    "smoother": {
+      "candidates": [
+        "smooth"
+      ],
+      "transformations": {
+        "smooth": "comparison"
+      }
+    },
+    "smote": {
+      "candidates": [
+        "smite"
+      ],
+      "transformations": {
+        "smite": "irregular"
+      }
+    },
+    "snuck": {
+      "candidates": [
+        "sneak"
+      ],
+      "transformations": {
+        "sneak": "irregular"
+      }
+    },
+    "sounder": {
+      "candidates": [
+        "sound"
+      ],
+      "transformations": {
+        "sound": "comparison"
+      }
+    },
+    "southeaster": {
+      "candidates": [
+        "southeast"
+      ],
+      "transformations": {
+        "southeast": "comparison"
+      }
+    },
+    "southwester": {
+      "candidates": [
+        "southwest"
+      ],
+      "transformations": {
+        "southwest": "comparison"
+      }
+    },
+    "sown": {
+      "candidates": [
+        "sow"
+      ],
+      "transformations": {
+        "sow": "irregular"
+      }
+    },
+    "sparer": {
+      "candidates": [
+        "spare"
+      ],
+      "transformations": {
+        "spare": "comparison"
+      }
+    },
+    "spat": {
+      "candidates": [
+        "spit"
+      ],
+      "transformations": {
+        "spit": "irregular"
+      }
+    },
+    "spellbound": {
+      "candidates": [
+        "spellbind"
+      ],
+      "transformations": {
+        "spellbind": "irregular"
+      }
+    },
+    "spelt": {
+      "candidates": [
+        "spell"
+      ],
+      "transformations": {
+        "spell": "irregular"
+      }
+    },
+    "spilt": {
+      "candidates": [
+        "spill"
+      ],
+      "transformations": {
+        "spill": "irregular"
+      }
+    },
+    "spoilt": {
+      "candidates": [
+        "spoil"
+      ],
+      "transformations": {
+        "spoil": "irregular"
+      }
+    },
+    "spoke": {
+      "candidates": [
+        "speak"
+      ],
+      "transformations": {
+        "speak": "past"
+      }
+    },
+    "spoken": {
+      "candidates": [
+        "speak"
+      ],
+      "transformations": {
+        "speak": "irregular"
+      }
+    },
+    "spotlit": {
+      "candidates": [
+        "spotlight"
+      ],
+      "transformations": {
+        "spotlight": "irregular"
+      }
+    },
+    "sprang": {
+      "candidates": [
+        "spring"
+      ],
+      "transformations": {
+        "spring": "irregular"
+      }
+    },
+    "sprung": {
+      "candidates": [
+        "spring"
+      ],
+      "transformations": {
+        "spring": "irregular"
+      }
+    },
+    "spun": {
+      "candidates": [
+        "spin"
+      ],
+      "transformations": {
+        "spin": "irregular"
+      }
+    },
+    "squatter": {
+      "candidates": [
+        "squat"
+      ],
+      "transformations": {
+        "squat": "comparison"
+      }
+    },
+    "squilgee": {
+      "candidates": [
+        "squeegee"
+      ],
+      "transformations": {
+        "squeegee": "irregular"
+      }
+    },
+    "squinter": {
+      "candidates": [
+        "squint"
+      ],
+      "transformations": {
+        "squint": "comparison"
+      }
+    },
+    "stank": {
+      "candidates": [
+        "stink"
+      ],
+      "transformations": {
+        "stink": "irregular"
+      }
+    },
+    "steeper": {
+      "candidates": [
+        "steep"
+      ],
+      "transformations": {
+        "steep": "comparison"
+      }
+    },
+    "stole": {
+      "candidates": [
+        "steal"
+      ],
+      "transformations": {
+        "steal": "past"
+      }
+    },
+    "stoner": {
+      "candidates": [
+        "stone"
+      ],
+      "transformations": {
+        "stone": "comparison"
+      }
+    },
+    "stove": {
+      "candidates": [
+        "stave"
+      ],
+      "transformations": {
+        "stave": "irregular"
+      }
+    },
+    "strayer": {
+      "candidates": [
+        "stray"
+      ],
+      "transformations": {
+        "stray": "comparison"
+      }
+    },
+    "strewn": {
+      "candidates": [
+        "strew"
+      ],
+      "transformations": {
+        "strew": "irregular"
+      }
+    },
+    "stricken": {
+      "candidates": [
+        "strike"
+      ],
+      "transformations": {
+        "strike": "irregular"
+      }
+    },
+    "stridden": {
+      "candidates": [
+        "stride"
+      ],
+      "transformations": {
+        "stride": "irregular"
+      }
+    },
+    "striven": {
+      "candidates": [
+        "strive"
+      ],
+      "transformations": {
+        "strive": "irregular"
+      }
+    },
+    "strode": {
+      "candidates": [
+        "stride"
+      ],
+      "transformations": {
+        "stride": "irregular"
+      }
+    },
+    "strove": {
+      "candidates": [
+        "strive"
+      ],
+      "transformations": {
+        "strive": "irregular"
+      }
+    },
+    "strung": {
+      "candidates": [
+        "string"
+      ],
+      "transformations": {
+        "string": "irregular"
+      }
+    },
+    "stung": {
+      "candidates": [
+        "sting"
+      ],
+      "transformations": {
+        "sting": "irregular"
+      }
+    },
+    "stunk": {
+      "candidates": [
+        "stink"
+      ],
+      "transformations": {
+        "stink": "irregular"
+      }
+    },
+    "sung": {
+      "candidates": [
+        "sing"
+      ],
+      "transformations": {
+        "sing": "irregular"
+      }
+    },
+    "sunk": {
+      "candidates": [
+        "sink"
+      ],
+      "transformations": {
+        "sink": "irregular"
+      }
+    },
+    "sunken": {
+      "candidates": [
+        "sink"
+      ],
+      "transformations": {
+        "sink": "irregular"
+      }
+    },
+    "swaggerer": {
+      "candidates": [
+        "swagger"
+      ],
+      "transformations": {
+        "swagger": "comparison"
+      }
+    },
+    "swept": {
+      "candidates": [
+        "sweep"
+      ],
+      "transformations": {
+        "sweep": "irregular"
+      }
+    },
+    "swinging": {
+      "candidates": [
+        "swing",
+        "swinge"
+      ],
+      "transformations": {
+        "swing": "participle",
+        "swinge": "participle"
+      }
+    },
+    "swollen": {
+      "candidates": [
+        "swell"
+      ],
+      "transformations": {
+        "swell": "irregular"
+      }
+    },
+    "swops": {
+      "candidates": [
+        "swap",
+        "swop"
+      ],
+      "transformations": {
+        "swap": "irregular",
+        "swop": "plural"
+      }
+    },
+    "swore": {
+      "candidates": [
+        "swear"
+      ],
+      "transformations": {
+        "swear": "irregular"
+      }
+    },
+    "sworn": {
+      "candidates": [
+        "swear"
+      ],
+      "transformations": {
+        "swear": "irregular"
+      }
+    },
+    "swung": {
+      "candidates": [
+        "swing"
+      ],
+      "transformations": {
+        "swing": "irregular"
+      }
+    },
+    "tamer": {
+      "candidates": [
+        "tame"
+      ],
+      "transformations": {
+        "tame": "comparison"
+      }
+    },
+    "tangier": {
+      "candidates": [
+        "tangy"
+      ],
+      "transformations": {
+        "tangy": "comparison"
+      }
+    },
+    "tanner": {
+      "candidates": [
+        "tan"
+      ],
+      "transformations": {
+        "tan": "comparison"
+      }
+    },
+    "thinner": {
+      "candidates": [
+        "thin"
+      ],
+      "transformations": {
+        "thin": "comparison"
+      }
+    },
+    "thought": {
+      "candidates": [
+        "think"
+      ],
+      "transformations": {
+        "think": "past"
+      }
+    },
+    "thriven": {
+      "candidates": [
+        "thrive"
+      ],
+      "transformations": {
+        "thrive": "irregular"
+      }
+    },
+    "throve": {
+      "candidates": [
+        "thrive"
+      ],
+      "transformations": {
+        "thrive": "irregular"
+      }
+    },
+    "tore": {
+      "candidates": [
+        "tear"
+      ],
+      "transformations": {
+        "tear": "irregular"
+      }
+    },
+    "torn": {
+      "candidates": [
+        "tear"
+      ],
+      "transformations": {
+        "tear": "irregular"
+      }
+    },
+    "tramels": {
+      "candidates": [
+        "trammel"
+      ],
+      "transformations": {
+        "trammel": "irregular"
+      }
+    },
+    "transfixt": {
+      "candidates": [
+        "transfix"
+      ],
+      "transformations": {
+        "transfix": "irregular"
+      }
+    },
+    "tranship": {
+      "candidates": [
+        "transship"
+      ],
+      "transformations": {
+        "transship": "irregular"
+      }
+    },
+    "trimmer": {
+      "candidates": [
+        "trim"
+      ],
+      "transformations": {
+        "trim": "comparison"
+      }
+    },
+    "trod": {
+      "candidates": [
+        "tread"
+      ],
+      "transformations": {
+        "tread": "irregular"
+      }
+    },
+    "trodden": {
+      "candidates": [
+        "tread"
+      ],
+      "transformations": {
+        "tread": "irregular"
+      }
+    },
+    "twiner": {
+      "candidates": [
+        "twin"
+      ],
+      "transformations": {
+        "twin": "comparison"
+      }
+    },
+    "typewritten": {
+      "candidates": [
+        "typewrite"
+      ],
+      "transformations": {
+        "typewrite": "irregular"
+      }
+    },
+    "typewrote": {
+      "candidates": [
+        "typewrite"
+      ],
+      "transformations": {
+        "typewrite": "irregular"
+      }
+    },
+    "unbent": {
+      "candidates": [
+        "unbend"
+      ],
+      "transformations": {
+        "unbend": "irregular"
+      }
+    },
+    "unbound": {
+      "candidates": [
+        "unbind"
+      ],
+      "transformations": {
+        "unbind": "irregular"
+      }
+    },
+    "unclad": {
+      "candidates": [
+        "unclothe"
+      ],
+      "transformations": {
+        "unclothe": "irregular"
+      }
+    },
+    "undergirt": {
+      "candidates": [
+        "undergird"
+      ],
+      "transformations": {
+        "undergird": "irregular"
+      }
+    },
+    "undergone": {
+      "candidates": [
+        "undergo"
+      ],
+      "transformations": {
+        "undergo": "irregular"
+      }
+    },
+    "underlaid": {
+      "candidates": [
+        "underlay"
+      ],
+      "transformations": {
+        "underlay": "irregular"
+      }
+    },
+    "underlain": {
+      "candidates": [
+        "underlie"
+      ],
+      "transformations": {
+        "underlie": "irregular"
+      }
+    },
+    "underlay": {
+      "candidates": [
+        "underlie"
+      ],
+      "transformations": {
+        "underlie": "irregular"
+      }
+    },
+    "underpaid": {
+      "candidates": [
+        "underpay"
+      ],
+      "transformations": {
+        "underpay": "irregular"
+      }
+    },
+    "undershot": {
+      "candidates": [
+        "undershoot"
+      ],
+      "transformations": {
+        "undershoot": "irregular"
+      }
+    },
+    "undersold": {
+      "candidates": [
+        "undersell"
+      ],
+      "transformations": {
+        "undersell": "irregular"
+      }
+    },
+    "undertaken": {
+      "candidates": [
+        "undertake"
+      ],
+      "transformations": {
+        "undertake": "irregular"
+      }
+    },
+    "undertook": {
+      "candidates": [
+        "undertake"
+      ],
+      "transformations": {
+        "undertake": "irregular"
+      }
+    },
+    "underwent": {
+      "candidates": [
+        "undergo"
+      ],
+      "transformations": {
+        "undergo": "irregular"
+      }
+    },
+    "underwritten": {
+      "candidates": [
+        "underwrite"
+      ],
+      "transformations": {
+        "underwrite": "irregular"
+      }
+    },
+    "underwrote": {
+      "candidates": [
+        "underwrite"
+      ],
+      "transformations": {
+        "underwrite": "irregular"
+      }
+    },
+    "undid": {
+      "candidates": [
+        "undo"
+      ],
+      "transformations": {
+        "undo": "irregular"
+      }
+    },
+    "unfroze": {
+      "candidates": [
+        "unfreeze"
+      ],
+      "transformations": {
+        "unfreeze": "irregular"
+      }
+    },
+    "unfrozen": {
+      "candidates": [
+        "unfreeze"
+      ],
+      "transformations": {
+        "unfreeze": "irregular"
+      }
+    },
+    "unlearnt": {
+      "candidates": [
+        "unlearn"
+      ],
+      "transformations": {
+        "unlearn": "irregular"
+      }
+    },
+    "unmade": {
+      "candidates": [
+        "unmake"
+      ],
+      "transformations": {
+        "unmake": "irregular"
+      }
+    },
+    "unsaid": {
+      "candidates": [
+        "unsay"
+      ],
+      "transformations": {
+        "unsay": "irregular"
+      }
+    },
+    "unsolder": {
+      "candidates": [
+        "unsold"
+      ],
+      "transformations": {
+        "unsold": "comparison"
+      }
+    },
+    "unstrung": {
+      "candidates": [
+        "unstring"
+      ],
+      "transformations": {
+        "unstring": "irregular"
+      }
+    },
+    "untaught": {
+      "candidates": [
+        "unteach"
+      ],
+      "transformations": {
+        "unteach": "irregular"
+      }
+    },
+    "unwound": {
+      "candidates": [
+        "unwind"
+      ],
+      "transformations": {
+        "unwind": "irregular"
+      }
+    },
+    "uphove": {
+      "candidates": [
+        "upheave"
+      ],
+      "transformations": {
+        "upheave": "irregular"
+      }
+    },
+    "uprisen": {
+      "candidates": [
+        "uprise"
+      ],
+      "transformations": {
+        "uprise": "irregular"
+      }
+    },
+    "uprose": {
+      "candidates": [
+        "uprise"
+      ],
+      "transformations": {
+        "uprise": "irregular"
+      }
+    },
+    "upstager": {
+      "candidates": [
+        "upstage"
+      ],
+      "transformations": {
+        "upstage": "comparison"
+      }
+    },
+    "utterer": {
+      "candidates": [
+        "utter"
+      ],
+      "transformations": {
+        "utter": "comparison"
+      }
+    },
+    "voider": {
+      "candidates": [
+        "void"
+      ],
+      "transformations": {
+        "void": "comparison"
+      }
+    },
+    "warmer": {
+      "candidates": [
+        "warm"
+      ],
+      "transformations": {
+        "warm": "comparison"
+      }
+    },
+    "waylaid": {
+      "candidates": [
+        "waylay"
+      ],
+      "transformations": {
+        "waylay": "irregular"
+      }
+    },
+    "welcomer": {
+      "candidates": [
+        "welcome"
+      ],
+      "transformations": {
+        "welcome": "comparison"
+      }
+    },
+    "wept": {
+      "candidates": [
+        "weep"
+      ],
+      "transformations": {
+        "weep": "irregular"
+      }
+    },
+    "wester": {
+      "candidates": [
+        "west"
+      ],
+      "transformations": {
+        "west": "comparison"
+      }
+    },
+    "westerner": {
+      "candidates": [
+        "western"
+      ],
+      "transformations": {
+        "western": "comparison"
+      }
+    },
+    "wetter": {
+      "candidates": [
+        "wet"
+      ],
+      "transformations": {
+        "wet": "comparison"
+      }
+    },
+    "whipsawn": {
+      "candidates": [
+        "whipsaw"
+      ],
+      "transformations": {
+        "whipsaw": "irregular"
+      }
+    },
+    "whizzes": {
+      "candidates": [
+        "whiz"
+      ],
+      "transformations": {
+        "whiz": "irregular"
+      }
+    },
+    "wilder": {
+      "candidates": [
+        "wild"
+      ],
+      "transformations": {
+        "wild": "comparison"
+      }
+    },
+    "withheld": {
+      "candidates": [
+        "withhold"
+      ],
+      "transformations": {
+        "withhold": "irregular"
+      }
+    },
+    "withstood": {
+      "candidates": [
+        "withstand"
+      ],
+      "transformations": {
+        "withstand": "irregular"
+      }
+    },
+    "woke": {
+      "candidates": [
+        "wake"
+      ],
+      "transformations": {
+        "wake": "irregular"
+      }
+    },
+    "woken": {
+      "candidates": [
+        "wake"
+      ],
+      "transformations": {
+        "wake": "irregular"
+      }
+    },
+    "won": {
+      "candidates": [
+        "win"
+      ],
+      "transformations": {
+        "win": "past"
+      }
+    },
+    "wore": {
+      "candidates": [
+        "wear"
+      ],
+      "transformations": {
+        "wear": "irregular"
+      }
+    },
+    "works": {
+      "candidates": [
+        "work"
+      ],
+      "transformations": {
+        "work": "plural"
+      }
+    },
+    "worn": {
+      "candidates": [
+        "wear"
+      ],
+      "transformations": {
+        "wear": "irregular"
+      }
+    },
+    "worse": {
+      "candidates": [
+        "bad"
+      ],
+      "transformations": {
+        "bad": "comparison"
+      }
+    },
+    "worst": {
+      "candidates": [
+        "bad"
+      ],
+      "transformations": {
+        "bad": "comparison"
+      }
+    },
+    "would": {
+      "candidates": [
+        "will"
+      ],
+      "transformations": {
+        "will": "irregular"
+      }
+    },
+    "wound": {
+      "candidates": [
+        "wind"
+      ],
+      "transformations": {
+        "wind": "past"
+      }
+    },
+    "wove": {
+      "candidates": [
+        "weave"
+      ],
+      "transformations": {
+        "weave": "irregular"
+      }
+    },
+    "woven": {
+      "candidates": [
+        "weave"
+      ],
+      "transformations": {
+        "weave": "irregular"
+      }
+    },
+    "wrought": {
+      "candidates": [
+        "work"
+      ],
+      "transformations": {
+        "work": "irregular"
+      }
+    },
+    "wrung": {
+      "candidates": [
+        "wring"
+      ],
+      "transformations": {
+        "wring": "irregular"
+      }
+    }
+  }
+}

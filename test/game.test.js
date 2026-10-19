@@ -352,3 +352,69 @@ test("selects one canonical target per concept family", async () => {
   assert.equal(game.targetWord, "end");
   assert.equal(game.referenceRanking.filter((entry) => entry.word === "end").length, 1);
 });
+
+test("inflected targets, guesses, ranks and duplicate recall use one family", async () => {
+  const game = new Game({
+    embeddings: { basic: [1, 0], read: [0.8, 0.6], moon: [0, 1] },
+    commonWords: ["basics", "basic", "reading", "readings", "reads", "read", "moon"],
+    random: () => 0,
+    semanticFloor: 0, semanticCeiling: 1,
+  });
+  await once(game, "ready");
+  assert.equal(game.targetWord, "basic");
+  assert.deepEqual(game.referenceRanking.map((entry) => entry.word), ["basic", "read", "moon"]);
+  const original = game.handleGuess("readings", PLAYER);
+  assert.equal(original.result.guess, "read");
+  const duplicate = game.handleGuess("reading", PLAYER);
+  assert.equal(duplicate.code, "duplicate_guess");
+  assert.equal(duplicate.existingResult.id, original.result.id);
+  assert.equal(game.getGameState().guessHistory.length, 1);
+  const win = game.handleGuess("basics", PLAYER);
+  assert.equal(win.result.correct, true);
+  assert.equal(win.result.guess, "basic");
+});
+
+test("a plural-only noun cannot become a randomly selected target", async () => {
+  const game = new Game({
+    embeddings: { glasses: [1, 0], goods: [0.8, 0.6], basic: [0, 1] },
+    commonWords: ["glasses", "goods", "basics"], random: () => 0,
+  });
+  await once(game, "ready");
+  assert.equal(game.targetWord, "basic");
+  assert.equal(game.handleGuess("glasses", PLAYER).ok, true);
+});
+
+test("ambiguous inflections can win against either legitimate base without duplicate ranks", async () => {
+  for (const [surface, target] of [["leaves", "leaf"], ["leaves", "leave"],
+    ["axes", "axe"], ["axes", "axis"], ["saw", "see"], ["rose", "rise"],
+    ["better", "good"], ["worst", "bad"]]) {
+    const canonical = target === "axe" ? "ax" : target;
+    const game = new Game({
+      embeddings: { [canonical]: [1, 0], [surface]: [0.9, 0.1], moon: [0, 1] },
+      targetWord: target, commonWords: [surface, target, "moon"],
+    });
+    await once(game, "ready");
+    assert.equal(game.targetWord, canonical);
+    assert.equal(game.referenceRanking.filter((entry) => entry.word === canonical).length, 1);
+    assert.equal(game.referenceRanking.some((entry) => entry.word === surface), false);
+    const win = game.handleGuess(surface, PLAYER);
+    assert.equal(win.result.correct, true, `${surface} should solve ${target}`);
+    assert.equal(win.result.guess, canonical);
+    assert.equal(game.getGameState().guessHistory.length, 1);
+  }
+});
+
+test("protected noun meanings do not solve their distinct verb", async () => {
+  const game = new Game({
+    embeddings: { book: [1, 0], booking: [0.9, 0.1], moon: [0, 1] },
+    targetWord: "book", commonWords: ["book", "booking", "moon"],
+  });
+  await once(game, "ready");
+  const guess = game.handleGuess("bookings", PLAYER);
+  assert.equal(guess.result.correct, false);
+  assert.equal(guess.result.guess, "booking");
+  const duplicate = game.handleGuess("booking", PLAYER);
+  assert.equal(duplicate.code, "duplicate_guess");
+  assert.equal(duplicate.existingResult.id, guess.result.id);
+  assert.equal(game.handleGuess("books", PLAYER).result.correct, true);
+});

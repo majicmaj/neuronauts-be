@@ -39,6 +39,76 @@
       "canonical": "tooth",
       "transformation": "plural",
       "reason": "Unambiguous irregular plural."
+    },
+    "buses": {
+      "canonical": "bus",
+      "transformation": "plural",
+      "reason": "Both spellings are the ordinary plural of bus."
+    },
+    "busses": {
+      "canonical": "bus",
+      "transformation": "plural",
+      "reason": "Both spellings are the ordinary plural of bus."
+    },
+    "ringtones": {
+      "canonical": "ringtone",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "screenshots": {
+      "canonical": "screenshot",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "screensavers": {
+      "canonical": "screensaver",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "plugins": {
+      "canonical": "plugin",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "keywords": {
+      "canonical": "keyword",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "weblogs": {
+      "canonical": "weblog",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "trackbacks": {
+      "canonical": "trackback",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "ebooks": {
+      "canonical": "ebook",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "handhelds": {
+      "canonical": "handheld",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "smilies": {
+      "canonical": "smiley",
+      "transformation": "plural",
+      "reason": "Ordinary plural of a modern compound or abbreviation."
+    },
+    "swam": {
+      "canonical": "swim",
+      "transformation": "past",
+      "reason": "Attested irregular verb form absent from the POS dictionary."
+    },
+    "swum": {
+      "canonical": "swim",
+      "transformation": "past",
+      "reason": "Attested irregular verb form absent from the POS dictionary."
     }
   },
   "standalone": {
@@ -66,12 +136,149 @@
     "statistics": "An academic field distinct from one statistic.",
     "stranger": "An unknown person, distinct from the comparison form of strange.",
     "thanks": "An expression of gratitude distinct from the verb thank.",
-    "works": "A collection or facility concept distinct from work."
+    "works": "A collection or facility concept distinct from work.",
+    "booking": "A reservation distinct from the object book.",
+    "meeting": "A gathering distinct from meet.",
+    "ceiling": "An architectural surface, not the act of ceil.",
+    "feeling": "An emotion distinct from the verb feel.",
+    "painting": "An artwork distinct from paint.",
+    "drawing": "An artwork distinct from draw.",
+    "opening": "An aperture or vacancy distinct from open.",
+    "warning": "A message distinct from warn.",
+    "clothing": "A collective garment concept distinct from clothe.",
+    "funding": "Financial resources distinct from fund.",
+    "parking": "A designated facility distinct from park.",
+    "learning": "An established knowledge concept distinct from learn.",
+    "saw": "A cutting tool as well as the past tense of see.",
+    "found": "An independent verb meaning establish as well as the past tense of find.",
+    "wound": "An injury distinct from the past tense of wind.",
+    "left": "A direction distinct from the past tense of leave.",
+    "bound": "An independent adjective or verb distinct from bind.",
+    "lay": "An independent verb distinct from lie.",
+    "rose": "A flower distinct from the past tense of rise.",
+    "fell": "An independent verb distinct from the past tense of fall.",
+    "species": "A singular or invariant taxonomic noun, never specie.",
+    "physics": "A singular discipline, never physic.",
+    "news": "A singular mass noun.",
+    "people": "Default to the collective population concept; accept person context only when that count noun is the answer.",
+    "lying": "Telling falsehoods and reclining are ambiguous without context.",
+    "being": "A living entity distinct from the verb be.",
+    "pants": "A plural-only garment or tool concept; do not merge into a different singular sense.",
+    "trousers": "A plural-only garment or tool concept; do not merge into a different singular sense.",
+    "scissors": "A plural-only garment or tool concept; do not merge into a different singular sense.",
+    "axes": "Ambiguous plural of ax/axis; keep the guess separate and exclude it from targets.",
+    "evening": "A time of day, not a form of the verb even.",
+    "rating": "An assessment score, not a form of the verb rat.",
+    "dining": "A meal activity distinct from the verb din.",
+    "wedding": "A ceremony distinct from the verb wed.",
+    "crooked": "An adjective for a bent or dishonest thing, distinct from crook.",
+    "means": "A method or resources, distinct from the verb or adjective mean.",
+    "media": "Communication channels, distinct from the size or substance medium.",
+    "data": "Default to information as a mass noun; accept datum context only when that count noun is the answer.",
+    "ethics": "A singular discipline distinct from one ethic.",
+    "mechanics": "A branch of physics distinct from a mechanic.",
+    "setting": "A configuration or environment distinct from the verb set.",
+    "holding": "An asset or possession distinct from hold.",
+    "finding": "A discovery or conclusion distinct from find.",
+    "belonging": "A possession distinct from belong.",
+    "winnings": "Gambling proceeds distinct from win.",
+    "leavings": "Leftover remnants distinct from leave."
   },
   "spellingVariantExcluded": {
     "metre": "Meter also names a measuring device; merging the unsensed embeddings could solve the wrong concept.",
     "programme": "Program also has a software sense that programme does not reliably share.",
     "tyre": "Tire also has a fatigue verb sense that tyre does not share."
   },
-  "targetExcluded": {}
+  "targetExcluded": {
+    "saw": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "found": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "wound": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "left": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "bound": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "lay": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "rose": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "fell": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "lying": "Ambiguous inflected homograph; accepted as a guess but not a hidden answer.",
+    "bacteria": "Plural or collective-only noun; accepted as a guess but never a hidden answer.",
+    "cattle": "Plural or collective-only noun; accepted as a guess but never a hidden answer.",
+    "personnel": "Plural or collective-only noun; accepted as a guess but never a hidden answer.",
+    "police": "Plural or collective-only noun; accepted as a guess but never a hidden answer.",
+    "earnings": "Plural or collective-only noun; accepted as a guess but never a hidden answer.",
+    "others": "Plural or collective-only noun; accepted as a guess but never a hidden answer.",
+    "pants": "Plural-only noun; accepted as a guess but never a hidden answer.",
+    "trousers": "Plural-only noun; accepted as a guess but never a hidden answer.",
+    "scissors": "Plural-only noun; accepted as a guess but never a hidden answer.",
+    "axes": "Ambiguous plural; never a hidden target.",
+    "better": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
+    "best": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
+    "worse": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
+    "worst": "Ambiguous comparison; accept the inflected guess when its base is the hidden answer.",
+    "people": "Plural collective noun; accepted as a guess but never a hidden answer.",
+    "media": "A lexicalized plural/mass communication concept; accepted as a guess but never a hidden answer.",
+    "winnings": "Plural-only noun; accepted as a guess but never a hidden answer.",
+    "leavings": "Plural-only noun; accepted as a guess but never a hidden answer."
+  },
+  "invariantSingular": [
+    "news",
+    "physics",
+    "species",
+    "series",
+    "business",
+    "mathematics",
+    "economics",
+    "politics",
+    "athletics",
+    "electronics",
+    "genetics",
+    "statistics",
+    "ethics",
+    "mechanics"
+  ],
+  "ambiguousAliases": {
+    "leaves": [
+      "leaf",
+      "leave"
+    ],
+    "axes": [
+      "ax",
+      "axe",
+      "axis"
+    ],
+    "saw": [
+      "see"
+    ],
+    "found": [
+      "find"
+    ],
+    "wound": [
+      "wind"
+    ],
+    "left": [
+      "leave"
+    ],
+    "rose": [
+      "rise"
+    ],
+    "fell": [
+      "fall"
+    ],
+    "bound": [
+      "bind"
+    ],
+    "lay": [
+      "lie"
+    ],
+    "lying": [
+      "lie"
+    ],
+    "people": [
+      "person"
+    ],
+    "media": [
+      "medium"
+    ],
+    "data": [
+      "datum"
+    ]
+  }
 }

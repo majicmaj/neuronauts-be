@@ -186,7 +186,7 @@ class Game extends EventEmitter {
     for (const rawWord of this.commonWords) {
       const surfaceWord = normalizeGuess(rawWord);
       if (!surfaceWord) continue;
-      const word = this.conceptLexicon.resolve(surfaceWord).canonicalWord;
+      const word = this.conceptLexicon.resolve(surfaceWord, { targetWord: this.targetWord }).canonicalWord;
       if (!word || seen.has(word)) continue;
       seen.add(word);
       const embedding = this.getEmbedding(word);
@@ -406,7 +406,7 @@ class Game extends EventEmitter {
       return this.makeError("Enter one dictionary word.", "invalid_guess");
     }
 
-    let resolution = this.conceptLexicon.resolve(submittedGuess);
+    let resolution = this.conceptLexicon.resolve(submittedGuess, { targetWord: this.targetWord });
     let word = resolution.canonicalWord;
     let embedding = this.getEmbedding(word);
     if (!embedding && resolution.transformed) {

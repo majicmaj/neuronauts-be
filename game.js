@@ -849,12 +849,22 @@ class Game extends EventEmitter {
         ...publicStats
       } = player;
       return {
-        ...publicStats,
-        // Public VS recaps retain signal strength, never the rival's guess strings.
-        ...(!includeWords ? {
-          bestGuess: player.bestGuess && { similarity: player.bestGuess.similarity, rank: player.bestGuess.rank },
-          furthestGuess: player.furthestGuess && { similarity: player.furthestGuess.similarity, rank: player.furthestGuess.rank },
-        } : {}),
+        // Explicit public fields prevent future private player stats from leaking.
+        ...(includeWords ? publicStats : {
+          playerId: player.playerId,
+          playerName: player.playerName,
+          colorIndex: player.colorIndex,
+          avatarId: player.avatarId,
+          guessCount: player.guessCount,
+          wrongGuessCount: player.wrongGuessCount,
+          hintCount: player.hintCount,
+          averageSimilarity: player.averageSimilarity,
+          bestGuess: player.bestGuess && { similarity: player.bestGuess.similarity, rank: null },
+          furthestGuess: player.furthestGuess && { similarity: player.furthestGuess.similarity, rank: null },
+          breakthroughs: player.breakthroughs,
+          biggestLeap: player.biggestLeap,
+          foundTarget: player.foundTarget,
+        }),
         title: award?.title || fallback[0],
         titleDetail: award?.description || fallback[1],
         awardIds: awards

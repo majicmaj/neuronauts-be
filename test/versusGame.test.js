@@ -314,6 +314,10 @@ test("completed matches share rich awards for both crews without rival guess wor
       for (const player of recap.players) {
         assert.ok(!player.bestGuess || !("word" in player.bestGuess));
         assert.ok(!player.furthestGuess || !("word" in player.furthestGuess));
+        for (const signal of [player.bestGuess, player.furthestGuess].filter(Boolean)) {
+          assert.deepEqual(Object.keys(signal).sort(), ["rank", "similarity"]);
+          assert.equal(signal.rank, null, "exact ranks can identify private words");
+        }
       }
     }
     assert.deepEqual(view.result.teamRecaps, match.getView(opponentId, remaining).result.teamRecaps);

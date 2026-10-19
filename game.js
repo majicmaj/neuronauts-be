@@ -571,7 +571,7 @@ class Game extends EventEmitter {
     return options[index];
   }
 
-  buildRecap() {
+  buildRecap({ includeWords = true } = {}) {
     if (this.status !== "won") return null;
 
     const statsByPlayer = new Map();
@@ -767,9 +767,11 @@ class Game extends EventEmitter {
         furthest,
         ["Outer Rim Tourist", "Deep-Void Cartographer", "Lost Moon Ambassador", "Semantic Space Cadet"],
         furthest?.furthestGuess
-          ? `Sent “${furthest.furthestGuess.word}” from ${percent(furthest.furthestGuess.similarity)}. Deep-void tourism.`
+          ? includeWords
+            ? `Sent “${furthest.furthestGuess.word}” from ${percent(furthest.furthestGuess.similarity)}. Deep-void tourism.`
+            : `Sent a signal from ${percent(furthest.furthestGuess.similarity)}. Deep-void tourism.`
           : "",
-        furthest?.furthestGuess ? `${furthest.furthestGuess.word} · ${percent(furthest.furthestGuess.similarity)}` : ""
+        furthest?.furthestGuess ? `${includeWords ? `${furthest.furthestGuess.word} · ` : ""}${percent(furthest.furthestGuess.similarity)}` : ""
       ),
       makeAward(
         "fewest-guesses",
@@ -812,15 +814,15 @@ class Game extends EventEmitter {
         "first-contact",
         players.find((player) => player.playerId === firstGuess.playerId),
         ["First Contact", "Opening Transmission", "Launch Button Presser", "Early Bird in Space"],
-        `Broke the silence with “${firstGuess.guess}.”`,
-        firstGuess.guess
+        includeWords ? `Broke the silence with “${firstGuess.guess}.”` : "Broke the silence with the team’s opening transmission.",
+        includeWords ? firstGuess.guess : "Opening transmission"
       ),
       closestMissGuess && makeAward(
         "closest-miss",
         closestMiss,
         ["Docked Without Landing", "Near-Miss Nebula", "Target Tease", "Almost Astronaut"],
-        `Put “${closestMissGuess.guess}” within touching distance before the final lock.`,
-        `${closestMissGuess.guess} · ${percent(closestMissGuess.similarity)}`
+        includeWords ? `Put “${closestMissGuess.guess}” within touching distance before the final lock.` : "Put a signal within touching distance before the final lock.",
+        `${includeWords ? `${closestMissGuess.guess} · ` : ""}${percent(closestMissGuess.similarity)}`
       ),
     ].filter(Boolean);
 
@@ -848,6 +850,11 @@ class Game extends EventEmitter {
       } = player;
       return {
         ...publicStats,
+        // Public VS recaps retain signal strength, never the rival's guess strings.
+        ...(!includeWords ? {
+          bestGuess: player.bestGuess && { similarity: player.bestGuess.similarity, rank: player.bestGuess.rank },
+          furthestGuess: player.furthestGuess && { similarity: player.furthestGuess.similarity, rank: player.furthestGuess.rank },
+        } : {}),
         title: award?.title || fallback[0],
         titleDetail: award?.description || fallback[1],
         awardIds: awards

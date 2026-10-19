@@ -323,6 +323,11 @@ class VersusGame extends EventEmitter {
       winnerTeamId: standings[0].id,
       loserTeamId: standings[1].id,
       standings,
+      // Both crews receive citations after both finishes; private words stay in
+      // the recipient's own gameState.recap, never in these shared results.
+      teamRecaps: Object.fromEntries(TEAM_IDS.map((id) => [
+        id, this.games.get(id).buildRecap({ includeWords: false }),
+      ])),
       targetWord: this.games.get("red").targetWord,
       scoring: {
         guessPenaltySeconds: GUESS_PENALTY_SECONDS,

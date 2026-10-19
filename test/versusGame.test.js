@@ -263,3 +263,65 @@ test("manual launch starts unready teams together only once and requires both te
   assert.equal(match.startedAt, startedAt);
   assert.equal(match.handleGuess("moon", host).ok, true);
 });
+
+test("completed matches share rich awards for both crews without rival guess words", async () => {
+  const match = new VersusGame({
+    random: () => 0,
+    gameFactory: (options = {}) => new Game({
+      embeddings: EMBEDDINGS,
+      targetWord: options.targetWord || "star",
+      commonWords: Object.keys(EMBEDDINGS),
+      semanticFloor: 0,
+      semanticCeiling: 1,
+      hintCooldownMs: 0,
+    }),
+  });
+  await once(match, "ready");
+  const red = makePlayer(1, "red");
+  const blue = makePlayer(2, "blue");
+  const idle = makePlayer(3, "red");
+  const departed = makePlayer(4, "blue");
+  const players = [red, blue, idle, departed];
+  players.forEach(player => match.registerPlayer(player));
+  match.startNow(players);
+  match.handleGuess("moon", red);
+  match.handleGuess("bridge", red);
+  match.handleGuess("planet", departed);
+  match.unregisterPlayer(departed);
+  const remaining = players.filter(player => player !== departed);
+  match.handleGuess("beacon", blue);
+  match.requestHint(blue);
+  assert.equal(match.getView("blue", remaining).result, null);
+  match.handleGuess("star", red);
+  const waiting = match.getView("blue", remaining);
+  assert.equal(waiting.result, null, "no opponent recap before both teams finish");
+  assert.ok(!JSON.stringify(waiting).includes('"moon"'));
+  match.handleGuess("star", blue);
+
+  for (const [teamId, privateWords] of [["red", ["planet", "beacon"]], ["blue", ["moon", "bridge"]]]) {
+    const view = match.getView(teamId, remaining);
+    const opponentId = teamId === "red" ? "blue" : "red";
+    const own = view.gameState.recap;
+    const rival = view.result.teamRecaps[opponentId];
+    assert.ok(own.awards.length > 0);
+    assert.ok(rival.awards.length > 0);
+    assert.ok(own.players.some(player => player.bestGuess?.word === "star"));
+    for (const word of privateWords) {
+      assert.ok(!JSON.stringify(view).includes(word), `entire ${teamId} view keeps rival ${word} private`);
+    }
+    for (const recap of Object.values(view.result.teamRecaps)) {
+      assert.ok(recap.players.some(player => player.foundTarget));
+      for (const player of recap.players) {
+        assert.ok(!player.bestGuess || !("word" in player.bestGuess));
+        assert.ok(!player.furthestGuess || !("word" in player.furthestGuess));
+      }
+    }
+    assert.deepEqual(view.result.teamRecaps, match.getView(opponentId, remaining).result.teamRecaps);
+  }
+  const recaps = match.getResult(remaining).teamRecaps;
+  assert.equal(recaps.red.players.find(player => player.playerId === idle.participantId).guessCount, 0);
+  assert.equal(recaps.blue.players.find(player => player.playerId === departed.participantId).guessCount, 1);
+  for (const id of ["first-contact", "closest-miss", "furthest-guess"]) {
+    assert.ok(recaps.red.awards.some(award => award.id === id), `${id} remains available without its word`);
+  }
+});

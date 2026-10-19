@@ -161,6 +161,7 @@ test("keeps initialization failures visible instead of relabeling them as setup"
   const view = match.getView("red", []);
   assert.equal(view.gameState.status, "error");
   assert.equal(view.gameState.error, "Navigator failed");
+  assert.equal(match.startNow([]).code, "game_unavailable");
 });
 
 test("keeps disconnected contributors in the final per-player breakdown", async () => {
@@ -234,7 +235,7 @@ test("keeps team setup reversible and randomizable until every player launches",
   assert.equal(match.randomizeTeams(players).code, "match_started");
 });
 
-test("manual launch starts both clocks with unready crew or an empty team, only once", async () => {
+test("manual launch starts unready teams together only once and requires both teams", async () => {
   let now = Date.parse("2026-10-19T21:00:00Z");
   const match = new VersusGame({
     now: () => now,
@@ -248,8 +249,11 @@ test("manual launch starts both clocks with unready crew or an empty team, only 
   assert.equal(match.startNow([host]).code, "match_loading");
   await once(match, "ready");
   assert.equal(match.maybeStart([host]), false);
-  assert.equal(match.getView("red", [host]).canHostStart, true);
-  assert.equal(match.startNow([host]).ok, true);
+  assert.equal(match.getView("red", [host]).canHostStart, false);
+  assert.equal(match.startNow([host]).code, "teams_incomplete");
+  const guest = makePlayer(2, "blue");
+  match.registerPlayer(guest);
+  assert.equal(match.startNow([host, guest]).ok, true);
   const startedAt = match.startedAt;
   assert.equal(host.ready, false);
   assert.equal(match.games.get("red").startedAt, startedAt);

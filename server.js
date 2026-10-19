@@ -200,8 +200,21 @@ function createGameServer(options = {}) {
     if (lobby.mode !== "versus") return;
     const host = Array.from(lobby.players.values()).find(player => player.participantId === lobby.hostParticipantId);
     if (host) io.to(host.id).emit("joinRequestsUpdated", {
+      lobbyId: lobby.lobbyId,
       requests: Array.from(lobby.pendingJoins, ([id, request]) => ({ id, name: request.name })),
     });
+  }
+
+  function closeJoinQueue(lobby, message) {
+    for (const id of lobby.pendingJoins.keys()) {
+      const waiting = io.sockets.sockets.get(id);
+      if (waiting) {
+        waiting.data.pendingLobbyId = null;
+        waiting.emit("error", message);
+      }
+    }
+    lobby.pendingJoins.clear();
+    emitJoinRequests(lobby);
   }
 
   function emitVersusState(lobby) {
@@ -296,13 +309,7 @@ function createGameServer(options = {}) {
         recordEvent("versus_team_finished", { lobbyId, teamId });
       });
       game.on("complete", () => {
-        for (const id of Array.from(lobby.pendingJoins.keys())) {
-          const waiting = io.sockets.sockets.get(id);
-          if (waiting) {
-            removePlayerFromCurrentLobby(waiting);
-            waiting.emit("error", "This match has finished. Ask the host for the rematch link.");
-          }
-        }
+        closeJoinQueue(lobby, "This match has finished. Ask the host for the rematch link.");
         lobby.typingPlayerIds.clear();
         emitTyping(lobby);
         emitVersusState(lobby);
@@ -313,6 +320,7 @@ function createGameServer(options = {}) {
       });
     }
     game.on("error", (error) => {
+      closeJoinQueue(lobby, "This mission is unavailable. Return home to start another.");
       io.to(lobbyId).emit("actionError", {
         code: "game_unavailable",
         message: error.code === "no_eligible_targets"
@@ -329,6 +337,7 @@ function createGameServer(options = {}) {
   function deleteLobby(lobbyId, reason) {
     const lobby = lobbies.get(lobbyId);
     if (!lobby) return;
+    closeJoinQueue(lobby, "This lobby has expired. Return home to start another.");
     const playerCount = lobby.players.size;
     lobbies.delete(lobbyId);
     recordEvent("lobby_deleted", {
@@ -466,6 +475,7 @@ function createGameServer(options = {}) {
     }
     if (lobby.mode === "versus") {
       lobby.game.maybeStart(Array.from(lobby.players.values()));
+      if (!lobby.players.size) closeJoinQueue(lobby, "Everyone has left this match. Return home to start another.");
     }
     lobby.typingPlayerIds.delete(socket.id);
     updateLobbyActivity(lobby);
@@ -645,6 +655,10 @@ function createGameServer(options = {}) {
         if (lobby.game.phase !== "setup" && !resumeIdentity) {
           if (lobby.game.phase !== "playing") {
             socket.emit("error", "This match has finished. Ask the host for the rematch link.");
+            return;
+          }
+          if (!lobby.players.size) {
+            socket.emit("error", "No one is online to admit you. Ask the host to reconnect, or start a new mission.");
             return;
           }
           if (!lobby.pendingJoins.has(socket.id) && lobby.pendingJoins.size >= limits.maxPlayersPerLobby) {
@@ -848,6 +862,7 @@ function createGameServer(options = {}) {
       const entrant = io.sockets.sockets.get(payload.requestId);
       if (!request || !entrant || entrant.data.pendingLobbyId !== lobby.lobbyId) {
         emitActionError(socket, { error: "This player is no longer waiting.", code: "join_request_expired" });
+        emitJoinRequests(lobby);
         return;
       }
       if (payload.reject === true) {
@@ -857,6 +872,7 @@ function createGameServer(options = {}) {
       }
       if (lobby.game.phase !== "playing" || !["red", "blue"].includes(payload.teamId) || lobby.players.size >= limits.maxPlayersPerLobby) {
         emitActionError(socket, { error: "Choose a team with room in an active match.", code: "cannot_admit" });
+        emitJoinRequests(lobby);
         return;
       }
       removePlayerFromCurrentLobby(entrant);
@@ -864,6 +880,7 @@ function createGameServer(options = {}) {
       entrant.emit("lobbyJoined", lobbyPayload(lobby, entrant.id, true));
       emitPlayers(lobby);
       emitVersusState(lobby);
+      recordEvent("lobby_joined", { lobbyId: lobby.lobbyId, players: lobby.players.size, activeRooms: lobbies.size, activePlayers: getActivePlayerCount() });
     });
 
     socket.on("startMatch", (payload = {}) => {

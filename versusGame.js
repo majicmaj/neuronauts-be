@@ -239,10 +239,13 @@ class VersusGame extends EventEmitter {
 
   startNow(players) {
     if (this.phase !== "setup") return { ok: false, code: "match_started", error: "The match has already launched." };
+    if (this.status === "error") return { ok: false, code: "game_unavailable", error: "This mission is unavailable. Return home to start another." };
     if (this.readyTeams.size !== TEAM_IDS.length || this.status !== "setup") {
       return { ok: false, code: "match_loading", error: "The word map is still loading. Try again in a moment." };
     }
-    if (!players.length) return { ok: false, code: "no_players", error: "Join the lobby before starting." };
+    if (TEAM_IDS.some(id => !players.some(player => player.teamId === id))) {
+      return { ok: false, code: "teams_incomplete", error: "Each team needs at least one player." };
+    }
     this.beginMatch();
     return { ok: true, started: true };
   }
@@ -360,7 +363,7 @@ class VersusGame extends EventEmitter {
       completedAt: this.completedAt,
       firstFinishTeamId: this.firstFinishTeamId,
       canStart: players.length >= 2 && TEAM_IDS.every((id) => players.some((player) => player.teamId === id)),
-      canHostStart: this.phase === "setup" && this.status === "setup" && this.readyTeams.size === TEAM_IDS.length && players.length > 0,
+      canHostStart: this.phase === "setup" && this.status === "setup" && TEAM_IDS.every(id => players.some(player => player.teamId === id)),
       readyCount: players.filter((player) => player.ready).length,
       totalCount: players.length,
       teams: TEAM_IDS.map((id) => this.getTeamSummary(id, players)),

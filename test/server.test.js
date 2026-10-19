@@ -743,4 +743,23 @@ test("host can launch unready crew and privately admit late teammates to a chose
   next = waitFor(host, "actionError"); host.emit("startMatch", { lobbyId });
   assert.equal((await next).code, "match_started");
   assert.equal(runtime.lobbies.get(lobbyId).game.startedAt, startedAt);
+
+  const waiting = await connect(url);
+  t.after(() => waiting.disconnect());
+  next = waitFor(waiting, "lobbyJoinPending");
+  waiting.emit("joinLobby", { lobbyId, preferredName: "Waiting Friend" });
+  await next;
+  next = waitFor(guest, "joinRequestsUpdated", p => p.requests.some(r => r.id === waiting.id));
+  host.disconnect();
+  await next;
+  assert.equal(runtime.lobbies.get(lobbyId).hostParticipantId, runtime.lobbies.get(lobbyId).players.get(guest.id).participantId);
+  const closed = waitFor(waiting, "error");
+  guest.disconnect();
+  late.disconnect();
+  assert.match(await closed, /Everyone has left/);
+  assert.equal(runtime.lobbies.get(lobbyId).pendingJoins.size, 0);
+  assert.equal(runtime.io.sockets.sockets.get(waiting.id).data.pendingLobbyId, null);
+  next = waitFor(waiting, "error");
+  waiting.emit("joinLobby", { lobbyId });
+  assert.match(await next, /No one is online/);
 });

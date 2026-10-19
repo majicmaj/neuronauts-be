@@ -378,13 +378,17 @@ test("concurrent spelling variants create one guess and recall it for the other 
 });
 
 test("VS lobbies ready both teams and never send opponent words", async (t) => {
+  const privateEmbeddings = Object.fromEntries(Object.entries(EMBEDDINGS).map(([word, vector]) => [
+    word === "moon" ? "canaryorigin" : word === "bridge" ? "canaryanswer" : word,
+    vector,
+  ]));
   const runtime = createGameServer({
     skipEmbeddingsBootstrap: true,
     guessRateLimitMs: 0,
     gameFactory: (options = {}) => new Game({
-      embeddings: EMBEDDINGS,
+      embeddings: privateEmbeddings,
       targetWord: options.targetWord || "star",
-      commonWords: Object.keys(EMBEDDINGS),
+      commonWords: Object.keys(privateEmbeddings),
       semanticFloor: 0,
       semanticCeiling: 1,
     }),
@@ -454,7 +458,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   additional.push(attacker);
   const attackerEvents = [];
   attacker.onAny((event, payload) => attackerEvents.push({ event, payload }));
-  const denyJoin = async (socket, payload, message = /started/) => {
+  const denyJoin = async (socket, payload, message = /started|unavailable/) => {
     const denied = waitFor(socket, "error");
     socket.emit("joinLobby", payload);
     assert.match(await denied, message);
@@ -462,8 +466,22 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   };
   await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Late spectator" });
   await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: "f".repeat(48) });
-  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: joined.resumeToken }, /already connected/);
   assert.equal(attackerEvents.some(({ event }) => event === "lobbyJoined" || event === "versusUpdated"), false);
+  const staleBlue = second;
+  const staleBlueId = staleBlue.id;
+  const replacementBlue = await connect(url);
+  additional.push(replacementBlue);
+  replacementBlue.onAny((event, payload) => rivalEvents.push({ event, payload }));
+  const resumedStale = waitFor(replacementBlue, "lobbyJoined");
+  const staleDisconnected = waitFor(staleBlue, "disconnect");
+  replacementBlue.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: joined.resumeToken });
+  const replacementPayload = await resumedStale;
+  await staleDisconnected;
+  assert.equal(replacementPayload.versus.teamId, "blue", "the token, not the requested rival call sign, selects identity");
+  assert.equal(replacementPayload.players.find(player => player.id === replacementBlue.id).participantId, joined.players.find(player => player.id === staleBlueId).participantId);
+  assert.equal(runtime.lobbies.get(created.lobbyId).players.has(staleBlueId), false);
+  assert.equal(replacementPayload.playerCount, 2);
+  second = replacementBlue;
 
   const typingVisible = waitFor(
     second,
@@ -476,7 +494,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   const redUpdate = waitFor(
     first,
     "versusUpdated",
-    (payload) => payload.gameState.guessHistory.some((guess) => guess.guess === "moon")
+    (payload) => payload.gameState.guessHistory.some((guess) => guess.guess === "canaryorigin")
   );
   const blueUpdate = waitFor(
     second,
@@ -485,11 +503,11 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   );
   const response = await emitWithAck(first, "guess", {
     lobbyId: created.lobbyId,
-    guess: "moon",
+    guess: "canaryorigin",
   });
   const [redPayload, bluePayload] = await Promise.all([redUpdate, blueUpdate]);
   assert.equal(response.ok, true);
-  assert.equal(redPayload.gameState.guessHistory[0].guess, "moon");
+  assert.equal(redPayload.gameState.guessHistory[0].guess, "canaryorigin");
   assert.equal(bluePayload.gameState.guessHistory.length, 0);
   assert.equal("guess" in bluePayload.versus.opponentPoints[0], false);
   assert.equal("playerId" in bluePayload.versus.opponentPoints[0], false);
@@ -502,7 +520,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(redTelemetry.bestSimilarity, response.result.similarity);
   assert.equal(redTelemetry.playerStats[0].guessCount, 1);
   assert.equal(redTelemetry.playerStats[0].bestSimilarity, response.result.similarity);
-  assert.equal(JSON.stringify(bluePayload.versus).includes("moon"), false);
+  assert.equal(JSON.stringify(bluePayload.versus).includes("canaryorigin"), false);
 
   // Both hint origin and hint answer are private words. Inspect the whole
   // recipient payload, all event types, and public diagnostics, not just points.
@@ -511,14 +529,15 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   first.emit("requestHint", { lobbyId: created.lobbyId });
   const [ownHintPayload, rivalHintPayload] = await Promise.all([ownHint, rivalHint]);
   const hint = ownHintPayload.gameState.guessHistory.find(guess => guess.isHint);
-  assert.equal(hint.hintFrom, "moon");
-  assert.equal(hint.guess, "bridge");
+  assert.equal(hint.hintFrom, "canaryorigin");
+  assert.equal(hint.guess, "canaryanswer");
   const assertPrivate = payload => {
     const json = JSON.stringify(payload).toLowerCase();
-    for (const privateWord of ["moon", "bridge"]) assert.equal(json.includes(privateWord), false, `leaked ${privateWord}`);
+    for (const privateWord of ["canaryorigin", "canaryanswer"]) assert.equal(json.includes(privateWord), false, `leaked ${privateWord}`);
     assert.equal(json.includes(created.resumeToken), false, "leaked opponent resume credential");
   };
   assertPrivate(rivalHintPayload);
+  assert.equal("resumeToken" in rivalHintPayload, false, "routine state does not repeat credentials");
   assertPrivate(rivalEvents);
   const stats = await (await fetch(`${url}/stats`)).json();
   assert.equal(stats.lastEvent.type, "hint_used");
@@ -527,7 +546,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
 
   // Rejoining (including the complete lobbyJoined snapshot) must not bypass
   // team filtering after a hint or after only the other team has finished.
-  const secondIdentity = joined.players.find(player => player.id === second.id);
+  const secondIdentity = replacementPayload.players.find(player => player.id === second.id);
   const departed = waitFor(first, "playersUpdated", payload => payload.playerCount === 1);
   second.disconnect();
   await departed;
@@ -558,7 +577,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   const recoveredPayload = await recovered;
   assert.equal(recoveredPayload.players.find(player => player.id === recoveredRed.id).participantId, created.players[0].participantId);
   assert.equal(recoveredPayload.gameState.targetWord, "star");
-  assert.equal(recoveredPayload.gameState.guessHistory[0].guess, "moon");
+  assert.equal(recoveredPayload.gameState.guessHistory[0].guess, "canaryorigin");
   assert.equal(recoveredPayload.versus.teamId, "red");
   first = recoveredRed;
   second = reconnected;
@@ -581,7 +600,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(runtime.lobbies.get(rematch.lobbyId).mode, "versus");
   const badRematchResume = waitFor(first, "error");
   first.emit("joinLobby", { lobbyId: rematch.lobbyId, preferredName: "Red Ranger", resumeToken: created.resumeToken });
-  assert.match(await badRematchResume, /started/);
+  assert.match(await badRematchResume, /unavailable/);
   const rematchJoined = waitFor(first, "lobbyJoined");
   first.emit("joinLobby", { lobbyId: rematch.lobbyId, preferredName: "Red Ranger" });
   const rematchPayload = await rematchJoined;
@@ -592,7 +611,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(attackerEvents.some(({ event }) => event === "lobbyJoined" || event === "versusUpdated"), false);
 });
 
-test("VS setup call signs cannot reclaim another participant's resume identity", async (t) => {
+test("VS setup call signs and launch roster protect resume identities", async (t) => {
   const runtime = createGameServer({
     skipEmbeddingsBootstrap: true,
     gameFactory: (options = {}) => new Game({
@@ -606,8 +625,9 @@ test("VS setup call signs cannot reclaim another participant's resume identity",
   const original = await connect(url);
   const impersonator = await connect(url);
   const resumed = await connect(url);
+  const leaver = await connect(url);
   t.after(async () => {
-    [original, impersonator, resumed].forEach(socket => socket.disconnect());
+    [original, impersonator, resumed, leaver].forEach(socket => socket.disconnect());
     await runtime.stop();
   });
   const createdPromise = waitFor(original, "lobbyCreated");
@@ -618,7 +638,9 @@ test("VS setup call signs cannot reclaim another participant's resume identity",
   original.disconnect();
   await departed;
   // Wait for the server to process the disconnect, not just the local client.
-  while (lobby.players.size) await new Promise(resolve => setImmediate(resolve));
+  const disconnectDeadline = Date.now() + 2_000;
+  while (lobby.players.size && Date.now() < disconnectDeadline) await new Promise(resolve => setImmediate(resolve));
+  assert.equal(lobby.players.size, 0);
   const impostorJoin = waitFor(impersonator, "lobbyJoined");
   impersonator.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "Private Captain" });
   const impostorPayload = await impostorJoin;
@@ -634,4 +656,30 @@ test("VS setup call signs cannot reclaim another participant's resume identity",
   assert.equal(resumedPayload.resumeToken, created.resumeToken);
   assert.ok(resumedPayload.players.every(player => !("resumeToken" in player)));
   assert.equal(JSON.stringify(await (await fetch(`${url}/stats`)).json()).includes(created.resumeToken), false);
+  const invalidSetup = waitFor(leaver, "error");
+  leaver.emit("joinLobby", { lobbyId: created.lobbyId, resumeToken: "0".repeat(48) });
+  assert.match(await invalidSetup, /saved VS seat is unavailable/);
+  const leaverJoin = waitFor(leaver, "lobbyJoined");
+  leaver.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "Setup visitor" });
+  const leaverPayload = await leaverJoin;
+  const visitorLeft = waitFor(resumed, "playersUpdated", payload => payload.playerCount === 2);
+  leaver.disconnect();
+  await visitorLeft;
+  const redAssigned = waitFor(impersonator, "versusUpdated", payload => payload.players.find(player => player.id === impersonator.id)?.teamId === "red");
+  impersonator.emit("setTeam", { lobbyId: created.lobbyId, teamId: "red" });
+  await redAssigned;
+  const blueAssigned = waitFor(resumed, "versusUpdated", payload => payload.players.find(player => player.id === resumed.id)?.teamId === "blue");
+  resumed.emit("setTeam", { lobbyId: created.lobbyId, teamId: "blue" });
+  await blueAssigned;
+  const launched = waitFor(resumed, "versusUpdated", payload => payload.versus.phase === "playing");
+  impersonator.emit("toggleReady", { lobbyId: created.lobbyId });
+  resumed.emit("toggleReady", { lobbyId: created.lobbyId });
+  await launched;
+  assert.equal(lobby.resumeAssignments.has(leaverPayload.resumeToken), false, "a departed setup visitor is outside the launched crew");
+  leaver.connect();
+  await waitFor(leaver, "connect");
+  const oldSeatDenied = waitFor(leaver, "error");
+  leaver.emit("joinLobby", { lobbyId: created.lobbyId, resumeToken: leaverPayload.resumeToken });
+  assert.match(await oldSeatDenied, /unavailable/);
+  assert.equal(lobby.players.size, 2);
 });

@@ -266,6 +266,16 @@ function createGameServer(options = {}) {
     });
     if (mode === "versus") {
       game.on("started", () => {
+        // Only the crew present at launch may resume. A seat that left during
+        // setup must not re-enter a team's private search mid-match.
+        const launchedParticipantIds = new Set(
+          Array.from(lobby.players.values(), (player) => player.participantId)
+        );
+        for (const [token, identity] of lobby.resumeAssignments) {
+          if (!launchedParticipantIds.has(identity.participantId)) {
+            lobby.resumeAssignments.delete(token);
+          }
+        }
         lobby.typingPlayerIds.clear();
         emitTyping(lobby);
         emitVersusState(lobby);
@@ -450,7 +460,7 @@ function createGameServer(options = {}) {
     });
   }
 
-  function lobbyPayload(lobby, socketId = null) {
+  function lobbyPayload(lobby, socketId = null, includeResumeToken = false) {
     const player = socketId ? lobby.players.get(socketId) : null;
     const versus = lobby.mode === "versus" && player
       ? lobby.game.getView(
@@ -463,7 +473,7 @@ function createGameServer(options = {}) {
       lobbyId: lobby.lobbyId,
       mode: lobby.mode,
       category: lobby.category,
-      resumeToken: player?.resumeToken,
+      ...(includeResumeToken && player?.resumeToken ? { resumeToken: player.resumeToken } : {}),
       gameState: versus?.gameState || lobby.game.getGameState(),
       versus: versus ? { ...versus, gameState: undefined } : null,
       players: serializePlayers(lobby),
@@ -577,7 +587,7 @@ function createGameServer(options = {}) {
       const mode = payload?.mode === "versus" ? "versus" : "classic";
       const lobby = createLobbyRecord(lobbyId, { mode, categoryId: category.id });
       addPlayer(lobby, socket, payload?.preferredName);
-      const response = lobbyPayload(lobby, socket.id);
+      const response = lobbyPayload(lobby, socket.id, true);
       socket.emit("lobbyCreated", response);
       emitPlayers(lobby);
       recordEvent("lobby_created", {
@@ -608,13 +618,29 @@ function createGameServer(options = {}) {
         // Once play starts, a fresh seat would reveal a team's private search.
         // Invalid credentials also fail during setup rather than silently
         // replacing the caller's saved identity with a new seat.
-        if ((resumeToken && !resumeIdentity) || (lobby.game.phase !== "setup" && !resumeIdentity)) {
+        if (resumeToken && !resumeIdentity) {
+          socket.emit("error", "This saved VS seat is unavailable. Return to your original tab or start a new mission.");
+          return;
+        }
+        if (lobby.game.phase !== "setup" && !resumeIdentity) {
           socket.emit("error", "This VS match has started. Rejoin from your original tab, or start a new mission.");
           return;
         }
-        if (resumeIdentity && Array.from(lobby.players.values()).some(player => player.participantId === resumeIdentity.participantId)) {
-          socket.emit("error", "This player is already connected. Return to your original tab.");
-          return;
+        const previous = resumeIdentity && Array.from(lobby.players.values()).find(player => player.participantId === resumeIdentity.participantId);
+        if (previous) {
+          // A valid secret owns this seat even while the old transport is stale.
+          // Replace it synchronously, without a departure broadcast/maybeStart
+          // between removal and addPlayer, so readiness and host identity stay atomic.
+          const previousSocket = io.sockets.sockets.get(previous.id);
+          lobby.players.delete(previous.id);
+          lobby.typingPlayerIds.delete(previous.id);
+          if (lobby.game.phase === "setup") lobby.game.unregisterPlayer(previous);
+          if (previousSocket) {
+            previousSocket.data.lobbyId = null;
+            previousSocket.leave(lobbyId);
+            previousSocket.emit("error", "Your VS seat was resumed in another connection.");
+            previousSocket.disconnect(true);
+          }
         }
       }
       if (
@@ -629,7 +655,7 @@ function createGameServer(options = {}) {
         removePlayerFromCurrentLobby(socket);
         addPlayer(lobby, socket, preferredName, resumeIdentity);
       }
-      socket.emit("lobbyJoined", lobbyPayload(lobby, socket.id));
+      socket.emit("lobbyJoined", lobbyPayload(lobby, socket.id, true));
       emitPlayers(lobby);
       emitVersusState(lobby);
       recordEvent("lobby_joined", {
@@ -769,10 +795,7 @@ function createGameServer(options = {}) {
         emitActionError(socket, response);
         return;
       }
-      for (const teammate of lobby.players.values()) {
-        const identity = lobby.identityAssignments.get(teammate.name.toLocaleLowerCase());
-        if (identity) identity.teamId = teammate.teamId;
-      }
+      for (const teammate of lobby.players.values()) rememberIdentity(lobby, teammate);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
       emitVersusState(lobby);

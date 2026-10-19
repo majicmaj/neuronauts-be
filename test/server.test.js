@@ -391,7 +391,8 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   });
   const address = await runtime.start(0, "127.0.0.1");
   const url = `http://127.0.0.1:${address.port}`;
-  const first = await connect(url);
+  let first = await connect(url);
+  const additional = [];
   let second = await connect(url);
   const rivalEvents = [];
   second.onAny((event, payload) => rivalEvents.push({ event, payload }));
@@ -401,6 +402,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
     first.disconnect();
     second.disconnect();
     reconnected?.disconnect();
+    additional.forEach(socket => socket.disconnect());
     await runtime.stop();
   });
 
@@ -408,6 +410,8 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   first.emit("createLobby", { preferredName: "Red Ranger", mode: "versus" });
   const created = await createdPromise;
   assert.equal(created.mode, "versus");
+  assert.match(created.resumeToken, /^[a-f0-9]{48}$/);
+  assert.ok(created.players.every(player => !("resumeToken" in player)));
 
   const joinedPromise = waitFor(second, "lobbyJoined");
   second.emit("joinLobby", {
@@ -445,6 +449,21 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   );
   second.emit("toggleReady", { lobbyId: created.lobbyId });
   await launched;
+
+  const attacker = await connect(url);
+  additional.push(attacker);
+  const attackerEvents = [];
+  attacker.onAny((event, payload) => attackerEvents.push({ event, payload }));
+  const denyJoin = async (socket, payload, message = /started/) => {
+    const denied = waitFor(socket, "error");
+    socket.emit("joinLobby", payload);
+    assert.match(await denied, message);
+    assert.equal(runtime.lobbies.get(created.lobbyId).players.has(socket.id), false);
+  };
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Late spectator" });
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: "f".repeat(48) });
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: joined.resumeToken }, /already connected/);
+  assert.equal(attackerEvents.some(({ event }) => event === "lobbyJoined" || event === "versusUpdated"), false);
 
   const typingVisible = waitFor(
     second,
@@ -495,8 +514,9 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(hint.hintFrom, "moon");
   assert.equal(hint.guess, "bridge");
   const assertPrivate = payload => {
-    const json = JSON.stringify(payload);
+    const json = JSON.stringify(payload).toLowerCase();
     for (const privateWord of ["moon", "bridge"]) assert.equal(json.includes(privateWord), false, `leaked ${privateWord}`);
+    assert.equal(json.includes(created.resumeToken), false, "leaked opponent resume credential");
   };
   assertPrivate(rivalHintPayload);
   assertPrivate(rivalEvents);
@@ -515,7 +535,7 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   const reconnectEvents = [];
   reconnected.onAny((event, payload) => reconnectEvents.push({ event, payload }));
   const reconnectPromise = waitFor(reconnected, "lobbyJoined");
-  reconnected.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: secondIdentity.name });
+  reconnected.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: secondIdentity.name, resumeToken: joined.resumeToken });
   const reconnectPayload = await reconnectPromise;
   assert.equal(reconnectPayload.versus.teamId, "blue");
   assertPrivate(reconnectPayload);
@@ -525,6 +545,22 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assertPrivate(firstFinishedPayload);
   assert.equal(firstFinishedPayload.gameState.targetWord, undefined);
   assertPrivate(reconnectEvents);
+  // A disconnected winner's public name must never grant the solved target.
+  const redDeparted = waitFor(reconnected, "playersUpdated", payload => payload.playerCount === 1);
+  first.disconnect();
+  await redDeparted;
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger" });
+  await denyJoin(attacker, { lobbyId: created.lobbyId, preferredName: "Red Ranger", resumeToken: "0".repeat(48) });
+  const recoveredRed = await connect(url);
+  additional.push(recoveredRed);
+  const recovered = waitFor(recoveredRed, "lobbyJoined");
+  recoveredRed.emit("joinLobby", { lobbyId: created.lobbyId, preferredName: "A forged call sign is ignored", resumeToken: created.resumeToken });
+  const recoveredPayload = await recovered;
+  assert.equal(recoveredPayload.players.find(player => player.id === recoveredRed.id).participantId, created.players[0].participantId);
+  assert.equal(recoveredPayload.gameState.targetWord, "star");
+  assert.equal(recoveredPayload.gameState.guessHistory[0].guess, "moon");
+  assert.equal(recoveredPayload.versus.teamId, "red");
+  first = recoveredRed;
   second = reconnected;
   const completed = waitFor(
     second,
@@ -536,11 +572,22 @@ test("VS lobbies ready both teams and never send opponent words", async (t) => {
   assert.equal(completePayload.versus.result.targetWord, "star");
   assert.equal(completePayload.gameState.targetWord, "star");
   assertPrivate(completePayload);
-  assertPrivate(rivalEvents);
+  assertPrivate(reconnectEvents);
   assertPrivate(await (await fetch(`${url}/stats`)).json());
 
   const rematchReady = waitFor(first, "rematchReady");
   first.emit("requestRematch", { lobbyId: created.lobbyId });
   const rematch = await rematchReady;
   assert.equal(runtime.lobbies.get(rematch.lobbyId).mode, "versus");
+  const badRematchResume = waitFor(first, "error");
+  first.emit("joinLobby", { lobbyId: rematch.lobbyId, preferredName: "Red Ranger", resumeToken: created.resumeToken });
+  assert.match(await badRematchResume, /started/);
+  const rematchJoined = waitFor(first, "lobbyJoined");
+  first.emit("joinLobby", { lobbyId: rematch.lobbyId, preferredName: "Red Ranger" });
+  const rematchPayload = await rematchJoined;
+  assert.equal(rematchPayload.versus.phase, "setup");
+  assert.match(rematchPayload.resumeToken, /^[a-f0-9]{48}$/);
+  assert.notEqual(rematchPayload.resumeToken, created.resumeToken);
+  assert.equal(rematchPayload.gameState.guessHistory.length, 0);
+  assert.equal(attackerEvents.some(({ event }) => event === "lobbyJoined" || event === "versusUpdated"), false);
 });

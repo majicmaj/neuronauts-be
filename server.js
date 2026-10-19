@@ -239,6 +239,7 @@ function createGameServer(options = {}) {
       game,
       players: new Map(),
       identityAssignments: new Map(),
+      resumeAssignments: new Map(),
       nextColorIndex: 0,
       nextAvatarIndex: 0,
       typingPlayerIds: new Set(),
@@ -333,8 +334,21 @@ function createGameServer(options = {}) {
     return result;
   }
 
-  function addPlayer(lobby, socket, preferredName) {
-    const requested = normalizePlayerName(preferredName);
+  function rememberIdentity(lobby, player) {
+    const identity = {
+      name: player.name,
+      colorIndex: player.colorIndex,
+      avatarId: player.avatarId,
+      participantId: player.participantId,
+      teamId: player.teamId,
+      resumeToken: player.resumeToken,
+    };
+    lobby.identityAssignments.set(player.name.toLocaleLowerCase(), identity);
+    if (player.resumeToken) lobby.resumeAssignments.set(player.resumeToken, identity);
+  }
+
+  function addPlayer(lobby, socket, preferredName, resumeIdentity = null) {
+    const requested = normalizePlayerName(resumeIdentity?.name || preferredName);
     const name =
       requested && isNameAvailable(lobby, requested)
         ? requested
@@ -343,7 +357,11 @@ function createGameServer(options = {}) {
       Array.from(lobby.players.values()).map((player) => player.colorIndex)
     );
     const colorKey = name.toLocaleLowerCase();
-    const rememberedIdentity = lobby.identityAssignments.get(colorKey);
+    // A public call sign is not proof of team membership. Classic retains its
+    // cooperative name recall; VS restores private state only with a secret.
+    const rememberedIdentity = lobby.mode === "versus"
+      ? resumeIdentity
+      : lobby.identityAssignments.get(colorKey);
     let colorIndex = rememberedIdentity?.colorIndex;
     if (!Number.isInteger(colorIndex) || activeColors.has(colorIndex)) {
       colorIndex = lobby.nextColorIndex;
@@ -375,11 +393,11 @@ function createGameServer(options = {}) {
     const teamId = lobby.mode === "versus"
       ? rememberedIdentity?.teamId || lobby.game.assignTeam(Array.from(lobby.players.values()))
       : null;
-    lobby.identityAssignments.set(colorKey, { colorIndex, avatarId, participantId, teamId });
 
     const player = {
       id: socket.id,
       participantId,
+      resumeToken: lobby.mode === "versus" ? rememberedIdentity?.resumeToken || crypto.randomBytes(24).toString("hex") : undefined,
       name,
       joinedAt: nowIso(),
       colorIndex,
@@ -387,6 +405,7 @@ function createGameServer(options = {}) {
       teamId,
       ready: false,
     };
+    rememberIdentity(lobby, player);
     lobby.players.set(socket.id, player);
     if (!lobby.hostParticipantId) lobby.hostParticipantId = participantId;
     lobby.game.registerPlayer(player);
@@ -444,6 +463,7 @@ function createGameServer(options = {}) {
       lobbyId: lobby.lobbyId,
       mode: lobby.mode,
       category: lobby.category,
+      resumeToken: player?.resumeToken,
       gameState: versus?.gameState || lobby.game.getGameState(),
       versus: versus ? { ...versus, gameState: undefined } : null,
       players: serializePlayers(lobby),
@@ -580,6 +600,23 @@ function createGameServer(options = {}) {
         socket.emit("error", "Lobby does not exist.");
         return;
       }
+      const resumeToken = typeof payload === "object" && typeof payload?.resumeToken === "string"
+        ? payload.resumeToken
+        : null;
+      const resumeIdentity = resumeToken ? lobby.resumeAssignments.get(resumeToken) : null;
+      if (lobby.mode === "versus" && !lobby.players.has(socket.id)) {
+        // Once play starts, a fresh seat would reveal a team's private search.
+        // Invalid credentials also fail during setup rather than silently
+        // replacing the caller's saved identity with a new seat.
+        if ((resumeToken && !resumeIdentity) || (lobby.game.phase !== "setup" && !resumeIdentity)) {
+          socket.emit("error", "This VS match has started. Rejoin from your original tab, or start a new mission.");
+          return;
+        }
+        if (resumeIdentity && Array.from(lobby.players.values()).some(player => player.participantId === resumeIdentity.participantId)) {
+          socket.emit("error", "This player is already connected. Return to your original tab.");
+          return;
+        }
+      }
       if (
         !lobby.players.has(socket.id) &&
         lobby.players.size >= limits.maxPlayersPerLobby
@@ -590,7 +627,7 @@ function createGameServer(options = {}) {
 
       if (socket.data.lobbyId !== lobbyId) {
         removePlayerFromCurrentLobby(socket);
-        addPlayer(lobby, socket, preferredName);
+        addPlayer(lobby, socket, preferredName, resumeIdentity);
       }
       socket.emit("lobbyJoined", lobbyPayload(lobby, socket.id));
       emitPlayers(lobby);
@@ -631,12 +668,7 @@ function createGameServer(options = {}) {
       const previousName = player.name;
       player.name = name;
       lobby.identityAssignments.delete(previousName.toLocaleLowerCase());
-      lobby.identityAssignments.set(name.toLocaleLowerCase(), {
-        colorIndex: player.colorIndex,
-        avatarId: player.avatarId,
-        participantId: player.participantId,
-        teamId: player.teamId,
-      });
+      rememberIdentity(lobby, player);
       lobby.game.registerPlayer(player);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
@@ -676,12 +708,7 @@ function createGameServer(options = {}) {
 
       const player = lobby.players.get(socket.id);
       player.avatarId = avatarId;
-      lobby.identityAssignments.set(player.name.toLocaleLowerCase(), {
-        colorIndex: player.colorIndex,
-        avatarId,
-        participantId: player.participantId,
-        teamId: player.teamId,
-      });
+      rememberIdentity(lobby, player);
       lobby.game.registerPlayer(player);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
@@ -709,12 +736,7 @@ function createGameServer(options = {}) {
         emitActionError(socket, response);
         return;
       }
-      lobby.identityAssignments.set(player.name.toLocaleLowerCase(), {
-        colorIndex: player.colorIndex,
-        avatarId: player.avatarId,
-        participantId: player.participantId,
-        teamId: player.teamId,
-      });
+      rememberIdentity(lobby, player);
       updateLobbyActivity(lobby);
       emitPlayers(lobby);
       emitVersusState(lobby);

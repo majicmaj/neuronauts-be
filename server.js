@@ -287,7 +287,9 @@ function createGameServer(options = {}) {
     game.on("error", (error) => {
       io.to(lobbyId).emit("actionError", {
         code: "game_unavailable",
-        message: "The semantic model could not be loaded.",
+        message: error.code === "no_eligible_targets"
+          ? "No words in this category are available. Return home and choose another category or All words."
+          : "The semantic model could not be loaded.",
       });
       recordEvent("game_error", { lobbyId, message: error.message });
     });

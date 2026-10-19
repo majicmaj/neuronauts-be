@@ -66,6 +66,7 @@ test('categories select available targets without narrowing guesses or rank/hint
     const [error] = await once(unavailable, 'error');
     assert.match(error.message, /No eligible targets/);
     assert.equal(unavailable.status, 'error');
+    assert.match(unavailable.getGameState().error, /choose another category or All words/);
   }
 });
 
@@ -120,5 +121,26 @@ for (const mode of ['classic', 'versus']) {
     if (next.game.status === 'loading') await once(next.game, 'ready');
     const nextGames = mode === 'versus' ? [...next.game.games.values()] : [next.game];
     assert.ok(nextGames.every(game => getTargetPool('animals').includes(game.targetWord)));
+  });
+}
+
+for (const mode of ['classic', 'versus']) {
+  test(`${mode}: unavailable category targets give an actionable socket error without leaking a target`, async t => {
+    const runtime = createGameServer({
+      skipEmbeddingsBootstrap: true,
+      gameFactory: options => new Game({ ...options, embeddings: { unrelated: [1, 0] } }),
+    });
+    const address = await runtime.start(0, '127.0.0.1');
+    const socket = io(`http://127.0.0.1:${address.port}`, { transports: ['websocket'], reconnection: false });
+    t.after(async () => { socket.disconnect(); await runtime.stop(); });
+    await waitFor(socket, 'connect');
+    const createdPromise = waitFor(socket, 'lobbyCreated');
+    const errorPromise = waitFor(socket, 'actionError');
+    socket.emit('createLobby', { mode, categoryId: 'animals' });
+    const created = await createdPromise;
+    const error = await errorPromise;
+    assert.equal(error.code, 'game_unavailable');
+    assert.match(error.message, /Return home and choose another category or All words/);
+    assert.equal(created.gameState.targetWord, undefined);
   });
 }

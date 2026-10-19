@@ -106,7 +106,9 @@ class Game extends EventEmitter {
       .then((embeddings) => this.initialize(embeddings))
       .catch((error) => {
         this.status = "error";
-        this.error = "The semantic model could not be loaded.";
+        this.error = error.code === "no_eligible_targets"
+          ? "No words in this category are available. Return home and choose another category or All words."
+          : "The semantic model could not be loaded.";
         console.error("Error initializing game:", error);
         this.emit("error", error);
       });
@@ -158,7 +160,11 @@ class Game extends EventEmitter {
       seen.add(word);
       candidates.push(word);
     }
-    if (!candidates.length) throw new Error("No eligible targets are available for this mission.");
+    if (!candidates.length) {
+      const error = new Error("No eligible targets are available for this mission.");
+      error.code = "no_eligible_targets";
+      throw error;
+    }
     return candidates[Math.floor(this.random() * candidates.length)];
   }
 

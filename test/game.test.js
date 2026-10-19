@@ -352,3 +352,34 @@ test("selects one canonical target per concept family", async () => {
   assert.equal(game.targetWord, "end");
   assert.equal(game.referenceRanking.filter((entry) => entry.word === "end").length, 1);
 });
+
+test("inflected targets, guesses, ranks and duplicate recall use one family", async () => {
+  const game = new Game({
+    embeddings: { basic: [1, 0], read: [0.8, 0.6], moon: [0, 1] },
+    commonWords: ["basics", "basic", "reading", "readings", "reads", "read", "moon"],
+    random: () => 0,
+    semanticFloor: 0, semanticCeiling: 1,
+  });
+  await once(game, "ready");
+  assert.equal(game.targetWord, "basic");
+  assert.deepEqual(game.referenceRanking.map((entry) => entry.word), ["basic", "read", "moon"]);
+  const original = game.handleGuess("readings", PLAYER);
+  assert.equal(original.result.guess, "read");
+  const duplicate = game.handleGuess("reading", PLAYER);
+  assert.equal(duplicate.code, "duplicate_guess");
+  assert.equal(duplicate.existingResult.id, original.result.id);
+  assert.equal(game.getGameState().guessHistory.length, 1);
+  const win = game.handleGuess("basics", PLAYER);
+  assert.equal(win.result.correct, true);
+  assert.equal(win.result.guess, "basic");
+});
+
+test("a plural-only noun cannot become a randomly selected target", async () => {
+  const game = new Game({
+    embeddings: { glasses: [1, 0], goods: [0.8, 0.6], basic: [0, 1] },
+    commonWords: ["glasses", "goods", "basics"], random: () => 0,
+  });
+  await once(game, "ready");
+  assert.equal(game.targetWord, "basic");
+  assert.equal(game.handleGuess("glasses", PLAYER).ok, true);
+});

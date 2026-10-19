@@ -49,3 +49,44 @@ test("committed lexicon artifacts match the deterministic generator", () => {
   });
   assert.equal(result.status, 0, result.stderr || result.stdout);
 });
+
+test("ordinary plurals and verb inflections share a base even with dictionary senses", () => {
+  const families = {
+    basic: ["basics"], dog: ["dogs"], child: ["children"], woman: ["women"],
+    read: ["reading", "readings", "reads"], run: ["running", "runs", "ran"],
+    swim: ["swimming", "swims", "swam", "swum"],
+    study: ["studies", "studying", "studied"],
+    write: ["writing", "writes", "wrote", "written"],
+    bus: ["buses", "busses"], screenshot: ["screenshots"],
+  };
+  for (const [canonical, surfaces] of Object.entries(families)) {
+    for (const surface of surfaces) {
+      assert.equal(defaultConceptLexicon.resolve(surface).canonicalWord, canonical, surface);
+      assert.equal(defaultConceptLexicon.isTargetEligible(surface), false, surface);
+    }
+  }
+});
+
+test("distinct noun concepts retain their own plural family", () => {
+  for (const [word, plural, different] of [
+    ["booking", "bookings", "book"], ["building", "buildings", "build"],
+    ["meeting", "meetings", "meet"], ["painting", "paintings", "paint"],
+  ]) {
+    assert.equal(defaultConceptLexicon.resolve(word).canonicalWord, word);
+    assert.equal(defaultConceptLexicon.resolve(plural).canonicalWord, word);
+    assert.notEqual(defaultConceptLexicon.resolve(word).canonicalWord, different);
+    assert.equal(defaultConceptLexicon.isTargetEligible(plural), false);
+  }
+});
+
+test("plural-only, unresolved plurals and ambiguous inflections are never hidden answers", () => {
+  for (const word of ["glasses", "clothes", "goods", "customs", "savings", "shorts",
+    "earnings", "bacteria", "others", "celebs", "stats", "leaves", "axes",
+    "saw", "found", "wound", "lying"]) {
+    assert.equal(defaultConceptLexicon.isTargetEligible(word), false, word);
+  }
+  for (const word of ["physics", "species", "series", "business"]) {
+    assert.equal(defaultConceptLexicon.resolve(word).canonicalWord, word, word);
+    assert.equal(defaultConceptLexicon.isTargetEligible(word), true, word);
+  }
+});

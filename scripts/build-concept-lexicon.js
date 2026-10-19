@@ -57,6 +57,18 @@ function getSpellingVariant(word) {
   return /^[a-z][a-z'-]*$/.test(canonical) ? canonical : null;
 }
 
+function canBeTarget(word) {
+  if (overrides.targetExcluded[word]) return false;
+  if ((overrides.invariantSingular || []).includes(word)) return true;
+  const tags = winkLexicon.lexicon[word] || [];
+  // Unknown s-endings include web vocabulary and compounds that the lemma
+  // dictionary misses (screenshots, plugins). Keep them guessable, never answers.
+  if (word.endsWith("s") && !word.endsWith("ss")) {
+    return tags.length > 0 && !tags.includes("NNS");
+  }
+  return true;
+}
+
 function classifyInflection(word) {
   const aliasOverride = overrides.aliases[word];
   if (aliasOverride) {
@@ -78,7 +90,7 @@ function classifyInflection(word) {
     return {
       action: "standalone",
       canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
+      targetEligible: canBeTarget(word),
       reason: overrides.standalone[word],
       source: "override",
     };
@@ -89,7 +101,7 @@ function classifyInflection(word) {
     return {
       action: "standalone",
       canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
+      targetEligible: canBeTarget(word),
       reason: overrides.targetExcluded[word] || "No related inflection in the reference vocabulary.",
       source: overrides.targetExcluded[word] ? "override" : "automatic",
     };
@@ -109,37 +121,17 @@ function classifyInflection(word) {
 
   const [canonical] = candidates;
   const tags = winkLexicon.lexicon[word] || [];
-  if (winkLexicon.wnWords[word] !== undefined) {
+  // WordNet lists ordinary plurals and gerunds as senses too. Dictionary
+  // membership alone must not force an almost-identical answer into the pool.
+  const nounLemma = lemmatize.noun(word);
+  if (nounLemma !== word && canonical === nounLemma &&
+      (tags.includes("NNS") || (word.endsWith("s") && !word.endsWith("ss")))) {
     return {
-      action: "standalone",
-      canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
-      reason: overrides.targetExcluded[word] || `WordNet records an independent sense alongside ${canonical}.`,
-      source: overrides.targetExcluded[word] ? "override" : "lexicalized",
-      review: !overrides.targetExcluded[word],
-      candidates,
-    };
-  }
-
-  if (tags.includes("NNS")) {
-    const lexicalized = tags.some((tag) => ["NN", "JJ", "RB", "VB"].includes(tag));
-    if (!lexicalized) {
-      return {
-        action: "alias",
-        canonical,
-        transformation: "plural",
-        reason: `One unambiguous plural of ${canonical}.`,
-        source: "automatic",
-      };
-    }
-    return {
-      action: "standalone",
-      canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
-      reason: `Plural form has an independent lexical role alongside ${canonical}.`,
-      source: "lexicalized",
-      review: true,
-      candidates,
+      action: "alias",
+      canonical,
+      transformation: "plural",
+      reason: `Ordinary plural of ${canonical}.`,
+      source: "automatic",
     };
   }
 
@@ -157,7 +149,7 @@ function classifyInflection(word) {
     return {
       action: "standalone",
       canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
+      targetEligible: canBeTarget(word),
       reason: `Comparison form has an independent lexical role alongside ${canonical}.`,
       source: "lexicalized",
       review: true,
@@ -165,47 +157,16 @@ function classifyInflection(word) {
     };
   }
 
-  if (tags.includes("VBG")) {
-    const lexicalized = tags.some((tag) => ["NN", "JJ", "RB"].includes(tag));
-    if (!lexicalized) {
-      return {
-        action: "alias",
-        canonical,
-        transformation: "participle",
-        reason: `One unambiguous participle of ${canonical}.`,
-        source: "automatic",
-      };
-    }
+  const verbLemma = lemmatize.verb(word);
+  if (canonical === verbLemma && verbLemma !== word &&
+      (tags.some((tag) => ["VBG", "VBD", "VBN"].includes(tag)) ||
+       word.endsWith("ing") || word.endsWith("ed"))) {
     return {
-      action: "standalone",
-      canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
-      reason: `Participle has an independent lexical role alongside ${canonical}.`,
-      source: "lexicalized",
-      review: true,
-      candidates,
-    };
-  }
-
-  if (tags.includes("VBD") || tags.includes("VBN")) {
-    const lexicalized = tags.some((tag) => ["NN", "JJ", "VB", "RB"].includes(tag));
-    if (!lexicalized) {
-      return {
-        action: "alias",
-        canonical,
-        transformation: "past",
-        reason: `One unambiguous past-tense form of ${canonical}.`,
-        source: "automatic",
-      };
-    }
-    return {
-      action: "standalone",
-      canonical: word,
-      targetEligible: !overrides.targetExcluded[word],
-      reason: `Past-tense form has an independent lexical role alongside ${canonical}.`,
-      source: "lexicalized",
-      review: true,
-      candidates,
+      action: "alias",
+      canonical,
+      transformation: transformationFor(word, canonical),
+      reason: `Verb inflection of ${canonical}; distinct noun concepts require an explicit exception.`,
+      source: "automatic",
     };
   }
 
@@ -222,7 +183,7 @@ function classifyInflection(word) {
   return {
     action: "standalone",
     canonical: word,
-    targetEligible: !overrides.targetExcluded[word],
+    targetEligible: false,
     reason: `No supported inflection rule safely maps this word to ${canonical}.`,
     source: "conservative",
     review: true,
@@ -281,7 +242,9 @@ function buildArtifacts() {
     } else if (decision.action === "alias" && !wordSet.has(key)) {
       // Replace an inflected target with its scoreable base form when the base
       // is outside words.json (for example ending -> end).
-      conceptByKey.get(key).targetEligible = true;
+      const baseDecision = classify(key);
+      conceptByKey.get(key).targetEligible =
+        baseDecision.action === "standalone" && baseDecision.targetEligible;
     }
     if (decision.review) {
       reviewRows.push([
@@ -311,6 +274,14 @@ function buildArtifacts() {
     conceptByKey.get(override.canonical).aliases.push(surfaceWord);
   }
 
+  for (const surfaceWord of Object.keys(overrides.standalone).sort()) {
+    if (!conceptByKey.has(surfaceWord)) {
+      conceptByKey.set(surfaceWord, {
+        key: surfaceWord, aliases: [], targetEligible: false,
+      });
+    }
+  }
+
   // Accept regional spelling variants outside words.json whenever their
   // canonical concept is scoreable. These are input aliases, never targets.
   for (const surfaceWord of Object.keys(britishSpellings).sort()) {
@@ -327,35 +298,43 @@ function buildArtifacts() {
     conceptByKey.get(canonical).aliases.push(surfaceWord);
   }
 
-  for (const surfaceWord of Object.keys(winkLexicon.lexicon).sort()) {
-    if (
-      wordSet.has(surfaceWord) ||
-      surfaceWord.length > 40 ||
-      !/^[a-z][a-z'-]*$/.test(surfaceWord) ||
-      winkLexicon.wnWords[surfaceWord] !== undefined
-    ) {
-      continue;
-    }
-    const candidates = distinctLemmas(surfaceWord);
-    if (candidates.length !== 1) continue;
-    const [canonical] = candidates;
-    if (!conceptByKey.has(canonical) || aliases[surfaceWord]) continue;
-    const tags = winkLexicon.lexicon[surfaceWord] || [];
-    const isPlainPlural = tags.includes("NNS");
-    const isPlainParticiple = tags.includes("VBG") &&
-      !tags.some((tag) => ["NN", "JJ", "RB"].includes(tag));
-    const isPlainPast = (tags.includes("VBD") || tags.includes("VBN")) &&
-      !tags.some((tag) => ["NN", "JJ", "VB", "RB"].includes(tag));
-    const isAgreement = tags.includes("VBZ");
-    const isComparison = tags.some((tag) => ["JJR", "JJS", "RBR", "RBS"].includes(tag));
-    if (!isPlainPlural && !isPlainParticiple && !isPlainPast && !isAgreement && !isComparison) {
-      continue;
+  // Use the same decision for guesses inside and outside the target vocabulary.
+  // This includes dictionary-attested irregulars without accepting arbitrary stems.
+  const dictionaryWords = new Set([
+    ...Object.keys(winkLexicon.lexicon), ...Object.keys(winkLexicon.wnWords),
+  ]);
+  for (const surfaceWord of [...dictionaryWords].sort()) {
+    if (wordSet.has(surfaceWord) || aliases[surfaceWord] ||
+        surfaceWord.length > 40 || !/^[a-z][a-z'-]*$/.test(surfaceWord)) continue;
+    const decision = classify(surfaceWord);
+    if (decision.action !== "alias") continue;
+    if (!conceptByKey.has(decision.canonical)) {
+      conceptByKey.set(decision.canonical, {
+        key: decision.canonical, aliases: [], targetEligible: false,
+      });
     }
     aliases[surfaceWord] = {
-      canonical,
-      transformation: transformationFor(surfaceWord, canonical),
+      canonical: decision.canonical,
+      transformation: decision.transformation,
     };
-    conceptByKey.get(canonical).aliases.push(surfaceWord);
+    conceptByKey.get(decision.canonical).aliases.push(surfaceWord);
+  }
+
+  // Inflections can compose (readings -> reading -> read). Emit direct aliases
+  // and one representative so wins, ranks, hints and duplicate recall all agree.
+  for (const [surfaceWord, alias] of Object.entries(aliases)) {
+    const seen = new Set([surfaceWord]);
+    while (aliases[alias.canonical]) {
+      if (seen.has(alias.canonical)) throw new Error(`Alias cycle at ${surfaceWord}.`);
+      seen.add(alias.canonical);
+      alias.canonical = aliases[alias.canonical].canonical;
+    }
+  }
+  for (const concept of conceptByKey.values()) concept.aliases = [];
+  for (const [surfaceWord, alias] of Object.entries(aliases)) {
+    const oldConcept = conceptByKey.get(surfaceWord);
+    if (oldConcept) conceptByKey.delete(surfaceWord);
+    conceptByKey.get(alias.canonical).aliases.push(surfaceWord);
   }
 
   const concepts = [...conceptByKey.values()].map((concept) => ({

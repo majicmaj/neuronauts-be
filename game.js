@@ -84,6 +84,8 @@ class Game extends EventEmitter {
     this.commonWords = options.commonWords || defaultCommonWords;
     this.conceptLexicon = options.conceptLexicon || defaultConceptLexicon;
     this.forcedTargetWord = options.targetWord || null;
+    // Target scope is separate from scoring/hint reference vocabulary.
+    this.targetPool = options.targetPool ?? null;
     this.random = options.random || Math.random;
     this.now = options.now || Date.now;
     this.hintCooldownMs =
@@ -142,7 +144,7 @@ class Game extends EventEmitter {
 
     const candidates = [];
     const seen = new Set();
-    for (const rawWord of this.commonWords) {
+    for (const rawWord of this.targetPool || this.commonWords) {
       const surfaceWord = normalizeGuess(rawWord);
       if (!surfaceWord) continue;
       const word = this.conceptLexicon.resolve(surfaceWord).canonicalWord;
@@ -156,7 +158,7 @@ class Game extends EventEmitter {
       seen.add(word);
       candidates.push(word);
     }
-    if (!candidates.length) return null;
+    if (!candidates.length) throw new Error("No eligible targets are available for this mission.");
     return candidates[Math.floor(this.random() * candidates.length)];
   }
 

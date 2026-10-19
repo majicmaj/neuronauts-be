@@ -139,6 +139,7 @@ class VersusGame extends EventEmitter {
   constructor(options = {}) {
     super();
     this.gameFactory = options.gameFactory;
+    this.targetPool = options.targetPool ?? null;
     this.now = options.now || Date.now;
     this.random = options.random || Math.random;
     this.games = new Map();
@@ -153,7 +154,7 @@ class VersusGame extends EventEmitter {
   }
 
   createTeamGame(teamId, targetWord) {
-    const game = this.gameFactory(targetWord ? { targetWord } : {});
+    const game = this.gameFactory({ targetPool: this.targetPool, ...(targetWord ? { targetWord } : {}) });
     this.games.set(teamId, game);
     game.on("ready", () => {
       if (this.status === "error") return;
